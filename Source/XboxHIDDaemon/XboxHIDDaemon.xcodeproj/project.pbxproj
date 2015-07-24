@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		823EAC8F1B572EC200FED407 /* FPXboxHIDDriverInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 823EAC8A1B572EC200FED407 /* FPXboxHIDDriverInterface.h */; };
+		823EAC901B572EC200FED407 /* FPXboxHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 823EAC8B1B572EC200FED407 /* FPXboxHIDDriverInterface.m */; };
+		823EAC911B572EC200FED407 /* FPXboxHIDDriverKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 823EAC8C1B572EC200FED407 /* FPXboxHIDDriverKeys.h */; };
+		823EAC921B572EC200FED407 /* FPXboxHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 823EAC8D1B572EC200FED407 /* FPXboxHIDPrefsLoader.h */; };
+		823EAC931B572EC200FED407 /* FPXboxHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 823EAC8E1B572EC200FED407 /* FPXboxHIDPrefsLoader.m */; };
+		823EAC9F1B572F0C00FED407 /* FPXboxHIDDaemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 823EAC9E1B572F0C00FED407 /* FPXboxHIDDaemon.m */; };
+		826060741B52F35900A93BEE /* XboxHIDDriver-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 826060731B52F35900A93BEE /* XboxHIDDriver-Prefix.pch */; };
+		82C002BE1B45CD09000E82E5 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C002BD1B45CD09000E82E5 /* CoreFoundation.framework */; };
+		82C002C21B45CD67000E82E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C002C11B45CD67000E82E5 /* Foundation.framework */; };
+		82C002C61B45CD95000E82E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C002C51B45CD95000E82E5 /* Cocoa.framework */; };
+		B24EEE110A4D848700A488B8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28D2D6B04892F7500A80002 /* IOKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B24EEE130A4D848700A488B8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		823EAC8A1B572EC200FED407 /* FPXboxHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverInterface.h; path = ../XboxHIDDriver/Library/FPXboxHIDDriverInterface.h; sourceTree = "<group>"; };
+		823EAC8B1B572EC200FED407 /* FPXboxHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDriverInterface.m; path = ../XboxHIDDriver/Library/FPXboxHIDDriverInterface.m; sourceTree = "<group>"; };
+		823EAC8C1B572EC200FED407 /* FPXboxHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverKeys.h; path = ../XboxHIDDriver/Library/FPXboxHIDDriverKeys.h; sourceTree = "<group>"; };
+		823EAC8D1B572EC200FED407 /* FPXboxHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsLoader.h; path = ../XboxHIDDriver/Library/FPXboxHIDPrefsLoader.h; sourceTree = "<group>"; };
+		823EAC8E1B572EC200FED407 /* FPXboxHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsLoader.m; path = ../XboxHIDDriver/Library/FPXboxHIDPrefsLoader.m; sourceTree = "<group>"; };
+		823EAC9E1B572F0C00FED407 /* FPXboxHIDDaemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDaemon.m; path = Source/FPXboxHIDDaemon.m; sourceTree = "<group>"; };
+		826060661B52F1FD00A93BEE /* com.fizzypopstudios.XboxHIDDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.fizzypopstudios.XboxHIDDaemon.plist; path = Support/com.fizzypopstudios.XboxHIDDaemon.plist; sourceTree = "<group>"; };
+		826060731B52F35900A93BEE /* XboxHIDDriver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XboxHIDDriver-Prefix.pch"; path = "../XboxHIDDriver/Support/XboxHIDDriver-Prefix.pch"; sourceTree = "<group>"; };
+		82C002BD1B45CD09000E82E5 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		82C002C11B45CD67000E82E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		82C002C51B45CD95000E82E5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		87DCB0F1167A9BF00031BA44 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		87DCB0F2167A9BF00031BA44 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		87F8F2E51679211200EDF309 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		B24EEE180A4D848700A488B8 /* XboxHIDDaemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XboxHIDDaemon; sourceTree = BUILT_PRODUCTS_DIR; };
+		B28D2D6B04892F7500A80002 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B24EEE0F0A4D848700A488B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82C002C61B45CD95000E82E5 /* Cocoa.framework in Frameworks */,
+				82C002BE1B45CD09000E82E5 /* CoreFoundation.framework in Frameworks */,
+				82C002C21B45CD67000E82E5 /* Foundation.framework in Frameworks */,
+				B24EEE110A4D848700A488B8 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* XboxHIDDaemon */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				87DCB0DA167A8EA50031BA44 /* Frameworks */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = XboxHIDDaemon;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				823EAC9E1B572F0C00FED407 /* FPXboxHIDDaemon.m */,
+				B2FCEA2F049CEF2100A80002 /* Driver Library */,
+				82C002BC1B45C754000E82E5 /* Supporting Files */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B24EEE180A4D848700A488B8 /* XboxHIDDaemon */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82C002BC1B45C754000E82E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				826060731B52F35900A93BEE /* XboxHIDDriver-Prefix.pch */,
+				826060661B52F1FD00A93BEE /* com.fizzypopstudios.XboxHIDDaemon.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87DCB0DA167A8EA50031BA44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87DCB0F1167A9BF00031BA44 /* AppKit.framework */,
+				87F8F2E51679211200EDF309 /* ApplicationServices.framework */,
+				82C002C51B45CD95000E82E5 /* Cocoa.framework */,
+				87DCB0F2167A9BF00031BA44 /* CoreData.framework */,
+				82C002BD1B45CD09000E82E5 /* CoreFoundation.framework */,
+				82C002C11B45CD67000E82E5 /* Foundation.framework */,
+				B28D2D6B04892F7500A80002 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2FCEA2F049CEF2100A80002 /* Driver Library */ = {
+			isa = PBXGroup;
+			children = (
+				823EAC8C1B572EC200FED407 /* FPXboxHIDDriverKeys.h */,
+				823EAC8A1B572EC200FED407 /* FPXboxHIDDriverInterface.h */,
+				823EAC8B1B572EC200FED407 /* FPXboxHIDDriverInterface.m */,
+				823EAC8D1B572EC200FED407 /* FPXboxHIDPrefsLoader.h */,
+				823EAC8E1B572EC200FED407 /* FPXboxHIDPrefsLoader.m */,
+			);
+			name = "Driver Library";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B24EEE070A4D848700A488B8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				823EAC8F1B572EC200FED407 /* FPXboxHIDDriverInterface.h in Headers */,
+				826060741B52F35900A93BEE /* XboxHIDDriver-Prefix.pch in Headers */,
+				823EAC921B572EC200FED407 /* FPXboxHIDPrefsLoader.h in Headers */,
+				823EAC911B572EC200FED407 /* FPXboxHIDDriverKeys.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B24EEE060A4D848700A488B8 /* XBoxHIDDaemon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B24EEE140A4D848700A488B8 /* Build configuration list for PBXNativeTarget "XBoxHIDDaemon" */;
+			buildPhases = (
+				B24EEE070A4D848700A488B8 /* Headers */,
+				B24EEE0B0A4D848700A488B8 /* Sources */,
+				B24EEE0F0A4D848700A488B8 /* Frameworks */,
+				B24EEE130A4D848700A488B8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XBoxHIDDaemon;
+			productInstallPath = "$(HOME)/bin";
+			productName = XboxHIDDaemon;
+			productReference = B24EEE180A4D848700A488B8 /* XboxHIDDaemon */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+			};
+			buildConfigurationList = B24EEE3A0A4D849C00A488B8 /* Build configuration list for PBXProject "XboxHIDDaemon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* XboxHIDDaemon */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B24EEE060A4D848700A488B8 /* XBoxHIDDaemon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B24EEE0B0A4D848700A488B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				823EAC9F1B572F0C00FED407 /* FPXboxHIDDaemon.m in Sources */,
+				823EAC931B572EC200FED407 /* FPXboxHIDPrefsLoader.m in Sources */,
+				823EAC901B572EC200FED407 /* FPXboxHIDDriverInterface.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B24EEE150A4D848700A488B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Support/XboxHIDDaemon_Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
+				INSTALL_PATH = "$(HOME)/bin";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = XboxHIDDaemon;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				USER_HEADER_SEARCH_PATHS = ../XboxHIDDriver;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		B24EEE160A4D848700A488B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Support/XboxHIDDaemon_Prefix.pch;
+				HEADER_SEARCH_PATHS = "";
+				INSTALL_PATH = "$(HOME)/bin";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = XboxHIDDaemon;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				USER_HEADER_SEARCH_PATHS = ../XboxHIDDriver;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B24EEE3B0A4D849C00A488B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				GCC_LINK_WITH_DYNAMIC_LIBRARIES = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		B24EEE3C0A4D849C00A488B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_LINK_OBJC_RUNTIME = NO;
+				GCC_LINK_WITH_DYNAMIC_LIBRARIES = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B24EEE140A4D848700A488B8 /* Build configuration list for PBXNativeTarget "XBoxHIDDaemon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B24EEE150A4D848700A488B8 /* Debug */,
+				B24EEE160A4D848700A488B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B24EEE3A0A4D849C00A488B8 /* Build configuration list for PBXProject "XboxHIDDaemon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B24EEE3B0A4D849C00A488B8 /* Debug */,
+				B24EEE3C0A4D849C00A488B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

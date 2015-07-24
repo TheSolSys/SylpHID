@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'FPXboxHIDPrefsPane' target in the 'FPXboxHIDPrefsPane' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+
+    #define XBOX_COLOR  [NSColor colorWithCalibratedRed:0.750 green:1.000 blue:0.333 alpha:1.000]
+#endif

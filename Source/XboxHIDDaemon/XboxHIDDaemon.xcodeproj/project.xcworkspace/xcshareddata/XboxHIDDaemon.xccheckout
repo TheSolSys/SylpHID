@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>05D46672-D158-48A1-B1F6-019C5503C9C6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>XboxHIDDaemon</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++9494</key>
+		<string>http://svn.eidola.its/XboxHID/trunk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Source/XboxHIDDaemon/XboxHIDDaemon.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++9494</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++9494</key>
+		<string>http://svn.eidola.its</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://svn.eidola.its/XboxHID/trunk/Source/XboxHIDDaemon/XboxHIDDaemon.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++9494</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++9494</string>
+			<key>IDESourceControlWCCName</key>
+			<string>XBoxHID</string>
+		</dict>
+	</array>
+</dict>
+</plist>

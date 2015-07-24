@@ -56,7 +56,6 @@
 
 	rect = [self bounds];
 	NSRect clip = NSInsetRect(rect, 0, 3);
-NSLog(@"value[%.3f] max[%.3f]\n", _value, _max);
 	clip.size.height = floor(_value * clip.size.height/_max) + 0.5;
 	NSBezierPath* path = [NSBezierPath bezierPathWithRect: clip];
 

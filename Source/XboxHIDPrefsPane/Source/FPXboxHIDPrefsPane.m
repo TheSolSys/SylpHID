@@ -133,6 +133,12 @@
 	[_actionApps setTooltip: @"Edit App Bindings" withTipControl: _actionTip andBaseControl: _actionBase];
 	[_actionInfo setTooltip: @"View Pad Information" withTipControl: _actionTip andBaseControl: _actionBase];
 
+	NSBundle* bundle = [NSBundle bundleForClass: [self class]];
+	[_creditsText readRTFDFromFile: [bundle pathForResource: @"credits" ofType: @"rtf"]];
+	[_creditsText setEditable: YES];
+	[_creditsText checkTextInDocument: nil];
+	[_creditsText setEditable: NO];
+
 	// Use menu item tags to store mapping information
 	[[_menuAxisXbox itemAtIndex: kMenuAxisDisabled] setTag: kCookiePadDisabled];
 	[[_menuAxisXbox itemAtIndex: kMenuAxisLeftStickH] setTag: kCookiePadLxAxis];
@@ -308,6 +314,7 @@
 	[_createOK setEnabled: NO];
 	[_createOK setKeyEquivalent: @"\r"];
 	[_createText setStringValue: @""];
+	[_popup setViewMargin: 1.0];
 	[self fadeInAttachedWindow];
 }
 
@@ -337,6 +344,7 @@
 	          onSide: MAPositionTop
 	          atDistance: 4];
 	[(isDefault ? _defaultOK : _deleteOK) setKeyEquivalent: @"\r"];
+	[_popup setViewMargin: 1.0];
 	[self fadeInAttachedWindow];
 }
 
@@ -372,6 +380,7 @@
 	[_actionEdit setEnabled: NO];
 	[_actionUndo setEnabled: NO];
 	[_actionApps setEnabled: NO];
+	[_popup setViewMargin: 1.0];
 	[self fadeInAttachedWindow];
 }
 
@@ -386,6 +395,33 @@
 }
 
 
+#pragma mark --- Acknowledgements --------------------
+
+- (void) showCredits
+{
+	NSPoint buttonPoint = NSMakePoint(NSMidX([_btnCredits frame]), NSMidY([_btnCredits frame]));
+	_popup = [[MAAttachedWindow alloc] initWithView: _creditsView
+	          attachedToPoint: buttonPoint
+	          inWindow: [_btnCredits window]
+	          onSide: MAPositionTop
+	          atDistance: 4];
+	[_actionEdit setEnabled: NO];
+	[_actionUndo setEnabled: NO];
+	[_actionApps setEnabled: NO];
+	[_popup setViewMargin: 5.0];
+	[self fadeInAttachedWindow];
+}
+
+
+- (IBAction) closeCredits: (id)sender
+{
+	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
+	[self performSelector: @selector(fadeOutAttachedWindow) withObject: nil afterDelay: delay];
+	[[_popup animator] setAlphaValue: 0.0];
+	[[_tabMask animator] setAlphaValue: 0.0];
+	[[NSApplication sharedApplication] stopModal];
+}
+
 
 #pragma mark --- PopUp Window Support -----------------
 
@@ -393,7 +429,6 @@
 {
 	[_popup setBorderColor: [NSColor windowFrameColor]];
 	[_popup setBackgroundColor: [NSColor controlColor]];
-	[_popup setViewMargin: 1.0];
 	[_popup setBorderWidth: 0.0];
 	[_popup setHasArrow: NSOnState];
 	[_popup setArrowBaseWidth: 17];
@@ -1262,6 +1297,12 @@
 - (IBAction) clickMenuSegment: (id)sender
 {
 	[self initPadPopUpButtons: [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]]];
+}
+
+
+- (IBAction) clickCredits: (id)sender
+{
+	[self showCredits];
 }
 
 

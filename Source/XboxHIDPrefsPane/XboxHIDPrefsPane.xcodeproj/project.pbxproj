@@ -66,6 +66,7 @@
 		82BC57041B570B8E0040C786 /* iconAppSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */; };
 		82D628001B56377800158DF9 /* MAAttachedWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 82D627FE1B56377800158DF9 /* MAAttachedWindow.h */; };
 		82D628011B56377800158DF9 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D627FF1B56377800158DF9 /* MAAttachedWindow.m */; };
+		82F77A7F1B62E0360033460F /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82F77A7E1B62E0360033460F /* credits.rtf */; };
 		870F844116754EA800486F46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F844016754EA800486F46 /* Cocoa.framework */; };
 		870F844316754EA800486F46 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F844216754EA800486F46 /* PreferencePanes.framework */; };
 		870F84BC1675534100486F46 /* xboxhid.icns in Resources */ = {isa = PBXBuildFile; fileRef = 870F84B81675534100486F46 /* xboxhid.icns */; };
@@ -132,6 +133,7 @@
 		82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAppSmallTemplate.png; path = Resources/Images/iconAppSmallTemplate.png; sourceTree = "<group>"; };
 		82D627FE1B56377800158DF9 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = Source/MAAttachedWindow.h; sourceTree = "<group>"; };
 		82D627FF1B56377800158DF9 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = Source/MAAttachedWindow.m; sourceTree = "<group>"; };
+		82F77A7E1B62E0360033460F /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = credits.rtf; path = Resources/credits.rtf; sourceTree = "<group>"; };
 		870F843D16754EA800486F46 /* XboxHIDPrefsPane.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XboxHIDPrefsPane.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		870F844016754EA800486F46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		870F844216754EA800486F46 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
@@ -260,6 +262,7 @@
 				8294F24F1B40B26E005DC1B8 /* Control Images */,
 				870F84B81675534100486F46 /* xboxhid.icns */,
 				8220E2761B3FCB7A002B7381 /* xboxhidprefs.icns */,
+				82F77A7E1B62E0360033460F /* credits.rtf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				826060E01B52FF0000A93BEE /* iconUSBTemplate.png in Resources */,
 				826060DF1B52FF0000A93BEE /* iconUndoTemplate.png in Resources */,
 				826060D21B52FEE900A93BEE /* controllerStick.png in Resources */,
+				82F77A7F1B62E0360033460F /* credits.rtf in Resources */,
 				825C6FFF1B57C7C1006599BE /* logoColors.png in Resources */,
 				826060CB1B52FEE900A93BEE /* controllerButtonBlk.png in Resources */,
 				826060CA1B52FEE900A93BEE /* controllerButtonBack.png in Resources */,

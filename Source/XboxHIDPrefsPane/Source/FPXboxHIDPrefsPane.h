@@ -225,8 +225,27 @@ enum eMenuEntriesButtons {
 	IBOutlet id _actionBase;
 	IBOutlet id _actionNO;
 
+	IBOutlet id _creditsView;
+	IBOutlet id _creditsText;
+	IBOutlet id _creditsOK;
+
     // version string
     IBOutlet id _textVersion;
 }
+
+- (IBAction) selectDevice: (id)sender;
+- (IBAction) changePadOption: (id)sender;
+
+- (IBAction) clickConfigSegment: (id)sender;
+- (IBAction) configCreateEnd: (id)sender;
+- (IBAction) configDeleteEnd: (id)sender;
+- (IBAction) configActionsPick: (id)sender;
+
+- (IBAction) clickMenuSegment: (id)sender;
+
+- (IBAction) clickCredits: (id)sender;
+- (IBAction) closeCredits: (id)sender;
+
+- (IBAction) selectConfig: (id)sender;
 
 @end

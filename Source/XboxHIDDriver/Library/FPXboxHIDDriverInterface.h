@@ -40,10 +40,10 @@
 
 static inline id BOOLtoID(BOOL value)
 {
-    if (value)
-        return (id)kCFBooleanTrue;
-    else
-        return (id)kCFBooleanFalse;
+	if (value)
+		return (id)kCFBooleanTrue;
+	else
+		return (id)kCFBooleanFalse;
 }
 
 
@@ -52,40 +52,41 @@ extern id NSNUM(SInt32 num);
 extern id NSPTR(void* ptr);
 
 
-@interface FPXboxHIDDriverInterface : NSObject 
+@interface FPXboxHIDDriverInterface : NSObject
 {
-    io_object_t   _driver;
-    io_connect_t  _service;
-    NSDictionary *_ioRegistryProperties;
-    NSString     *_deviceType;
-    NSDictionary *_deviceOptions;
-	XBPadOptions  _savedOptions;
+	io_object_t _driver;
+	io_connect_t _service;
+	NSDictionary* _ioRegistryProperties;
+	NSString* _deviceType;
+	NSDictionary* _deviceOptions;
 }
 
 
 // utility method: get all connected xbox devices
 // returns array of FPXboxHIDDriverInterface objects
-+ (NSArray*)interfaces;
++ (NSArray*) interfaces;
 
-+ (FPXboxHIDDriverInterface*)interfaceWithDriver:(io_object_t)driver;
-- initWithDriver:(io_object_t)driver;
++ (FPXboxHIDDriverInterface*) interfaceWithDriver: (io_object_t)driver;
+- initWithDriver: (io_object_t)driver;
 
-- (io_object_t)driver;			// associated instance of the driver
-- (NSString*)deviceType;
+- (io_object_t) driver;          // associated instance of the driver
+- (NSString*) deviceType;
 - (BOOL) deviceIsPad;
 - (BOOL) deviceIsRemote;
-- (NSString*)productName;
-- (NSString*)manufacturerName;
-- (NSString*)identifier;
+- (NSString*) productName;
+- (NSString*) manufacturerName;
+- (NSString*) identifier;
 
 // true if the device type has options (currently only the pad has options)
-- (BOOL)hasOptions;
+- (BOOL) hasOptions;
 
 // load a dictionary of options (say a saved configuration) into the ioregistry
-- (BOOL)loadOptions:(NSDictionary*)options;
+- (BOOL) loadOptions: (NSDictionary*)options;
+
+- (void) loadDefaultLayout;
 
 // fetch the current device options from the ioregistry
-- (NSDictionary*)deviceOptions;
+- (NSDictionary*) deviceOptions;
 
 // raw reporting (for showing actual data via black/red tick marks on sliders)
 - (BOOL) rawReportsActive;
@@ -96,28 +97,28 @@ extern id NSPTR(void* ptr);
 - (int) leftStickHorizMapping;
 - (void) setLeftStickHorizMapping: (int)map;
 - (BOOL) leftStickHorizInvert;
-- (void) setLeftStickHorizInvert:(BOOL)inverts;
+- (void) setLeftStickHorizInvert: (BOOL)inverts;
 - (int) leftStickHorizDeadzone;
 - (void) setLeftStickHorizDeadzone: (int)pcent;
 
 - (int) leftStickVertMapping;
 - (void) setLeftStickVertMapping: (int)map;
 - (BOOL) leftStickVertInvert;
-- (void) setLeftStickVertInvert:(BOOL)inverts;
+- (void) setLeftStickVertInvert: (BOOL)inverts;
 - (int) leftStickVertDeadzone;
 - (void) setLeftStickVertDeadzone: (int)pcent;
 
 - (int) rightStickHorizMapping;
 - (void) setRightStickHorizMapping: (int)map;
 - (BOOL) rightStickHorizInvert;
-- (void) setRightStickHorizInvert:(BOOL)inverts;
+- (void) setRightStickHorizInvert: (BOOL)inverts;
 - (int) rightStickHorizDeadzone;
 - (void) setRightStickHorizDeadzone: (int)pcent;
 
 - (int) rightStickVertMapping;
 - (void) setRightStickVertMapping: (int)map;
 - (BOOL) rightStickVertInvert;
-- (void) setRightStickVertInvert:(BOOL)inverts;
+- (void) setRightStickVertInvert: (BOOL)inverts;
 - (int) rightStickVertDeadzone;
 - (void) setRightStickVertDeadzone: (int)pcent;
 

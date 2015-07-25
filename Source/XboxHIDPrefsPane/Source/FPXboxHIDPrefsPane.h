@@ -87,6 +87,7 @@ enum eMenuEntriesButtons {
 	MAAttachedWindow* _popup;
     FPXboxHIDNotifier* _notifier;
     XBPadReport _rawReport;
+	XBPadOptions _undo;
 
 	// device popup
     IBOutlet id _devicePopUpButton;

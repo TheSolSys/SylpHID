@@ -291,6 +291,18 @@
 }
 
 
+- (void) loadDefaultLayout
+{
+	if (_service != 0) {
+		IOReturn ret = IOConnectCallMethod(_service, kXboxHIDDriverClientMethodLoadDefault, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
+		if (ret != kIOReturnSuccess)
+			NSLog(@"loadDefaultLayout Failure(%x) Service(%d)\n", ret, _service);
+		else
+			[self getDeviceProperties];
+	}
+}
+
+
 - (BOOL) loadOptions: (NSDictionary*)options
 {
 	// use a little trick here to avoid code duplication...
@@ -299,121 +311,122 @@
 	if (options && [_deviceType isEqualTo: NSSTR(kDeviceTypePadKey)]) {
 		// the get* methods will now read from the passed in dictionary
 		_deviceOptions = options;
+		XBPadOptions ioreg;
 
 		// the set* methods refetch the ioreg properties, so we have to get all the values up front before setting anything
-		_savedOptions.InvertLxAxis = [self leftStickHorizInvert];
-		_savedOptions.DeadzoneLxAxis = [self leftStickHorizDeadzone];
-		_savedOptions.MappingLxAxis = [self leftStickHorizMapping];
+		ioreg.InvertLxAxis = [self leftStickHorizInvert];
+		ioreg.DeadzoneLxAxis = [self leftStickHorizDeadzone];
+		ioreg.MappingLxAxis = [self leftStickHorizMapping];
 
-		_savedOptions.InvertLyAxis = [self leftStickVertInvert];
-		_savedOptions.DeadzoneLyAxis = [self leftStickVertDeadzone];
-		_savedOptions.MappingLyAxis = [self leftStickVertMapping];
+		ioreg.InvertLyAxis = [self leftStickVertInvert];
+		ioreg.DeadzoneLyAxis = [self leftStickVertDeadzone];
+		ioreg.MappingLyAxis = [self leftStickVertMapping];
 
-		_savedOptions.InvertRxAxis = [self rightStickHorizInvert];
-		_savedOptions.DeadzoneRxAxis = [self rightStickHorizDeadzone];
-		_savedOptions.MappingRxAxis = [self rightStickHorizMapping];
+		ioreg.InvertRxAxis = [self rightStickHorizInvert];
+		ioreg.DeadzoneRxAxis = [self rightStickHorizDeadzone];
+		ioreg.MappingRxAxis = [self rightStickHorizMapping];
 
-		_savedOptions.InvertRyAxis = [self rightStickVertInvert];
-		_savedOptions.DeadzoneRyAxis = [self rightStickVertDeadzone];
-		_savedOptions.MappingRyAxis = [self rightStickVertMapping];
+		ioreg.InvertRyAxis = [self rightStickVertInvert];
+		ioreg.DeadzoneRyAxis = [self rightStickVertDeadzone];
+		ioreg.MappingRyAxis = [self rightStickVertMapping];
 
-		_savedOptions.MappingDPadUp = [self dpadUpMapping];
-		_savedOptions.MappingDPadDown = [self dpadDownMapping];
-		_savedOptions.MappingDPadLeft = [self dpadLeftMapping];
-		_savedOptions.MappingDPadRight = [self dpadRightMapping];
+		ioreg.MappingDPadUp = [self dpadUpMapping];
+		ioreg.MappingDPadDown = [self dpadDownMapping];
+		ioreg.MappingDPadLeft = [self dpadLeftMapping];
+		ioreg.MappingDPadRight = [self dpadRightMapping];
 
-		_savedOptions.MappingButtonStart = [self startButtonMapping];
-		_savedOptions.MappingButtonBack = [self backButtonMapping];
+		ioreg.MappingButtonStart = [self startButtonMapping];
+		ioreg.MappingButtonBack = [self backButtonMapping];
 
-		_savedOptions.MappingLeftClick = [self leftClickMapping];
-		_savedOptions.MappingRightClick = [self rightClickMapping];
+		ioreg.MappingLeftClick = [self leftClickMapping];
+		ioreg.MappingRightClick = [self rightClickMapping];
 
-		_savedOptions.AnalogAsDigital = [self analogAsDigital];
+		ioreg.AnalogAsDigital = [self analogAsDigital];
 
-		_savedOptions.ThresholdLowLeftTrigger = [self leftTriggerLowThreshold];
-		_savedOptions.ThresholdHighLeftTrigger = [self leftTriggerHighThreshold];
-		_savedOptions.MappingLeftTrigger = [self leftTriggerMapping];
+		ioreg.ThresholdLowLeftTrigger = [self leftTriggerLowThreshold];
+		ioreg.ThresholdHighLeftTrigger = [self leftTriggerHighThreshold];
+		ioreg.MappingLeftTrigger = [self leftTriggerMapping];
 
-		_savedOptions.ThresholdLowRightTrigger = [self rightTriggerLowThreshold];
-		_savedOptions.ThresholdHighRightTrigger = [self rightTriggerHighThreshold];
-		_savedOptions.MappingRightTrigger = [self rightTriggerMapping];
+		ioreg.ThresholdLowRightTrigger = [self rightTriggerLowThreshold];
+		ioreg.ThresholdHighRightTrigger = [self rightTriggerHighThreshold];
+		ioreg.MappingRightTrigger = [self rightTriggerMapping];
 
-		_savedOptions.ThresholdLowButtonGreen = [self greenButtonLowThreshold];
-		_savedOptions.ThresholdHighButtonGreen = [self greenButtonHighThreshold];
-		_savedOptions.MappingButtonGreen = [self greenButtonMapping];
+		ioreg.ThresholdLowButtonGreen = [self greenButtonLowThreshold];
+		ioreg.ThresholdHighButtonGreen = [self greenButtonHighThreshold];
+		ioreg.MappingButtonGreen = [self greenButtonMapping];
 
-		_savedOptions.ThresholdLowButtonRed = [self redButtonLowThreshold];
-		_savedOptions.ThresholdHighButtonRed = [self redButtonHighThreshold];
-		_savedOptions.MappingButtonRed = [self redButtonMapping];
+		ioreg.ThresholdLowButtonRed = [self redButtonLowThreshold];
+		ioreg.ThresholdHighButtonRed = [self redButtonHighThreshold];
+		ioreg.MappingButtonRed = [self redButtonMapping];
 
-		_savedOptions.ThresholdLowButtonBlue = [self blueButtonLowThreshold];
-		_savedOptions.ThresholdHighButtonBlue = [self blueButtonHighThreshold];
-		_savedOptions.MappingButtonBlue = [self blueButtonMapping];
+		ioreg.ThresholdLowButtonBlue = [self blueButtonLowThreshold];
+		ioreg.ThresholdHighButtonBlue = [self blueButtonHighThreshold];
+		ioreg.MappingButtonBlue = [self blueButtonMapping];
 
-		_savedOptions.ThresholdLowButtonYellow = [self yellowButtonLowThreshold];
-		_savedOptions.ThresholdHighButtonYellow = [self yellowButtonHighThreshold];
-		_savedOptions.MappingButtonYellow = [self yellowButtonMapping];
+		ioreg.ThresholdLowButtonYellow = [self yellowButtonLowThreshold];
+		ioreg.ThresholdHighButtonYellow = [self yellowButtonHighThreshold];
+		ioreg.MappingButtonYellow = [self yellowButtonMapping];
 
-		_savedOptions.ThresholdLowButtonWhite = [self whiteButtonLowThreshold];
-		_savedOptions.ThresholdHighButtonWhite = [self whiteButtonHighThreshold];
-		_savedOptions.MappingButtonWhite = [self whiteButtonMapping];
+		ioreg.ThresholdLowButtonWhite = [self whiteButtonLowThreshold];
+		ioreg.ThresholdHighButtonWhite = [self whiteButtonHighThreshold];
+		ioreg.MappingButtonWhite = [self whiteButtonMapping];
 
-		_savedOptions.ThresholdLowButtonBlack = [self blackButtonLowThreshold];
-		_savedOptions.ThresholdHighButtonBlack = [self blackButtonHighThreshold];
-		_savedOptions.MappingButtonBlack = [self blackButtonMapping];
+		ioreg.ThresholdLowButtonBlack = [self blackButtonLowThreshold];
+		ioreg.ThresholdHighButtonBlack = [self blackButtonHighThreshold];
+		ioreg.MappingButtonBlack = [self blackButtonMapping];
 
-		[self setLeftStickHorizInvert: _savedOptions.InvertLxAxis];
-		[self setLeftStickHorizDeadzone: _savedOptions.DeadzoneLxAxis];
-		[self setLeftStickHorizMapping: _savedOptions.MappingLxAxis];
+		[self setLeftStickHorizInvert: ioreg.InvertLxAxis];
+		[self setLeftStickHorizDeadzone: ioreg.DeadzoneLxAxis];
+		[self setLeftStickHorizMapping: ioreg.MappingLxAxis];
 
-		[self setLeftStickVertInvert: _savedOptions.InvertLyAxis];
-		[self setLeftStickVertDeadzone: _savedOptions.DeadzoneLyAxis];
-		[self setLeftStickVertMapping: _savedOptions.MappingLyAxis];
+		[self setLeftStickVertInvert: ioreg.InvertLyAxis];
+		[self setLeftStickVertDeadzone: ioreg.DeadzoneLyAxis];
+		[self setLeftStickVertMapping: ioreg.MappingLyAxis];
 
-		[self setRightStickHorizInvert: _savedOptions.InvertRxAxis];
-		[self setRightStickHorizDeadzone: _savedOptions.DeadzoneRxAxis];
-		[self setRightStickHorizMapping: _savedOptions.MappingRxAxis];
+		[self setRightStickHorizInvert: ioreg.InvertRxAxis];
+		[self setRightStickHorizDeadzone: ioreg.DeadzoneRxAxis];
+		[self setRightStickHorizMapping: ioreg.MappingRxAxis];
 
-		[self setRightStickVertInvert: _savedOptions.InvertRyAxis];
-		[self setRightStickVertDeadzone: _savedOptions.DeadzoneRyAxis];
-		[self setRightStickVertMapping: _savedOptions.MappingRyAxis];
+		[self setRightStickVertInvert: ioreg.InvertRyAxis];
+		[self setRightStickVertDeadzone: ioreg.DeadzoneRyAxis];
+		[self setRightStickVertMapping: ioreg.MappingRyAxis];
 
-		[self setDpadUpMapping: _savedOptions.MappingDPadUp];
-		[self setDpadDownMapping: _savedOptions.MappingDPadDown];
-		[self setDpadLeftMapping: _savedOptions.MappingDPadLeft];
-		[self setDpadRightMapping: _savedOptions.MappingDPadRight];
+		[self setDpadUpMapping: ioreg.MappingDPadUp];
+		[self setDpadDownMapping: ioreg.MappingDPadDown];
+		[self setDpadLeftMapping: ioreg.MappingDPadLeft];
+		[self setDpadRightMapping: ioreg.MappingDPadRight];
 
-		[self setStartButtonMapping: _savedOptions.MappingButtonStart];
-		[self setBackButtonMapping: _savedOptions.MappingButtonBack];
+		[self setStartButtonMapping: ioreg.MappingButtonStart];
+		[self setBackButtonMapping: ioreg.MappingButtonBack];
 
-		[self setLeftClickMapping: _savedOptions.MappingLeftClick];
-		[self setRightClickMapping: _savedOptions.MappingRightClick];
+		[self setLeftClickMapping: ioreg.MappingLeftClick];
+		[self setRightClickMapping: ioreg.MappingRightClick];
 
-		[self setAnalogAsDigital: _savedOptions.AnalogAsDigital];
+		[self setAnalogAsDigital: ioreg.AnalogAsDigital];
 
-		[self setLeftTriggerLow: _savedOptions.ThresholdLowLeftTrigger andHighThreshold: _savedOptions.ThresholdHighLeftTrigger];
-		[self setLeftTriggerMapping: _savedOptions.MappingLeftTrigger];
+		[self setLeftTriggerLow: ioreg.ThresholdLowLeftTrigger andHighThreshold: ioreg.ThresholdHighLeftTrigger];
+		[self setLeftTriggerMapping: ioreg.MappingLeftTrigger];
 
-		[self setRightTriggerLow: _savedOptions.ThresholdLowRightTrigger andHighThreshold: _savedOptions.ThresholdHighRightTrigger];
-		[self setRightTriggerMapping: _savedOptions.MappingRightTrigger];
+		[self setRightTriggerLow: ioreg.ThresholdLowRightTrigger andHighThreshold: ioreg.ThresholdHighRightTrigger];
+		[self setRightTriggerMapping: ioreg.MappingRightTrigger];
 
-		[self setGreenButtonLow: _savedOptions.ThresholdLowButtonGreen andHighThreshold: _savedOptions.ThresholdHighButtonGreen];
-		[self setGreenButtonMapping: _savedOptions.MappingButtonGreen];
+		[self setGreenButtonLow: ioreg.ThresholdLowButtonGreen andHighThreshold: ioreg.ThresholdHighButtonGreen];
+		[self setGreenButtonMapping: ioreg.MappingButtonGreen];
 
-		[self setRedButtonLow: _savedOptions.ThresholdLowButtonRed andHighThreshold: _savedOptions.ThresholdHighButtonRed];
-		[self setRedButtonMapping: _savedOptions.MappingButtonRed];
+		[self setRedButtonLow: ioreg.ThresholdLowButtonRed andHighThreshold: ioreg.ThresholdHighButtonRed];
+		[self setRedButtonMapping: ioreg.MappingButtonRed];
 
-		[self setBlueButtonLow: _savedOptions.ThresholdLowButtonBlue andHighThreshold: _savedOptions.ThresholdHighButtonBlue];
-		[self setBlueButtonMapping: _savedOptions.MappingButtonBlue];
+		[self setBlueButtonLow: ioreg.ThresholdLowButtonBlue andHighThreshold: ioreg.ThresholdHighButtonBlue];
+		[self setBlueButtonMapping: ioreg.MappingButtonBlue];
 
-		[self setYellowButtonLow: _savedOptions.ThresholdLowButtonYellow andHighThreshold: _savedOptions.ThresholdHighButtonYellow];
-		[self setYellowButtonMapping: _savedOptions.MappingButtonYellow];
+		[self setYellowButtonLow: ioreg.ThresholdLowButtonYellow andHighThreshold: ioreg.ThresholdHighButtonYellow];
+		[self setYellowButtonMapping: ioreg.MappingButtonYellow];
 
-		[self setWhiteButtonLow: _savedOptions.ThresholdLowButtonWhite andHighThreshold: _savedOptions.ThresholdHighButtonWhite];
-		[self setWhiteButtonMapping: _savedOptions.MappingButtonWhite];
+		[self setWhiteButtonLow: ioreg.ThresholdLowButtonWhite andHighThreshold: ioreg.ThresholdHighButtonWhite];
+		[self setWhiteButtonMapping: ioreg.MappingButtonWhite];
 
-		[self setBlackButtonLow: _savedOptions.ThresholdLowButtonBlack andHighThreshold: _savedOptions.ThresholdHighButtonBlack];
-		[self setBlackButtonMapping: _savedOptions.MappingButtonBlack];
+		[self setBlackButtonLow: ioreg.ThresholdLowButtonBlack andHighThreshold: ioreg.ThresholdHighButtonBlack];
+		[self setBlackButtonMapping: ioreg.MappingButtonBlack];
 
 		return YES;
 	}

@@ -63,6 +63,30 @@ IOReturn FPXboxHIDUserClient::getRawReport (XBPadReport** report)
 }
 
 
+IOReturn FPXboxHIDUserClient::sLoadDefaultLayout (OSObject* target, void* reference, IOExternalMethodArguments* args)
+{
+	return ((FPXboxHIDUserClient*)target)->loadDefaultLayout();
+}
+
+
+IOReturn FPXboxHIDUserClient::loadDefaultLayout (void)
+{
+	if (_driver == NULL || isInactive()) {
+		// Return an error if we don't have a provider. This could happen if the user process
+		// called getRawReport without calling IOServiceOpen first. Or, the user client could be
+		// in the process of being terminated and is thus inactive.
+		return kIOReturnNotAttached;
+	}
+
+	// set 'report' pointer to last raw report
+	// all this is taking place in kernel-space, the user/kernel boundary
+	// will be crossed in 'sGetRawReport' via the 'args' structureOutput
+	_driver->setDefaultOptions();
+
+	return kIOReturnSuccess;
+}
+
+
 bool FPXboxHIDUserClient::initWithTask (task_t owningTask, void* securityToken, UInt32 type, OSDictionary* properties)
 {
 	if (!owningTask || !super::initWithTask(owningTask, securityToken, type, properties))

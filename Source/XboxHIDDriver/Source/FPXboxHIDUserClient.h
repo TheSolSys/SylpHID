@@ -45,13 +45,16 @@ public:
     virtual IOReturn clientClose (void);
     virtual IOReturn externalMethod (uint32_t selector, IOExternalMethodArguments* args, IOExternalMethodDispatch* dispatch,
 																						 OSObject* target, void* reference);
-
     static IOReturn sGetRawReport (OSObject* target, void* reference, IOExternalMethodArguments* args);
     virtual IOReturn getRawReport (XBPadReport** report);
+
+    static IOReturn sLoadDefaultLayout (OSObject* target, void* reference, IOExternalMethodArguments* args);
+    virtual IOReturn loadDefaultLayout (void);
 
 private:
     const IOExternalMethodDispatch sMethods[kXboxHIDDriverClientMethodCount] = {
 	   { (IOExternalMethodAction) &FPXboxHIDUserClient::sGetRawReport, 0, 0, 0, sizeof(XBPadReport) },
+	   { (IOExternalMethodAction) &FPXboxHIDUserClient::sLoadDefaultLayout, 0, 0, 0, 0 },
     };
 
 public:

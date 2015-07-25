@@ -46,24 +46,18 @@
 }
 
 
-- (void) setScrollView: (NSScrollView*)scroll
-{
-	_parent = scroll;
-}
-
-
 - (void) drawRect:(CGRect)rect {
     [super drawRect:rect];
 
 	CGPoint start, end;
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-	NSRect visible = [_parent documentVisibleRect];
+	NSRect visible = [[self enclosingScrollView] documentVisibleRect];
 
 	start = visible.origin;
-    end = CGPointMake(start.x, start.y + 15);
+    end = CGPointMake(start.x, start.y + 12.5);
     CGContextDrawLinearGradient(context, _gradient, start, end, 0);
 
-	start = CGPointMake(start.x, visible.origin.y + visible.size.height - 15);
+	start = CGPointMake(start.x, visible.origin.y + visible.size.height - 12.5);
     end = CGPointMake(start.x, visible.origin.y + visible.size.height);
     CGContextDrawLinearGradient(context, _gradient, end, start, 0);
 }

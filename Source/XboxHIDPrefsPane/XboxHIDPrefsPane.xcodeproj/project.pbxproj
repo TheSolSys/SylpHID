@@ -221,8 +221,8 @@
 		8294F24E1B40B201005DC1B8 /* Driver Library */ = {
 			isa = PBXGroup;
 			children = (
-				823EAC941B572EDC00FED407 /* FPXboxHIDDriverInterface.h */,
 				823EAC961B572EDC00FED407 /* FPXboxHIDDriverKeys.h */,
+				823EAC941B572EDC00FED407 /* FPXboxHIDDriverInterface.h */,
 				823EAC951B572EDC00FED407 /* FPXboxHIDDriverInterface.m */,
 				823EAC971B572EDC00FED407 /* FPXboxHIDPrefsLoader.h */,
 				823EAC981B572EDC00FED407 /* FPXboxHIDPrefsLoader.m */,

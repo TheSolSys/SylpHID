@@ -34,6 +34,7 @@
 // Request codes for FPXboxHIDUserClient in driver
 enum XboxHIDDriverRequestCode {
 	kXboxHIDDriverClientMethodRawReport,
+	kXboxHIDDriverClientMethodLoadDefault,
 	kXboxHIDDriverClientMethodCount
 };
 

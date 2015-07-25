@@ -22,7 +22,6 @@
 
 @interface FPTextCredits : NSTextView {
 	CGGradientRef _gradient;
-	NSScrollView* _parent;
 }
 
 @end

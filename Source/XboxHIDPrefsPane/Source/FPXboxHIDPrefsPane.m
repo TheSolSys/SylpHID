@@ -138,6 +138,7 @@
 	[_creditsText setEditable: YES];
 	[_creditsText checkTextInDocument: nil];
 	[_creditsText setEditable: NO];
+	[_creditsText setScrollView: _creditsScroll];
 
 	// Use menu item tags to store mapping information
 	[[_menuAxisXbox itemAtIndex: kMenuAxisDisabled] setTag: kCookiePadDisabled];

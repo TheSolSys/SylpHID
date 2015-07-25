@@ -226,6 +226,7 @@ enum eMenuEntriesButtons {
 	IBOutlet id _actionNO;
 
 	IBOutlet id _creditsView;
+	IBOutlet id _creditsScroll;
 	IBOutlet id _creditsText;
 	IBOutlet id _creditsOK;
 

@@ -85,6 +85,7 @@ enum eMenuEntriesButtons {
     NSArray* _devices;
     NSTimer* _timer;
 	MAAttachedWindow* _popup;
+	MAAttachedWindow* _xfade;
     FPXboxHIDNotifier* _notifier;
     XBPadReport _rawReport;
 	XBPadOptions _undo;

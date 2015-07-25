@@ -140,6 +140,40 @@
 }
 
 
+// rename current config
++ (BOOL) renameConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device
+{
+	NSString* current = [FPXboxHIDPrefsLoader configNameForDevice: device];
+
+	if ([rename isEqualToString: @""] || [rename isEqualToString: kConfigNameDefault] ||
+										 [current isEqualToString: kConfigNameDefault])
+		return false;	// Can't rename default config, or rename anything else to default name
+
+	NSArray* names = [FPXboxHIDPrefsLoader configNamesForDeviceType: [device deviceType]];
+	if ([names containsObject: rename])
+		return false;	// Don't rename if name already exists
+
+	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSDictionary* settings = [[prefs objectForKey: kConfigsKey] objectForKey: current];
+	[[prefs objectForKey: kConfigsKey] setObject: settings forKey: rename];
+	[[prefs objectForKey: kConfigsKey] removeObjectForKey: current];
+
+	[[prefs objectForKey: kBindingsKey] removeObjectForKey: [device identifier]];
+	[[prefs objectForKey: kBindingsKey] setObject: rename forKey: [device identifier]];
+
+	[FPXboxHIDPrefsLoader setDefaults: prefs];
+
+	return true;
+}
+
+
+// is current config the default config?
++ (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device
+{
+	return [[self configNameForDevice: device] isEqualToString: kConfigNameDefault];
+}
+
+
 // load the current config for the specified device
 + (BOOL) loadSavedConfigForDevice: (FPXboxHIDDriverInterface*)device
 {

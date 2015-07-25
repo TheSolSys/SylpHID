@@ -5960,6 +5960,22 @@
 					</object>
 					<int key="connectionID">2365</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">configEditEnd:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="682445683"/>
+					</object>
+					<int key="connectionID">2368</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">configEditEnd:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="188083990"/>
+					</object>
+					<int key="connectionID">2369</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -8720,7 +8736,7 @@
 				<string key="2133.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2134.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="2135.IBNSViewMetadataGestureRecognizers" ref="0"/>
-				<string key="2135.IBPersistedLastKnownCanvasPosition">{-209.5, 135.5}</string>
+				<string key="2135.IBPersistedLastKnownCanvasPosition">{-230.5, 54.5}</string>
 				<string key="2135.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2136.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2137.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -8777,7 +8793,7 @@
 				<string key="2216.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2217.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<reference key="2227.IBNSViewMetadataGestureRecognizers" ref="0"/>
-				<string key="2227.IBPersistedLastKnownCanvasPosition">{-249.5, -102.5}</string>
+				<string key="2227.IBPersistedLastKnownCanvasPosition">{-230.5, 176.5}</string>
 				<string key="2227.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2228.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2230.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -8890,7 +8906,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2367</int>
+			<int key="maxID">2369</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

@@ -22,6 +22,7 @@
 
 @interface FPImageView : NSImageView {
 	BOOL _hover;
+	BOOL _click;
 	NSBezierPath* _round;
 	NSString* _tooltip;
 	NSTextField* _text;

@@ -909,13 +909,13 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 #define MAP_ANALOG(name, button) \
 	if (_xbDeviceOptions.pad.Mapping ## button && _xbDeviceOptions.pad.Mapping ## button != kCookiePad ## button && raw->name) \
 		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, raw->name); \
-	else if (raw->name > _mapReport.name) \
+	else if (_xbDeviceOptions.pad.Mapping ## button && raw->name > _mapReport.name) \
 		_mapReport.name = raw->name
 
 #define MAP_DIGITAL(button) \
 	if (_xbDeviceOptions.pad.Mapping ## button && _xbDeviceOptions.pad.Mapping ## button != kCookiePad ## button && (raw->buttons & BITMASK(kXboxDigital ## button))) \
 		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, 255); \
-	else if (raw->buttons & BITMASK(kXboxDigital ## button)) \
+	else if (_xbDeviceOptions.pad.Mapping ## button && raw->buttons & BITMASK(kXboxDigital ## button)) \
 		_mapReport.buttons |= BITMASK(kXboxDigital ## button)
 
 #define MAP_AXIS(name, axis) \

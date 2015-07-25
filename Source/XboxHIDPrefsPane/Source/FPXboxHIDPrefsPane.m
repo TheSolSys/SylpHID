@@ -115,6 +115,7 @@
 	[_buttonRedMode setIsDigital: NO];
 
 	[_createText setDelegate: self];
+	[_editText setDelegate: self];
 
 	[_leftStickAlertX setHidden: YES];
 	[_leftStickAlertX setAlertView: _alertView];
@@ -136,7 +137,7 @@
 	NSBundle* bundle = [NSBundle bundleForClass: [self class]];
 	[_creditsText readRTFDFromFile: [bundle pathForResource: @"credits" ofType: @"rtf"]];
 	[_creditsText setEditable: YES];
-	[_creditsText checkTextInDocument: nil];
+	[_creditsText checkTextInDocument: nil];  // activates hyperlinks
 	[_creditsText setEditable: NO];
 
 	// Use menu item tags to store mapping information
@@ -334,11 +335,7 @@
 		}
 	}
 
-	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
-	[self performSelector: @selector(fadeOutAttachedWindow) withObject: nil afterDelay: delay];
-	[[_popup animator] setAlphaValue: 0.0];
-	[[_tabMask animator] setAlphaValue: 0.0];
-	[[NSApplication sharedApplication] stopModal];
+	[self fadeOutAttachedWindow];
 }
 
 - (void) configDelete
@@ -375,23 +372,20 @@
 		[self initPadOptionsWithDevice: device];
 	}
 
-	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
-	[self performSelector: @selector(fadeOutAttachedWindow) withObject: nil afterDelay: delay];
-	[[_popup animator] setAlphaValue: 0.0];
-	[[_tabMask animator] setAlphaValue: 0.0];
-	[[NSApplication sharedApplication] stopModal];
+	[self fadeOutAttachedWindow];
 }
 
 
 - (void) configActions
 {
+	id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
 	NSPoint buttonPoint = NSMakePoint(NSMidX([_configButtons frame]) + 19, NSMidY([_configButtons frame]));
 	_popup = [[MAAttachedWindow alloc] initWithView: _actionView
 	          attachedToPoint: buttonPoint
 	          inWindow: [_configButtons window]
 	          onSide: MAPositionTop
 	          atDistance: 4];
-	[_actionEdit setEnabled: NO];
+	[_actionEdit setEnabled: ![FPXboxHIDPrefsLoader isDefaultConfigForDevice: device]];
 	[_actionUndo setEnabled: [self canUndo]];
 	[_actionApps setEnabled: NO];
 	[_popup setViewMargin: 1.0];
@@ -401,14 +395,50 @@
 
 - (IBAction) configActionsPick: (id)sender
 {
-	if (sender == _actionUndo && [self canUndo])
-		[self performUndo];
+	id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
 
-	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
-	[self performSelector: @selector(fadeOutAttachedWindow) withObject: nil afterDelay: delay];
-	[[_popup animator] setAlphaValue: 0.0];
-	[[_tabMask animator] setAlphaValue: 0.0];
-	[[NSApplication sharedApplication] stopModal];
+	if (sender == _actionNO) {
+		[self fadeOutAttachedWindow];
+		return;
+
+	} else if (sender == _actionEdit && ![FPXboxHIDPrefsLoader isDefaultConfigForDevice: device]) {
+		_xfade = _popup;
+		NSPoint buttonPoint = NSMakePoint(NSMidX([_configButtons frame]) + 19, NSMidY([_configButtons frame]));
+		_popup = [[MAAttachedWindow alloc] initWithView: _editView
+				  attachedToPoint: buttonPoint
+				  inWindow: [_configButtons window]
+				  onSide: MAPositionTop
+				  atDistance: 4];
+		[_editText setStringValue: [FPXboxHIDPrefsLoader configNameForDevice: device]];
+		[_editOK setKeyEquivalent: @"\r"];
+		[_popup setViewMargin: 1.0];
+		[self crossFadeAttachedWindow];
+
+	} else if (sender == _actionUndo && [self canUndo]) {
+		[self performUndo];
+		[self fadeOutAttachedWindow];
+	}
+}
+
+
+- (IBAction) configEditEnd: (id)sender
+{
+	if (sender == _editOK) {
+		id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
+		[FPXboxHIDPrefsLoader renameConfig: [_editText stringValue] forDevice: device];
+		[self buildConfigurationPopUpButton];
+	}
+	[self fadeOutAttachedWindow];
+}
+
+
+- (void) controlTextDidChange: (NSNotification*)notify
+{
+	id object = [notify object];
+	id button = (object == _createText ? _createOK : _editOK);
+
+	NSString* text = [[object stringValue] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+	[button setEnabled: [text length] > 0 && ![_configPopUp itemWithTitle: text]];
 }
 
 
@@ -432,15 +462,30 @@
 
 - (IBAction) closeCredits: (id)sender
 {
-	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
-	[self performSelector: @selector(fadeOutAttachedWindow) withObject: nil afterDelay: delay];
-	[[_popup animator] setAlphaValue: 0.0];
-	[[_tabMask animator] setAlphaValue: 0.0];
-	[[NSApplication sharedApplication] stopModal];
+	[self fadeOutAttachedWindow];
 }
 
 
 #pragma mark --- PopUp Window Support -----------------
+
+- (void) crossFadeAttachedWindow
+{
+	[_popup setBorderColor: [NSColor windowFrameColor]];
+	[_popup setBackgroundColor: [NSColor controlColor]];
+	[_popup setBorderWidth: 0.0];
+	[_popup setHasArrow: NSOnState];
+	[_popup setArrowBaseWidth: 17];
+	[_popup setArrowHeight: 12];
+	[_popup setAlphaValue: 0.0];
+
+	[[NSApplication sharedApplication] stopModal];
+	[[_configButtons window] addChildWindow: _popup ordered: NSWindowAbove];
+	[_popup makeKeyAndOrderFront: self];
+	[[_popup animator] setAlphaValue: 1.0];
+	[[_xfade animator] setAlphaValue: 0.0];
+	[[NSApplication sharedApplication] runModalForWindow: _popup];
+}
+
 
 - (void) fadeInAttachedWindow
 {
@@ -464,18 +509,24 @@
 
 - (void) fadeOutAttachedWindow
 {
+	NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
+	[self performSelector: @selector(fadeOutAttachedWindowDone) withObject: nil afterDelay: delay];
+	[[_popup animator] setAlphaValue: 0.0];
+	[[_tabMask animator] setAlphaValue: 0.0];
+	[[NSApplication sharedApplication] stopModal];
+}
+
+
+- (void) fadeOutAttachedWindowDone
+{
 	[[_configButtons window] removeChildWindow: _popup];
 	[_popup orderOut: nil];
 	[_popup release];
 	_popup = nil;
-}
 
-
-- (void) controlTextDidChange: (NSNotification*)notify
-{
-	if ([notify object] == _createText) {
-		NSString* text = [[_createText stringValue] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-		[_createOK setEnabled: [text length] > 0 && ![_configPopUp itemWithTitle: text]];
+	if (_xfade != nil) {
+		[_xfade release];
+		_xfade = nil;
 	}
 }
 

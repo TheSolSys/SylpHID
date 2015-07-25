@@ -49,6 +49,12 @@
 // get the config name of the specified device
 + (NSString*) configNameForDevice: (FPXboxHIDDriverInterface*)device;
 
+// rename current configuration
++ (BOOL) renameConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device;
+
+// is current config the default config?
++ (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device;
+
 // load the current config for the specified device
 + (BOOL) loadSavedConfigForDevice: (FPXboxHIDDriverInterface*)device;
 

@@ -83,6 +83,7 @@ extern id NSNUM(SInt32 num);
 - (NSString*) identifier;
 - (NSString*) deviceSpeed;
 - (NSString*) devicePower;
+- (NSString*) deviceAddress;
 
 // true if the device type has options (currently only the pad has options)
 - (BOOL) hasOptions;
@@ -153,12 +154,16 @@ extern id NSNUM(SInt32 num);
 - (int) analogAsDigital;
 - (void) setAnalogAsDigital: (int)mask;
 
+- (BOOL) leftTriggerAlternate;
+- (void) setLeftTriggerAlternate: (bool)flag;
 - (int) leftTriggerMapping;
 - (void) setLeftTriggerMapping: (int)map;
 - (int) leftTriggerLowThreshold;
 - (int) leftTriggerHighThreshold;
 - (void) setLeftTriggerLow: (int)low andHighThreshold: (int)high;
 
+- (BOOL) rightTriggerAlternate;
+- (void) setRightTriggerAlternate: (bool)flag;
 - (int) rightTriggerMapping;
 - (void) setRightTriggerMapping: (int)map;
 - (int) rightTriggerLowThreshold;

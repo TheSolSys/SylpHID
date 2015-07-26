@@ -37,22 +37,34 @@
 
 // wait for an xbox device to be connected
 // when a device is connected, load settings from disk to configure the device
-static void driversDidLoad(void *refcon, io_iterator_t iterator)
+static void driversDidLoad(void* refcon, io_iterator_t iterator)
 {
 	io_object_t driver;
 
 	while ((driver = IOIteratorNext(iterator))) {
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 
-		FPXboxHIDDriverInterface *device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
+		FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
 		[FPXboxHIDPrefsLoader createDefaultsForDevice: device];
 		[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
 
 		NSLog(@"Loaded config \"%@\" for Device ID \"%@\"",
-			 [FPXboxHIDPrefsLoader configNameForDevice: device], [device identifier]);
+		      [FPXboxHIDPrefsLoader configNameForDevice: device], [device identifier]);
 
 		[pool release];
 	}
+}
+
+
+static void appBecameActive(NSString* appid)
+{
+//	NSLog(@"appBecameActive: %@", appid);
+}
+
+
+static void appBecameInactive(NSString* appid)
+{
+//	NSLog(@"appBecameInactive: %@", appid);
 }
 
 
@@ -70,14 +82,12 @@ static void registerForDriverLoadedNotification()
 		printf("IOMasterPort error with bootstrap_port\n");
 		exit(-1);
 	}
-
 	notificationPort = IONotificationPortCreate(masterPort);
 	if (NULL == notificationPort) {
 		printf("Couldn't create notification port\n");
 		exit(-2);
 	}
-
-	runLoopSource = IONotificationPortGetRunLoopSource (notificationPort);
+	runLoopSource = IONotificationPortGetRunLoopSource(notificationPort);
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopDefaultMode);
 
 	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
@@ -85,20 +95,42 @@ static void registerForDriverLoadedNotification()
 		printf("IOServiceMatching returned NULL\n");
 		exit(-3);
 	}
-
 	kr = IOServiceAddMatchingNotification(notificationPort, kIOMatchedNotification, matchDictionary, driversDidLoad,
-																			 NULL, &notification);
+	                                      NULL, &notification);
 	if (kIOReturnSuccess != kr) {
 		printf("IOServiceAddMatchingNotification failed with 0x%x\n", kr);
 		exit(-4);
 	}
-
 	if (notification)
 		driversDidLoad(NULL, notification);
 }
 
-int main (int argc, const char * argv[]) {
+
+static void registerForApplicationChangedNotification()
+{
+	NSNotificationCenter* center = [[NSWorkspace sharedWorkspace] notificationCenter];
+
+	// register for app activations
+	// check if app activated has a configuration assigned, and if so loads it
+	[center addObserverForName: NSWorkspaceDidActivateApplicationNotification object: nil queue: nil
+					usingBlock: ^(NSNotification* note) {
+									appBecameActive([[note.userInfo objectForKey:NSWorkspaceApplicationKey] bundleIdentifier]);
+								}];
+
+	// register for app deactivation
+	// this will always fire after the app activation notification. therefore, if there is no active app
+	// saved then the last activated app had no config so just load the one assigned to the device or the
+	// default configuration if there is no configuration chosen via the prefs panel for the device
+	[center addObserverForName: NSWorkspaceDidDeactivateApplicationNotification object: nil queue: nil
+					usingBlock: ^(NSNotification* note) {
+									appBecameInactive([[note.userInfo objectForKey:NSWorkspaceApplicationKey] bundleIdentifier]);
+								}];
+}
+
+
+int main (int argc, const char* argv[]) {
 	registerForDriverLoadedNotification();
+	registerForApplicationChangedNotification();
 
 	CFRunLoopRun();
 

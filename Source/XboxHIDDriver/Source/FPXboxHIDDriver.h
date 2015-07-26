@@ -298,6 +298,7 @@ public:
 
 	virtual UInt32 availablePower(void) const;
 
+	virtual USBDeviceAddress deviceAddress(void) const;
 
 	// HID driver methods
 	virtual OSString* newIndexedString (UInt8 index) const;

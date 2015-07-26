@@ -337,10 +337,12 @@ IOReturn FPXboxHIDDriver::setProperties (OSObject* properties)
 			SET_UINT8_NUMBER(ThresholdLowButtonWhite);
 			SET_UINT8_NUMBER(ThresholdHighButtonWhite);
 
+			SET_BOOLEAN(AlternateLeftTrigger);
 			SET_UINT8_NUMBER(MappingLeftTrigger);
 			SET_UINT8_NUMBER(ThresholdLowLeftTrigger);
 			SET_UINT8_NUMBER(ThresholdHighLeftTrigger);
 
+			SET_BOOLEAN(AlternateRightTrigger);
 			SET_UINT8_NUMBER(MappingRightTrigger);
 			SET_UINT8_NUMBER(ThresholdLowRightTrigger);
 			SET_UINT8_NUMBER(ThresholdHighRightTrigger);
@@ -453,10 +455,12 @@ void FPXboxHIDDriver::setDefaultOptions (void)
 		_xbDeviceOptions.pad.ThresholdLowButtonWhite = 1;
 		_xbDeviceOptions.pad.ThresholdHighButtonWhite = 255;
 
+		_xbDeviceOptions.pad.AlternateLeftTrigger = 0;
 		_xbDeviceOptions.pad.MappingLeftTrigger = kCookiePadLeftTrigger;
 		_xbDeviceOptions.pad.ThresholdLowLeftTrigger = 1;
 		_xbDeviceOptions.pad.ThresholdHighLeftTrigger = 255;
 
+		_xbDeviceOptions.pad.AlternateRightTrigger = 0;
 		_xbDeviceOptions.pad.MappingRightTrigger = kCookiePadRightTrigger;
 		_xbDeviceOptions.pad.ThresholdLowRightTrigger = 1;
 		_xbDeviceOptions.pad.ThresholdHighRightTrigger = 255;
@@ -534,10 +538,12 @@ void FPXboxHIDDriver::setDefaultOptions (void)
 			SET_UINT8_NUMBER(ThresholdLowButtonWhite);
 			SET_UINT8_NUMBER(ThresholdHighButtonWhite);
 
+			SET_BOOLEAN(AlternateLeftTrigger);
 			SET_UINT8_NUMBER(MappingLeftTrigger);
 			SET_UINT8_NUMBER(ThresholdLowLeftTrigger);
 			SET_UINT8_NUMBER(ThresholdHighLeftTrigger);
 
+			SET_BOOLEAN(AlternateRightTrigger);
 			SET_UINT8_NUMBER(MappingRightTrigger);
 			SET_UINT8_NUMBER(ThresholdLowRightTrigger);
 			SET_UINT8_NUMBER(ThresholdHighRightTrigger);
@@ -627,10 +633,12 @@ void FPXboxHIDDriver::setDeviceOptions (void)
 			GET_UINT8_NUMBER(ThresholdLowButtonWhite);
 			GET_UINT8_NUMBER(ThresholdHighButtonWhite);
 
+			GET_BOOLEAN(AlternateLeftTrigger);
 			GET_UINT8_NUMBER(MappingLeftTrigger);
 			GET_UINT8_NUMBER(ThresholdLowLeftTrigger);
 			GET_UINT8_NUMBER(ThresholdHighLeftTrigger);
 
+			GET_BOOLEAN(AlternateRightTrigger);
 			GET_UINT8_NUMBER(MappingRightTrigger);
 			GET_UINT8_NUMBER(ThresholdLowRightTrigger);
 			GET_UINT8_NUMBER(ThresholdHighRightTrigger);
@@ -818,6 +826,18 @@ void FPXboxHIDDriver::remapElement (int map, XBPadReport* report, int value)
 			else
 				report->x = 255 * (-value / 32768.0);
 			break;
+		case kCookiePadRedYellow:
+			if (value > 0)
+				report->y = 255 * (value / 32767.0);
+			else
+				report->b = 255 * (-value / 32768.0);
+			break;
+		case kCookiePadGreenBlue:
+			if (value > 0)
+				report->x = 255 * (value / 32767.0);
+			else
+				report->a = 255 * (-value / 32768.0);
+			break;
 		case kCookiePadWhiteBlack:
 			if (value > 0)
 				report->black = 255 * (value / 32767.0);
@@ -835,6 +855,18 @@ void FPXboxHIDDriver::remapElement (int map, XBPadReport* report, int value)
 				report->buttons |= BITMASK(kXboxDigitalDPadRight);
 			else
 				report->buttons |= BITMASK(kXboxDigitalDPadLeft);
+			break;
+		case kCookiePadStartBack:
+			if (value > 0)
+				report->buttons |= BITMASK(kXboxDigitalButtonBack);
+			else
+				report->buttons |= BITMASK(kXboxDigitalButtonStart);
+			break;
+		case kCookiePadClickLeftRight:
+			if (value > 0)
+				report->buttons |= BITMASK(kXboxDigitalRightClick);
+			else
+				report->buttons |= BITMASK(kXboxDigitalLeftClick);
 			break;
 	}
 }
@@ -1644,6 +1676,12 @@ UInt32 FPXboxHIDDriver::availablePower(void) const
 	if (_device != NULL)
 		power = _device->GetBusPowerAvailable() * 2.0;	// returns in units of 2 mA
 	return power;
+}
+
+
+USBDeviceAddress FPXboxHIDDriver::deviceAddress(void) const
+{
+	return _device->GetAddress();
 }
 
 

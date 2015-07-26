@@ -63,6 +63,8 @@
 		828D4E7F1B3F147B00466975 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 828D4E7D1B3F147B00466975 /* SMDoubleSlider.m */; };
 		828D4E841B3F298200466975 /* SMDoubleSliderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 828D4E821B3F298200466975 /* SMDoubleSliderCell.h */; };
 		828D4E851B3F298200466975 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 828D4E831B3F298200466975 /* SMDoubleSliderCell.m */; };
+		82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 82983C051B655A9F00C260C1 /* FPBoxLine.h */; };
+		82983C081B655A9F00C260C1 /* FPBoxLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 82983C061B655A9F00C260C1 /* FPBoxLine.m */; };
 		82BC57041B570B8E0040C786 /* iconAppSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */; };
 		82D628001B56377800158DF9 /* MAAttachedWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 82D627FE1B56377800158DF9 /* MAAttachedWindow.h */; };
 		82D628011B56377800158DF9 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D627FF1B56377800158DF9 /* MAAttachedWindow.m */; };
@@ -134,6 +136,8 @@
 		828D4E7D1B3F147B00466975 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSlider.m; path = ../../External/SMDoubleSlider/Framework_code/SMDoubleSlider.m; sourceTree = "<group>"; };
 		828D4E821B3F298200466975 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderCell.h; path = ../../External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.h; sourceTree = "<group>"; };
 		828D4E831B3F298200466975 /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderCell.m; path = ../../External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.m; sourceTree = "<group>"; };
+		82983C051B655A9F00C260C1 /* FPBoxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBoxLine.h; path = Source/FPBoxLine.h; sourceTree = "<group>"; };
+		82983C061B655A9F00C260C1 /* FPBoxLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBoxLine.m; path = Source/FPBoxLine.m; sourceTree = "<group>"; };
 		82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAppSmallTemplate.png; path = Resources/Images/iconAppSmallTemplate.png; sourceTree = "<group>"; };
 		82D627FE1B56377800158DF9 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = Source/MAAttachedWindow.h; sourceTree = "<group>"; };
 		82D627FF1B56377800158DF9 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = Source/MAAttachedWindow.m; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				826060A61B52FE9700A93BEE /* FPAnalogDigitalButton.m */,
 				826060A71B52FE9700A93BEE /* FPPopUpButtonCell.h */,
 				826060A81B52FE9700A93BEE /* FPPopUpButtonCell.m */,
+				82983C051B655A9F00C260C1 /* FPBoxLine.h */,
+				82983C061B655A9F00C260C1 /* FPBoxLine.m */,
 				825C6FF91B57C555006599BE /* FPLogoView.h */,
 				825C6FFA1B57C555006599BE /* FPLogoView.m */,
 				82F77A841B62F4CF0033460F /* FPTextCredits.h */,
@@ -348,6 +354,7 @@
 				823EACB61B57300100FED407 /* FPButtonView.h in Headers */,
 				82F77A821B62F37F0033460F /* FPScrollerCredits.h in Headers */,
 				823EACB81B57300100FED407 /* FPDpadView.h in Headers */,
+				82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */,
 				825C6FFB1B57C555006599BE /* FPLogoView.h in Headers */,
 				828D4E841B3F298200466975 /* SMDoubleSliderCell.h in Headers */,
 				823EACBA1B57300100FED407 /* FPTriggerView.h in Headers */,
@@ -488,6 +495,7 @@
 				82F77A871B62F4CF0033460F /* FPTextCredits.m in Sources */,
 				82F77A831B62F37F0033460F /* FPScrollerCredits.m in Sources */,
 				82D628011B56377800158DF9 /* MAAttachedWindow.m in Sources */,
+				82983C081B655A9F00C260C1 /* FPBoxLine.m in Sources */,
 				828D4E7F1B3F147B00466975 /* SMDoubleSlider.m in Sources */,
 				828D4E851B3F298200466975 /* SMDoubleSliderCell.m in Sources */,
 			);

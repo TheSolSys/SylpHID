@@ -151,9 +151,13 @@
 	[[_menuAxisXbox itemAtIndex: kMenuAxisBlueYellow] setTag: kCookiePadBlueYellow];
 	[[_menuAxisXbox itemAtIndex: kMenuAxisGreenYellow] setTag: kCookiePadGreenYellow];
 	[[_menuAxisXbox itemAtIndex: kMenuAxisBlueRed] setTag: kCookiePadBlueRed];
+	[[_menuAxisXbox itemAtIndex: kMenuAxisRedYellow] setTag: kCookiePadRedYellow];
+	[[_menuAxisXbox itemAtIndex: kMenuAxisGreenBlue] setTag: kCookiePadGreenBlue];
 	[[_menuAxisXbox itemAtIndex: kMenuAxisWhiteBlack] setTag: kCookiePadWhiteBlack];
 	[[_menuAxisXbox itemAtIndex: kMenuAxisDPadUpDown] setTag: kCookiePadDPadUpDown];
 	[[_menuAxisXbox itemAtIndex: kMenuAxisDPadLeftRight] setTag: kCookiePadDPadLeftRight];
+	[[_menuAxisXbox itemAtIndex: kMenuAxisStartBack] setTag: kCookiePadStartBack];
+	[[_menuAxisXbox itemAtIndex: kMenuAxisClickLeftRight] setTag: kCookiePadClickLeftRight];
 
 	[[_menuButtonXbox itemAtIndex: kMenuButtonDisabled] setTag: kCookiePadDisabled];
 	[[_menuButtonXbox itemAtIndex: kMenuButtonLeftTrigger] setTag: kCookiePadLeftTrigger];
@@ -464,13 +468,15 @@
 - (void) populateUSBInfo
 {
 	FPXboxHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
+	NSString* serial = [device serialNumber];
 	[_usbVendorID setStringValue: [device vendorID]];
 	[_usbProductID setStringValue: [device productID]];
 	[_usbVendorName setStringValue: [device manufacturerName]];
 	[_usbProductName setStringValue: [device productName]];
 	[_usbVersionNumber setStringValue: [device versionNumber]];
-	[_usbSerialNumber setStringValue: [device serialNumber]];
-	[_usbLocationID setStringValue: [device locationID]];
+	[_usbSerialNumber setStringValue: (serial ? serial : @"(none)")];
+	[_usbSerialNumber setTextColor: (serial ? [NSColor textColor] : [NSColor disabledControlTextColor])];
+	[_usbLocationID setStringValue: [NSString stringWithFormat: @"%@ @ %@", [device locationID], [device deviceAddress]]];
 	[_usbBusSpeed setStringValue: [device deviceSpeed]];
 	[_usbPowerReqs setStringValue: [device devicePower]];
 }
@@ -601,10 +607,12 @@
 	_undo.ThresholdLowLeftTrigger	= [_leftTriggerLivezone intLoValue];
 	_undo.ThresholdHighLeftTrigger	= [_leftTriggerLivezone intHiValue];
 	_undo.MappingLeftTrigger		= [[_leftTriggerMenu selectedItem] tag];
+	_undo.AlternateLeftTrigger		= [_leftTriggerAlt state];
 
 	_undo.ThresholdLowRightTrigger  = [_rightTriggerLivezone intLoValue];
 	_undo.ThresholdHighRightTrigger	= [_rightTriggerLivezone intHiValue];
 	_undo.MappingRightTrigger		= [[_rightTriggerMenu selectedItem] tag];
+	_undo.AlternateRightTrigger		= [_rightTriggerAlt state];
 
 	_undo.ThresholdLowButtonGreen	= [_buttonGreenLivezone intLoValue];
 	_undo.ThresholdHighButtonGreen	= [_buttonGreenLivezone intHiValue];
@@ -666,10 +674,12 @@
 			[_leftTriggerLivezone intLoValue]		!= _undo.ThresholdLowLeftTrigger	||
 			[_leftTriggerLivezone intHiValue]		!= _undo.ThresholdHighLeftTrigger	||
 			[[_leftTriggerMenu selectedItem] tag]	!= _undo.MappingLeftTrigger			||
+			[_leftTriggerAlt state]					!= _undo.AlternateLeftTrigger		||
 
 			[_rightTriggerLivezone intLoValue]		!= _undo.ThresholdLowRightTrigger	||
 			[_rightTriggerLivezone intHiValue]		!= _undo.ThresholdHighRightTrigger	||
 			[[_rightTriggerMenu selectedItem] tag]	!= _undo.MappingRightTrigger		||
+			[_rightTriggerAlt state]				!= _undo.AlternateRightTrigger		||
 
 			[_buttonGreenLivezone intLoValue]		!= _undo.ThresholdLowButtonGreen	||
 			[_buttonGreenLivezone intHiValue]		!= _undo.ThresholdHighButtonGreen	||
@@ -732,9 +742,11 @@
 
 	[device setLeftTriggerLow: _undo.ThresholdLowLeftTrigger andHighThreshold: _undo.ThresholdHighLeftTrigger];
 	[device setLeftTriggerMapping: _undo.MappingLeftTrigger];
+	[device setLeftTriggerAlternate: _undo.AlternateLeftTrigger];
 
 	[device setRightTriggerLow: _undo.ThresholdLowRightTrigger andHighThreshold: _undo.ThresholdHighRightTrigger];
 	[device setRightTriggerMapping: _undo.MappingRightTrigger];
+	[device setRightTriggerAlternate: _undo.AlternateRightTrigger];
 
 	[device setGreenButtonLow: _undo.ThresholdLowButtonGreen andHighThreshold: _undo.ThresholdHighButtonGreen];
 	[device setGreenButtonMapping: _undo.MappingButtonGreen	];
@@ -785,9 +797,11 @@
 
 	[_leftTriggerLivezone setIntegerLoValue: [device leftTriggerLowThreshold]];
 	[_leftTriggerLivezone setIntegerHiValue: [device leftTriggerHighThreshold]];
+	[_leftTriggerAlt setState: [device leftTriggerAlternate]];
 
 	[_rightTriggerLivezone setIntegerLoValue: [device rightTriggerLowThreshold]];
 	[_rightTriggerLivezone setIntegerHiValue: [device rightTriggerHighThreshold]];
+	[_rightTriggerAlt setState: [device rightTriggerAlternate]];
 
 	[_buttonGreenLivezone setIntegerLoValue: [device greenButtonLowThreshold]];
 	[_buttonGreenLivezone setIntegerHiValue: [device greenButtonHighThreshold]];
@@ -815,8 +829,19 @@
 
 - (void) initPadAxisPopUpButton: (NSPopUpButton*)control withMapping: (int)map
 {
-	NSMenu* menu = [([_configMenus selectedSegment] == 0 ? _menuAxisXbox : _menuAxisHID) copy];
+	BOOL isXbox = ([_configMenus selectedSegment] == 0);
+	NSMenu* menu = [(isXbox ? _menuAxisXbox : _menuAxisHID) copy];
 	[menu setAutoenablesItems: NO];
+	if (!isXbox) {
+		if ([_leftTriggerAlt state] == NSOnState && [_rightTriggerAlt state] == NSOnState)
+			[[menu itemAtIndex: kMenuAxisTriggers] setTitle: @"Buttons 15 + 16"];
+		else if ([_leftTriggerAlt state] == NSOnState && [_rightTriggerAlt state] == NSOffState)
+			[[menu itemAtIndex: kMenuAxisTriggers] setTitle: @"Btn 15 + Axis Rz"];
+		else if ([_leftTriggerAlt state] == NSOffState && [_rightTriggerAlt state] == NSOnState)
+			[[menu itemAtIndex: kMenuAxisTriggers] setTitle: @"Axis Z + Btn 16"];
+		else
+			[[menu itemAtIndex: kMenuAxisTriggers] setTitle: @"Axis Z + Rz"];
+	}
 	[control setMenu: menu];
 	[control selectItemWithTag: map];
 }
@@ -824,8 +849,15 @@
 
 - (void) initPadButtonPopUpButton: (NSPopUpButton*)control withMapping: (int)map
 {
-	NSMenu* menu = [([_configMenus selectedSegment] == 0 ? _menuButtonXbox : _menuButtonHID) copy];
+	BOOL isXbox = ([_configMenus selectedSegment] == 0);
+	NSMenu* menu = [(isXbox ? _menuButtonXbox : _menuButtonHID) copy];
 	[menu setAutoenablesItems: NO];
+	if (!isXbox) {
+		if ([_leftTriggerAlt state] == NSOnState)
+			[[menu itemAtIndex: kMenuButtonLeftTrigger] setTitle: @"Button 15"];
+		if ([_rightTriggerAlt state] == NSOnState)
+			[[menu itemAtIndex: kMenuButtonRightTrigger] setTitle: @"Button 16"];
+	}
 	[control setMenu: menu];
 	[control selectItemWithTag: map];
 }
@@ -1277,12 +1309,20 @@
 		[device setLeftTriggerMapping: (int)[[_leftTriggerMenu selectedItem] tag]];
 		updateAD = [self checkAnalogDigitalMode: _leftTriggerMode withPopUpButton: _leftTriggerMenu];
 
+	} else if (control == _leftTriggerAlt) {
+		[device setLeftTriggerAlternate: [_leftTriggerAlt state]];
+		[self initPadPopUpButtons: device];
+
 	} else if (control == _rightTriggerLivezone) {
 		[device setRightTriggerLow: [_rightTriggerLivezone doubleLoValue] andHighThreshold: [_rightTriggerLivezone doubleHiValue]];
 
 	} else if (control == _rightTriggerMenu) {
 		[device setRightTriggerMapping: (int)[[_rightTriggerMenu selectedItem] tag]];
 		updateAD = [self checkAnalogDigitalMode: _rightTriggerMode withPopUpButton: _rightTriggerMenu];
+
+	} else if (control == _rightTriggerAlt) {
+		[device setRightTriggerAlternate: [_rightTriggerAlt state]];
+		[self initPadPopUpButtons: device];
 
 	// analog buttons
 	} else if (control == _buttonGreenLivezone) {

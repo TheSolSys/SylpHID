@@ -218,9 +218,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = XboxHIDDaemon;
-				REZ_EXECUTABLE = YES;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = ../XboxHIDDriver;
 				WARNING_CFLAGS = (
@@ -228,7 +226,6 @@
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
-				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -246,9 +243,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = XboxHIDDaemon;
-				REZ_EXECUTABLE = YES;
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = ../XboxHIDDriver;
 				WARNING_CFLAGS = (
@@ -256,7 +251,6 @@
 					"-Wno-four-char-constants",
 					"-Wno-unknown-pragmas",
 				);
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};

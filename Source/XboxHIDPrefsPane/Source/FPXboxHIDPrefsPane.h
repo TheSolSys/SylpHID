@@ -47,10 +47,14 @@ enum eMenuEntriesAxis {
 	kMenuAxisBlueYellow,
 	kMenuAxisGreenYellow,
 	kMenuAxisBlueRed,
+	kMenuAxisRedYellow,
+	kMenuAxisGreenBlue,
 	kMenuAxisWhiteBlack,
 	kMenuAxisSeparator3,
 	kMenuAxisDPadUpDown,
 	kMenuAxisDPadLeftRight,
+	kMenuAxisStartBack,
+	kMenuAxisClickLeftRight,
 	kMenuAxisCount,
 };
 
@@ -114,11 +118,13 @@ enum eMenuEntriesButtons {
     IBOutlet id _leftTriggerView;
     IBOutlet id _leftTriggerMenu;
     IBOutlet id _leftTriggerMode;
+	IBOutlet id _leftTriggerAlt;
     IBOutlet id _leftTriggerLivezone;
 
     IBOutlet id _rightTriggerView;
     IBOutlet id _rightTriggerMenu;
     IBOutlet id _rightTriggerMode;
+	IBOutlet id _rightTriggerAlt;
     IBOutlet id _rightTriggerLivezone;
 
     IBOutlet id _leftStickView;

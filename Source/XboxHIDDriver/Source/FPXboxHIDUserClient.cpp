@@ -146,6 +146,35 @@ IOReturn FPXboxHIDUserClient::getPower (uint64_t* power)
 }
 
 
+IOReturn FPXboxHIDUserClient::sGetAddress (OSObject* target, void* reference, IOExternalMethodArguments* args)
+{
+	uint64_t* addr = args->scalarOutput;
+	IOReturn ret = ((FPXboxHIDUserClient*)target)->getAddress(addr);
+	if (ret != kIOReturnSuccess)
+		return ret;
+	args->scalarOutputCount = 1;
+
+	return kIOReturnSuccess;
+}
+
+
+IOReturn FPXboxHIDUserClient::getAddress (uint64_t* addr)
+{
+	if (_driver == NULL || isInactive()) {
+		// Return an error if we don't have a provider. This could happen if the user process
+		// called getRawReport without calling IOServiceOpen first. Or, the user client could be
+		// in the process of being terminated and is thus inactive.
+		return kIOReturnNotAttached;
+	}
+	// set 'report' pointer to last raw report
+	// all this is taking place in kernel-space, the user/kernel boundary
+	// will be crossed in 'sGetRawReport' via the 'args' structureOutput
+	*addr = _driver->deviceAddress();
+
+	return kIOReturnSuccess;
+}
+
+
 bool FPXboxHIDUserClient::initWithTask (task_t owningTask, void* securityToken, UInt32 type, OSDictionary* properties)
 {
 	if (!owningTask || !super::initWithTask(owningTask, securityToken, type, properties))

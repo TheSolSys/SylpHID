@@ -320,8 +320,7 @@
 
 - (NSString*) serialNumber
 {
-	NSString* serial = [_ioRegistryProperties objectForKey: NSSTR(kIOHIDSerialNumberKey)];
-	return (serial ? serial : @"None");
+	return [_ioRegistryProperties objectForKey: NSSTR(kIOHIDSerialNumberKey)];
 }
 
 
@@ -342,11 +341,11 @@
 	}
 	NSString* type = (speed == kUSBDeviceSpeedLow  ? @"Low"  :
 					  speed == kUSBDeviceSpeedFull ? @"Full" :
-					  speed == kUSBDeviceSpeedHigh ? @"High" : @"Unknown");
-	double realspeed = (speed == kUSBDeviceSpeedLow  ? 1.5  :
-						speed == kUSBDeviceSpeedFull ? 12 :
-						speed == kUSBDeviceSpeedHigh ? 480 : 0);
-	return [NSString stringWithFormat: @"%@ Speed (%g Mb/sec)", type, realspeed];
+					  speed == kUSBDeviceSpeedHigh ? @"High" : @"Super");
+	NSString* real = (speed == kUSBDeviceSpeedLow  ? @"1.5 Mb" :
+					  speed == kUSBDeviceSpeedFull ? @"12 Mb"  :
+					  speed == kUSBDeviceSpeedHigh ? @"480 Mb" : @"5 MB" );
+	return [NSString stringWithFormat: @"%@ Speed (%@/sec)", type, real];
 }
 
 
@@ -360,6 +359,19 @@
 			NSLog(@"devicePower Failure(%x) Service(%d)\n", ret, _service);
 	}
 	return [NSString stringWithFormat: @"%llu mA (%llu mA Max)", power[0], power[1]];
+}
+
+
+- (NSString*) deviceAddress
+{
+	uint64_t addr = 0;
+	if (_service != 0) {
+		uint32_t size = 1;
+		IOReturn ret = IOConnectCallScalarMethod(_service, kXboxHIDDriverClientMethodGetAddress, NULL, 0, &addr, &size);
+		if (ret != kIOReturnSuccess)
+			NSLog(@"deviceAddress Failure(%x) Service(%d)\n", ret, _service);
+	}
+	return [NSString stringWithFormat: @"%llu", addr];
 }
 
 
@@ -424,10 +436,12 @@
 		ioreg.ThresholdLowLeftTrigger = [self leftTriggerLowThreshold];
 		ioreg.ThresholdHighLeftTrigger = [self leftTriggerHighThreshold];
 		ioreg.MappingLeftTrigger = [self leftTriggerMapping];
+		ioreg.AlternateLeftTrigger = [self leftTriggerAlternate];
 
 		ioreg.ThresholdLowRightTrigger = [self rightTriggerLowThreshold];
 		ioreg.ThresholdHighRightTrigger = [self rightTriggerHighThreshold];
 		ioreg.MappingRightTrigger = [self rightTriggerMapping];
+		ioreg.AlternateRightTrigger = [self rightTriggerAlternate];
 
 		ioreg.ThresholdLowButtonGreen = [self greenButtonLowThreshold];
 		ioreg.ThresholdHighButtonGreen = [self greenButtonHighThreshold];
@@ -484,9 +498,11 @@
 
 		[self setLeftTriggerLow: ioreg.ThresholdLowLeftTrigger andHighThreshold: ioreg.ThresholdHighLeftTrigger];
 		[self setLeftTriggerMapping: ioreg.MappingLeftTrigger];
+		[self setLeftTriggerAlternate: ioreg.AlternateLeftTrigger];
 
 		[self setRightTriggerLow: ioreg.ThresholdLowRightTrigger andHighThreshold: ioreg.ThresholdHighRightTrigger];
 		[self setRightTriggerMapping: ioreg.MappingRightTrigger];
+		[self setRightTriggerAlternate: ioreg.AlternateRightTrigger];
 
 		[self setGreenButtonLow: ioreg.ThresholdLowButtonGreen andHighThreshold: ioreg.ThresholdHighButtonGreen];
 		[self setGreenButtonMapping: ioreg.MappingButtonGreen];
@@ -808,8 +824,8 @@
 	NSMutableDictionary* element;
 	int max, i;
 
-	for (i = kCookiePadFirstFaceButton; i < kCookiePadLastFaceButton; i++) {
-		max = (mask & BITMASK((i - kCookiePadFirstFaceButton))) ? 1 : 255;
+	for (i = kCookiePadFirstAnalogButton; i < kCookiePadLastAnalogButton; i++) {
+		max = (mask & BITMASK((i - kCookiePadFirstAnalogButton))) ? 1 : 255;
 		element = [self elementWithCookie: i];
 
 		if (element) {
@@ -835,7 +851,37 @@
 }
 
 
+- (void) setMapsTrigger: (int)cookie toElement: (int)usage
+{
+	if (cookie == kCookiePadLeftTrigger || cookie == kCookiePadRightTrigger) {
+		int usagePage = (usage < kHIDUsage_GD_X ? kHIDPage_Button : kHIDPage_GenericDesktop);
+		NSMutableDictionary*element = [self elementWithCookie: cookie];
+		if (element) {
+			[element setObject: NSNUM(usagePage) forKey: NSSTR(kIOHIDElementUsagePageKey)];
+			[element setObject: NSNUM(usage) forKey: NSSTR(kIOHIDElementUsageKey)];
+		}
+		[self commitElements];
+		[self setOptionWithKey: cookie == kCookiePadLeftTrigger ? NSSTR(kOptionAlternateLeftTriggerKey)
+																: NSSTR(kOptionAlternateRightTriggerKey)
+					  andValue: BOOLtoID(usagePage == kHIDPage_Button)];
+		[self getDeviceProperties];
+	}
+}
+
+
 #pragma mark --- Left Trigger ---
+
+- (BOOL) leftTriggerAlternate
+{
+	return idToBOOL([_deviceOptions objectForKey: NSSTR(kOptionAlternateLeftTriggerKey)]);
+}
+
+
+- (void) setLeftTriggerAlternate: (bool)flag
+{
+	[self setMapsTrigger: kCookiePadLeftTrigger toElement: (flag ? kHIDUsage_Button_15 : kHIDUsage_GD_Z)];
+}
+
 
 - (int) leftTriggerMapping
 {
@@ -871,6 +917,18 @@
 
 
 #pragma mark --- Right Trigger ---
+
+- (BOOL) rightTriggerAlternate
+{
+	return idToBOOL([_deviceOptions objectForKey: NSSTR(kOptionAlternateRightTriggerKey)]);
+}
+
+
+- (void) setRightTriggerAlternate: (bool)flag
+{
+	[self setMapsTrigger: kCookiePadRightTrigger toElement: (flag ? kHIDUsage_Button_16 : kHIDUsage_GD_Rz)];
+}
+
 
 - (int) rightTriggerMapping
 {

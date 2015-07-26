@@ -37,6 +37,7 @@ enum XboxHIDDriverRequestCode {
 	kXboxHIDDriverClientMethodLoadDefault,
 	kXboxHIDDriverClientMethodGetSpeed,
 	kXboxHIDDriverClientMethodGetPower,
+	kXboxHIDDriverClientMethodGetAddress,
 	kXboxHIDDriverClientMethodCount
 };
 
@@ -120,10 +121,12 @@ typedef struct XBPadOptions {
 	UInt8 ThresholdLowButtonWhite;
 	UInt8 ThresholdHighButtonWhite;
 
+	UInt8 AlternateLeftTrigger;
 	UInt8 MappingLeftTrigger;
 	UInt8 ThresholdLowLeftTrigger;
 	UInt8 ThresholdHighLeftTrigger;
 
+	UInt8 AlternateRightTrigger;
 	UInt8 MappingRightTrigger;
 	UInt8 ThresholdLowRightTrigger;
 	UInt8 ThresholdHighRightTrigger;
@@ -131,6 +134,10 @@ typedef struct XBPadOptions {
 
 
 #define BITMASK(bit)	(1 << bit)
+
+// kHIDUsage_Button_*
+#define kHIDUsage_Button_15				15
+#define kHIDUsage_Button_16				16
 
 // constants for Digital only buttons
 #define kXboxDigitalDPadUp				0
@@ -165,10 +172,13 @@ typedef struct XBPadOptions {
 #define kXboxPseudoBlueYellow			2
 #define kXboxPseudoGreenYellow			3
 #define kXboxPseudoBlueRed				4
-#define kXboxPseudoWhiteBlack			5
-#define kXboxPseudoDPadUpDown			6
-#define kXboxPseudoDPadLeftRight		7
-
+#define kXboxPseudoRedYellow			5
+#define kXboxPseudoGreenBlue			6
+#define kXboxPseudoWhiteBlack			7
+#define kXboxPseudoDPadUpDown			8
+#define kXboxPseudoDPadLeftRight		9
+#define kXboxPseudoStartBack			10
+#define kXboxPseudoClickLeftRight		11
 
 // constants for 'cookie' identifiers
 #define kCookiePadDisabled				 0
@@ -184,14 +194,14 @@ typedef struct XBPadOptions {
 #define kCookiePadLeftClick			   (kCookiePadFirstDigitalButton + kXboxDigitalLeftClick)
 #define kCookiePadRightClick		   (kCookiePadFirstDigitalButton + kXboxDigitalRightClick)
 
-#define kCookiePadFirstFaceButton		14
-#define kCookiePadLastFaceButton		19
-#define kCookiePadButtonGreen		   (kCookiePadFirstFaceButton + kXboxAnalogButtonGreen)
-#define kCookiePadButtonRed			   (kCookiePadFirstFaceButton + kXboxAnalogButtonRed)
-#define kCookiePadButtonBlue		   (kCookiePadFirstFaceButton + kXboxAnalogButtonBlue)
-#define kCookiePadButtonYellow		   (kCookiePadFirstFaceButton + kXboxAnalogButtonYellow)
-#define kCookiePadButtonBlack		   (kCookiePadFirstFaceButton + kXboxAnalogButtonBlack)
-#define kCookiePadButtonWhite		   (kCookiePadFirstFaceButton + kXboxAnalogButtonWhite)
+#define kCookiePadFirstAnalogButton		14
+#define kCookiePadLastAnalogButton		19
+#define kCookiePadButtonGreen		   (kCookiePadFirstAnalogButton + kXboxAnalogButtonGreen)
+#define kCookiePadButtonRed			   (kCookiePadFirstAnalogButton + kXboxAnalogButtonRed)
+#define kCookiePadButtonBlue		   (kCookiePadFirstAnalogButton + kXboxAnalogButtonBlue)
+#define kCookiePadButtonYellow		   (kCookiePadFirstAnalogButton + kXboxAnalogButtonYellow)
+#define kCookiePadButtonBlack		   (kCookiePadFirstAnalogButton + kXboxAnalogButtonBlack)
+#define kCookiePadButtonWhite		   (kCookiePadFirstAnalogButton + kXboxAnalogButtonWhite)
 
 #define kCookiePadFirstTrigger			20
 #define kCookiePadLastTrigger			21
@@ -212,9 +222,13 @@ typedef struct XBPadOptions {
 #define kCookiePadBlueYellow		   (kCookiePadPseudo + kXboxPseudoBlueYellow)
 #define kCookiePadGreenYellow		   (kCookiePadPseudo + kXboxPseudoGreenYellow)
 #define kCookiePadBlueRed			   (kCookiePadPseudo + kXboxPseudoBlueRed)
+#define kCookiePadRedYellow			   (kCookiePadPseudo + kXboxPseudoRedYellow)
+#define kCookiePadGreenBlue			   (kCookiePadPseudo + kXboxPseudoGreenBlue)
 #define kCookiePadWhiteBlack		   (kCookiePadPseudo + kXboxPseudoWhiteBlack)
 #define kCookiePadDPadUpDown		   (kCookiePadPseudo + kXboxPseudoDPadUpDown)
 #define kCookiePadDPadLeftRight		   (kCookiePadPseudo + kXboxPseudoDPadLeftRight)
+#define kCookiePadStartBack			   (kCookiePadPseudo + kXboxPseudoStartBack)
+#define kCookiePadClickLeftRight	   (kCookiePadPseudo + kXboxPseudoClickLeftRight)
 
 // keys for client configuration
 #define kClientOptionKeyKey						"OptionKey"
@@ -295,10 +309,12 @@ typedef struct XBPadOptions {
 #define kOptionMappingButtonBackKey				"MappingButtonBack"
 
 // triggers
+#define kOptionAlternateLeftTriggerKey			"AlternateLeftTrigger"
 #define kOptionMappingLeftTriggerKey			"MappingLeftTrigger"
 #define kOptionThresholdLowLeftTriggerKey		"ThresholdLowLeftTrigger"
 #define kOptionThresholdHighLeftTriggerKey		"ThresholdHighLeftTrigger"
 
+#define kOptionAlternateRightTriggerKey			"AlternateRightTrigger"
 #define kOptionMappingRightTriggerKey			"MappingRightTrigger"
 #define kOptionThresholdLowRightTriggerKey		"ThresholdLowRightTrigger"
 #define kOptionThresholdHighRightTriggerKey		"ThresholdHighRightTrigger"

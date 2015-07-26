@@ -306,7 +306,7 @@
 			[self setTrackingLoKnob: ( startPoint.y < loKnobRect.origin.y +
 			                           loKnobRect.size.height )];
 	} else
-		[self setTrackingLoKnob: (startPoint.x < loKnobRect.origin.x + loKnobRect.size.width)];
+		[self setTrackingLoKnob: (startPoint.x < [[self controlView] frame].size.width / 2.0)]; // loKnobRect.origin.x + loKnobRect.size.width)];
 
 	// Make sure that the user hasn't jammed both knobs up against the minimum value.
 	if ( [self trackingLoKnob] && NSEqualRects(loKnobRect, [self knobRectFlipped: [controlView isFlipped]]))

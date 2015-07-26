@@ -411,6 +411,19 @@
 				  atDistance: 4];
 		[_editText setStringValue: [FPXboxHIDPrefsLoader configNameForDevice: device]];
 		[_editOK setKeyEquivalent: @"\r"];
+		[_editOK setEnabled: NO];
+		[_popup setViewMargin: 1.0];
+		[self crossFadeAttachedWindow];
+
+	} else if (sender == _actionInfo) {
+		_xfade = _popup;
+		NSPoint buttonPoint = NSMakePoint(NSMidX([_configButtons frame]) + 19, NSMidY([_configButtons frame]));
+		_popup = [[MAAttachedWindow alloc] initWithView: _usbView
+				  attachedToPoint: buttonPoint
+				  inWindow: [_configButtons window]
+				  onSide: MAPositionTop
+				  atDistance: 4];
+		[self populateUSBInfo];
 		[_popup setViewMargin: 1.0];
 		[self crossFadeAttachedWindow];
 
@@ -432,6 +445,12 @@
 }
 
 
+- (IBAction) usbInfoEnd: (id)sender
+{
+	[self fadeOutAttachedWindow];
+}
+
+
 - (void) controlTextDidChange: (NSNotification*)notify
 {
 	id object = [notify object];
@@ -439,6 +458,21 @@
 
 	NSString* text = [[object stringValue] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
 	[button setEnabled: [text length] > 0 && ![_configPopUp itemWithTitle: text]];
+}
+
+
+- (void) populateUSBInfo
+{
+	FPXboxHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
+	[_usbVendorID setStringValue: [device vendorID]];
+	[_usbProductID setStringValue: [device productID]];
+	[_usbVendorName setStringValue: [device manufacturerName]];
+	[_usbProductName setStringValue: [device productName]];
+	[_usbVersionNumber setStringValue: [device versionNumber]];
+	[_usbSerialNumber setStringValue: [device serialNumber]];
+	[_usbLocationID setStringValue: [device locationID]];
+	[_usbBusSpeed setStringValue: [device deviceSpeed]];
+	[_usbPowerReqs setStringValue: [device devicePower]];
 }
 
 

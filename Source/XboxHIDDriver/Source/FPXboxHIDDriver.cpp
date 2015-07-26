@@ -139,6 +139,10 @@ bool FPXboxHIDDriver::handleStart (IOService* provider)
 	if (!setupDevice())
 		return false;
 
+	// Get the USB config descriptor for power requirement variable
+	const IOUSBConfigurationDescriptor* config = _device->GetFullConfigurationDescriptor(0);
+	_maxPower = config->MaxPower;
+
 	// Get the size of the HID descriptor.
 	hidDescSize = 0;
 	err = GetHIDDescriptor(kUSBReportDesc, 0, NULL, &hidDescSize);
@@ -1265,20 +1269,21 @@ IOService* FPXboxHIDDriver::probe (IOService* provider, SInt32* score)
 		USBLog(3, "%s[%p]::probe found generic device", getName(), this);
 		*score += 1000;
 	} else {
-		// device is unknown *and* doesn't match known generic properties,
-		// we can assume it is a controller (usually!) If we're wrong
-		// the application using HID might hang, or perhaps the kernel
-		// will crash. On the upside I'll have less complaints about
-		// controllers not working because their vendor/product IDs
-		// are not compiled into the driver.
-		USBLog(3, "%s[%p]::probe didn't find supported device, taking a risk here", getName(), this);
+		// device is unknown *and* doesn't match known generic properties
+		// previous code assumed it was a controller with possibility of
+		// an app and/or kernel crash. this is unacceptable to me so
+		// for now I am going to disallow such controllers, but will
+		// come up with a way to present the controller in the UI and
+		// give the user the option to enable it or not, with a warning!
+		USBLog(3, "%s[%p]::probe didn't find supported device", getName(), this);
 
-		_xbDeviceType   = OSString::withCString("Pad");
-		_xbDeviceVendor = OSString::withCString("Unknown");
-		_xbDeviceName   = OSString::withCString("Generic Controller");
-
-		*score += 100;
+//		_xbDeviceType   = OSString::withCString("Pad");
+//		_xbDeviceVendor = OSString::withCString("Unknown");
+//		_xbDeviceName   = OSString::withCString("Generic Controller");
+//
+//		*score += 100;
 	}
+
 	return this;
 }
 
@@ -1594,7 +1599,6 @@ OSNumber* FPXboxHIDDriver::newPrimaryUsagePageNumber (void) const
 OSNumber* FPXboxHIDDriver::newVendorIDNumber (void) const
 {
 	UInt16 vendorID = 0;
-
 	if (_device != NULL)
 		vendorID = _device->GetVendorID();
 	return OSNumber::withNumber(vendorID, 16);
@@ -1604,7 +1608,6 @@ OSNumber* FPXboxHIDDriver::newVendorIDNumber (void) const
 OSNumber* FPXboxHIDDriver::newProductIDNumber (void) const
 {
 	UInt16 productID = 0;
-
 	if (_device != NULL)
 		productID = _device->GetProductID();
 	return OSNumber::withNumber(productID, 16);
@@ -1614,10 +1617,33 @@ OSNumber* FPXboxHIDDriver::newProductIDNumber (void) const
 OSNumber* FPXboxHIDDriver::newVersionNumber(void) const
 {
 	UInt16 releaseNum = 0;
-
 	if (_device != NULL)
 		releaseNum = _device->GetDeviceRelease();
 	return OSNumber::withNumber(releaseNum, 16);
+}
+
+
+UInt8 FPXboxHIDDriver::deviceSpeed(void) const
+{
+	UInt8 speed = 0;
+	if (_device != NULL)
+		speed = _device->GetSpeed();
+	return speed;
+}
+
+
+UInt32 FPXboxHIDDriver::currentPower(void) const
+{
+	return _maxPower * 2.0;  // in units of 2 mA
+}
+
+
+UInt32 FPXboxHIDDriver::availablePower(void) const
+{
+	UInt32 power = 0;
+	if (_device != NULL)
+		power = _device->GetBusPowerAvailable() * 2.0;	// returns in units of 2 mA
+	return power;
 }
 
 

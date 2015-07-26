@@ -27,6 +27,7 @@
 // =========================================================================================================================
 
 
+#import <IOKit/usb/USB.h>
 #import <IOKit/hid/IOHIDKeys.h>
 #import <IOKit/hid/IOHIDUsageTables.h>
 
@@ -265,6 +266,32 @@
 	return [_deviceType isEqualToString: NSSTR(kDeviceTypeIRKey)];
 }
 
+/*
+#define kIOHIDVendorIDKey                   "VendorID"
+#define kIOHIDVendorIDSourceKey             "VendorIDSource"
+#define kIOHIDProductIDKey                  "ProductID"
+#define kIOHIDVersionNumberKey              "VersionNumber"
+*/
+
+- (NSString*) vendorID
+{
+	int key = [[_ioRegistryProperties objectForKey: NSSTR(kIOHIDVendorIDKey)] intValue];
+	return [NSString stringWithFormat: @"0x%04x", key];
+}
+
+
+- (NSString*) vendorSource
+{
+	return [_ioRegistryProperties objectForKey: NSSTR(kIOHIDVendorIDSourceKey)];
+}
+
+
+- (NSString*) productID
+{
+	int key = [[_ioRegistryProperties objectForKey: NSSTR(kIOHIDProductIDKey)] intValue];
+	return [NSString stringWithFormat: @"0x%04x", key];
+}
+
 
 - (NSString*) productName
 {
@@ -278,10 +305,61 @@
 }
 
 
+- (NSString*) locationID
+{
+	return [NSString stringWithFormat: @"%08x", [[_ioRegistryProperties objectForKey: NSSTR(kIOHIDLocationIDKey)] intValue]];
+}
+
+
+- (NSString*) versionNumber
+{
+	int bcd = [[_ioRegistryProperties objectForKey: NSSTR(kIOHIDVersionNumberKey)] intValue];
+	return [NSString stringWithFormat: @"%x.%x", bcd >> 8, bcd & 0xFF];
+}
+
+
+- (NSString*) serialNumber
+{
+	NSString* serial = [_ioRegistryProperties objectForKey: NSSTR(kIOHIDSerialNumberKey)];
+	return (serial ? serial : @"None");
+}
+
+
 - (NSString*) identifier
 {
-	return [NSString stringWithFormat: @"%@-%x", [self deviceType],
-	        [[_ioRegistryProperties objectForKey: NSSTR(kIOHIDLocationIDKey)] intValue]];
+	return [NSString stringWithFormat: @"%@-%@", [self deviceType], [self locationID]];
+}
+
+
+- (NSString*) deviceSpeed
+{
+	uint64_t speed = 0;
+	if (_service != 0) {
+		uint32_t size = 1;
+		IOReturn ret = IOConnectCallScalarMethod(_service, kXboxHIDDriverClientMethodGetSpeed, NULL, 0, &speed, &size);
+		if (ret != kIOReturnSuccess)
+			NSLog(@"deviceSpeed Failure(%x) Service(%d)\n", ret, _service);
+	}
+	NSString* type = (speed == kUSBDeviceSpeedLow  ? @"Low"  :
+					  speed == kUSBDeviceSpeedFull ? @"Full" :
+					  speed == kUSBDeviceSpeedHigh ? @"High" : @"Unknown");
+	double realspeed = (speed == kUSBDeviceSpeedLow  ? 1.5  :
+						speed == kUSBDeviceSpeedFull ? 12 :
+						speed == kUSBDeviceSpeedHigh ? 480 : 0);
+	return [NSString stringWithFormat: @"%@ Speed (%g Mb/sec)", type, realspeed];
+}
+
+
+- (NSString*) devicePower
+{
+	uint64_t power[2] = { 0, 0 };
+	if (_service != 0) {
+		uint32_t size = 2;
+		IOReturn ret = IOConnectCallScalarMethod(_service, kXboxHIDDriverClientMethodGetPower, NULL, 0, power, &size);
+		if (ret != kIOReturnSuccess)
+			NSLog(@"devicePower Failure(%x) Service(%d)\n", ret, _service);
+	}
+	return [NSString stringWithFormat: @"%llu mA (%llu mA Max)", power[0], power[1]];
 }
 
 
@@ -1054,20 +1132,6 @@ id NSNUM(SInt32 num)
 	id obj;
 
 	cfNumber = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &num);
-
-	obj = (id)cfNumber;
-	[obj autorelease];
-
-	return obj;
-}
-
-
-id NSPTR(void* ptr)
-{
-	CFNumberRef cfNumber;
-	id obj;
-
-	cfNumber = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt64Type, &ptr);
 
 	obj = (id)cfNumber;
 	[obj autorelease];

@@ -212,6 +212,7 @@ class FPXboxHIDDriver: public IOHIDDevice
 	IOBufferMemoryDescriptor* _outBuffer;
 	UInt32 _deviceUsage;
 	UInt32 _deviceUsagePage;
+	UInt8 _maxPower;
 
 	// xbox additions
 	OSString* _xbDeviceType;
@@ -290,6 +291,13 @@ public:
 	virtual IOReturn setReport (IOMemoryDescriptor* report, IOHIDReportType reportType, IOOptionBits options = 0);
 
 	virtual IOReturn message (UInt32 type, IOService* provider, void* argument = 0);
+
+	virtual UInt8 deviceSpeed(void) const;
+
+	virtual UInt32 currentPower(void) const;
+
+	virtual UInt32 availablePower(void) const;
+
 
 	// HID driver methods
 	virtual OSString* newIndexedString (UInt8 index) const;

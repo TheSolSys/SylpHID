@@ -232,6 +232,18 @@ enum eMenuEntriesButtons {
 	IBOutlet id _creditsText;
 	IBOutlet id _creditsOK;
 
+	IBOutlet id _usbView;
+	IBOutlet id _usbVendorID;
+	IBOutlet id _usbProductID;
+	IBOutlet id _usbVendorName;
+	IBOutlet id _usbProductName;
+	IBOutlet id _usbVersionNumber;
+	IBOutlet id _usbSerialNumber;
+	IBOutlet id _usbLocationID;
+	IBOutlet id _usbBusSpeed;
+	IBOutlet id _usbPowerReqs;
+	IBOutlet id _usbOK;
+
     // version string
     IBOutlet id _textVersion;
 }

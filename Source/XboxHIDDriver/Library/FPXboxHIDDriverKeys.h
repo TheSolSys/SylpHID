@@ -35,6 +35,8 @@
 enum XboxHIDDriverRequestCode {
 	kXboxHIDDriverClientMethodRawReport,
 	kXboxHIDDriverClientMethodLoadDefault,
+	kXboxHIDDriverClientMethodGetSpeed,
+	kXboxHIDDriverClientMethodGetPower,
 	kXboxHIDDriverClientMethodCount
 };
 

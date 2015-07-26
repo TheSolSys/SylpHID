@@ -23,7 +23,7 @@
 #include "FPXboxHIDUserClient.h"
 #include "FPXboxHIDDriverKeys.h"
 
-#define DEBUG_LEVEL 7 // 0=disable all logging, 7=full logging
+#define DEBUG_LEVEL 0 // 0=disable all logging, 7=full logging
 #include <IOKit/usb/IOUSBLog.h>
 
 #define super IOUserClient
@@ -82,6 +82,65 @@ IOReturn FPXboxHIDUserClient::loadDefaultLayout (void)
 	// all this is taking place in kernel-space, the user/kernel boundary
 	// will be crossed in 'sGetRawReport' via the 'args' structureOutput
 	_driver->setDefaultOptions();
+
+	return kIOReturnSuccess;
+}
+
+
+IOReturn FPXboxHIDUserClient::sGetSpeed (OSObject* target, void* reference, IOExternalMethodArguments* args)
+{
+	uint64_t* speed = args->scalarOutput;
+	IOReturn ret = ((FPXboxHIDUserClient*)target)->getSpeed(speed);
+	if (ret != kIOReturnSuccess)
+		return ret;
+	args->scalarOutputCount = 1;
+
+	return kIOReturnSuccess;
+}
+
+
+IOReturn FPXboxHIDUserClient::getSpeed (uint64_t* speed)
+{
+	if (_driver == NULL || isInactive()) {
+		// Return an error if we don't have a provider. This could happen if the user process
+		// called getRawReport without calling IOServiceOpen first. Or, the user client could be
+		// in the process of being terminated and is thus inactive.
+		return kIOReturnNotAttached;
+	}
+	// set 'report' pointer to last raw report
+	// all this is taking place in kernel-space, the user/kernel boundary
+	// will be crossed in 'sGetRawReport' via the 'args' structureOutput
+	*speed = _driver->deviceSpeed();
+
+	return kIOReturnSuccess;
+}
+
+
+IOReturn FPXboxHIDUserClient::sGetPower (OSObject* target, void* reference, IOExternalMethodArguments* args)
+{
+	uint64_t* power = args->scalarOutput;
+	IOReturn ret = ((FPXboxHIDUserClient*)target)->getPower(power);
+	if (ret != kIOReturnSuccess)
+		return ret;
+	args->scalarOutputCount = 2;
+
+	return kIOReturnSuccess;
+}
+
+
+IOReturn FPXboxHIDUserClient::getPower (uint64_t* power)
+{
+	if (_driver == NULL || isInactive()) {
+		// Return an error if we don't have a provider. This could happen if the user process
+		// called getRawReport without calling IOServiceOpen first. Or, the user client could be
+		// in the process of being terminated and is thus inactive.
+		return kIOReturnNotAttached;
+	}
+	// set 'report' pointer to last raw report
+	// all this is taking place in kernel-space, the user/kernel boundary
+	// will be crossed in 'sGetRawReport' via the 'args' structureOutput
+	power[0] = _driver->currentPower();
+	power[1] = _driver->availablePower();
 
 	return kIOReturnSuccess;
 }

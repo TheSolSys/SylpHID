@@ -51,10 +51,18 @@ public:
     static IOReturn sLoadDefaultLayout (OSObject* target, void* reference, IOExternalMethodArguments* args);
     virtual IOReturn loadDefaultLayout (void);
 
+	static IOReturn sGetSpeed (OSObject* target, void* reference, IOExternalMethodArguments* args);
+	virtual IOReturn getSpeed (uint64_t* speed);
+
+	static IOReturn sGetPower (OSObject* target, void* reference, IOExternalMethodArguments* args);
+	virtual IOReturn getPower (uint64_t* power);
+
 private:
     const IOExternalMethodDispatch sMethods[kXboxHIDDriverClientMethodCount] = {
 	   { (IOExternalMethodAction) &FPXboxHIDUserClient::sGetRawReport, 0, 0, 0, sizeof(XBPadReport) },
 	   { (IOExternalMethodAction) &FPXboxHIDUserClient::sLoadDefaultLayout, 0, 0, 0, 0 },
+	   { (IOExternalMethodAction) &FPXboxHIDUserClient::sGetSpeed, 0, 0, 1, 0 },
+	   { (IOExternalMethodAction) &FPXboxHIDUserClient::sGetPower, 0, 0, 2, 0 },
     };
 
 public:

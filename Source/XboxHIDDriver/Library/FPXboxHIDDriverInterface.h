@@ -49,7 +49,6 @@ static inline id BOOLtoID(BOOL value)
 
 extern BOOL idToBOOL(id obj);
 extern id NSNUM(SInt32 num);
-extern id NSPTR(void* ptr);
 
 
 @interface FPXboxHIDDriverInterface : NSObject
@@ -73,9 +72,17 @@ extern id NSPTR(void* ptr);
 - (NSString*) deviceType;
 - (BOOL) deviceIsPad;
 - (BOOL) deviceIsRemote;
+- (NSString*) vendorID;
+- (NSString*) vendorSource;
+- (NSString*) productID;
 - (NSString*) productName;
 - (NSString*) manufacturerName;
+- (NSString*) versionNumber;
+- (NSString*) serialNumber;
+- (NSString*) locationID;
 - (NSString*) identifier;
+- (NSString*) deviceSpeed;
+- (NSString*) devicePower;
 
 // true if the device type has options (currently only the pad has options)
 - (BOOL) hasOptions;

@@ -3,5 +3,3 @@
 # XboxHID
 Driver for classic Xbox controllers for OSX
 
-
-Prtions of this software are licensed under the Apple Public Source License, all remaining items are licensed under the GPL.

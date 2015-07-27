@@ -180,6 +180,7 @@
 - (void) dealloc
 {
 	[_devices autorelease];
+	[_appConfig release];
 	[super dealloc];
 }
 
@@ -277,7 +278,8 @@
 			[_configPopUp addItemWithTitle: configName];
 	}
 
-	NSString* currentConfigName = [FPXboxHIDPrefsLoader configNameForDevice: intf];
+	NSString* currentConfigName = (_appConfig != nil) ? [_appConfig objectForKey: kNoticeConfigKey]
+													  : [FPXboxHIDPrefsLoader configNameForDevice: intf];
 	[_configPopUp selectItemWithTitle: currentConfigName];
 }
 
@@ -1582,8 +1584,12 @@
 }
 
 
-- (void) deviceConfigDidChange: (id)userInfo
+- (void) deviceConfigDidChange: (id)notify
 {
+	if (_appConfig != nil)
+		[_appConfig release];
+	if (notify != nil)
+		_appConfig = [[notify userInfo] retain];
 	[self buildConfigurationPopUpButton];
 	[self configureInterface];
 }

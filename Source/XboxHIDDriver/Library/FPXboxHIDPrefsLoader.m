@@ -231,9 +231,9 @@
 
 				NSLog(@"Loaded config \"%@\" for Device ID \"%@\"", configName, [device identifier]);
 			} else {
-				userInfo = [NSDictionary dictionaryWithObjectsAndKeys: appid, kAppsKey, nil];
+				userInfo = [NSDictionary dictionaryWithObjectsAndKeys: appid, kNoticeAppKey, configName, kNoticeConfigKey, nil];
 
-				NSLog(@"Loaded \"%@\" config \"%@\" for Device ID \"%@\"", appid, configName, [device identifier]);
+				NSLog(@"Loaded config \"%@\" (%@) for Device ID \"%@\"", configName, appid, [device identifier]);
 			}
 
 			// broadcast a message to other applications that the device's configuration has changed

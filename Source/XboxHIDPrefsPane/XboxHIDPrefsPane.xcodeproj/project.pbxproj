@@ -68,6 +68,8 @@
 		82C210491B668B3E00FAD449 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C210451B668B3E00FAD449 /* SMDoubleSlider.m */; };
 		82C2104A1B668B3E00FAD449 /* SMDoubleSliderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 82C210461B668B3E00FAD449 /* SMDoubleSliderCell.h */; };
 		82C2104B1B668B3E00FAD449 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C210471B668B3E00FAD449 /* SMDoubleSliderCell.m */; };
+		82C2104E1B66957800FAD449 /* FPConfigPopUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 82C2104C1B66957800FAD449 /* FPConfigPopUp.h */; };
+		82C2104F1B66957800FAD449 /* FPConfigPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2104D1B66957800FAD449 /* FPConfigPopUp.m */; };
 		82F77A7F1B62E0360033460F /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82F77A7E1B62E0360033460F /* credits.rtf */; };
 		82F77A821B62F37F0033460F /* FPScrollerCredits.h in Headers */ = {isa = PBXBuildFile; fileRef = 82F77A801B62F37F0033460F /* FPScrollerCredits.h */; };
 		82F77A831B62F37F0033460F /* FPScrollerCredits.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F77A811B62F37F0033460F /* FPScrollerCredits.m */; };
@@ -141,6 +143,8 @@
 		82C210451B668B3E00FAD449 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSlider.m; path = External/SMDoubleSlider/Framework_code/SMDoubleSlider.m; sourceTree = "<group>"; };
 		82C210461B668B3E00FAD449 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderCell.h; path = External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.h; sourceTree = "<group>"; };
 		82C210471B668B3E00FAD449 /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderCell.m; path = External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.m; sourceTree = "<group>"; };
+		82C2104C1B66957800FAD449 /* FPConfigPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPConfigPopUp.h; path = Source/FPConfigPopUp.h; sourceTree = "<group>"; };
+		82C2104D1B66957800FAD449 /* FPConfigPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPConfigPopUp.m; path = Source/FPConfigPopUp.m; sourceTree = "<group>"; };
 		82F77A7E1B62E0360033460F /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = credits.rtf; path = Resources/credits.rtf; sourceTree = "<group>"; };
 		82F77A801B62F37F0033460F /* FPScrollerCredits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPScrollerCredits.h; path = Source/FPScrollerCredits.h; sourceTree = "<group>"; };
 		82F77A811B62F37F0033460F /* FPScrollerCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPScrollerCredits.m; path = Source/FPScrollerCredits.m; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				823EACC51B57860600FED407 /* FPAlertView.m */,
 				826060A51B52FE9700A93BEE /* FPAnalogDigitalButton.h */,
 				826060A61B52FE9700A93BEE /* FPAnalogDigitalButton.m */,
+				82C2104C1B66957800FAD449 /* FPConfigPopUp.h */,
+				82C2104D1B66957800FAD449 /* FPConfigPopUp.m */,
 				826060A71B52FE9700A93BEE /* FPPopUpButtonCell.h */,
 				826060A81B52FE9700A93BEE /* FPPopUpButtonCell.m */,
 				82983C051B655A9F00C260C1 /* FPBoxLine.h */,
@@ -352,6 +358,7 @@
 				823EACA21B572FD000FED407 /* FPXboxHIDPrefsPane.h in Headers */,
 				823EACB61B57300100FED407 /* FPButtonView.h in Headers */,
 				82C2104A1B668B3E00FAD449 /* SMDoubleSliderCell.h in Headers */,
+				82C2104E1B66957800FAD449 /* FPConfigPopUp.h in Headers */,
 				82F77A821B62F37F0033460F /* FPScrollerCredits.h in Headers */,
 				823EACB81B57300100FED407 /* FPDpadView.h in Headers */,
 				82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */,
@@ -486,6 +493,7 @@
 				823EAC9D1B572EDC00FED407 /* FPXboxHIDPrefsLoader.m in Sources */,
 				823EACA71B572FDB00FED407 /* FPXboxHIDNotifier.m in Sources */,
 				825C6FFC1B57C555006599BE /* FPLogoView.m in Sources */,
+				82C2104F1B66957800FAD449 /* FPConfigPopUp.m in Sources */,
 				823EACAB1B572FE800FED407 /* FPHIDUtilities.m in Sources */,
 				823EACB51B57300100FED407 /* FPAxisPairView.m in Sources */,
 				823EACB71B57300100FED407 /* FPButtonView.m in Sources */,

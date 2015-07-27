@@ -33,11 +33,11 @@
 
 // Request codes for FPXboxHIDUserClient in driver
 enum XboxHIDDriverRequestCode {
-	kXboxHIDDriverClientMethodRawReport,
-	kXboxHIDDriverClientMethodLoadDefault,
-	kXboxHIDDriverClientMethodGetSpeed,
-	kXboxHIDDriverClientMethodGetPower,
-	kXboxHIDDriverClientMethodGetAddress,
+	kXboxHIDDriverClientMethodRawReport,		// Returns raw report data for use by live-report markers on sliders
+	kXboxHIDDriverClientMethodLoadDefault,		// Load default settings into current configuration
+	kXboxHIDDriverClientMethodGetSpeed,			// Get speed of USB bus device is plugged into
+	kXboxHIDDriverClientMethodGetPower,			// Get power requirements of USB device and Max power avilable
+	kXboxHIDDriverClientMethodGetAddress,		// Get USB address for displaying with locationID
 	kXboxHIDDriverClientMethodCount
 };
 
@@ -181,9 +181,9 @@ typedef struct XBPadOptions {
 #define kXboxPseudoClickLeftRight		11
 
 // constants for 'cookie' identifiers
-#define kCookiePadDisabled				 0
+#define kCookiePadDisabled				0
 
-#define kCookiePadFirstDigitalButton     6
+#define kCookiePadFirstDigitalButton    6
 #define kCookiePadLastDigitalButton		13
 #define kCookiePadDPadUp			   (kCookiePadFirstDigitalButton + kXboxDigitalDPadUp)
 #define kCookiePadDPadDown			   (kCookiePadFirstDigitalButton + kXboxDigitalDPadDown)

@@ -48,7 +48,7 @@
 
 #include <IOKit/usb/IOUSBPipe.h>
 
-#define DEBUG_LEVEL 7 // 0=disable all logging, 7=full logging
+#define DEBUG_LEVEL 1 // 0=disable all logging, 7=full logging
 #include <IOKit/usb/IOUSBLog.h>
 
 #define super IOHIDDevice

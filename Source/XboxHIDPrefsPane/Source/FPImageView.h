@@ -22,13 +22,13 @@
 
 @interface FPImageView : NSImageView {
 	BOOL _hover;
-	BOOL _click;
 	NSBezierPath* _round;
 	NSString* _tooltip;
 	NSTextField* _text;
 	NSTextField* _base;
 }
 
+- (void) resetImage;
 - (void) setTooltip: (NSString*)text withTipControl: (NSTextField*)field andBaseControl: (NSTextField*)base;
 
 @end

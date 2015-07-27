@@ -345,7 +345,7 @@
 	NSString* real = (speed == kUSBDeviceSpeedLow  ? @"1.5 Mb" :
 					  speed == kUSBDeviceSpeedFull ? @"12 Mb"  :
 					  speed == kUSBDeviceSpeedHigh ? @"480 Mb" : @"5 MB" );
-	return [NSString stringWithFormat: @"%@ Speed (%@/sec)", type, real];
+	return [NSString stringWithFormat: @"%@ Speed|(%@/sec)", type, real];
 }
 
 
@@ -358,7 +358,7 @@
 		if (ret != kIOReturnSuccess)
 			NSLog(@"devicePower Failure(%x) Service(%d)\n", ret, _service);
 	}
-	return [NSString stringWithFormat: @"%llu mA (%llu mA Max)", power[0], power[1]];
+	return [NSString stringWithFormat: @"%llu mA|(%llu mA Max)", power[0], power[1]];
 }
 
 

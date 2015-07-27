@@ -58,13 +58,36 @@ static void driversDidLoad(void* refcon, io_iterator_t iterator)
 
 static void appBecameActive(NSString* appid)
 {
-//	NSLog(@"appBecameActive: %@", appid);
-}
+	IOReturn kr = kIOReturnSuccess;
+	mach_port_t masterPort = 0;
+	CFMutableDictionaryRef matchDictionary = NULL;
+	io_iterator_t iterator;
+	io_object_t driver;
 
+	kr = IOMasterPort(bootstrap_port, &masterPort);
+	if (kIOReturnSuccess != kr) {
+		printf("IOMasterPort error with bootstrap_port\n");
+		exit(-1);
+	}
+	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
+	if (!matchDictionary) {
+		printf("IOServiceMatching returned NULL\n");
+		exit(-3);
+	}
+	kr = IOServiceGetMatchingServices(masterPort, matchDictionary, &iterator);
+	if (kIOReturnSuccess != kr) {
+		printf("IOServiceGetMatchingServices failed with 0x%x\n", kr);
+		exit(-4);
+	}
+	while ((driver = IOIteratorNext(iterator))) {
+		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 
-static void appBecameInactive(NSString* appid)
-{
-//	NSLog(@"appBecameInactive: %@", appid);
+		FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
+		[FPXboxHIDPrefsLoader loadConfigForDevice: device withAppID: appid];
+
+		[pool release];
+	}
+
 }
 
 
@@ -111,19 +134,10 @@ static void registerForApplicationChangedNotification()
 	NSNotificationCenter* center = [[NSWorkspace sharedWorkspace] notificationCenter];
 
 	// register for app activations
-	// check if app activated has a configuration assigned, and if so loads it
+	// load config for activated app, if present, otherwise load default config for any connected devices
 	[center addObserverForName: NSWorkspaceDidActivateApplicationNotification object: nil queue: nil
 					usingBlock: ^(NSNotification* note) {
 									appBecameActive([[note.userInfo objectForKey:NSWorkspaceApplicationKey] bundleIdentifier]);
-								}];
-
-	// register for app deactivation
-	// this will always fire after the app activation notification. therefore, if there is no active app
-	// saved then the last activated app had no config so just load the one assigned to the device or the
-	// default configuration if there is no configuration chosen via the prefs panel for the device
-	[center addObserverForName: NSWorkspaceDidDeactivateApplicationNotification object: nil queue: nil
-					usingBlock: ^(NSNotification* note) {
-									appBecameInactive([[note.userInfo objectForKey:NSWorkspaceApplicationKey] bundleIdentifier]);
 								}];
 }
 

@@ -53,6 +53,12 @@
 }
 
 
+- (void) resetImage
+{
+	_hover = NO;
+}
+
+
 - (void) setTooltip: (NSString*)tooltip withTipControl: (NSTextField*)text andBaseControl: (NSTextField*)base
 {
 	if (_tooltip != nil)

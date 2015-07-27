@@ -43,24 +43,12 @@
 #import "SMDoubleSlider.h"
 
 
-#define kTriggerAxisIndex       0
-#define kTriggerButtonIndex     1
-
-#define kStickAsButtonAlert		15
+#define kStickAsButtonAlert		15	// percentage threshold for deadzone too small when assigning sticks to buttons
 
 
 @implementation FPXboxHIDPrefsPane
 
 #pragma mark === NSPreferencesPane Methods ==========
-
-- (id) initWithBundle: (NSBundle*)bundle
-{
-	self = [super initWithBundle: bundle];
-	if (self != nil) {
-		_appID = CFSTR("com.fizzypopstudios.XboxHIDPrefsPane");
-	}
-	return self;
-}
 
 - (void) mainViewDidLoad
 {
@@ -184,6 +172,8 @@
 	for (int i = 0; i < kMenuButtonCount; i++)
 		if ([[_menuButtonHID itemAtIndex: i] isSeparatorItem] == NO)
 			[[_menuButtonHID itemAtIndex: i] setTag: [[_menuButtonXbox itemAtIndex: i] tag]];
+
+	_lastConfig = nil;
 }
 
 
@@ -330,6 +320,7 @@
 		id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
 		[FPXboxHIDPrefsLoader createConfigForDevice: device withName: [_createText stringValue]];
 		[self buildConfigurationPopUpButton];
+		_lastConfig = [_configPopUp titleOfSelectedItem];
 
 		if ([_createCopy state] == NSOffState) {
 			// Reset configuration if copy checkbox not checked
@@ -365,6 +356,7 @@
 		// Delete configuration
 		[FPXboxHIDPrefsLoader deleteConfigWithName: [_configPopUp titleOfSelectedItem]];
 		[self buildConfigurationPopUpButton];
+		_lastConfig = [_configPopUp titleOfSelectedItem];
 
 		// Load configuration now selected in popup
         [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: [_configPopUp titleOfSelectedItem]];
@@ -390,8 +382,12 @@
 	          onSide: MAPositionTop
 	          atDistance: 4];
 	[_actionEdit setEnabled: ![FPXboxHIDPrefsLoader isDefaultConfigForDevice: device]];
+	[_actionEdit resetImage];
 	[_actionUndo setEnabled: [self canUndo]];
-	[_actionApps setEnabled: NO];
+	[_actionUndo resetImage];
+	[_actionApps setEnabled: YES];
+	[_actionApps resetImage];
+	[_actionInfo resetImage];
 	[_popup setViewMargin: 1.0];
 	[self fadeInAttachedWindow];
 }
@@ -419,6 +415,21 @@
 		[_popup setViewMargin: 1.0];
 		[self crossFadeAttachedWindow];
 
+	} else if (sender == _actionUndo && [self canUndo]) {
+		[self performUndo];
+		[self fadeOutAttachedWindow];
+
+	} else if (sender == _actionApps) {
+		_xfade = _popup;
+		NSPoint buttonPoint = NSMakePoint(NSMidX([_configButtons frame]) + 19, NSMidY([_configButtons frame]));
+		_popup = [[MAAttachedWindow alloc] initWithView: _appsView
+				  attachedToPoint: buttonPoint
+				  inWindow: [_configButtons window]
+				  onSide: MAPositionTop
+				  atDistance: 4];
+		[_popup setViewMargin: 1.0];
+		[self crossFadeAttachedWindow];
+
 	} else if (sender == _actionInfo) {
 		_xfade = _popup;
 		NSPoint buttonPoint = NSMakePoint(NSMidX([_configButtons frame]) + 19, NSMidY([_configButtons frame]));
@@ -431,9 +442,6 @@
 		[_popup setViewMargin: 1.0];
 		[self crossFadeAttachedWindow];
 
-	} else if (sender == _actionUndo && [self canUndo]) {
-		[self performUndo];
-		[self fadeOutAttachedWindow];
 	}
 }
 
@@ -444,6 +452,7 @@
 		id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
 		[FPXboxHIDPrefsLoader renameConfig: [_editText stringValue] forDevice: device];
 		[self buildConfigurationPopUpButton];
+		_lastConfig = [_configPopUp titleOfSelectedItem];
 	}
 	[self fadeOutAttachedWindow];
 }
@@ -465,6 +474,18 @@
 }
 
 
+- (NSAttributedString*) formatUSBInfo: (NSString*)info
+{
+	NSArray* split = [info componentsSeparatedByString: @"|"];
+	NSDictionary* attrs = [NSDictionary dictionaryWithObjectsAndKeys: [NSColor disabledControlTextColor],
+																	   NSForegroundColorAttributeName, nil];
+	NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString: [split objectAtIndex: 0]];
+	[str appendAttributedString: [[NSAttributedString alloc] initWithString: @"  "]];
+	[str appendAttributedString: [[NSAttributedString alloc] initWithString: [split objectAtIndex: 1]
+															     attributes: attrs]];
+	return str;
+}
+
 - (void) populateUSBInfo
 {
 	FPXboxHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
@@ -477,8 +498,8 @@
 	[_usbSerialNumber setStringValue: (serial ? serial : @"(none)")];
 	[_usbSerialNumber setTextColor: (serial ? [NSColor textColor] : [NSColor disabledControlTextColor])];
 	[_usbLocationID setStringValue: [NSString stringWithFormat: @"%@ @ %@", [device locationID], [device deviceAddress]]];
-	[_usbBusSpeed setStringValue: [device deviceSpeed]];
-	[_usbPowerReqs setStringValue: [device devicePower]];
+	[_usbBusSpeed setAttributedStringValue: [self formatUSBInfo: [device deviceSpeed]]];
+	[_usbPowerReqs setAttributedStringValue: [self formatUSBInfo: [device devicePower]]];
 }
 
 
@@ -1561,7 +1582,7 @@
 }
 
 
-- (void) deviceConfigDidChange: (id)anObject
+- (void) deviceConfigDidChange: (id)userInfo
 {
 	[self buildConfigurationPopUpButton];
 	[self configureInterface];
@@ -1646,15 +1667,18 @@
 - (IBAction) selectConfig: (id)sender
 {
 	NSString* configName = [_configPopUp titleOfSelectedItem];
-	id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
+	if ([configName isEqualToString: _lastConfig] == NO) {
+		id device = [_devices objectAtIndex: [_devicePopUpButton indexOfSelectedItem]];
+		_lastConfig = [_configPopUp titleOfSelectedItem];
 
-	// first save the current config
-	[FPXboxHIDPrefsLoader saveConfigForDevice: device];
+		// first save the current config
+		[FPXboxHIDPrefsLoader saveConfigForDevice: device];
 
-	// now load the new config
-	[FPXboxHIDPrefsLoader loadConfigForDevice: device withName: configName];
+		// now load the new config
+		[FPXboxHIDPrefsLoader loadConfigForDevice: device withName: configName];
 
-	// GUI update is handled in deviceConfigDidChange:
+		// GUI update is handled in deviceConfigDidChange:
+	}
 }
 
 @end

@@ -64,10 +64,15 @@
 // load named config for device
 + (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName;
 
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	forAppID: (NSString*)appid;
+
 // create a new config with specified settings, and make it the device's configuration
 + (BOOL) createConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName;
 
 // delete the specified configuration
 + (BOOL) deleteConfigWithName: (NSString*)configName;
+
+// load application specific config (if present) for device
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withAppID: (NSString*)appid;
 
 @end

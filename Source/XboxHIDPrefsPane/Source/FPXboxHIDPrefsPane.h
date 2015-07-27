@@ -85,7 +85,6 @@ enum eMenuEntriesButtons {
 
 @interface FPXboxHIDPrefsPane : NSPreferencePane {
 	// state information
-	CFStringRef _appID;
     NSArray* _devices;
     NSTimer* _timer;
 	MAAttachedWindow* _popup;
@@ -93,6 +92,8 @@ enum eMenuEntriesButtons {
     FPXboxHIDNotifier* _notifier;
     XBPadReport _rawReport;
 	XBPadOptions _undo;
+	NSString* _lastConfig;
+	NSString* _appID;
 
 	// device popup
     IBOutlet id _devicePopUpButton;
@@ -237,6 +238,10 @@ enum eMenuEntriesButtons {
 	IBOutlet id _creditsScroll;
 	IBOutlet id _creditsText;
 	IBOutlet id _creditsOK;
+
+	IBOutlet id _appsView;
+	IBOutlet id _appsTable;
+	IBOutlet id _appsOK;
 
 	IBOutlet id _usbView;
 	IBOutlet id _usbVendorID;

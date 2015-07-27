@@ -31,12 +31,15 @@
 
 
 #define kConfigsKey                 @"Configurations"
+#define kAppsKey					@"Applications"
 #define kBindingsKey                @"Bindings"
 
 #define kConfigTypeKey              @"Type"
 #define kConfigSettingsKey          @"Settings"
 
 #define kDefaultsSuiteIdentifier    @"com.fizzypopstudios.XboxHIDDriver"
+
+#define kAppFinder					@"com.apple.finder"
 
 
 @implementation FPXboxHIDPrefsLoader
@@ -205,6 +208,12 @@
 // load named config for device
 + (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName
 {
+	return [self loadConfigForDevice: device withName: configName forAppID: nil];
+}
+
+
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	forAppID: (NSString*)appid
+{
 	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
 	NSDictionary* config = [[defaults objectForKey: kConfigsKey] objectForKey: configName];
 
@@ -213,15 +222,24 @@
 		// then load the config
 		BOOL success = [device loadOptions: [config objectForKey: kConfigSettingsKey]];
 		if (success) {
-			// change the binding for the device
-			[[defaults objectForKey: kBindingsKey] setObject: configName forKey: [device identifier]];
+			id userInfo = nil;
 
-			[FPXboxHIDPrefsLoader setDefaults: defaults];
+			if (appid == nil) {
+				// change the binding for the device
+				[[defaults objectForKey: kBindingsKey] setObject: configName forKey: [device identifier]];
+				[FPXboxHIDPrefsLoader setDefaults: defaults];
+
+				NSLog(@"Loaded config \"%@\" for Device ID \"%@\"", configName, [device identifier]);
+			} else {
+				userInfo = [NSDictionary dictionaryWithObjectsAndKeys: appid, kAppsKey, nil];
+
+				NSLog(@"Loaded \"%@\" config \"%@\" for Device ID \"%@\"", appid, configName, [device identifier]);
+			}
 
 			// broadcast a message to other applications that the device's configuration has changed
 			[[NSDistributedNotificationCenter defaultCenter] postNotificationName: kFPXboxHIDDeviceConfigurationDidChangeNotification
 																		   object: kFPDistributedNotificationsObject
-																		 userInfo: nil
+																		 userInfo: userInfo
 															   deliverImmediately: YES];
 		}
 		return success;
@@ -271,6 +289,24 @@
 	}
 
 	return NO;
+}
+
+
+// load app-specific confg (if present) for device
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withAppID: (NSString*)appid
+{
+	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+
+	// load default config for device when finder activated
+	if ([appid isEqualToString: kAppFinder]) {
+		return [FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+
+	// otherwise, check if an app specific config for device exists and load it if it does
+	} else {
+		NSString* config = [[[defaults objectForKey: kAppsKey] objectForKey: appid] objectForKey: [device identifier]];
+		return (config != nil ? [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: config forAppID: appid] : NO);
+
+	}
 }
 
 @end

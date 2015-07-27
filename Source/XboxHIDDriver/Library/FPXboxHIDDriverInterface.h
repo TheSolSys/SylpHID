@@ -91,6 +91,7 @@ extern id NSNUM(SInt32 num);
 // load a dictionary of options (say a saved configuration) into the ioregistry
 - (BOOL) loadOptions: (NSDictionary*)options;
 
+// load default settings from kernel driver
 - (void) loadDefaultLayout;
 
 // fetch the current device options from the ioregistry

@@ -279,18 +279,23 @@
 		// then load the config
 		BOOL success = [device loadOptions: [config objectForKey: kConfigSettingsKey]];
 		if (success) {
-			id userInfo = nil;
+			NSDictionary* userInfo;
 
 			if (appid == nil) {
-				// change the binding for the device
+				userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [device identifier], kNoticeDeviceKey,
+																	   configName,			kNoticeConfigKey, nil];
+
+				// change the binding for the device if not loading config for app
 				[[defaults objectForKey: kBindingsKey] setObject: configName forKey: [device identifier]];
 				[FPXboxHIDPrefsLoader setDefaults: defaults];
 
-				NSLog(@"Loaded config \"%@\" for Device ID \"%@\"", configName, [device identifier]);
+				NSLog(@"Loaded config \"%@\" for Device \"%@\"", configName, [device identifier]);
 			} else {
-				userInfo = [NSDictionary dictionaryWithObjectsAndKeys: appid, kNoticeAppKey, configName, kNoticeConfigKey, nil];
+				userInfo = [NSDictionary dictionaryWithObjectsAndKeys: [device identifier], kNoticeDeviceKey,
+																	   appid,				kNoticeAppKey,
+																	   configName,			kNoticeConfigKey, nil];
 
-				NSLog(@"Loaded config \"%@\" (%@) for Device ID \"%@\"", configName, appid, [device identifier]);
+				NSLog(@"Loaded config \"%@\" (%@) for Device \"%@\"", configName, appid, [device identifier]);
 			}
 
 			// broadcast a message to other applications that the device's configuration has changed

@@ -19,12 +19,21 @@
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
+// for changing hilight
+@interface FPAppTableView: NSTableView {
+	NSGradient* _gradient;
+}
 
+@end
+
+
+// for adding padding
 @interface FPAppTextFieldCell : NSTextFieldCell
 
 @end
 
 
+// for adding padding
 @interface FPAppImageCell : NSImageCell
 
 @end

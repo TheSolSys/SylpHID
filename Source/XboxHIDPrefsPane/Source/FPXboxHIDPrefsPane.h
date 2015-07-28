@@ -94,8 +94,9 @@ enum eMenuEntriesButtons {
     XBPadReport _rawReport;
 	XBPadOptions _undo;
 	NSString* _lastConfig;
+	NSString* _lastDevice;
 
-	NSDictionary* _appConfig;
+	NSMutableDictionary* _appConfig;
 	FPDataSourceApps* _appData;
 
 	// device popup
@@ -245,6 +246,7 @@ enum eMenuEntriesButtons {
 	IBOutlet id _appsView;
 	IBOutlet id _appsTable;
 	IBOutlet id _appsBlank;
+	IBOutlet id _appsIdent;
 	IBOutlet id _appsOK;
 
 	IBOutlet id _usbView;

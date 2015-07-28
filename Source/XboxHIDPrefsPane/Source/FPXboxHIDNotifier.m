@@ -34,20 +34,15 @@
 
 + (id) notifier
 {
-	FPXboxHIDNotifier* notifier;
-
-	notifier = [[FPXboxHIDNotifier alloc] init];
-
-	return notifier;
+	return [[FPXboxHIDNotifier alloc] init];
 }
 
 
 - (id) init
 {
 	self = [super init];
-	if (self && ![self createRunLoopNotifications]) {
-		return nil;
-	}
+	if (self && ![self createRunLoopNotifications])
+		self = nil;
 	return self;
 }
 
@@ -68,8 +63,8 @@
 
 - (void) fireMatchedSelector
 {
-	_matchedImp(_matchedTarget, _matchedSelector);
-//	[_matchedTarget performSelector: _matchedSelector];
+	if (_matchedTarget)
+		_matchedImp(_matchedTarget, _matchedSelector);
 }
 
 
@@ -91,14 +86,13 @@ static void driversMatched (void* refcon, io_iterator_t iterator)
 	_terminatedSelector = selector;
 	_terminatedTarget = target;
 	_terminatedImp = [_terminatedTarget methodForSelector: _terminatedSelector];
-
 }
 
 
 - (void) fireTerminatedSelector
 {
-	_terminatedImp(_terminatedTarget, _terminatedSelector);
-//	[_terminatedTarget performSelector: _terminatedSelector];
+	if (_terminatedTarget)
+		_terminatedImp(_terminatedTarget, _terminatedSelector);
 }
 
 

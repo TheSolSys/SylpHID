@@ -46,9 +46,6 @@ static void driversDidLoad(void* refcon, io_iterator_t iterator)
 			FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
 			[FPXboxHIDPrefsLoader createDefaultsForDevice: device];
 			[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
-
-			NSLog(@"Loaded config \"%@\" for Device ID \"%@\"",
-			      [FPXboxHIDPrefsLoader configNameForDevice: device], [device identifier]);
 		}
 	}
 }

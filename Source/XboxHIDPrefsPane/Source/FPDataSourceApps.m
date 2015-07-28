@@ -22,6 +22,7 @@
 
 #import "FPDataSourceApps.h"
 
+#define kAppTableMaxRows	8
 
 
 @implementation FPDataSourceApps
@@ -32,25 +33,24 @@
 	if (self != nil) {
 		_count = 0;
 		_popup = 0;
+		_source = nil;
 	}
 
 	return self;
 }
 
 
-
-
 - (void) setSource: (NSDictionary*)source forDeviceID: (NSString*)device withTableView: (NSTableView*)table
 {
-	_source = [[NSMutableArray alloc] init];
 	NSWorkspace* workspace = [NSWorkspace sharedWorkspace];
-
+	_source = [[NSMutableArray alloc] init];
 	_popup = [[NSPopUpButton alloc] init];
+
 	[(id<FPAppBindings>)[table delegate] buildConfigurationPopUpButton: _popup withDefault: device forAppBinding: YES];
 	[[_popup cell] setFont: [NSFont systemFontOfSize: [NSFont systemFontSizeForControlSize: NSSmallControlSize]]];
 	[[_popup cell] setControlSize: NSSmallControlSize];
 	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setDataCell: [_popup cell]];
-	[table setRowHeight: 25];
+	[table setRowHeight: 23];
 
 	for (NSString* appid in source) {
 		NSString* path = [workspace absolutePathForAppBundleWithIdentifier: appid];
@@ -72,7 +72,7 @@
 	}
 
 	_count = [_source count];	// Actual min/max values set in IB, so we just use 1 and 1000 in case we change them
-	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setWidth: _count > 7 ? 1 : 1000];
+	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setWidth: _count > kAppTableMaxRows ? 1 : 1000];
 }
 
 

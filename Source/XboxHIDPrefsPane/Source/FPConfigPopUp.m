@@ -50,7 +50,6 @@
 - (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig
 {
 	_appConfig = appconfig;
-
 	_devConfig = devconfig;
 
 	NSString* config = [_appConfig objectForKey: kNoticeConfigKey];
@@ -79,9 +78,7 @@
 		[[self itemWithTitle: _devConfig] setState: NSOffState];
 
 		_appConfig = nil;
-
 		_devConfig = nil;
-
 		_appIcon = nil;
 
 		[self setNeedsDisplay];

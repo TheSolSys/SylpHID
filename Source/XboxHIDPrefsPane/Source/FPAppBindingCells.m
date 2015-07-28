@@ -22,24 +22,64 @@
 #import "FPAppBindingCells.h"
 
 
+// for adding custom highlight
+@implementation FPAppTableView
+
+- (id) initWithCoder: (NSCoder*)coder
+{
+	self = [super initWithCoder: coder];
+	if (self != nil) {
+		_gradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor keyboardFocusIndicatorColor], 0.0,
+																	[NSColor alternateSelectedControlColor], 1.0, nil];
+	}
+	return self;
+}
+
+- (void)highlightSelectionInClipRect: (NSRect)clipRect
+{
+	NSInteger rowSelected = [self selectedRow];
+	if (rowSelected > -1) {
+		NSRect rowRect = [self rectOfRow: rowSelected];
+		rowRect.size.height -= 1;
+		rowRect.size.width -= 1.5;
+		[_gradient drawInBezierPath: [NSBezierPath bezierPathWithRoundedRect: rowRect xRadius: 6 yRadius: 6] angle: 90];
+	}
+}
+
+
+- (void) mouseDown: (NSEvent*)event
+{
+    NSPoint point = [self convertPoint: [event locationInWindow] fromView: nil];
+    NSInteger row = [self rowAtPoint: point];
+
+    if (row == -1)
+        [self deselectAll:nil];
+	else
+		[super mouseDown: event];
+}
+
+@end
+
+
+// for adding padding (2px) above text
 @implementation FPAppTextFieldCell
 
 - (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
 {
-	cellFrame.origin.y += 3;
-	cellFrame.size.height -= 3;
+	cellFrame.origin.y += 2;
+	cellFrame.size.height -= 2;
 	[super drawInteriorWithFrame: cellFrame inView: controlView];
 }
 
 @end
 
 
+// for adding padding (1px) around icon
 @implementation FPAppImageCell
 
 - (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
 {
 	cellFrame = NSInsetRect(cellFrame, 1, 1);
-	cellFrame.origin.y -= 1;
 	[super drawInteriorWithFrame: cellFrame inView: controlView];
 }
 

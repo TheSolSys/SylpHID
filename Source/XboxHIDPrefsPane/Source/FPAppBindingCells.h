@@ -1,5 +1,5 @@
 //
-// FPConfigPopUp.h
+// FPAppTextFieldCell.h
 // "Xbox HID"
 //
 // Created by Paige Marie DePol <pmd@fizzypopstudios.com>
@@ -20,15 +20,11 @@
 // =========================================================================================================================
 
 
-@interface FPConfigPopUp : NSPopUpButton {
-	NSDictionary* _appConfig;
-	NSString* _devConfig;
-	NSImage* _appIcon;
-	NSRect _appDraw;
-	NSRect _appFrom;
-}
+@interface FPAppTextFieldCell : NSTextFieldCell
 
-- (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig;
-- (void) clearAppConfig;
+@end
+
+
+@interface FPAppImageCell : NSImageCell
 
 @end

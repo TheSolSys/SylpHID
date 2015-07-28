@@ -1,5 +1,5 @@
 //
-// FPConfigPopUp.h
+// FPXboxHIDAppData.h
 // "Xbox HID"
 //
 // Created by Paige Marie DePol <pmd@fizzypopstudios.com>
@@ -19,16 +19,24 @@
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
+#define kAppTableColumnIcon		'ICON'
+#define kAppTableColumnName		'NAME'
+#define kAppTableColumnList		'LIST'
 
-@interface FPConfigPopUp : NSPopUpButton {
-	NSDictionary* _appConfig;
-	NSString* _devConfig;
-	NSImage* _appIcon;
-	NSRect _appDraw;
-	NSRect _appFrom;
+
+@protocol FPAppBinding
+
+@required
+- (void) buildConfigurationPopUpButton: (NSPopUpButton*)button withDefault: (NSString*)defconfig forAppBinding: (BOOL)forapp;
+
+@end
+
+
+@interface FPDataSourceApps : NSObject <NSTableViewDataSource, NSTableViewDelegate> {
+	NSMutableArray* _source;
+	NSUInteger _count;
 }
 
-- (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig;
-- (void) clearAppConfig;
+- (void) setSource: (NSDictionary*)source forDeviceID: (NSString*)device  withTableView: (NSTableView*)table;
 
 @end

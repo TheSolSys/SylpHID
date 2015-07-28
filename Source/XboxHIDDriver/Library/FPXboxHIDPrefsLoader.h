@@ -34,11 +34,11 @@
 
 #define kConfigNameDefault	@"Default Layout"
 
-#define kNoticeAppKey				@"AppID"
-#define kNoticeConfigKey			@"Config"
+#define kNoticeAppKey		@"AppID"
+#define kNoticeConfigKey	@"Config"
 
 #define kFPDistributedNotificationsObject	@"com.fizzypopstudios.XboxHIDDriver"
-#define kFPXboxHIDDeviceConfigurationDidChangeNotification	@"ConfigDidChange"
+#define kFPXboxHIDDeviceConfigurationDidChangeNotification	  @"ConfigDidChange"
 
 
 @interface FPXboxHIDPrefsLoader : NSObject
@@ -53,7 +53,16 @@
 + (NSString*) configNameForDevice: (FPXboxHIDDriverInterface*)device;
 
 // rename current configuration
-+ (BOOL) renameConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) renameCurrentConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device;
+
+// rename specific configuration
++ (BOOL) renameConfigNamed: (NSString*)existing withNewName: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device;
+
+// returns all current app bindings
++ (NSDictionary*) allAppBindings;
+
+// returns total number of applications bound to specific config
++ (int) totalAppBindingsForConfigNamed: (NSString*)config;
 
 // is current config the default config?
 + (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device;
@@ -64,18 +73,21 @@
 // save the current config
 + (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device;
 
++ (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device withConfigName: configName;
+
 // load named config for device
 + (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName;
 
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	forAppID: (NSString*)appid;
+// load named config for device, with optional appid to support app specific config bindings
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	andAppID: (NSString*)appid;
+
+// load application specific config (if present) for device
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device forAppID: (NSString*)appid;
 
 // create a new config with specified settings, and make it the device's configuration
 + (BOOL) createConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName;
 
 // delete the specified configuration
 + (BOOL) deleteConfigWithName: (NSString*)configName;
-
-// load application specific config (if present) for device
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withAppID: (NSString*)appid;
 
 @end

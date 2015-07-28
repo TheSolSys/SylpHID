@@ -21,6 +21,8 @@
 
 #import "FPConfigPopUp.h"
 
+#import "FPXboxHIDPrefsLoader.h"
+
 
 @implementation FPConfigPopUp
 
@@ -28,7 +30,15 @@
 {
 	self = [super initWithCoder: coder];
 	if (self != nil) {
-		_appID = nil;
+		_appConfig = nil;
+		_devConfig = nil;
+		_appIcon = nil;
+
+		_appFrom.origin = NSMakePoint(0,0);
+		_appFrom.size = [_appIcon size];
+
+		_appDraw.origin = NSMakePoint([self frame].size.width - 34, 3);
+		_appDraw.size = NSMakeSize(14, 14);
 	}
 
 	return self;
@@ -37,40 +47,73 @@
 
 - (void) dealloc
 {
-	if (_appID)
-		[_appID release];
+	if (_appConfig != nil) {
+		[_appConfig release];
+		[_devConfig release];
+		[_appIcon release];
+	}
 
 	[super dealloc];
 }
 
 
-- (NSString*) appID
+- (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig
 {
-	return _appID;
+	if (_appConfig)
+		[_appConfig release];
+	_appConfig = [appconfig retain];
+
+	if (_devConfig)
+		[_devConfig release];
+	_devConfig = [devconfig retain];
+
+	NSString* config = [_appConfig objectForKey: kNoticeConfigKey];
+	NSString* path = [[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier: [appconfig objectForKey: kNoticeAppKey]];
+
+	if (_appIcon != nil)
+		[_appIcon release];
+	if (path != nil) {
+		_appIcon = [[[NSWorkspace sharedWorkspace] iconForFile: path] retain];
+	} else {
+		NSBundle* bundle = [NSBundle bundleForClass: [self class]];
+		_appIcon = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForResource:@"iconAppSmallTemplate" ofType:@"png"]] retain];
+	}
+
+	_appFrom.origin = NSMakePoint(0,0);
+	_appFrom.size = [_appIcon size];
+
+	[self selectItemWithTitle: config];
+
+	if ([_devConfig isEqualToString: config] == NO)
+		[[self itemWithTitle: _devConfig] setState: NSMixedState];
 }
 
 
-- (void) setAppID: (NSString*)appid
+- (void) clearAppConfig
 {
-	if (_appID)
-		[_appID release];
-	_appID = [appid retain];
+	if (_appConfig) {
+		[[self itemWithTitle: _devConfig] setState: NSOffState];
+
+		[_appConfig release];
+		_appConfig = nil;
+
+		[_devConfig release];
+		_devConfig = nil;
+
+		[_appIcon release];
+		_appIcon = nil;
+
+		[self setNeedsDisplay];
+	}
 }
 
 
-- (void) clearAppID
+- (void)drawRect:(NSRect)dirty
 {
-	if (_appID)
-		[_appID release];
-	_appID = nil;
-}
+    [super drawRect:dirty];
 
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
+	if (_appIcon != nil)
+	   [_appIcon drawInRect: _appDraw fromRect: _appFrom operation: NSCompositeSourceAtop fraction: 0.75 respectFlipped: YES hints: NULL];
 }
 
 @end

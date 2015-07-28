@@ -83,7 +83,7 @@ static void appBecameActive(NSString* appid)
 		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 
 		FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
-		[FPXboxHIDPrefsLoader loadConfigForDevice: device withAppID: appid];
+		[FPXboxHIDPrefsLoader loadConfigForDevice: device forAppID: appid];
 
 		[pool release];
 	}

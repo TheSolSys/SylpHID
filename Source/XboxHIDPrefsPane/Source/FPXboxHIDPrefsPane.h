@@ -31,6 +31,7 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import "FPXboxHIDNotifier.h"
 #import "FPXboxHIDDriverKeys.h"
+#import "FPDataSourceApps.h"
 #import "MAAttachedWindow.h"
 
 
@@ -83,7 +84,7 @@ enum eMenuEntriesButtons {
 };
 
 
-@interface FPXboxHIDPrefsPane : NSPreferencePane {
+@interface FPXboxHIDPrefsPane : NSPreferencePane <FPAppBinding> {
 	// state information
     NSArray* _devices;
     NSTimer* _timer;
@@ -93,10 +94,12 @@ enum eMenuEntriesButtons {
     XBPadReport _rawReport;
 	XBPadOptions _undo;
 	NSString* _lastConfig;
+
 	NSDictionary* _appConfig;
+	FPDataSourceApps* _appData;
 
 	// device popup
-    IBOutlet id _devicePopUpButton;
+    IBOutlet id _devicePopUp;
 
 	// tab view
     IBOutlet id _tabView;
@@ -241,6 +244,7 @@ enum eMenuEntriesButtons {
 
 	IBOutlet id _appsView;
 	IBOutlet id _appsTable;
+	IBOutlet id _appsBlank;
 	IBOutlet id _appsOK;
 
 	IBOutlet id _usbView;

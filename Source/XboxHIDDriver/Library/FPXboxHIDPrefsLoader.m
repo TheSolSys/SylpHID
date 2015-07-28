@@ -144,29 +144,81 @@
 
 
 // rename current config
-+ (BOOL) renameConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) renameCurrentConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device
 {
-	NSString* current = [FPXboxHIDPrefsLoader configNameForDevice: device];
+	return [self renameConfigNamed: [FPXboxHIDPrefsLoader configNameForDevice: device] withNewName: rename forDevice: device];
+}
 
-	if ([rename isEqualToString: @""] || [rename isEqualToString: kConfigNameDefault] ||
-										 [current isEqualToString: kConfigNameDefault])
+
+// rename specific coniguration
++ (BOOL) renameConfigNamed: (NSString*)current withNewName: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device
+{
+	if ([rename isEqualToString: @""] || [rename isEqualToString: kConfigNameDefault] || [current isEqualToString: kConfigNameDefault])
 		return false;	// Can't rename default config, or rename anything else to default name
 
-	NSArray* names = [FPXboxHIDPrefsLoader configNamesForDeviceType: [device deviceType]];
-	if ([names containsObject: rename])
+	if ([[FPXboxHIDPrefsLoader configNamesForDeviceType: [device deviceType]] containsObject: rename])
 		return false;	// Don't rename if name already exists
 
 	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
 	NSDictionary* settings = [[prefs objectForKey: kConfigsKey] objectForKey: current];
+
+	// add new key as copy of settings, then remove old key
 	[[prefs objectForKey: kConfigsKey] setObject: settings forKey: rename];
 	[[prefs objectForKey: kConfigsKey] removeObjectForKey: current];
 
-	[[prefs objectForKey: kBindingsKey] removeObjectForKey: [device identifier]];
-	[[prefs objectForKey: kBindingsKey] setObject: rename forKey: [device identifier]];
+	// iterate through device bindings to update any devices using renamed config
+	NSMutableDictionary* bindings = [prefs objectForKey: kBindingsKey];
+	for (NSString* device in bindings) {
+		if ([[bindings objectForKey: device] isEqualToString: current]) {
+			[bindings removeObjectForKey: device];
+			[bindings setObject: rename forKey: device];
+		}
+	}
+
+	// iterate through application bindings to update any apps using renamed config
+	NSDictionary* apps = [prefs objectForKey: kAppsKey];
+	for (NSString* appid in apps) {
+		NSMutableDictionary* bindings = [apps objectForKey: appid];
+		for (NSString* device in bindings) {
+			if ([[bindings objectForKey: device] isEqualToString: current]) {
+				[bindings removeObjectForKey: device];
+				[bindings setObject: rename forKey: device];
+			}
+		}
+	}
 
 	[FPXboxHIDPrefsLoader setDefaults: prefs];
 
 	return true;
+}
+
+
+// returns all current app bindings
++ (NSDictionary*) allAppBindings
+{
+	NSDictionary* bindings = [[FPXboxHIDPrefsLoader defaults] objectForKey: kAppsKey];
+	if (bindings != nil)
+		return [NSDictionary dictionaryWithDictionary: bindings];
+	return nil;
+}
+
+
+// returns total number of applications bound to specific config
++ (int) totalAppBindingsForConfigNamed: (NSString*)config
+{
+	int total = 0;
+	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+
+	// iterate through application bindings to count apps bound to name
+	NSDictionary* apps = [prefs objectForKey: kAppsKey];
+	for (NSString* appid in apps) {
+		NSMutableDictionary* bindings = [apps objectForKey: appid];
+		for (NSString* device in bindings) {
+			total += [[bindings objectForKey: device] isEqualToString: config];
+		}
+	}
+
+	return total;
 }
 
 
@@ -185,11 +237,17 @@
 }
 
 
-// save the current config
+// save the current config using selected config name for device
 + (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device
 {
+	return [self saveConfigForDevice: device withConfigName: [FPXboxHIDPrefsLoader configNameForDevice: device]];
+}
+
+
+// save current config under specific name (used for app config support)
++ (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device withConfigName: configName
+{
 	NSDictionary* settings = [device deviceOptions];
-	NSString* configName = [FPXboxHIDPrefsLoader configNameForDevice: device];
 	NSString* configType = [device deviceType];
 	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
 	NSMutableDictionary* config = [NSMutableDictionary dictionary];
@@ -208,11 +266,12 @@
 // load named config for device
 + (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName
 {
-	return [self loadConfigForDevice: device withName: configName forAppID: nil];
+	return [self loadConfigForDevice: device withName: configName andAppID: nil];
 }
 
 
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	forAppID: (NSString*)appid
+// load named config for device, with optional appid to support app specific config bindings
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	andAppID: (NSString*)appid
 {
 	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
 	NSDictionary* config = [[defaults objectForKey: kConfigsKey] objectForKey: configName];
@@ -246,6 +305,24 @@
 	}
 
 	return NO;
+}
+
+
+// load app-specific confg (if present) for device
++ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device forAppID: (NSString*)appid
+{
+	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+
+	// load default config for device when finder activated
+	if ([appid isEqualToString: kAppFinder]) {
+		return [FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+
+	// otherwise, check if an app specific config for device exists and load it if it does
+	} else {
+		NSString* config = [[[defaults objectForKey: kAppsKey] objectForKey: appid] objectForKey: [device identifier]];
+		return (config != nil ? [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: config andAppID: appid] : NO);
+
+	}
 }
 
 
@@ -289,24 +366,6 @@
 	}
 
 	return NO;
-}
-
-
-// load app-specific confg (if present) for device
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withAppID: (NSString*)appid
-{
-	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
-
-	// load default config for device when finder activated
-	if ([appid isEqualToString: kAppFinder]) {
-		return [FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
-
-	// otherwise, check if an app specific config for device exists and load it if it does
-	} else {
-		NSString* config = [[[defaults objectForKey: kAppsKey] objectForKey: appid] objectForKey: [device identifier]];
-		return (config != nil ? [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: config forAppID: appid] : NO);
-
-	}
 }
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821206271B66FB17004D6F59 /* FPDataSourceApps.h in Headers */ = {isa = PBXBuildFile; fileRef = 821206251B66FB17004D6F59 /* FPDataSourceApps.h */; };
+		821206281B66FB17004D6F59 /* FPDataSourceApps.m in Sources */ = {isa = PBXBuildFile; fileRef = 821206261B66FB17004D6F59 /* FPDataSourceApps.m */; };
 		8220E2771B3FCB7A002B7381 /* xboxhidprefs.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8220E2761B3FCB7A002B7381 /* xboxhidprefs.icns */; };
 		823EAC991B572EDC00FED407 /* FPXboxHIDDriverInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 823EAC941B572EDC00FED407 /* FPXboxHIDDriverInterface.h */; };
 		823EAC9A1B572EDC00FED407 /* FPXboxHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 823EAC951B572EDC00FED407 /* FPXboxHIDDriverInterface.m */; };
@@ -59,6 +61,8 @@
 		826060DE1B52FF0000A93BEE /* iconEditTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826060DA1B52FF0000A93BEE /* iconEditTemplate.png */; };
 		826060DF1B52FF0000A93BEE /* iconUndoTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826060DB1B52FF0000A93BEE /* iconUndoTemplate.png */; };
 		826060E01B52FF0000A93BEE /* iconUSBTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826060DC1B52FF0000A93BEE /* iconUSBTemplate.png */; };
+		828BEF661B6730720005A90F /* FPAppBindingCells.h in Headers */ = {isa = PBXBuildFile; fileRef = 828BEF641B6730720005A90F /* FPAppBindingCells.h */; };
+		828BEF671B6730720005A90F /* FPAppBindingCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 828BEF651B6730720005A90F /* FPAppBindingCells.m */; };
 		82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 82983C051B655A9F00C260C1 /* FPBoxLine.h */; };
 		82983C081B655A9F00C260C1 /* FPBoxLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 82983C061B655A9F00C260C1 /* FPBoxLine.m */; };
 		82BC57041B570B8E0040C786 /* iconAppSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */; };
@@ -82,6 +86,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		821206251B66FB17004D6F59 /* FPDataSourceApps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPDataSourceApps.h; path = Source/FPDataSourceApps.h; sourceTree = "<group>"; };
+		821206261B66FB17004D6F59 /* FPDataSourceApps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPDataSourceApps.m; path = Source/FPDataSourceApps.m; sourceTree = "<group>"; };
 		8220E2761B3FCB7A002B7381 /* xboxhidprefs.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xboxhidprefs.icns; path = Resources/xboxhidprefs.icns; sourceTree = "<group>"; };
 		823EAC941B572EDC00FED407 /* FPXboxHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverInterface.h; path = ../XboxHIDDriver/Library/FPXboxHIDDriverInterface.h; sourceTree = "<group>"; };
 		823EAC951B572EDC00FED407 /* FPXboxHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDriverInterface.m; path = ../XboxHIDDriver/Library/FPXboxHIDDriverInterface.m; sourceTree = "<group>"; };
@@ -134,6 +140,8 @@
 		826060DA1B52FF0000A93BEE /* iconEditTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconEditTemplate.png; path = Resources/Images/iconEditTemplate.png; sourceTree = "<group>"; };
 		826060DB1B52FF0000A93BEE /* iconUndoTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUndoTemplate.png; path = Resources/Images/iconUndoTemplate.png; sourceTree = "<group>"; };
 		826060DC1B52FF0000A93BEE /* iconUSBTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUSBTemplate.png; path = Resources/Images/iconUSBTemplate.png; sourceTree = "<group>"; };
+		828BEF641B6730720005A90F /* FPAppBindingCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppBindingCells.h; path = Source/FPAppBindingCells.h; sourceTree = "<group>"; };
+		828BEF651B6730720005A90F /* FPAppBindingCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppBindingCells.m; path = Source/FPAppBindingCells.m; sourceTree = "<group>"; };
 		82983C051B655A9F00C260C1 /* FPBoxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBoxLine.h; path = Source/FPBoxLine.h; sourceTree = "<group>"; };
 		82983C061B655A9F00C260C1 /* FPBoxLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBoxLine.m; path = Source/FPBoxLine.m; sourceTree = "<group>"; };
 		82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAppSmallTemplate.png; path = Resources/Images/iconAppSmallTemplate.png; sourceTree = "<group>"; };
@@ -176,6 +184,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		821206291B67131E004D6F59 /* App Binding Table */ = {
+			isa = PBXGroup;
+			children = (
+				821206251B66FB17004D6F59 /* FPDataSourceApps.h */,
+				821206261B66FB17004D6F59 /* FPDataSourceApps.m */,
+				828BEF641B6730720005A90F /* FPAppBindingCells.h */,
+				828BEF651B6730720005A90F /* FPAppBindingCells.m */,
+			);
+			name = "App Binding Table";
+			sourceTree = "<group>";
+		};
 		828D4E7B1B3F147000466975 /* SMDoubleSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +347,7 @@
 			children = (
 				8294F24E1B40B201005DC1B8 /* Driver Library */,
 				8294F24B1B40B15A005DC1B8 /* Controls */,
+				821206291B67131E004D6F59 /* App Binding Table */,
 				823EACA81B572FE800FED407 /* FPHIDUtilities.h */,
 				823EACA91B572FE800FED407 /* FPHIDUtilities.m */,
 				823EACA41B572FDB00FED407 /* FPXboxHIDNotifier.h */,
@@ -359,6 +379,7 @@
 				823EACB61B57300100FED407 /* FPButtonView.h in Headers */,
 				82C2104A1B668B3E00FAD449 /* SMDoubleSliderCell.h in Headers */,
 				82C2104E1B66957800FAD449 /* FPConfigPopUp.h in Headers */,
+				821206271B66FB17004D6F59 /* FPDataSourceApps.h in Headers */,
 				82F77A821B62F37F0033460F /* FPScrollerCredits.h in Headers */,
 				823EACB81B57300100FED407 /* FPDpadView.h in Headers */,
 				82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */,
@@ -367,6 +388,7 @@
 				823EACA61B572FDB00FED407 /* FPXboxHIDNotifier.h in Headers */,
 				823EACC21B5742A300FED407 /* FPImageView.h in Headers */,
 				82C210421B668B3100FAD449 /* MAAttachedWindow.h in Headers */,
+				828BEF661B6730720005A90F /* FPAppBindingCells.h in Headers */,
 				823EAC9C1B572EDC00FED407 /* FPXboxHIDPrefsLoader.h in Headers */,
 				823EAC9B1B572EDC00FED407 /* FPXboxHIDDriverKeys.h in Headers */,
 				82C210481B668B3E00FAD449 /* SMDoubleSlider.h in Headers */,
@@ -486,18 +508,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				823EACA31B572FD000FED407 /* FPXboxHIDPrefsPane.m in Sources */,
-				82C2104B1B668B3E00FAD449 /* SMDoubleSliderCell.m in Sources */,
-				823EACC71B57860600FED407 /* FPAlertView.m in Sources */,
-				82C210491B668B3E00FAD449 /* SMDoubleSlider.m in Sources */,
 				823EAC9A1B572EDC00FED407 /* FPXboxHIDDriverInterface.m in Sources */,
 				823EAC9D1B572EDC00FED407 /* FPXboxHIDPrefsLoader.m in Sources */,
 				823EACA71B572FDB00FED407 /* FPXboxHIDNotifier.m in Sources */,
+				821206281B66FB17004D6F59 /* FPDataSourceApps.m in Sources */,
+				823EACC71B57860600FED407 /* FPAlertView.m in Sources */,
 				825C6FFC1B57C555006599BE /* FPLogoView.m in Sources */,
 				82C2104F1B66957800FAD449 /* FPConfigPopUp.m in Sources */,
 				823EACAB1B572FE800FED407 /* FPHIDUtilities.m in Sources */,
 				823EACB51B57300100FED407 /* FPAxisPairView.m in Sources */,
 				823EACB71B57300100FED407 /* FPButtonView.m in Sources */,
-				82C210431B668B3100FAD449 /* MAAttachedWindow.m in Sources */,
 				823EACB91B57300100FED407 /* FPDpadView.m in Sources */,
 				823EACBB1B57300100FED407 /* FPTriggerView.m in Sources */,
 				823EACC31B5742A300FED407 /* FPImageView.m in Sources */,
@@ -506,6 +526,10 @@
 				82F77A871B62F4CF0033460F /* FPTextCredits.m in Sources */,
 				82F77A831B62F37F0033460F /* FPScrollerCredits.m in Sources */,
 				82983C081B655A9F00C260C1 /* FPBoxLine.m in Sources */,
+				82C210431B668B3100FAD449 /* MAAttachedWindow.m in Sources */,
+				82C210491B668B3E00FAD449 /* SMDoubleSlider.m in Sources */,
+				828BEF671B6730720005A90F /* FPAppBindingCells.m in Sources */,
+				82C2104B1B668B3E00FAD449 /* SMDoubleSliderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

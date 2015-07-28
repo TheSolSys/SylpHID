@@ -1,5 +1,5 @@
 //
-// FPConfigPopUp.h
+// FPAppTextFieldCell.m
 // "Xbox HID"
 //
 // Created by Paige Marie DePol <pmd@fizzypopstudios.com>
@@ -19,16 +19,28 @@
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
+#import "FPAppBindingCells.h"
 
-@interface FPConfigPopUp : NSPopUpButton {
-	NSDictionary* _appConfig;
-	NSString* _devConfig;
-	NSImage* _appIcon;
-	NSRect _appDraw;
-	NSRect _appFrom;
+
+@implementation FPAppTextFieldCell
+
+- (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
+{
+	cellFrame.origin.y += 3;
+	cellFrame.size.height -= 3;
+	[super drawInteriorWithFrame: cellFrame inView: controlView];
 }
 
-- (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig;
-- (void) clearAppConfig;
+@end
+
+
+@implementation FPAppImageCell
+
+- (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
+{
+	cellFrame = NSInsetRect(cellFrame, 1, 1);
+	cellFrame.origin.y -= 1;
+	[super drawInteriorWithFrame: cellFrame inView: controlView];
+}
 
 @end

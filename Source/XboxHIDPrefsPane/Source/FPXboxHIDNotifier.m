@@ -38,7 +38,7 @@
 
 	notifier = [[FPXboxHIDNotifier alloc] init];
 
-	return [notifier autorelease];
+	return notifier;
 }
 
 
@@ -46,7 +46,6 @@
 {
 	self = [super init];
 	if (self && ![self createRunLoopNotifications]) {
-		[self release];
 		return nil;
 	}
 	return self;
@@ -56,7 +55,6 @@
 - (void) dealloc
 {
 	[self releaseRunLoopNotifications];
-	[super dealloc];
 }
 
 
@@ -64,18 +62,20 @@
 {
 	_matchedSelector = selector;
 	_matchedTarget = target;
+	_matchedImp = [_matchedTarget methodForSelector: _matchedSelector];
 }
 
 
 - (void) fireMatchedSelector
 {
-	[_matchedTarget performSelector: _matchedSelector];
+	_matchedImp(_matchedTarget, _matchedSelector);
+//	[_matchedTarget performSelector: _matchedSelector];
 }
 
 
 static void driversMatched (void* refcon, io_iterator_t iterator)
 {
-	FPXboxHIDNotifier* self = (FPXboxHIDNotifier*)refcon;
+	FPXboxHIDNotifier* self = (__bridge FPXboxHIDNotifier*)refcon;
 	io_object_t object;
 
 	do {
@@ -90,18 +90,21 @@ static void driversMatched (void* refcon, io_iterator_t iterator)
 {
 	_terminatedSelector = selector;
 	_terminatedTarget = target;
+	_terminatedImp = [_terminatedTarget methodForSelector: _terminatedSelector];
+
 }
 
 
 - (void) fireTerminatedSelector
 {
-	[_terminatedTarget performSelector: _terminatedSelector];
+	_terminatedImp(_terminatedTarget, _terminatedSelector);
+//	[_terminatedTarget performSelector: _terminatedSelector];
 }
 
 
 static void driversTerminated (void* refcon, io_iterator_t iterator)
 {
-	FPXboxHIDNotifier* self = (FPXboxHIDNotifier*)refcon;
+	FPXboxHIDNotifier* self = (__bridge FPXboxHIDNotifier*)refcon;
 	io_object_t object;
 
 	do {
@@ -143,7 +146,7 @@ static void driversTerminated (void* refcon, io_iterator_t iterator)
 	CFRetain(matchDictionary); // next call will consume one reference
 
 	kr = IOServiceAddMatchingNotification(_notificationPort, kIOMatchedNotification, matchDictionary,
-														driversMatched, self, &notificationIterator);
+														driversMatched, (__bridge void *)(self), &notificationIterator);
 	if (kr != kIOReturnSuccess) {
 		NSLog(@"IOServiceAddMatchingNotification with kIOMatchedNotification failed with 0x%x\n", kr);
 		return NO;
@@ -153,7 +156,7 @@ static void driversTerminated (void* refcon, io_iterator_t iterator)
 		primeNotifications(NULL, notificationIterator);
 
 	kr = IOServiceAddMatchingNotification(_notificationPort, kIOTerminatedNotification, matchDictionary,
-														driversTerminated, self, &notificationIterator);
+														driversTerminated, (__bridge void *)(self), &notificationIterator);
 	if (kr != kIOReturnSuccess) {
 		NSLog(@"IOServiceAddMatchingNotification with kIOTerminatedNotification failed with 0x%x\n", kr);
 		return NO;

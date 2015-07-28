@@ -30,7 +30,7 @@
 	if (self != nil) {
 		NSRect frame = [self frame];
 		NSBundle* bundle = [NSBundle bundleForClass: [self class]];
-		_colors = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForResource:@"logoColors" ofType:@"png"]] retain];
+		_colors = [[NSImage alloc] initWithContentsOfFile: [bundle pathForResource:@"logoColors" ofType:@"png"]];
 
 		_fromRectTop.origin = NSMakePoint(0, 0);
 		_fromRectTop.size = frame.size;
@@ -55,9 +55,7 @@
 - (void) dealloc
 {
 	[_timer invalidate];
-	[_colors release];
 
-	[super dealloc];
 }
 
 

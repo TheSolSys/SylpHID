@@ -29,31 +29,23 @@
 	self = [super initWithCoder: coder];
 	if (self != nil) {
 		_hover = NO;
-        [self addTrackingArea: [[NSTrackingArea alloc] initWithRect: [self bounds]
-															options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow)
-															  owner: self
-														   userInfo: nil]];
+        _track = [[NSTrackingArea alloc] initWithRect: [self bounds]
+											  options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow)
+											    owner: self
+											 userInfo: nil];
+		[self addTrackingArea: _track];
 	}
 
 	return self;
 }
 
 
-- (void) dealloc
-{
-	if (_popup != nil)
-		[_popup release];
-	if (_view != nil)
-		[_view release];
-
-	[super dealloc];
-}
 
 
 - (void) setAlertView: (NSView*)view
 {
 	// copy the view by archiving and unarchiving it
-	_view = [[NSKeyedUnarchiver unarchiveObjectWithData: [NSKeyedArchiver archivedDataWithRootObject: view]] retain];
+	_view = [NSKeyedUnarchiver unarchiveObjectWithData: [NSKeyedArchiver archivedDataWithRootObject: view]];
 }
 
 
@@ -103,7 +95,6 @@
 {
 	[[self window] removeChildWindow: _popup];
 	[_popup orderOut: nil];
-	[_popup release];
 	_popup = nil;
 	_hover = NO;
 }

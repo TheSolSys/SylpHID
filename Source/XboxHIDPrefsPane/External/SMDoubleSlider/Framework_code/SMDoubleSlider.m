@@ -253,7 +253,7 @@ typedef intptr_t BindingIndex;
     self = [super initWithCoder: decoder];
     if (self) {
 	   // Read archived attributes, none currently
-	   _triPath = [[NSBezierPath bezierPath] retain];
+	   _triPath = [NSBezierPath bezierPath];
 	   #define kCosine60 0.5
 	   #define kSine60 0.8660254037844386
 	   float triBase = 5;
@@ -266,11 +266,6 @@ typedef intptr_t BindingIndex;
 	return self;
 }
 
-- (void) dealloc
-{
-    [super dealloc];
-    [_triPath release];
-}
 
 #pragma mark -
 

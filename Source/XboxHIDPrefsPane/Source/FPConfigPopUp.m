@@ -45,38 +45,22 @@
 }
 
 
-- (void) dealloc
-{
-	if (_appConfig != nil) {
-		[_appConfig release];
-		[_devConfig release];
-		[_appIcon release];
-	}
-
-	[super dealloc];
-}
 
 
 - (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig
 {
-	if (_appConfig)
-		[_appConfig release];
-	_appConfig = [appconfig retain];
+	_appConfig = appconfig;
 
-	if (_devConfig)
-		[_devConfig release];
-	_devConfig = [devconfig retain];
+	_devConfig = devconfig;
 
 	NSString* config = [_appConfig objectForKey: kNoticeConfigKey];
 	NSString* path = [[NSWorkspace sharedWorkspace] absolutePathForAppBundleWithIdentifier: [appconfig objectForKey: kNoticeAppKey]];
 
-	if (_appIcon != nil)
-		[_appIcon release];
 	if (path != nil) {
-		_appIcon = [[[NSWorkspace sharedWorkspace] iconForFile: path] retain];
+		_appIcon = [[NSWorkspace sharedWorkspace] iconForFile: path];
 	} else {
 		NSBundle* bundle = [NSBundle bundleForClass: [self class]];
-		_appIcon = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForResource:@"iconAppSmallTemplate" ofType:@"png"]] retain];
+		_appIcon = [[NSImage alloc] initWithContentsOfFile: [bundle pathForResource:@"iconAppSmallTemplate" ofType:@"png"]];
 	}
 
 	_appFrom.origin = NSMakePoint(0,0);
@@ -94,13 +78,10 @@
 	if (_appConfig) {
 		[[self itemWithTitle: _devConfig] setState: NSOffState];
 
-		[_appConfig release];
 		_appConfig = nil;
 
-		[_devConfig release];
 		_devConfig = nil;
 
-		[_appIcon release];
 		_appIcon = nil;
 
 		[self setNeedsDisplay];
@@ -110,10 +91,10 @@
 
 - (void)drawRect:(NSRect)dirty
 {
-    [super drawRect:dirty];
+    [super drawRect: dirty];
 
 	if (_appIcon != nil)
-	   [_appIcon drawInRect: _appDraw fromRect: _appFrom operation: NSCompositeSourceAtop fraction: 0.75 respectFlipped: YES hints: NULL];
+	   [_appIcon drawInRect: _appDraw fromRect: _appFrom operation: NSCompositeSourceAtop fraction: 1.0 respectFlipped: YES hints: NULL];
 }
 
 @end

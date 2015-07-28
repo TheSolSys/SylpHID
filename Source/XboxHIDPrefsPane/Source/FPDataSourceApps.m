@@ -31,33 +31,25 @@
 	self = [super init];
 	if (self != nil) {
 		_count = 0;
+		_popup = 0;
 	}
 
 	return self;
 }
 
 
-- (void) dealloc
-{
-	if (_source != nil)
-		[_source release];
-
-	[super dealloc];
-}
 
 
 - (void) setSource: (NSDictionary*)source forDeviceID: (NSString*)device withTableView: (NSTableView*)table
 {
-	if (_source != nil)
-		[_source release];
 	_source = [[NSMutableArray alloc] init];
 	NSWorkspace* workspace = [NSWorkspace sharedWorkspace];
 
-	NSPopUpButton* popup = [[NSPopUpButton alloc] init];
-	[(id<FPAppBinding>)[table delegate] buildConfigurationPopUpButton: popup withDefault: device forAppBinding: YES];
-	[[popup cell] setFont: [NSFont systemFontOfSize: [NSFont systemFontSizeForControlSize: NSSmallControlSize]]];
-	[[popup cell] setControlSize: NSSmallControlSize];
-	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setDataCell: [popup cell]];
+	_popup = [[NSPopUpButton alloc] init];
+	[(id<FPAppBindings>)[table delegate] buildConfigurationPopUpButton: _popup withDefault: device forAppBinding: YES];
+	[[_popup cell] setFont: [NSFont systemFontOfSize: [NSFont systemFontSizeForControlSize: NSSmallControlSize]]];
+	[[_popup cell] setControlSize: NSSmallControlSize];
+	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setDataCell: [_popup cell]];
 	[table setRowHeight: 25];
 
 	for (NSString* appid in source) {
@@ -66,19 +58,20 @@
 			NSDictionary* bindings = [source objectForKey: appid];
 			for (NSString* devid in bindings) {
 				if ([device isEqualToString: devid] == YES) {
+					NSString* config = [bindings objectForKey: devid];
 					NSString* appname, *apptype;
 					NSImage* icon = [workspace iconForFile: path];
 					if ([workspace getInfoForFile: path application: &appname type: &apptype]) {
 						[_source addObject: [NSArray arrayWithObjects: icon,
 														[[appname lastPathComponent] stringByDeletingPathExtension],
- 														[NSNumber numberWithInteger: [popup indexOfSelectedItem]], nil]];
+ 														[NSNumber numberWithInteger: [_popup indexOfItemWithTitle: config ]], nil]];
 					}
 				}
 			}
 		}
 	}
 
-	_count = [_source count];
+	_count = [_source count];	// Actual min/max values set in IB, so we just use 1 and 1000 in case we change them
 	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setWidth: _count > 7 ? 1 : 1000];
 }
 

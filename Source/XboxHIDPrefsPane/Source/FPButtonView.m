@@ -44,19 +44,13 @@
 	if (self) {
 		_value = 0;
 		_max = 255;
-		_color = [[NSColor grayColor] retain];
+		_color = [NSColor grayColor];
 		_overlay = YES;
 	}
 	return self;
 }
 
 
-- (void) dealloc
-{
-	if (_textPath)[_textPath release];
-	if (_color)[_color release];
-	[super dealloc];
-}
 
 
 - (void) showOverlayOnlyWhenActive
@@ -70,8 +64,7 @@
 
 
 - (void) setColor: (NSColor*)color {
-	if (_color)[_color release];
-	_color = [color retain];
+	_color = color;
 }
 
 

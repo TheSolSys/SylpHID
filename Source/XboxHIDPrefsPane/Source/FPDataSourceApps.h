@@ -24,7 +24,7 @@
 #define kAppTableColumnList		'LIST'
 
 
-@protocol FPAppBinding
+@protocol FPAppBindings
 
 @required
 - (void) buildConfigurationPopUpButton: (NSPopUpButton*)button withDefault: (NSString*)defconfig forAppBinding: (BOOL)forapp;
@@ -35,6 +35,7 @@
 @interface FPDataSourceApps : NSObject <NSTableViewDataSource, NSTableViewDelegate> {
 	NSMutableArray* _source;
 	NSUInteger _count;
+	NSPopUpButton* _popup;
 }
 
 - (void) setSource: (NSDictionary*)source forDeviceID: (NSString*)device  withTableView: (NSTableView*)table;

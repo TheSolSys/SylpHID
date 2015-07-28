@@ -685,7 +685,7 @@ bool FPXboxHIDDriver::setupDevice (void)
 	_xbDeviceButtonMapArray = OSDynamicCast(OSArray, deviceDict->getObject(kDeviceButtonMapKey));
 
 	// If the device is a remote control, setup a timer for generating button-release events
-	if (_xbDeviceType->isEqualTo(kDeviceTypeIRKey)) {
+	if (_xbDeviceType && _xbDeviceType->isEqualTo(kDeviceTypeIRKey)) {
 		_xbWorkLoop = getWorkLoop();
 		if (_xbWorkLoop) {
 			_xbTimerEventSource = IOTimerEventSource::timerEventSource(this, &generateTimedEvent);
@@ -1829,32 +1829,31 @@ OSString* FPXboxHIDDriver::newIndexedString (UInt8 index) const
 
 IOReturn FPXboxHIDDriver::message (UInt32 type, IOService* provider, void* argument)
 {
-	IOReturn err = kIOReturnSuccess;
+	IOReturn err;
+	super::message(type, provider, argument);
 
-	err = super::message (type, provider, argument);
+	switch (type) {
+		case kIOMessageServiceIsTerminated:
+			USBLog(5, "%s[%p]: service is terminated - ignoring", getName(), this);
+			break;
 
-	switch ( type ) {
-	case kIOMessageServiceIsTerminated:
-		USBLog(5, "%s[%p]: service is terminated - ignoring", getName(), this);
-		break;
+		case kIOUSBMessagePortHasBeenReset:
+			USBLog(3, "%s[%p]: received kIOUSBMessagePortHasBeenReset", getName(), this);
+			_retryCount = kHIDDriverRetryCount;
+			_deviceIsDead = FALSE;
+			_deviceHasBeenDisconnected = FALSE;
 
-	case kIOUSBMessagePortHasBeenReset:
-		USBLog(3, "%s[%p]: received kIOUSBMessagePortHasBeenReset", getName(), this);
-		_retryCount = kHIDDriverRetryCount;
-		_deviceIsDead = FALSE;
-		_deviceHasBeenDisconnected = FALSE;
+			IncrementOutstandingIO();
+			err = _interruptPipe->Read(_buffer, &_completion);
+			if (err != kIOReturnSuccess) {
+				DecrementOutstandingIO();
+				USBLog(3, "%s[%p]::message - err (%x) in interrupt read", getName(), this, err);
+				// _interface->close(this); will be done in didTerminate
+			}
+			break;
 
-		IncrementOutstandingIO();
-		err = _interruptPipe->Read(_buffer, &_completion);
-		if (err != kIOReturnSuccess) {
-			DecrementOutstandingIO();
-			USBLog(3, "%s[%p]::message - err (%x) in interrupt read", getName(), this, err);
-			// _interface->close(this); will be done in didTerminate
-		}
-		break;
-
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return kIOReturnSuccess;

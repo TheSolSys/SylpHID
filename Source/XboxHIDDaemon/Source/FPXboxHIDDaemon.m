@@ -42,16 +42,14 @@ static void driversDidLoad(void* refcon, io_iterator_t iterator)
 	io_object_t driver;
 
 	while ((driver = IOIteratorNext(iterator))) {
-		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+		@autoreleasepool {
+			FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
+			[FPXboxHIDPrefsLoader createDefaultsForDevice: device];
+			[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
 
-		FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
-		[FPXboxHIDPrefsLoader createDefaultsForDevice: device];
-		[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
-
-		NSLog(@"Loaded config \"%@\" for Device ID \"%@\"",
-		      [FPXboxHIDPrefsLoader configNameForDevice: device], [device identifier]);
-
-		[pool release];
+			NSLog(@"Loaded config \"%@\" for Device ID \"%@\"",
+			      [FPXboxHIDPrefsLoader configNameForDevice: device], [device identifier]);
+		}
 	}
 }
 
@@ -80,12 +78,10 @@ static void appBecameActive(NSString* appid)
 		exit(-4);
 	}
 	while ((driver = IOIteratorNext(iterator))) {
-		NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
-
-		FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
-		[FPXboxHIDPrefsLoader loadConfigForDevice: device forAppID: appid];
-
-		[pool release];
+		@autoreleasepool {
+			FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
+			[FPXboxHIDPrefsLoader loadConfigForDevice: device forAppID: appid];
+		}
 	}
 
 }
@@ -137,7 +133,7 @@ static void registerForApplicationChangedNotification()
 	// load config for activated app, if present, otherwise load default config for any connected devices
 	[center addObserverForName: NSWorkspaceDidActivateApplicationNotification object: nil queue: nil
 					usingBlock: ^(NSNotification* note) {
-									appBecameActive([[note.userInfo objectForKey:NSWorkspaceApplicationKey] bundleIdentifier]);
+									appBecameActive([[note.userInfo objectForKey: NSWorkspaceApplicationKey] bundleIdentifier]);
 								}];
 }
 

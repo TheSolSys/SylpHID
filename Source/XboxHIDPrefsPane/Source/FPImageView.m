@@ -28,29 +28,21 @@
 {
 	self = [super initWithCoder: coder];
 	if (self != nil) {
-		_round = [[NSBezierPath bezierPath] retain];
+		_round = [NSBezierPath bezierPath];
 		[_round appendBezierPathWithRoundedRect: [self bounds] xRadius: 7.5 yRadius: 7.5];
 
 		_hover = NO;
-        [self addTrackingArea: [[NSTrackingArea alloc] initWithRect: [self bounds]
-															options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways)
-															  owner: self
-														   userInfo: nil]];
+		_track = [[NSTrackingArea alloc] initWithRect: [self bounds]
+											  options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways)
+												owner: self
+											 userInfo: nil];
+        [self addTrackingArea: _track];
 	}
 
 	return self;
 }
 
 
-- (void) dealloc
-{
-	[_round release];
-
-	if (_text != nil)
-		[_text release];
-
-	[super dealloc];
-}
 
 
 - (void) resetImage
@@ -61,9 +53,7 @@
 
 - (void) setTooltip: (NSString*)tooltip withTipControl: (NSTextField*)text andBaseControl: (NSTextField*)base
 {
-	if (_tooltip != nil)
-		[_tooltip release];
-	_tooltip = [tooltip retain];
+	_tooltip = tooltip;
 
 	_text = text;
 	_base = base;

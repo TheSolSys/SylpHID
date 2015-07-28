@@ -42,7 +42,6 @@
 - (void) dealloc
 {
 	CGGradientRelease(_gradient);
-	[super dealloc];
 }
 
 

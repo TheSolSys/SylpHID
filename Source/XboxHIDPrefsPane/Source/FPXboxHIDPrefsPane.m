@@ -182,27 +182,21 @@
 }
 
 
-- (void) dealloc
-{
-	[_devices autorelease];
-	[_appConfig release];
-	[super dealloc];
-}
 
 
 - (void) willSelect
 {
-	[self configureInterface: YES];
+	[self configureInterface];
 	[self registerForNotifications];
 	[self startHIDDeviceInput];
 	[self getVersion];
+//	[FPXboxHIDPrefsLoader loadSavedConfigForDevice: [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]]];
 }
 
 
 - (void) willUnselect
 {
 	if (_devices) {
-		[_devices release];
 		_devices = nil;
 	}
 	[self deregisterForNotifications];
@@ -233,27 +227,23 @@
 	[_devicePopUp removeAllItems];
 
 	for (i = 0; i < [_devices count]; i++) {
-		id obj;
-		NSString* type;
-		NSMenuItem* item;
+		id device = [_devices objectAtIndex: i];
+		int deviceNum = 0;
 		NSString* name;
-		int deviceNum;
-		obj = [_devices objectAtIndex: i];
-		type = [obj deviceType];
 
-		if ([type isEqualTo: NSSTR(kDeviceTypePadKey)]) {
+		if ([device deviceIsPad]) {
 			deviceNum = ++numControllers;
 			name = @"Pad";
-		} else if ([type isEqualTo: NSSTR(kDeviceTypeIRKey)]) {
+
+		} else if ([device deviceIsRemote]) {
 			deviceNum = ++numRemotes;
 			name = @"IR";
+
 		} else
 			deviceNum = 0;
-		if (deviceNum) {
-			name = [NSString stringWithFormat: @"(%@ #%d) %@", name, deviceNum, [obj productName]];
-			[_devicePopUp addItemWithTitle: name];
-			item = [_devicePopUp itemAtIndex: i];
-		}
+
+		if (deviceNum)
+			[_devicePopUp addItemWithTitle: [NSString stringWithFormat: @"(%@ #%d) %@", name, deviceNum, [device productName]]];
 	}
 
 	[self appSetDataSource];
@@ -290,9 +280,7 @@
 			[[button menu] addItem: [NSMenuItem separatorItem]];
 	}
 
-	NSEnumerator* configNames = [configs objectEnumerator];
-	NSString* configName;
-	while (configName = [configNames nextObject]) {
+	for (NSString* configName in configs) {
 		if ([configName isEqualTo: kConfigNameDefault] == NO)
 			[button addItemWithTitle: configName];
 	}
@@ -308,13 +296,14 @@
 														[NSColor colorWithCalibratedRed:0.987 green:0.151 blue:0.208 alpha:1.000],
 														 NSForegroundColorAttributeName, nil]];
 			[[[button menu] itemWithTitle: defconfig] setAttributedTitle: redconfig];
+			[button selectItemWithTitle: defconfig];
 		}
 
 	} else if (_appConfig != nil) {
 		[button selectItemForAppConfig: _appConfig withDeviceConfig: defconfig];
 
  	} else {
-		[button clearAppConfig];
+//		[button clearAppConfig];
 		[button selectItemWithTitle: defconfig];
 
 	}
@@ -332,6 +321,8 @@
 
 - (void) disableConfigPopUpButton
 {
+//	[_configPopUp clearAppConfig];
+	[_configPopUp removeAllItems];
 	[_configPopUp setEnabled: false];
 	[_configButtons setEnabled: false];
 }
@@ -501,9 +492,8 @@
 			[FPXboxHIDPrefsLoader renameConfigNamed: [_appConfig objectForKey: kNoticeConfigKey]
 										withNewName: [_editText stringValue]
 										  forDevice: device];
-			[_appConfig release];
-			_appConfig = [[NSDictionary dictionaryWithObjectsAndKeys: [_editText stringValue], kNoticeConfigKey,
-																	  appid, kNoticeAppKey, nil] retain];
+			_appConfig = [NSDictionary dictionaryWithObjectsAndKeys: [_editText stringValue], kNoticeConfigKey,
+																	  appid, kNoticeAppKey, nil];
 		} else {
 			[FPXboxHIDPrefsLoader renameCurrentConfig: [_editText stringValue] forDevice: device];
 
@@ -564,9 +554,9 @@
 
 - (void) appSetDataSource
 {
-	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-	[_appData setSource: [FPXboxHIDPrefsLoader allAppBindings] forDeviceID: devid withTableView: _appsTable];
-	[_appsTable reloadData];
+//	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
+//	[_appData setSource: [FPXboxHIDPrefsLoader allAppBindings] forDeviceID: devid withTableView: _appsTable];
+//	[_appsTable reloadData];
 }
 
 
@@ -664,11 +654,9 @@
 {
 	[[_configButtons window] removeChildWindow: _popup];
 	[_popup orderOut: nil];
-	[_popup release];
 	_popup = nil;
 
 	if (_xfade != nil) {
-		[_xfade release];
 		_xfade = nil;
 	}
 }
@@ -1099,17 +1087,12 @@
 }
 
 
-- (void) configureInterface: (BOOL)isInit
+- (void) configureInterface
 {
-	if (_devices)
-		[_devices release];
 	_devices = [FPXboxHIDDriverInterface interfaces];
 
 	if (_devices) {
-		[_devices retain];
 		[self buildDevicesPopUpButton];
-		if (isInit == YES)
-			[FPXboxHIDPrefsLoader loadSavedConfigForDevice: [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]]];
 		[self enableConfigPopUpButton];
 		[self buildConfigurationPopUpButton];
 		[self initOptionsInterface];
@@ -1660,7 +1643,10 @@
 
 - (void) devicesPluggedOrUnplugged
 {
-	[self configureInterface: YES];
+	if (_appConfig != nil) {
+		_appConfig = nil;
+	}
+	[self configureInterface];
 	[self stopHIDDeviceInput];
 	[self startHIDDeviceInput];
 }
@@ -1668,16 +1654,12 @@
 
 - (void) deviceConfigDidChange: (id)notify
 {
-	if (_appConfig != nil)
-		[_appConfig release];
 	if (notify != nil) {
-		_appConfig = [[notify userInfo] retain];
-		if (_lastConfig != nil)
-			[_lastConfig release];
-		_lastConfig = [[_appConfig objectForKey: kNoticeConfigKey] retain];
+		_appConfig = [notify userInfo];
+		_lastConfig = [_appConfig objectForKey: kNoticeConfigKey];
 	}
 	[self buildConfigurationPopUpButton];
-	[self configureInterface: NO];
+	[self configureInterface];
 }
 
 
@@ -1685,22 +1667,20 @@
 {
 	_notifier = [FPXboxHIDNotifier notifier];
 	if (_notifier) {
-		[_notifier retain];
 		[_notifier setMatchedSelector: @selector(devicesPluggedOrUnplugged) target: self];
 		[_notifier setTerminatedSelector: @selector(devicesPluggedOrUnplugged) target: self];
 	}
 	// get notified when config changes out from under us (or when we change it ourselves)
 	[[NSDistributedNotificationCenter defaultCenter] addObserver: self
-	 selector: @selector(deviceConfigDidChange:)
-	 name: kFPXboxHIDDeviceConfigurationDidChangeNotification
-	 object: kFPDistributedNotificationsObject];
+														selector: @selector(deviceConfigDidChange:)
+															name: kFPXboxHIDDeviceConfigurationDidChangeNotification
+														  object: kFPDistributedNotificationsObject];
 }
 
 
 - (void) deregisterForNotifications
 {
 	if (_notifier) {
-		[_notifier release];
 		_notifier = nil;
 	}
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver: self
@@ -1738,7 +1718,9 @@
 		[self configCreate];
 		break;
 	case 1:
-		[self configDelete];
+		[self disableConfigPopUpButton];
+		[self performSelector: @selector(deviceConfigDidChange:) withObject: nil afterDelay: 2.0];
+//		[self configDelete];
 		break;
 	case 2:
 		[self configActions];
@@ -1769,8 +1751,7 @@
 		// first save the current config
 		if (_appConfig != nil) {
 			[FPXboxHIDPrefsLoader saveConfigForDevice: device withConfigName: [_appConfig objectForKey: kNoticeConfigKey]];
-			[_configPopUp clearAppConfig];
-			[_appConfig release];
+//			[_configPopUp clearAppConfig];
 			_appConfig = nil;
 		} else {
 			[FPXboxHIDPrefsLoader saveConfigForDevice: device];

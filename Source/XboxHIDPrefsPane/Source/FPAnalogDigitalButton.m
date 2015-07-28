@@ -39,11 +39,6 @@
 }
 
 
-- (void) dealloc {
-    [super dealloc];
-    [_analog release];
-    [_digital release];
-}
 
 
 - (void) setLocked: (BOOL)locked

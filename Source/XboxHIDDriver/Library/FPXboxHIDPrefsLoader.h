@@ -36,6 +36,7 @@
 
 #define kNoticeAppKey		@"AppID"
 #define kNoticeConfigKey	@"Config"
+#define kNoticeDeviceKey	@"Device"
 
 #define kFPDistributedNotificationsObject	@"com.fizzypopstudios.XboxHIDDriver"
 #define kFPXboxHIDDeviceConfigurationDidChangeNotification	  @"ConfigDidChange"

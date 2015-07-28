@@ -78,7 +78,7 @@
 
 		_sm_flags.isTrackingLoKnob = YES;
 
-		_sm_triPath = [[NSBezierPath bezierPath] retain];
+		_sm_triPath = [NSBezierPath bezierPath];
 	   #define kCosine60 0.5
 	   #define kSine60 0.8660254037844386
 		float triBase = 5;
@@ -265,7 +265,7 @@
 
 - (void) drawKnob: (NSRect)inRect
 {
-	unsigned long t_focus_ring_type;
+	unsigned long t_focus_ring_type = 0;
 
 	if ( _sm_flags.removeFocusRingStyle ) {
 		if ( [self respondsToSelector: @selector(focusRingType)] ) {

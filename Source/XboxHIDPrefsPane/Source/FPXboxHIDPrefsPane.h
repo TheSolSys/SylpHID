@@ -84,7 +84,7 @@ enum eMenuEntriesButtons {
 };
 
 
-@interface FPXboxHIDPrefsPane : NSPreferencePane <FPAppBinding> {
+@interface FPXboxHIDPrefsPane : NSPreferencePane <FPAppBindings> {
 	// state information
     NSArray* _devices;
     NSTimer* _timer;

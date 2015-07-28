@@ -51,9 +51,8 @@
 
 	NSMutableDictionary* defaults = (NSMutableDictionary*)[userDefaults persistentDomainForName: kDefaultsSuiteIdentifier];
 	if (defaults) {
-		defaults = (NSMutableDictionary*)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFPropertyListRef)defaults,
-																					 kCFPropertyListMutableContainers);
-		[defaults autorelease];
+		defaults = (NSMutableDictionary*)CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (__bridge CFPropertyListRef)defaults,
+																					 kCFPropertyListMutableContainers));
 	}
 
 	return defaults;
@@ -139,7 +138,7 @@
 	if (!configName)
 		configName = kConfigNameDefault;
 
-	return configName;
+	return [NSString stringWithString: configName];
 }
 
 
@@ -232,8 +231,7 @@
 // load the current config for the specified device
 + (BOOL) loadSavedConfigForDevice: (FPXboxHIDDriverInterface*)device
 {
-	NSString* configName = [FPXboxHIDPrefsLoader configNameForDevice: device];
-	return [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: configName];
+	return [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: [FPXboxHIDPrefsLoader configNameForDevice: device]];
 }
 
 

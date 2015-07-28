@@ -33,9 +33,11 @@
 
 @interface FPXboxHIDNotifier : NSObject {
     SEL _matchedSelector;
+	IMP _matchedImp;
     id _matchedTarget;
     
     SEL _terminatedSelector;
+	IMP _terminatedImp;
     id _terminatedTarget;
     
     IONotificationPortRef _notificationPort;

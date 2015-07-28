@@ -26,6 +26,7 @@
 	NSString* _tooltip;
 	NSTextField* _text;
 	NSTextField* _base;
+	NSTrackingArea* _track;
 }
 
 - (void) resetImage;

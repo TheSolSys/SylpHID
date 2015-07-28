@@ -23,9 +23,10 @@
 
 
 @interface FPAlertView : NSImageView {
-	BOOL _hover;
+	NSTrackingArea* _track;
 	MAAttachedWindow* _popup;
 	NSView* _view;
+	BOOL _hover;
 }
 
 - (void) setAlertView: (NSView*)view;

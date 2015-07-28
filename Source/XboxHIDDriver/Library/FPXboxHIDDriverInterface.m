@@ -47,9 +47,7 @@
 		return NO;
 	if (!ioRegistryProperties)
 		return NO;
-	if (_ioRegistryProperties)
-		[_ioRegistryProperties release];
-	_ioRegistryProperties = (NSMutableDictionary*)ioRegistryProperties;
+	_ioRegistryProperties = (__bridge NSMutableDictionary*)ioRegistryProperties;
 
 	// set the device type
 	_deviceType = [_ioRegistryProperties objectForKey: NSSTR(kTypeKey)];
@@ -69,8 +67,8 @@
 	request = [NSDictionary dictionaryWithObjectsAndKeys: _deviceType, NSSTR(kTypeKey),
 														  key, NSSTR(kClientOptionKeyKey),
 														  value, NSSTR(kClientOptionValueKey), nil];
-
-	ret = IORegistryEntrySetCFProperties(_driver, (CFDictionaryRef*)request);
+	CFDictionaryRef dict = (__bridge CFDictionaryRef)request;
+	ret = IORegistryEntrySetCFProperties(_driver, dict);
 	if (ret != kIOReturnSuccess)
 		NSLog(@"Failed setting driver properties: 0x%x", ret);
 }
@@ -116,7 +114,8 @@
 		NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys: elements, NSSTR(kClientOptionSetElementsKey), nil];
 
 		if (request) {
-			ret = IORegistryEntrySetCFProperties(_driver, (CFDictionaryRef*)request);
+			CFDictionaryRef dict = (__bridge CFDictionaryRef)request;
+			ret = IORegistryEntrySetCFProperties(_driver, dict);
 			if (ret != kIOReturnSuccess)
 				NSLog(@"Failed setting driver properties: 0x%x", ret);
 		}
@@ -158,7 +157,7 @@
 	if (0 == objectIterator) // there are no joysticks
 		return nil;
 
-	interfaceList = [[[NSMutableArray alloc] init] autorelease];
+	interfaceList = [[NSMutableArray alloc] init];
 
 	// IOServiceGetMatchingServices consumes a reference to the dictionary, so we don't need to release the dictionary ref
 	while ((driver = IOIteratorNext (objectIterator))) {
@@ -175,7 +174,7 @@
 
 + (FPXboxHIDDriverInterface*) interfaceWithDriver: (io_object_t)driver
 {
-	return [[[FPXboxHIDDriverInterface alloc] initWithDriver: driver] autorelease];
+	return [[FPXboxHIDDriverInterface alloc] initWithDriver: driver];
 }
 
 
@@ -192,14 +191,17 @@
 	_service = 0;
 
 	// check that driver is FPXboxHIDDriver
-	if (kIOReturnSuccess != IOObjectGetClass(_driver, className))
+	if (kIOReturnSuccess != IOObjectGetClass(_driver, className)) {
 		return nil;
+	}
 
-	if (0 != strcmp(className, "FPXboxHIDDriver"))
+	if (0 != strcmp(className, "FPXboxHIDDriver")) {
 		return nil;
+	}
 
-	if (![self getDeviceProperties])
+	if (![self getDeviceProperties]) {
 		return nil;
+	}
 
 	return self;
 }
@@ -207,8 +209,6 @@
 
 - (void) dealloc
 {
-	[super dealloc];
-
 	if (_service) IOServiceClose(_service);
 	IOObjectRelease(_driver);
 }
@@ -266,12 +266,6 @@
 	return [_deviceType isEqualToString: NSSTR(kDeviceTypeIRKey)];
 }
 
-/*
-#define kIOHIDVendorIDKey                   "VendorID"
-#define kIOHIDVendorIDSourceKey             "VendorIDSource"
-#define kIOHIDProductIDKey                  "ProductID"
-#define kIOHIDVersionNumberKey              "VersionNumber"
-*/
 
 - (NSString*) vendorID
 {
@@ -1191,8 +1185,7 @@ id NSNUM(SInt32 num)
 
 	cfNumber = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &num);
 
-	obj = (id)cfNumber;
-	[obj autorelease];
+	obj = (__bridge id)cfNumber;
 
 	return obj;
 }

@@ -571,7 +571,7 @@ int FPXboxHID_JoystickInit()
 		if (!device)
 			continue;
 		// dump device object, it is no longer needed
-		result = IOObjectRelease(ioHIDDeviceObject);
+		IOObjectRelease(ioHIDDeviceObject);
 
 		// Filter device list to non-keyboard/mouse stuff
 		if (device->usagePage == kHIDPage_GenericDesktop && (device->usage == kHIDUsage_GD_Keyboard || device->usage == kHIDUsage_GD_Mouse)) {
@@ -589,7 +589,7 @@ int FPXboxHID_JoystickInit()
 	}
 
 	// release the iterator
-	result = IOObjectRelease(hidObjectIterator);
+	IOObjectRelease(hidObjectIterator);
 
 	// Count the total number of devices we found
 	device = gpDeviceList;
@@ -605,7 +605,7 @@ int FPXboxHID_JoystickInit()
 // Update joystick information, this is called via a polling timer
 void FPXboxHID_JoystickUpdate(id target)
 {
-	HIDDevice* device = gpDeviceList;
+	HIDDevice* device;
 	HIDElement* element;
 	SInt32 value;
 	int i;

@@ -45,27 +45,26 @@
 	NSWorkspace* workspace = [NSWorkspace sharedWorkspace];
 	_source = [[NSMutableArray alloc] init];
 	_popup = [[NSPopUpButton alloc] init];
+	_device = device;
+	_table = table;
 
-	[(id<FPAppBindings>)[table delegate] buildConfigurationPopUpButton: _popup withDefault: device forAppBinding: YES];
+	[(id<FPAppBindings>)[_table delegate] buildConfigurationPopUpButton: _popup withDefaultConfig: nil];
 	[[_popup cell] setFont: [NSFont systemFontOfSize: [NSFont systemFontSizeForControlSize: NSSmallControlSize]]];
 	[[_popup cell] setControlSize: NSSmallControlSize];
-	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setDataCell: [_popup cell]];
-	[table setRowHeight: 23];
+	[[_table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setDataCell: [_popup cell]];
+	[_table setRowHeight: 23];
 
 	for (NSString* appid in source) {
 		NSString* path = [workspace absolutePathForAppBundleWithIdentifier: appid];
 		if (path != nil) {
 			NSDictionary* bindings = [source objectForKey: appid];
 			for (NSString* devid in bindings) {
-				if ([device isEqualToString: devid] == YES) {
-					NSString* config = [bindings objectForKey: devid];
-					NSString* appname, *apptype;
+				if ([_device isEqualToString: devid] == YES) {
 					NSImage* icon = [workspace iconForFile: path];
-					if ([workspace getInfoForFile: path application: &appname type: &apptype]) {
-						[_source addObject: [NSArray arrayWithObjects: icon,
-														[[appname lastPathComponent] stringByDeletingPathExtension],
- 														[NSNumber numberWithInteger: [_popup indexOfItemWithTitle: config ]], nil]];
-					}
+					NSString* appname = [[NSFileManager defaultManager] displayNameAtPath: path];
+					NSInteger index = [_popup indexOfItemWithTitle: [bindings objectForKey: devid]];
+					[_source addObject: [NSMutableArray arrayWithObjects: icon, [appname stringByDeletingPathExtension],
+															[NSNumber numberWithInteger: index == -1 ? 0 : index], appid, nil]];
 				}
 			}
 		}
@@ -76,21 +75,39 @@
 }
 
 
+- (NSString*) appIdentifierForRow: (NSInteger)row
+{
+	return (row > -1 && row < _count) ? [[_source objectAtIndex: row] objectAtIndex: kAppSourceID] : nil;
+}
+
+
 - (id) tableView: (NSTableView*)tableView objectValueForTableColumn: (NSTableColumn*)tableColumn row: (NSInteger)row
 {
 	uint colid = NSSwapInt(*(uint*)StringToC([tableColumn identifier]));
 	switch (colid) {
 		case kAppTableColumnIcon:
-			return [[_source objectAtIndex: row] objectAtIndex: 0];
+			return [[_source objectAtIndex: row] objectAtIndex: kAppSourceIcon];
 
 		case kAppTableColumnName:
-			return [[_source objectAtIndex: row] objectAtIndex: 1];
+			return [[_source objectAtIndex: row] objectAtIndex: kAppSourceName];
 
 		case kAppTableColumnList:
-			return [[_source objectAtIndex: row] objectAtIndex: 2];
+			return [[_source objectAtIndex: row] objectAtIndex: kAppSourceList];
 	}
 
 	return nil;
+}
+
+
+- (void) tableView: (NSTableView*)tableView setObjectValue: (id)object forTableColumn: (NSTableColumn*)tableColumn row:(NSInteger)row
+{
+	uint colid = NSSwapInt(*(uint*)StringToC([tableColumn identifier]));
+	if (colid == kAppTableColumnList) {
+		[[_source objectAtIndex: row] setObject: object atIndex: 2];
+		[(id<FPAppBindings>)[_table delegate] setAppConfig: [_popup itemTitleAtIndex: [object integerValue]]
+												  forAppID: [[_source objectAtIndex: row] objectAtIndex: kAppSourceID]];
+
+	}
 }
 
 

@@ -98,6 +98,7 @@ enum eMenuEntriesButtons {
 
 	NSMutableDictionary* _appConfig;
 	FPDataSourceApps* _appData;
+	NSString* _appSelectedID;
 
 	// device popup
     IBOutlet id _devicePopUp;
@@ -247,6 +248,7 @@ enum eMenuEntriesButtons {
 	IBOutlet id _appsTable;
 	IBOutlet id _appsBlank;
 	IBOutlet id _appsIdent;
+	IBOutlet id _appsAction;
 	IBOutlet id _appsOK;
 
 	IBOutlet id _usbView;

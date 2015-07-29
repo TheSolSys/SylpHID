@@ -221,6 +221,38 @@
 }
 
 
+// set or create app binding
++ (BOOL) setConfigNamed: (NSString*)config forAppID: (NSString*)appid andDeviceID: (NSString*)devid
+{
+	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* app = [[prefs objectForKey: kAppsKey] objectForKey: appid];
+	if (app == nil)
+		[[prefs objectForKey: kAppsKey] setObject: @{ devid: config } forKey: appid];
+	else
+		[app setObject: config forKey: devid];
+
+	[FPXboxHIDPrefsLoader setDefaults: prefs];
+
+	return YES;
+}
+
+
+// remove app binding
++ (BOOL) removeAppID: (NSString*)appid forDeviceID: (NSString*)devid
+{
+	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* app = [[prefs objectForKey: kAppsKey] objectForKey: appid];
+	if (app != nil) {
+		[app removeObjectForKey: devid];
+		if ([app count] == 0)
+			[[prefs objectForKey: kAppsKey] removeObjectForKey: appid];
+		[FPXboxHIDPrefsLoader setDefaults: prefs];
+	}
+
+	return YES;
+}
+
+
 // is current config the default config?
 + (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device
 {
@@ -343,6 +375,19 @@
 	return [FPXboxHIDPrefsLoader saveConfigForDevice: device];
 }
 
+/*
+    Applications =     {
+        "ToCA/com.feral.ToCA" =         {
+            "Pad-3d110000" = "Racing Games";
+        };
+        "com.feral.CMR05" =         {
+            "Pad-3d110000" = "Racing Games";
+        };
+        "com.feralinteractive.dirt2" =         {
+            "Pad-3d110000" = "Pad-3d110000";
+        };
+    };
+*/
 
 // delete the specified configuration
 + (BOOL) deleteConfigWithName: (NSString*)configName
@@ -350,17 +395,26 @@
 	// don't allow deleting the default config
 	if (![configName isEqualTo: kConfigNameDefault]) {
 		NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+		NSDictionary* iterate;
 
 		// remove the config
 		[[defaults objectForKey: kConfigsKey] removeObjectForKey: configName];
 
 		// change any bindings to the default config
-		NSEnumerator* identifiers = [[defaults objectForKey: kBindingsKey] keyEnumerator];
-		NSString* identifier;
+		iterate = [NSDictionary dictionaryWithDictionary: [defaults objectForKey: kBindingsKey]];
+		NSMutableDictionary *bindings = [defaults objectForKey: kBindingsKey];
+		for (NSString* identifier in iterate) {
+			if ([[bindings objectForKey: identifier] isEqualTo: configName])
+				[bindings setObject: kConfigNameDefault forKey: identifier];
+		}
 
-		while (identifier = [identifiers nextObject]) {
-			if ([[[defaults objectForKey: kBindingsKey] objectForKey: identifier] isEqualTo: configName])
-				[[defaults objectForKey: kBindingsKey] setObject: kConfigNameDefault forKey: identifier];
+		iterate = [NSDictionary dictionaryWithDictionary: [defaults objectForKey: kAppsKey]];
+		NSMutableDictionary *applications = [defaults objectForKey: kAppsKey];
+		for (NSString* appid in iterate) {
+			for (NSString* device in [iterate objectForKey: appid]) {
+				if ([[[applications objectForKey: appid] objectForKey: device] isEqualTo: configName])
+					[[applications objectForKey: appid] setObject: kConfigNameDefault forKey: device];
+			}
 		}
 
 		[FPXboxHIDPrefsLoader setDefaults: defaults];

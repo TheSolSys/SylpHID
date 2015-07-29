@@ -65,6 +65,12 @@
 // returns total number of applications bound to specific config
 + (int) totalAppBindingsForConfigNamed: (NSString*)config;
 
+// set or create app binding
++ (BOOL) setConfigNamed: (NSString*)config forAppID: (NSString*)appid andDeviceID: (NSString*)devid;
+
+// remove app binding
++ (BOOL) removeAppID: (NSString*)appid forDeviceID: (NSString*)devid;
+
 // is current config the default config?
 + (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device;
 
@@ -74,6 +80,7 @@
 // save the current config
 + (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device;
 
+// save current config under specific name
 + (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device withConfigName: configName;
 
 // load named config for device

@@ -61,6 +61,9 @@
 		826060DE1B52FF0000A93BEE /* iconEditTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826060DA1B52FF0000A93BEE /* iconEditTemplate.png */; };
 		826060DF1B52FF0000A93BEE /* iconUndoTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826060DB1B52FF0000A93BEE /* iconUndoTemplate.png */; };
 		826060E01B52FF0000A93BEE /* iconUSBTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826060DC1B52FF0000A93BEE /* iconUSBTemplate.png */; };
+		826D9F771B68792B00ACD533 /* iconUndoSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 826D9F761B68792B00ACD533 /* iconUndoSmallTemplate.png */; };
+		826D9F7A1B688A3100ACD533 /* FPAppTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 826D9F781B688A3100ACD533 /* FPAppTableView.h */; };
+		826D9F7B1B688A3100ACD533 /* FPAppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826D9F791B688A3100ACD533 /* FPAppTableView.m */; };
 		828BEF661B6730720005A90F /* FPAppBindingCells.h in Headers */ = {isa = PBXBuildFile; fileRef = 828BEF641B6730720005A90F /* FPAppBindingCells.h */; };
 		828BEF671B6730720005A90F /* FPAppBindingCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 828BEF651B6730720005A90F /* FPAppBindingCells.m */; };
 		82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 82983C051B655A9F00C260C1 /* FPBoxLine.h */; };
@@ -140,6 +143,9 @@
 		826060DA1B52FF0000A93BEE /* iconEditTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconEditTemplate.png; path = Resources/Images/iconEditTemplate.png; sourceTree = "<group>"; };
 		826060DB1B52FF0000A93BEE /* iconUndoTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUndoTemplate.png; path = Resources/Images/iconUndoTemplate.png; sourceTree = "<group>"; };
 		826060DC1B52FF0000A93BEE /* iconUSBTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUSBTemplate.png; path = Resources/Images/iconUSBTemplate.png; sourceTree = "<group>"; };
+		826D9F761B68792B00ACD533 /* iconUndoSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUndoSmallTemplate.png; path = Resources/Images/iconUndoSmallTemplate.png; sourceTree = "<group>"; };
+		826D9F781B688A3100ACD533 /* FPAppTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppTableView.h; path = Source/FPAppTableView.h; sourceTree = "<group>"; };
+		826D9F791B688A3100ACD533 /* FPAppTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppTableView.m; path = Source/FPAppTableView.m; sourceTree = "<group>"; };
 		828BEF641B6730720005A90F /* FPAppBindingCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppBindingCells.h; path = Source/FPAppBindingCells.h; sourceTree = "<group>"; };
 		828BEF651B6730720005A90F /* FPAppBindingCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppBindingCells.m; path = Source/FPAppBindingCells.m; sourceTree = "<group>"; };
 		82983C051B655A9F00C260C1 /* FPBoxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBoxLine.h; path = Source/FPBoxLine.h; sourceTree = "<group>"; };
@@ -187,10 +193,12 @@
 		821206291B67131E004D6F59 /* App Binding Table */ = {
 			isa = PBXGroup;
 			children = (
-				821206251B66FB17004D6F59 /* FPDataSourceApps.h */,
-				821206261B66FB17004D6F59 /* FPDataSourceApps.m */,
+				826D9F781B688A3100ACD533 /* FPAppTableView.h */,
+				826D9F791B688A3100ACD533 /* FPAppTableView.m */,
 				828BEF641B6730720005A90F /* FPAppBindingCells.h */,
 				828BEF651B6730720005A90F /* FPAppBindingCells.m */,
+				821206251B66FB17004D6F59 /* FPDataSourceApps.h */,
+				821206261B66FB17004D6F59 /* FPDataSourceApps.m */,
 			);
 			name = "App Binding Table";
 			sourceTree = "<group>";
@@ -279,6 +287,7 @@
 				826060D51B52FEF600A93BEE /* toggleAnalog.png */,
 				826060D61B52FEF600A93BEE /* toggleDigital.png */,
 				82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */,
+				826D9F761B68792B00ACD533 /* iconUndoSmallTemplate.png */,
 				826060D91B52FF0000A93BEE /* iconAppTemplate.png */,
 				826060DA1B52FF0000A93BEE /* iconEditTemplate.png */,
 				826060DB1B52FF0000A93BEE /* iconUndoTemplate.png */,
@@ -397,6 +406,7 @@
 				823EACB41B57300100FED407 /* FPAxisPairView.h in Headers */,
 				823EAC991B572EDC00FED407 /* FPXboxHIDDriverInterface.h in Headers */,
 				823EACC61B57860600FED407 /* FPAlertView.h in Headers */,
+				826D9F7A1B688A3100ACD533 /* FPAppTableView.h in Headers */,
 				826060AD1B52FE9700A93BEE /* FPPopUpButtonCell.h in Headers */,
 				826060AB1B52FE9700A93BEE /* FPAnalogDigitalButton.h in Headers */,
 			);
@@ -470,6 +480,7 @@
 				826060D11B52FEE900A93BEE /* controllerButtonYellow.png in Resources */,
 				826060CD1B52FEE900A93BEE /* controllerButtonGreen.png in Resources */,
 				826060DD1B52FF0000A93BEE /* iconAppTemplate.png in Resources */,
+				826D9F771B68792B00ACD533 /* iconUndoSmallTemplate.png in Resources */,
 				826060D01B52FEE900A93BEE /* controllerButtonWht.png in Resources */,
 				8258377F1B5313A900E6B025 /* XboxHIDPrefsPane.xib in Resources */,
 				826060D81B52FEF600A93BEE /* toggleDigital.png in Resources */,
@@ -512,6 +523,7 @@
 				823EAC9D1B572EDC00FED407 /* FPXboxHIDPrefsLoader.m in Sources */,
 				823EACA71B572FDB00FED407 /* FPXboxHIDNotifier.m in Sources */,
 				821206281B66FB17004D6F59 /* FPDataSourceApps.m in Sources */,
+				826D9F7B1B688A3100ACD533 /* FPAppTableView.m in Sources */,
 				823EACC71B57860600FED407 /* FPAlertView.m in Sources */,
 				825C6FFC1B57C555006599BE /* FPLogoView.m in Sources */,
 				82C2104F1B66957800FAD449 /* FPConfigPopUp.m in Sources */,

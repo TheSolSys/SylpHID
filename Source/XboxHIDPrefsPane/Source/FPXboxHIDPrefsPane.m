@@ -46,6 +46,17 @@
 
 #define kStickAsButtonAlert		15	// percentage threshold for deadzone too small when assigning sticks to buttons
 
+#define kSegmentConfigCreate	0
+#define kSegmentConfigDelete	1	// segments for main window segmented control
+#define kSegmentConfigPopUp		2
+
+#define kSegmentMenusXbox		0	// segments for main window menu segmented control
+#define kSegmentMenusHID		1
+
+#define kSegmentAppsCreate		0
+#define kSegmentAppsDelete		1	// segments for app bindings segmented control
+#define kSegmentAppsUndo		2
+
 
 @implementation FPXboxHIDPrefsPane
 
@@ -219,8 +230,8 @@
 
 - (void) getVersion
 {
-	NSBundle* b = [NSBundle bundleWithPath: @"/System/Library/Extensions/XboxHIDDriver.kext"];
-	NSString* version = [[b infoDictionary] objectForKey: @"CFBundleGetInfoString"];
+	NSBundle* bundle = [NSBundle bundleWithPath: @"/System/Library/Extensions/XboxHIDDriver.kext"];
+	NSString* version = [[bundle infoDictionary] objectForKey: @"CFBundleGetInfoString"];
 	if (version == nil) version = @"Unknown Version";
 	[_textVersion setStringValue: version];
 }
@@ -283,13 +294,12 @@
 - (void) buildConfigurationPopUpButton
 {
 	id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
-	[self buildConfigurationPopUpButton: _configPopUp
-							withDefault: [FPXboxHIDPrefsLoader configNameForDevice: device]
-						  forAppBinding: NO];
+	[self buildConfigurationPopUpButton: _configPopUp withDefaultConfig: [FPXboxHIDPrefsLoader configNameForDevice: device]];
 }
 
 
-- (void) buildConfigurationPopUpButton: (FPConfigPopUp*)button withDefault: (NSString*)defconfig forAppBinding: (BOOL)forapp
+// <FPAppBindings> method
+- (void) buildConfigurationPopUpButton: (FPConfigPopUp*)button withDefaultConfig: (NSString*)defconfig
 {
 	id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
 
@@ -299,30 +309,17 @@
 
 	[button removeAllItems];
 
-	if (forapp == NO) {
-		[button addItemWithTitle: kConfigNameDefault];
-		if ([configs count] > 1)
-			[[button menu] addItem: [NSMenuItem separatorItem]];
-	}
+	[button addItemWithTitle: kConfigNameDefault];
+	if ([configs count] > 1)
+		[[button menu] addItem: [NSMenuItem separatorItem]];
 
 	for (NSString* configName in configs) {
 		if ([configName isEqualTo: kConfigNameDefault] == NO)
 			[button addItemWithTitle: configName];
 	}
 
-	if (forapp == YES) {
-		if ([button indexOfItemWithTitle: defconfig] == NSNotFound) {
-			[[button menu] addItem: [NSMenuItem separatorItem]];
-			[button addItemWithTitle: defconfig];
-
-			NSAttributedString* redconfig = [[NSAttributedString alloc]
-												initWithString: defconfig
-													attributes: [NSDictionary dictionaryWithObjectsAndKeys:
-														[NSColor colorWithCalibratedRed:0.987 green:0.151 blue:0.208 alpha:1.000],
-														 NSForegroundColorAttributeName, nil]];
-			[[[button menu] itemWithTitle: defconfig] setAttributedTitle: redconfig];
-			[button selectItemWithTitle: defconfig];
-		}
+	if (defconfig == nil) {
+		[button selectItemAtIndex: 0];
 
 	} else if (appconf != nil) {
 		[button selectItemForAppConfig: appconf withDeviceConfig: defconfig];
@@ -490,8 +487,8 @@
 				  onSide: MAPositionTop
 				  atDistance: 4];
 		[_popup setViewMargin: 1.0];
-		[_appsBlank setHidden: [_appData numberOfRowsInTableView: _appsTable] > 0];
 		[_appsIdent setStringValue: [device identifier]];
+		[self appSetDataSource];
 		[self crossFadeAttachedWindow];
 
 	} else if (sender == _actionInfo) {
@@ -585,13 +582,65 @@
 {
 	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
 	[_appData setSource: [FPXboxHIDPrefsLoader allAppBindings] forDeviceID: devid withTableView: _appsTable];
+	[_appsTable deselectAll: nil];
+	[_appsAction setEnabled: NO forSegment: kSegmentAppsDelete];
+	[_appsBlank setHidden: [_appData numberOfRowsInTableView: _appsTable] > 0];
 	[_appsTable reloadData];
 }
 
 
+typedef void(^OPBlock)(NSInteger result);
+
 - (IBAction) appEditAction: (id)sender
 {
+	switch ([sender selectedSegment]) {
+		case kSegmentAppsCreate: {
+			NSApplication* sharedapp = [NSApplication sharedApplication];
+			NSOpenPanel* openPanel = [NSOpenPanel openPanel];
 
+			[openPanel setAllowsMultipleSelection: NO];
+			[openPanel setCanChooseDirectories: NO];
+			[openPanel setCanCreateDirectories: NO];
+			[openPanel setCanChooseFiles: YES];
+			[openPanel setAllowedFileTypes: @[ @"app" ]];
+			[openPanel setDirectoryURL: [NSURL fileURLWithPath: @"/Applications"]];
+
+			[sharedapp stopModal];  // stop modal for popup so sheet works, reenable modal when sheet dismissed
+			[_popup setLevel: NSNormalWindowLevel];	 // make pop not "always on top" so sheet slides in over it
+
+			OPBlock block = ^(NSInteger result) {
+								if (result == NSFileHandlingPanelOKButton) {
+									NSString* file = [[openPanel URL] path];
+									NSString* appid = [[NSBundle bundleWithPath: file] bundleIdentifier];
+									NSString* config = [_configPopUp titleOfSelectedItem];
+									NSString* devid = [[_devices objectAtIndex: [_configPopUp indexOfSelectedItem]] identifier];
+									[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+									[self appSetDataSource];
+								}
+								[openPanel close];
+								[_popup setLevel: NSFloatingWindowLevel];
+								[sharedapp runModalForWindow: _popup];
+							};
+
+			[openPanel beginSheetModalForWindow: [sharedapp mainWindow]
+							  completionHandler: block];
+			break;
+		}
+
+		case kSegmentAppsDelete: {
+			if (_appSelectedID != nil) {
+				NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
+				[FPXboxHIDPrefsLoader removeAppID: _appSelectedID forDeviceID: devid];
+				[self appSetDataSource];
+			}
+			break;
+		}
+
+		case kSegmentAppsUndo: {
+
+			break;
+		}
+	}
 }
 
 
@@ -601,7 +650,19 @@
 }
 
 
+// <FPAppBindings> methods
+- (void) setAppConfig: (NSString*)config forAppID: (NSString*)appid
+{
+	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
+	[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+}
 
+
+- (void) appSelectionChanged: (NSString*)appid
+{
+	[_appsAction setEnabled: (appid != nil) forSegment: 1];
+	_appSelectedID = appid;
+}
 
 
 #pragma mark --- Acknowledgements --------------------
@@ -949,7 +1010,7 @@
 
 - (void) initPadAxisPopUpButton: (NSPopUpButton*)control withMapping: (int)map
 {
-	BOOL isXbox = ([_configMenus selectedSegment] == 0);
+	BOOL isXbox = ([_configMenus selectedSegment] == kSegmentMenusXbox);
 	NSMenu* menu = [(isXbox ? _menuAxisXbox : _menuAxisHID) copy];
 	[menu setAutoenablesItems: NO];
 	if (!isXbox) {
@@ -969,7 +1030,7 @@
 
 - (void) initPadButtonPopUpButton: (NSPopUpButton*)control withMapping: (int)map
 {
-	BOOL isXbox = ([_configMenus selectedSegment] == 0);
+	BOOL isXbox = ([_configMenus selectedSegment] == kSegmentMenusXbox);
 	NSMenu* menu = [(isXbox ? _menuButtonXbox : _menuButtonHID) copy];
 	[menu setAutoenablesItems: NO];
 	if (!isXbox) {
@@ -1672,7 +1733,6 @@
 
 - (void) devicesPluggedOrUnplugged
 {
-NSLog(@"devicesPluggedOrUnplugged");
 	[self configureInterface];
 	[self stopHIDDeviceInput];
 	[self startHIDDeviceInput];
@@ -1746,15 +1806,15 @@ NSLog(@"devicesPluggedOrUnplugged");
 - (IBAction) clickConfigSegment: (id)sender
 {
 	switch ([sender selectedSegment]) {
-	case 0:
-		[self configCreate];
-		break;
-	case 1:
-		[self configDelete];
-		break;
-	case 2:
-		[self configActions];
-		break;
+		case kSegmentConfigCreate:
+			[self configCreate];
+			break;
+		case kSegmentConfigDelete:
+			[self configDelete];
+			break;
+		case kSegmentConfigPopUp:
+			[self configActions];
+			break;
 	}
 }
 

@@ -19,30 +19,53 @@
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
-#import "FPAppBindingCells.h"
+#import "FPAppTableView.h"
+#import "FPDataSourceApps.h"
 
 
-// for adding padding (2px) above text
-@implementation FPAppTextFieldCell
+@implementation FPAppTableView
 
-- (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
+- (id) initWithCoder: (NSCoder*)coder
 {
-	cellFrame.origin.y += 2;
-	cellFrame.size.height -= 2;
-	[super drawInteriorWithFrame: cellFrame inView: controlView];
+	self = [super initWithCoder: coder];
+	if (self != nil) {
+		_selection = -1;
+		_gradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor keyboardFocusIndicatorColor], 0.0,
+																	[NSColor alternateSelectedControlColor], 1.0, nil];
+	}
+	return self;
+}
+
+
+- (void) highlightSelectionInClipRect: (NSRect)clipRect
+{
+	NSInteger rowSelected = [self selectedRow];
+	if (rowSelected > -1) {
+		NSRect rowRect = [self rectOfRow: rowSelected];
+		rowRect.size.height -= 1;
+		rowRect.size.width -= 1.5;
+		[_gradient drawInBezierPath: [NSBezierPath bezierPathWithRoundedRect: rowRect xRadius: 6 yRadius: 6] angle: 90];
+	}
+}
+
+
+- (void) mouseDown: (NSEvent*)event
+{
+    NSPoint point = [self convertPoint: [event locationInWindow] fromView: nil];
+    NSInteger row = [self rowAtPoint: point];
+
+    if (row == -1)
+        [self deselectAll: nil];
+	else
+		[super mouseDown: event];
+
+	NSInteger selected = [self selectedRow];
+	if (selected != _selection) {
+		[(id<FPAppBindings>)[self delegate] appSelectionChanged: [(FPDataSourceApps*)[self dataSource] appIdentifierForRow: selected]];
+		_selection = selected;
+	}
 }
 
 @end
 
 
-// for adding padding (1px) around icon
-@implementation FPAppImageCell
-
-- (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
-{
-	cellFrame.size.width -= 1;
-	cellFrame.size.height -= 1; // = NSInsetRect(cellFrame, 1, 1);
-	[super drawInteriorWithFrame: cellFrame inView: controlView];
-}
-
-@end

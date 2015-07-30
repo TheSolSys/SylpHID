@@ -165,7 +165,7 @@
 		82F77A811B62F37F0033460F /* FPScrollerCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPScrollerCredits.m; path = Source/FPScrollerCredits.m; sourceTree = "<group>"; };
 		82F77A841B62F4CF0033460F /* FPTextCredits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPTextCredits.h; path = Source/FPTextCredits.h; sourceTree = "<group>"; };
 		82F77A851B62F4CF0033460F /* FPTextCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPTextCredits.m; path = Source/FPTextCredits.m; sourceTree = "<group>"; };
-		870F843D16754EA800486F46 /* XboxHIDPrefsPane.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XboxHIDPrefsPane.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		870F843D16754EA800486F46 /* Xbox HID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Xbox HID.prefPane"; sourceTree = BUILT_PRODUCTS_DIR; };
 		870F844016754EA800486F46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		870F844216754EA800486F46 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		870F844516754EA800486F46 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -333,7 +333,7 @@
 		870F843E16754EA800486F46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				870F843D16754EA800486F46 /* XboxHIDPrefsPane.prefPane */,
+				870F843D16754EA800486F46 /* Xbox HID.prefPane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -415,9 +415,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		870F843C16754EA800486F46 /* XboxHIDPrefsPane */ = {
+		870F843C16754EA800486F46 /* Xbox HID */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 870F845916754EA800486F46 /* Build configuration list for PBXNativeTarget "XboxHIDPrefsPane" */;
+			buildConfigurationList = 870F845916754EA800486F46 /* Build configuration list for PBXNativeTarget "Xbox HID" */;
 			buildPhases = (
 				870F843716754EA800486F46 /* Sources */,
 				870F843816754EA800486F46 /* Frameworks */,
@@ -429,9 +429,9 @@
 			);
 			dependencies = (
 			);
-			name = XboxHIDPrefsPane;
+			name = "Xbox HID";
 			productName = DWXBoxHIDPrefsPane;
-			productReference = 870F843D16754EA800486F46 /* XboxHIDPrefsPane.prefPane */;
+			productReference = 870F843D16754EA800486F46 /* Xbox HID.prefPane */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -454,7 +454,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				870F843C16754EA800486F46 /* XboxHIDPrefsPane */,
+				870F843C16754EA800486F46 /* Xbox HID */,
 			);
 		};
 /* End PBXProject section */
@@ -508,7 +508,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "killall \"System Preferences\" &>/dev/null\nkillall \"XBox HID\" &>/dev/null\nrm -rf \"/Users/pmd/Library/Caches/com.apple.preferencepanes.*\"\nrm -rf \"/Users/pmd/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Users/pmd/Library/PreferencePanes/\"\ncp -R \"$BUILT_PRODUCTS_DIR/XboxHIDDaemon\" \"/Users/pmd/Library/PreferencePanes/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nkillall \"XboxHIDDaemon\" &>/dev/null\nopen \"/Applications/System Preferences.app\"\n";
+			shellScript = "export SUDO_ASKPASS=\"/Users/pmd/Scripts/xcode_askpass.sh\"\nkillall \"System Preferences\" &>/dev/null\nkillall \"XBox HID\" &>/dev/null\nrm -rf \"/Users/pmd/Library/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/Xbox HID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"/Volumes/Projects/Development/XboxHID/Packaging/Executables/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Volumes/Projects/Development/XboxHID/Packaging/Executables/\"\nkillall \"Xbox HID Daemon\" &>/dev/null\nopen \"/Applications/System Preferences.app\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -650,7 +650,7 @@
 				GCC_PREFIX_HEADER = "Support/XboxHIDPrefsPane-Prefix.pch";
 				INFOPLIST_FILE = "Support/Info-XboxHIDPrefsPane.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				PRODUCT_NAME = XboxHIDPrefsPane;
+				PRODUCT_NAME = "Xbox HID";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Debug;
@@ -664,7 +664,7 @@
 				GCC_PREFIX_HEADER = "Support/XboxHIDPrefsPane-Prefix.pch";
 				INFOPLIST_FILE = "Support/Info-XboxHIDPrefsPane.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				PRODUCT_NAME = XboxHIDPrefsPane;
+				PRODUCT_NAME = "Xbox HID";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Release;
@@ -681,7 +681,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		870F845916754EA800486F46 /* Build configuration list for PBXNativeTarget "XboxHIDPrefsPane" */ = {
+		870F845916754EA800486F46 /* Build configuration list for PBXNativeTarget "Xbox HID" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				870F845A16754EA800486F46 /* Debug */,

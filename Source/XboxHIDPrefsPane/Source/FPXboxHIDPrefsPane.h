@@ -269,9 +269,10 @@ enum eMenuEntriesButtons {
 	IBOutlet id _usbPowerReqs;
 	IBOutlet id _usbOK;
 
-    // version string
+    // strings
     IBOutlet id _textVersion;
 	IBOutlet id _textIdentifier;
+	IBOutlet id _textMapping;
 }
 
 - (IBAction) configCreateEnd: (id)sender;

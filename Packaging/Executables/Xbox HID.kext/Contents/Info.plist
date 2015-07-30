@@ -7,15 +7,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>XboxHIDDriver</string>
+	<string>Xbox HID</string>
 	<key>CFBundleGetInfoString</key>
 	<string>v1.0.0 (r333)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.XboxHIDDriver</string>
+	<string>com.fizzypopstudios.Xbox-HID</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>XboxHIDDriver</string>
+	<string>Xbox HID</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>

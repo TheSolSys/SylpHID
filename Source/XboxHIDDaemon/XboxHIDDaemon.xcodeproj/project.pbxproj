@@ -47,7 +47,7 @@
 		87DCB0F1167A9BF00031BA44 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		87DCB0F2167A9BF00031BA44 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		87F8F2E51679211200EDF309 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		B24EEE180A4D848700A488B8 /* XboxHIDDaemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = XboxHIDDaemon; sourceTree = BUILT_PRODUCTS_DIR; };
+		B24EEE180A4D848700A488B8 /* Xbox HID Daemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Xbox HID Daemon"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28D2D6B04892F7500A80002 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +89,7 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B24EEE180A4D848700A488B8 /* XboxHIDDaemon */,
+				B24EEE180A4D848700A488B8 /* Xbox HID Daemon */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,9 +146,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B24EEE060A4D848700A488B8 /* XBoxHIDDaemon */ = {
+		B24EEE060A4D848700A488B8 /* XBox HID Daemon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B24EEE140A4D848700A488B8 /* Build configuration list for PBXNativeTarget "XBoxHIDDaemon" */;
+			buildConfigurationList = B24EEE140A4D848700A488B8 /* Build configuration list for PBXNativeTarget "XBox HID Daemon" */;
 			buildPhases = (
 				B24EEE070A4D848700A488B8 /* Headers */,
 				B24EEE0B0A4D848700A488B8 /* Sources */,
@@ -159,10 +159,10 @@
 			);
 			dependencies = (
 			);
-			name = XBoxHIDDaemon;
+			name = "XBox HID Daemon";
 			productInstallPath = "$(HOME)/bin";
 			productName = XboxHIDDaemon;
-			productReference = B24EEE180A4D848700A488B8 /* XboxHIDDaemon */;
+			productReference = B24EEE180A4D848700A488B8 /* Xbox HID Daemon */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -184,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B24EEE060A4D848700A488B8 /* XBoxHIDDaemon */,
+				B24EEE060A4D848700A488B8 /* XBox HID Daemon */,
 			);
 		};
 /* End PBXProject section */
@@ -219,7 +219,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = XboxHIDDaemon;
+				PRODUCT_NAME = "Xbox HID Daemon";
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = ../XboxHIDDriver;
 				WARNING_CFLAGS = (
@@ -245,7 +245,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = XboxHIDDaemon;
+				PRODUCT_NAME = "Xbox HID Daemon";
 				SECTORDER_FLAGS = "";
 				USER_HEADER_SEARCH_PATHS = ../XboxHIDDriver;
 				WARNING_CFLAGS = (
@@ -285,7 +285,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B24EEE140A4D848700A488B8 /* Build configuration list for PBXNativeTarget "XBoxHIDDaemon" */ = {
+		B24EEE140A4D848700A488B8 /* Build configuration list for PBXNativeTarget "XBox HID Daemon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B24EEE150A4D848700A488B8 /* Debug */,

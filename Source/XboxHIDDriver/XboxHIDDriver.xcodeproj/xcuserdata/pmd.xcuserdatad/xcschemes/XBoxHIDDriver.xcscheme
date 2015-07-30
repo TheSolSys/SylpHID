@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8769277C1675A53400A2EA18"
-               BuildableName = "XboxHIDDriver.kext"
-               BlueprintName = "XboxHIDDriver"
+               BuildableName = "Xbox HID.kext"
+               BlueprintName = "Xbox HID"
                ReferencedContainer = "container:XboxHIDDriver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8769277C1675A53400A2EA18"
-            BuildableName = "XboxHIDDriver.kext"
-            BlueprintName = "XboxHIDDriver"
+            BuildableName = "Xbox HID.kext"
+            BlueprintName = "Xbox HID"
             ReferencedContainer = "container:XboxHIDDriver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8769277C1675A53400A2EA18"
-            BuildableName = "XboxHIDDriver.kext"
-            BlueprintName = "XboxHIDDriver"
+            BuildableName = "Xbox HID.kext"
+            BlueprintName = "Xbox HID"
             ReferencedContainer = "container:XboxHIDDriver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

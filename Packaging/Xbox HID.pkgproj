@@ -821,7 +821,7 @@
 						</dict>
 					</array>
 					<key>NAME</key>
-					<string>Processor (64-bit)</string>
+					<string>Processor (Intel 64-bit)</string>
 					<key>STATE</key>
 					<true/>
 				</dict>
@@ -835,7 +835,7 @@
 						<key>IC_REQUIREMENT_OS_DISTRIBUTION_TYPE</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_OS_MINIMUM_VERSION</key>
-						<integer>100600</integer>
+						<integer>100608</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>0</integer>
@@ -847,7 +847,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>This software requires OS X 10.6 or greater</string>
+							<string>This software requires OS X 10.6.8 or greater</string>
 						</dict>
 					</array>
 					<key>NAME</key>
@@ -891,9 +891,9 @@
 			<key>BUILD_PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>/Volumes/Projects/Development/XboxHID/Packaging/Build</string>
+				<string>Build</string>
 				<key>PATH_TYPE</key>
-				<integer>0</integer>
+				<integer>1</integer>
 			</dict>
 			<key>EXCLUDED_FILES</key>
 			<array>

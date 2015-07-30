@@ -8,7 +8,7 @@
 	<string>com.fizzypopstudios.XboxHIDDaemon</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Library/PreferencePanes/XboxHIDPrefsPane.prefPane/Contents/MacOS/XboxHIDDaemon</string>
+		<string>/Library/PreferencePanes/Xbox HID.prefPane/Contents/MacOS/Xbox HID Daemon</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

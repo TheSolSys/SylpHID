@@ -7,11 +7,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>XboxHIDPrefsPane</string>
+	<string>Xbox HID</string>
 	<key>CFBundleGetInfoString</key>
 	<string>v1.0.0 (r333)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.XboxHIDPrefsPane</string>
+	<string>com.fizzypopstudios.Xbox-HID</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

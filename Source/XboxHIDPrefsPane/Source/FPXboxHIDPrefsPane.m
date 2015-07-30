@@ -1019,6 +1019,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) showLargeError: (NSString*)errorMessage
 {
 	[_largeErrorMessage setStringValue: errorMessage];
+	[_textMapping setHidden: YES];
 	[_tabView selectTabViewItemAtIndex: 0];
 }
 
@@ -1227,6 +1228,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		if (device && [device hasOptions]) {
 			if ([device deviceIsPad]) {
 				[_tabView selectTabViewItemAtIndex: 1];
+				[_textMapping setHidden: NO];
 				[self initPadOptionsWithDevice: device];
 				[device enableRawReports];
 				error = NO;

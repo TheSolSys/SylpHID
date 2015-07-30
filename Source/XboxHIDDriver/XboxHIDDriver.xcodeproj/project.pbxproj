@@ -25,7 +25,7 @@
 		8260607F1B52F68C00A93BEE /* Info-XboxHIDDriver.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-XboxHIDDriver.plist"; path = "Support/Info-XboxHIDDriver.plist"; sourceTree = "<group>"; };
 		826060831B52F90F00A93BEE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		826060851B52F93800A93BEE /* XboxHIDDriver-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "XboxHIDDriver-Prefix.pch"; path = "Support/XboxHIDDriver-Prefix.pch"; sourceTree = "<group>"; };
-		8769277D1675A53400A2EA18 /* XboxHIDDriver.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XboxHIDDriver.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		8769277D1675A53400A2EA18 /* Xbox HID.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Xbox HID.kext"; sourceTree = BUILT_PRODUCTS_DIR; };
 		876927811675A53400A2EA18 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -53,7 +53,7 @@
 		8769277E1675A53400A2EA18 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8769277D1675A53400A2EA18 /* XboxHIDDriver.kext */,
+				8769277D1675A53400A2EA18 /* Xbox HID.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,9 +105,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8769277C1675A53400A2EA18 /* XboxHIDDriver */ = {
+		8769277C1675A53400A2EA18 /* Xbox HID */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8769278E1675A53400A2EA18 /* Build configuration list for PBXNativeTarget "XboxHIDDriver" */;
+			buildConfigurationList = 8769278E1675A53400A2EA18 /* Build configuration list for PBXNativeTarget "Xbox HID" */;
 			buildPhases = (
 				876927771675A53400A2EA18 /* Sources */,
 				876927781675A53400A2EA18 /* Frameworks */,
@@ -119,9 +119,9 @@
 			);
 			dependencies = (
 			);
-			name = XboxHIDDriver;
+			name = "Xbox HID";
 			productName = XBoxHIDDriver;
-			productReference = 8769277D1675A53400A2EA18 /* XboxHIDDriver.kext */;
+			productReference = 8769277D1675A53400A2EA18 /* Xbox HID.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8769277C1675A53400A2EA18 /* XboxHIDDriver */,
+				8769277C1675A53400A2EA18 /* Xbox HID */,
 			);
 		};
 /* End PBXProject section */
@@ -172,7 +172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/pmd/Scripts/xcode_askpass.sh\"\nif [[ \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" -nt /System/Library/Extensions/XboxHIDDriver.kext ]]; then\n  killall \"System Preferences\" &>/dev/null\n  killall \"XBox HID\" &>/dev/null\n  killall \"XBoxHIDDaemon\"\n  sudo -A kextunload /System/Library/Extensions/XboxHIDDriver.kext\n  sudo -A rm -rf /System/Library/Extensions/XboxHIDDriver.kext\n  sudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" /System/Library/Extensions\n  sudo -A kextload /System/Library/Extensions/XboxHIDDriver.kext\nfi";
+			shellScript = "export SUDO_ASKPASS=\"/Users/pmd/Scripts/xcode_askpass.sh\"\nif [[ \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" -nt \"/System/Library/Extensions/$FULL_PRODUCT_NAME\" ]]; then\n  killall \"System Preferences\" &>/dev/null\n  killall \"XBox HID\" &>/dev/null\n  killall \"XBox HID Daemon\" &>/dev/null\n  sudo -A kextunload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  sudo -A rm -rf \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  sudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" /System/Library/Extensions\n  sudo -A kextload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  rm -rf \"/Volumes/Projects/Development/XboxHID/Packaging/Executables/$FULL_PRODUCT_NAME\"\n  cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Volumes/Projects/Development/XboxHID/Packaging/Executables/\"\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -296,7 +296,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8769278E1675A53400A2EA18 /* Build configuration list for PBXNativeTarget "XboxHIDDriver" */ = {
+		8769278E1675A53400A2EA18 /* Build configuration list for PBXNativeTarget "Xbox HID" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8769278F1675A53400A2EA18 /* Debug */,

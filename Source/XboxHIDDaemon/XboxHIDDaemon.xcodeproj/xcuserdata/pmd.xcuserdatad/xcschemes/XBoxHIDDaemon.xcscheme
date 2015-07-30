@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B24EEE060A4D848700A488B8"
-               BuildableName = "XboxHIDDaemon"
-               BlueprintName = "XBoxHIDDaemon"
+               BuildableName = "Xbox HID Daemon"
+               BlueprintName = "XBox HID Daemon"
                ReferencedContainer = "container:XboxHIDDaemon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

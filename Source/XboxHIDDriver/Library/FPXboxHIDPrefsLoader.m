@@ -167,7 +167,8 @@
 
 	// iterate through device bindings to update any devices using renamed config
 	NSMutableDictionary* bindings = [prefs objectForKey: kBindingsKey];
-	for (NSString* device in bindings) {
+	NSDictionary* iterate = [NSDictionary dictionaryWithDictionary: bindings];
+	for (NSString* device in iterate) {
 		if ([[bindings objectForKey: device] isEqualToString: current]) {
 			[bindings removeObjectForKey: device];
 			[bindings setObject: rename forKey: device];
@@ -178,7 +179,8 @@
 	NSDictionary* apps = [prefs objectForKey: kAppsKey];
 	for (NSString* appid in apps) {
 		NSMutableDictionary* bindings = [apps objectForKey: appid];
-		for (NSString* device in bindings) {
+		NSDictionary* iterate = [NSDictionary dictionaryWithDictionary: bindings];
+		for (NSString* device in iterate) {
 			if ([[bindings objectForKey: device] isEqualToString: current]) {
 				[bindings removeObjectForKey: device];
 				[bindings setObject: rename forKey: device];
@@ -385,19 +387,6 @@
 	return [FPXboxHIDPrefsLoader saveConfigForDevice: device];
 }
 
-/*
-    Applications =     {
-        "ToCA/com.feral.ToCA" =         {
-            "Pad-3d110000" = "Racing Games";
-        };
-        "com.feral.CMR05" =         {
-            "Pad-3d110000" = "Racing Games";
-        };
-        "com.feralinteractive.dirt2" =         {
-            "Pad-3d110000" = "Pad-3d110000";
-        };
-    };
-*/
 
 // delete the specified configuration
 + (BOOL) deleteConfigWithName: (NSString*)configName

@@ -4,8 +4,16 @@ echo "Start background daemon"
 sudo launchctl load /Library/LaunchAgents/com.fizzypopstuidos.XboxHIDDaemon.plist
 sudo launchctl start com.fizzypopstudios.XboxHIDDaemon
 
+
 echo "Load kernel extension"
-sudo kextload /System/Library/Extensions/XboxHIDDriver.kext
+if [ -d /System/Library/Extensions/XboxHIDDriver.kext ]; then
+	sudo kextload /System/Library/Extensions/XboxHIDDriver.kext
+fi
+
+if [ -d /Library/Extensions/XboxHIDDriver.kext ]; then
+	sudo kextload /Library/Extensions/XboxHIDDriver.kext
+fi
+
 
 echo "Relaunch System Preferences"
 PROCESS="System Preferences"

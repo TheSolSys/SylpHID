@@ -1,12 +1,12 @@
 #!/bin/sh
 
-echo "Checking for 'xhd' Driver"
+echo "Checking for 'xhd' driver"
 if [ -d /System/Library/Extensions/DWXboxHIDDriver.kext ]; then
-	echo "Removing old 'xhd' Driver"
+	echo "Removing old 'xhd' driver"
 	PROCESS="XboxHIDDaemon"
 	number=$(ps aux | grep -i $PROCESS | grep -v grep | wc -l)
 	if [ $number -gt 0 ]; then
-		sudo killall $PROCESS
+		killall $PROCESS
 	fi
 
 	sudo kextunload /System/Library/Extensions/DWXBoxHIDDriver.kext
@@ -16,38 +16,38 @@ if [ -d /System/Library/Extensions/DWXboxHIDDriver.kext ]; then
 	sudo -u $USER xhdLoginItem -remove ~/Library/PreferencePanes/XboxHIDPrefsPane.prefPane/Contents/Resources/XboxHIDDaemonLauncher.app
 	sudo xhdLoginItem -remove -g ~/Library/PreferencePanes/XboxHIDPrefsPane.prefPane/Contents/Resources/XboxHIDDaemonLauncher.app
 
-	rm -rf ~/Library/Preferences/org.walisser.XboxHIDDriver.plist
-	rm -rf ~/Library/PreferencePanes/XboxHIDPrefsPane.prefPane
-	rm -rf /Library/PreferencePanes/XboxHIDPrefsPane.prefPane
-	rm -rf /System/Library/Extensions/DWXboxHIDDriver.kext
-	rm -rf /private/var/db/receipts/org.walisser.driver.DWXBoxHIDDriver.bom
-	rm -rf /private/var/db/receipts/org.walisser.driver.DWXBoxHIDDriver.plist
+	sudo rm -rf ~/Library/Preferences/org.walisser.XboxHIDDriver.plist
+	sudo rm -rf ~/Library/PreferencePanes/XboxHIDPrefsPane.prefPane
+	sudo rm -rf /Library/PreferencePanes/XboxHIDPrefsPane.prefPane
+	sudo rm -rf /System/Library/Extensions/DWXboxHIDDriver.kext
+	sudo rm -rf /private/var/db/receipts/org.walisser.driver.DWXBoxHIDDriver.bom
+	sudo rm -rf /private/var/db/receipts/org.walisser.driver.DWXBoxHIDDriver.plist
 
 	echo "Relaunch System Preferences"
 	PROCESS="System Preferences"
 	number=$(ps aux | grep -i "$PROCESS" | grep -v grep | wc -l)
 	if [ $number -gt 0 ]
 		then
-			killall "$PROCESS" && open -g "/Applications/System Preferences.app"
+			sudo killall "$PROCESS" && open -g "/Applications/System Preferences.app"
 	fi
 fi
 
 
 echo "Checking if upgrading"
-if [ -d /Library/PreferencePanes/XboxHIDPrefPane.prefPane]; then
+if [ -d "/Library/PreferencePanes/Xbox HID.prefPane" ]; then
 	echo "Removing previous version"
 
-	if [ -d /System/Library/Extensions/XboxHIDDriver.kext ]; then
-		sudo kextunload /System/Library/Extensions/XboxHIDDriver.kext
-		sudo rm -rf /System/Library/Extensions/XboxHIDDriver.kext
+	if [ -d "/System/Library/Extensions/Xbox HID.kext" ]; then
+		sudo kextunload "/System/Library/Extensions/Xbox HID.kext"
+		rm -rf "/System/Library/Extensions/Xbox HID.kext"
+
+	elif [ -d "/Library/Extensions/Xbox HID.kext" ]; then
+		sudo kextunload "/Library/Extensions/Xbox HID.kext"
+		rm -rf "/Library/Extensions/Xbox HID.kext"
+
 	fi
 
-	if [ -d /Library/Extensions/XboxHIDDriver.kext ]; then
-		sudo kextunload /Library/Extensions/XboxHIDDriver.kext
-		sudo rm -rf /Library/Extensions/XboxHIDDriver.kext
-	fi
-
-	launchctl stop com.fizzypopstudios.XboxHIDDaemon
-	launchctl unload /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist
-	sudo rm /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist
+	sudo launchctl stop com.fizzypopstudios.XboxHIDDaemon
+	sudo launchctl unload /Library/LaunchDaemons/com.fizzypopstudios.XboxHIDDaemon.plist
+	sudo rm /Library/LaunchDaemons/com.fizzypopstudios.XboxHIDDaemon.plist
 fi

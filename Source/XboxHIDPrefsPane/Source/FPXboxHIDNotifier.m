@@ -43,6 +43,10 @@
 	self = [super init];
 	if (self && ![self createRunLoopNotifications])
 		self = nil;
+
+	_matchedTarget = nil;
+	_terminatedTarget = nil;
+
 	return self;
 }
 

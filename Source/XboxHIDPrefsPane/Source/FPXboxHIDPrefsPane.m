@@ -251,13 +251,14 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) saveLastDeviceIdentifier
 {
 	_lastDevice = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-	[_textIdentifier setStringValue: _lastDevice];
+	if (_lastDevice != nil)
+		[_textIdentifier setStringValue: _lastDevice];
 }
 
 
 - (void) getVersion
 {
-	NSBundle* bundle = [NSBundle bundleWithPath: @"/System/Library/Extensions/XboxHIDDriver.kext"];
+	NSBundle* bundle = [NSBundle bundleWithPath: @"/System/Library/Extensions/Xbox HID.kext"];
 	NSString* version = [[bundle infoDictionary] objectForKey: @"CFBundleGetInfoString"];
 	if (version == nil) version = @"Unknown Version";
 	[_textVersion setStringValue: version];

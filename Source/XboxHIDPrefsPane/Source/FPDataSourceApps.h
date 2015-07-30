@@ -41,7 +41,7 @@
 
 
 @interface FPDataSourceApps : NSObject <NSTableViewDataSource, NSTableViewDelegate> {
-	NSMutableArray* _source;
+	NSArray* _source;
 	NSUInteger _count;
 	NSPopUpButton* _popup;
 	NSString* _device;

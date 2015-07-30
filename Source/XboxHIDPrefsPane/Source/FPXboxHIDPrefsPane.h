@@ -92,13 +92,15 @@ enum eMenuEntriesButtons {
 	MAAttachedWindow* _xfade;
     FPXboxHIDNotifier* _notifier;
     XBPadReport _rawReport;
-	XBPadOptions _undo;
+	XBPadOptions _undoMappings;
+	NSDictionary* _undoBindings;
 	NSString* _lastConfig;
 	NSString* _lastDevice;
 
 	NSMutableDictionary* _appConfig;
 	FPDataSourceApps* _appData;
 	NSString* _appSelectedID;
+	NSDictionary* _appAttrs;
 
 	// device popup
     IBOutlet id _devicePopUp;
@@ -244,10 +246,14 @@ enum eMenuEntriesButtons {
 	IBOutlet id _creditsText;
 	IBOutlet id _creditsOK;
 
+	IBOutlet id _donateView;
+	IBOutlet id _donateScroll;
+	IBOutlet id _donateText;
+	IBOutlet id _donateOK;
+
 	IBOutlet id _appsView;
 	IBOutlet id _appsTable;
 	IBOutlet id _appsBlank;
-	IBOutlet id _appsIdent;
 	IBOutlet id _appsAction;
 	IBOutlet id _appsOK;
 
@@ -265,21 +271,27 @@ enum eMenuEntriesButtons {
 
     // version string
     IBOutlet id _textVersion;
+	IBOutlet id _textIdentifier;
 }
 
-- (IBAction) selectDevice: (id)sender;
-- (IBAction) changePadOption: (id)sender;
-
-- (IBAction) clickConfigSegment: (id)sender;
 - (IBAction) configCreateEnd: (id)sender;
 - (IBAction) configDeleteEnd: (id)sender;
 - (IBAction) configActionsPick: (id)sender;
+- (IBAction) configEditEnd: (id)sender;
 
-- (IBAction) clickMenuSegment: (id)sender;
+- (IBAction) appEditAction: (id)sender;
+- (IBAction) appEditEnd: (id)sender;
 
-- (IBAction) clickCredits: (id)sender;
-- (IBAction) closeCredits: (id)sender;
+- (IBAction) closePopUpWindow: (id)sender;
 
+- (IBAction) selectDevice: (id)sender;
 - (IBAction) selectConfig: (id)sender;
+
+- (IBAction) changePadOption: (id)sender;
+
+- (IBAction) clickConfigSegment: (id)sender;
+- (IBAction) clickMenuSegment: (id)sender;
+- (IBAction) clickCredits: (id)sender;
+- (IBAction) clickDonate: (id)sender;
 
 @end

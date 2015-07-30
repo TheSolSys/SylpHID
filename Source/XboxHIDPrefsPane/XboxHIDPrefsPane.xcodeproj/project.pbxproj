@@ -68,6 +68,7 @@
 		828BEF671B6730720005A90F /* FPAppBindingCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 828BEF651B6730720005A90F /* FPAppBindingCells.m */; };
 		82983C071B655A9F00C260C1 /* FPBoxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 82983C051B655A9F00C260C1 /* FPBoxLine.h */; };
 		82983C081B655A9F00C260C1 /* FPBoxLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 82983C061B655A9F00C260C1 /* FPBoxLine.m */; };
+		82AACC771B69B370003784DF /* donate.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82AACC761B69B370003784DF /* donate.rtf */; };
 		82BC57041B570B8E0040C786 /* iconAppSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */; };
 		82C210421B668B3100FAD449 /* MAAttachedWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 82C210401B668B3100FAD449 /* MAAttachedWindow.h */; };
 		82C210431B668B3100FAD449 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C210411B668B3100FAD449 /* MAAttachedWindow.m */; };
@@ -84,7 +85,6 @@
 		82F77A871B62F4CF0033460F /* FPTextCredits.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F77A851B62F4CF0033460F /* FPTextCredits.m */; };
 		870F844116754EA800486F46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F844016754EA800486F46 /* Cocoa.framework */; };
 		870F844316754EA800486F46 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F844216754EA800486F46 /* PreferencePanes.framework */; };
-		870F84BC1675534100486F46 /* xboxhid.icns in Resources */ = {isa = PBXBuildFile; fileRef = 870F84B81675534100486F46 /* xboxhid.icns */; };
 		87EBDA3116768C4C00F77972 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EBDA3016768C4B00F77972 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +150,7 @@
 		828BEF651B6730720005A90F /* FPAppBindingCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppBindingCells.m; path = Source/FPAppBindingCells.m; sourceTree = "<group>"; };
 		82983C051B655A9F00C260C1 /* FPBoxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBoxLine.h; path = Source/FPBoxLine.h; sourceTree = "<group>"; };
 		82983C061B655A9F00C260C1 /* FPBoxLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBoxLine.m; path = Source/FPBoxLine.m; sourceTree = "<group>"; };
+		82AACC761B69B370003784DF /* donate.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = donate.rtf; path = Resources/donate.rtf; sourceTree = "<group>"; };
 		82BC57031B570B8E0040C786 /* iconAppSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAppSmallTemplate.png; path = Resources/Images/iconAppSmallTemplate.png; sourceTree = "<group>"; };
 		82C210401B668B3100FAD449 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = External/MAAttachedWindow/MAAttachedWindow.h; sourceTree = "<group>"; };
 		82C210411B668B3100FAD449 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = External/MAAttachedWindow/MAAttachedWindow.m; sourceTree = "<group>"; };
@@ -172,7 +173,6 @@
 		870F844716754EA800486F46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		870F844A16754EA800486F46 /* Info-XboxHIDPrefsPane.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-XboxHIDPrefsPane.plist"; path = "Support/Info-XboxHIDPrefsPane.plist"; sourceTree = "<group>"; };
 		870F844E16754EA800486F46 /* XboxHIDPrefsPane-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "XboxHIDPrefsPane-Prefix.pch"; path = "Support/XboxHIDPrefsPane-Prefix.pch"; sourceTree = "<group>"; };
-		870F84B81675534100486F46 /* xboxhid.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xboxhid.icns; path = Resources/xboxhid.icns; sourceTree = "<group>"; };
 		87EBDA3016768C4B00F77972 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -312,9 +312,9 @@
 			children = (
 				8258377C1B5313A900E6B025 /* XboxHIDPrefsPane.xib */,
 				8294F24F1B40B26E005DC1B8 /* Control Images */,
-				870F84B81675534100486F46 /* xboxhid.icns */,
 				8220E2761B3FCB7A002B7381 /* xboxhidprefs.icns */,
 				82F77A7E1B62E0360033460F /* credits.rtf */,
+				82AACC761B69B370003784DF /* donate.rtf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -488,9 +488,9 @@
 				8220E2771B3FCB7A002B7381 /* xboxhidprefs.icns in Resources */,
 				825C70001B57C7C1006599BE /* logoOverlay.png in Resources */,
 				826060DE1B52FF0000A93BEE /* iconEditTemplate.png in Resources */,
-				870F84BC1675534100486F46 /* xboxhid.icns in Resources */,
 				826060C91B52FEE900A93BEE /* controller.png in Resources */,
 				826060D41B52FEE900A93BEE /* controllerTriggerRight.png in Resources */,
+				82AACC771B69B370003784DF /* donate.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

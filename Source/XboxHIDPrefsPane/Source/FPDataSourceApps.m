@@ -43,7 +43,7 @@
 - (void) setSource: (NSDictionary*)source forDeviceID: (NSString*)device withTableView: (NSTableView*)table
 {
 	NSWorkspace* workspace = [NSWorkspace sharedWorkspace];
-	_source = [[NSMutableArray alloc] init];
+	NSMutableArray* input = [[NSMutableArray alloc] init];
 	_popup = [[NSPopUpButton alloc] init];
 	_device = device;
 	_table = table;
@@ -63,12 +63,17 @@
 					NSImage* icon = [workspace iconForFile: path];
 					NSString* appname = [[NSFileManager defaultManager] displayNameAtPath: path];
 					NSInteger index = [_popup indexOfItemWithTitle: [bindings objectForKey: devid]];
-					[_source addObject: [NSMutableArray arrayWithObjects: icon, [appname stringByDeletingPathExtension],
+					[input addObject: [NSMutableArray arrayWithObjects: icon, [appname stringByDeletingPathExtension],
 															[NSNumber numberWithInteger: index == -1 ? 0 : index], appid, nil]];
 				}
 			}
 		}
 	}
+
+	// Sort app bindings by application name
+	_source = [input sortedArrayUsingComparator: ^NSComparisonResult(NSArray* first, NSArray* second) {
+		return [[first objectAtIndex: kAppSourceName] compare: [second objectAtIndex: kAppSourceName]];
+	}];
 
 	_count = [_source count];	// Actual min/max values set in IB, so we just use 1 and 1000 in case we change them
 	[[table tableColumnWithIdentifier: NS4CC(kAppTableColumnList)] setWidth: _count > kAppTableMaxRows ? 1 : 1000];

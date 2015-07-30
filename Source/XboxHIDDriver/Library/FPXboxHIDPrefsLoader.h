@@ -62,6 +62,9 @@
 // returns all current app bindings
 + (NSDictionary*) allAppBindings;
 
+// set all app bindings (used for undo feature)
++ (BOOL) setAllAppBindings: (NSDictionary*)apps;
+
 // returns total number of applications bound to specific config
 + (int) totalAppBindingsForConfigNamed: (NSString*)config;
 

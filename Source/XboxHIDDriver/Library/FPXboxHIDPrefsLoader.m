@@ -202,6 +202,16 @@
 }
 
 
+// set all app bindings (used for undo feature)
++ (BOOL) setAllAppBindings: (NSDictionary*)apps
+{
+	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	[prefs setObject: apps forKey: kAppsKey];
+	[FPXboxHIDPrefsLoader setDefaults: prefs];
+	return true;
+}
+
+
 // returns total number of applications bound to specific config
 + (int) totalAppBindingsForConfigNamed: (NSString*)config
 {

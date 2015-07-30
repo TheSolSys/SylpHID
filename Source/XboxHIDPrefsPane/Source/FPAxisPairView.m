@@ -28,6 +28,7 @@
 
 
 #import "FPAxisPairView.h"
+#import "FPXboxHIDDriverKeys.h"
 
 
 @implementation FPAxisPairView
@@ -71,8 +72,8 @@
 
 - (void) moveView
 {
-	float xoff = (_livex / 3276.8);
-	float yoff = (_livey / 3276.8);
+	float xoff = (_livex / (kStickRange / 10));
+	float yoff = (_livey / (kStickRange / 10));
 	[self setFrameOrigin: NSMakePoint(_home.x + xoff, _home.y + yoff)];
 }
 
@@ -82,10 +83,10 @@
 	if (self) {
 		_x = 0;
 		_y = 0;
-		_minx = -32768;
-		_maxx = 32767;
-		_miny = -32768;
-		_maxy = 32767;
+		_minx = kStickMin;
+		_maxx = kStickMax;
+		_miny = kStickMin;
+		_maxy = kStickMax;
 		_pressed = 0;
 		_home = [self frame].origin;
 	}

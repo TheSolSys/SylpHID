@@ -57,6 +57,12 @@
 #define kSegmentAppsDelete		1	// segments for app bindings segmented control
 #define kSegmentAppsUndo		2
 
+#define kUndoMappings			1	// flags for two types of undo available
+#define kUndoBindings			2
+
+
+typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
+
 
 @implementation FPXboxHIDPrefsPane
 
@@ -84,33 +90,33 @@
 	[_rightStickDeadzoneY setDeadzoneSlider: _rightStickDeadzoneYField];
 	[_rightStickDeadzoneY setDeadzoneValue: 0];
 
-	[_leftTriggerLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_leftTriggerLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_leftTriggerMode setIsDigital: NO];
 
-	[_rightTriggerLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_rightTriggerLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_rightTriggerMode setIsDigital: NO];
 
-	[_buttonWhiteLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_buttonWhiteLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_buttonWhiteView setColor: [NSColor whiteColor]];
 	[_buttonWhiteMode setIsDigital: NO];
 
-	[_buttonBlackLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_buttonBlackLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_buttonBlackView setColor: [NSColor blackColor]];
 	[_buttonBlackMode setIsDigital: NO];
 
-	[_buttonBlueLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_buttonBlueLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_buttonBlueView setColor: [NSColor colorWithCalibratedRed: 0.333 green: 0.750 blue: 1.0 alpha: 1.000]];
 	[_buttonBlueMode setIsDigital: NO];
 
-	[_buttonYellowLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_buttonYellowLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_buttonYellowView setColor: [NSColor yellowColor]];
 	[_buttonYellowMode setIsDigital: NO];
 
-	[_buttonGreenLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_buttonGreenLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_buttonGreenView setColor: [NSColor greenColor]];
 	[_buttonGreenMode setIsDigital: NO];
 
-	[_buttonRedLivezone setDoubleLoValue: 1 andHiValue: 255];
+	[_buttonRedLivezone setDoubleLoValue: kButtonMin + 1 andHiValue: kButtonAnalogMax];
 	[_buttonRedView setColor: [NSColor redColor]];
 	[_buttonRedMode setIsDigital: NO];
 
@@ -139,6 +145,11 @@
 	[_creditsText setEditable: YES];
 	[_creditsText checkTextInDocument: nil];  // activates hyperlinks
 	[_creditsText setEditable: NO];
+
+	[_donateText readRTFDFromFile: [bundle pathForResource: @"donate" ofType: @"rtf"]];
+	[_donateText setEditable: YES];
+	[_donateText checkTextInDocument: nil];  // activates hyperlinks
+	[_donateText setEditable: NO];
 
 	// Use menu item tags to store mapping information
 	[[_menuAxisXbox itemAtIndex: kMenuAxisDisabled] setTag: kCookiePadDisabled];
@@ -190,10 +201,24 @@
 	[_appsTable setDelegate: self];
 
 	_lastConfig = nil;
+	_undoBindings = nil;
+
 	_appConfig = [NSMutableDictionary dictionary];
+
+	NSShadow *textShadow = [[NSShadow alloc] init];
+	[textShadow setShadowOffset: NSMakeSize(0.5, -1)];
+	[textShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.0 alpha: 1]];
+	[textShadow setShadowBlurRadius: 1.5];
+
+	NSMutableParagraphStyle *paragraph = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+	[paragraph setAlignment: NSLeftTextAlignment];
+	[paragraph setLineBreakMode: NSLineBreakByTruncatingTail];
+
+	_appAttrs = [NSDictionary dictionaryWithObjectsAndKeys: /*textFont,	NSFontAttributeName, */
+															textShadow,	NSShadowAttributeName,
+															/* textColor,	NSForegroundColorAttributeName, */
+															paragraph,	NSParagraphStyleAttributeName,	nil];
 }
-
-
 
 
 - (void) willSelect
@@ -226,7 +251,9 @@
 - (void) saveLastDeviceIdentifier
 {
 	_lastDevice = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
+	[_textIdentifier setStringValue: _lastDevice];
 }
+
 
 - (void) getVersion
 {
@@ -298,7 +325,7 @@
 }
 
 
-// <FPAppBindings> method
+// FPAppBindings protocol method
 - (void) buildConfigurationPopUpButton: (FPConfigPopUp*)button withDefaultConfig: (NSString*)defconfig
 {
 	id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
@@ -440,7 +467,7 @@
 	          atDistance: 4];
 	[_actionEdit setEnabled: ![FPXboxHIDPrefsLoader isDefaultConfigForDevice: device]];
 	[_actionEdit resetImage];
-	[_actionUndo setEnabled: [self canUndo]];
+	[_actionUndo setEnabled: [self canUndo: kUndoMappings]];
 	[_actionUndo resetImage];
 	[_actionApps setEnabled: YES];
 	[_actionApps resetImage];
@@ -474,8 +501,8 @@
 		[_popup setViewMargin: 1.0];
 		[self crossFadeAttachedWindow];
 
-	} else if (sender == _actionUndo && [self canUndo]) {
-		[self performUndo];
+	} else if (sender == _actionUndo && [self canUndo: kUndoMappings]) {
+		[self performUndo: kUndoMappings];
 		[self fadeOutAttachedWindow];
 
 	} else if (sender == _actionApps) {
@@ -487,7 +514,7 @@
 				  onSide: MAPositionTop
 				  atDistance: 4];
 		[_popup setViewMargin: 1.0];
-		[_appsIdent setStringValue: [device identifier]];
+		[self saveUndoState: kUndoBindings];
 		[self appSetDataSource];
 		[self crossFadeAttachedWindow];
 
@@ -500,6 +527,7 @@
 				  onSide: MAPositionTop
 				  atDistance: 4];
 		[self populateUSBInfo];
+		[_usbOK setKeyEquivalent: @"\r"];
 		[_popup setViewMargin: 1.0];
 		[self crossFadeAttachedWindow];
 
@@ -528,12 +556,6 @@
 		[self buildConfigurationPopUpButton];
 		_lastConfig = [_configPopUp titleOfSelectedItem];
 	}
-	[self fadeOutAttachedWindow];
-}
-
-
-- (IBAction) usbInfoEnd: (id)sender
-{
 	[self fadeOutAttachedWindow];
 }
 
@@ -584,12 +606,11 @@
 	[_appData setSource: [FPXboxHIDPrefsLoader allAppBindings] forDeviceID: devid withTableView: _appsTable];
 	[_appsTable deselectAll: nil];
 	[_appsAction setEnabled: NO forSegment: kSegmentAppsDelete];
+	[_appsAction setEnabled: [self canUndo: kUndoBindings] forSegment: kSegmentAppsUndo];
 	[_appsBlank setHidden: [_appData numberOfRowsInTableView: _appsTable] > 0];
 	[_appsTable reloadData];
 }
 
-
-typedef void(^OPBlock)(NSInteger result);
 
 - (IBAction) appEditAction: (id)sender
 {
@@ -637,7 +658,8 @@ typedef void(^OPBlock)(NSInteger result);
 		}
 
 		case kSegmentAppsUndo: {
-
+			[self performUndo: kUndoBindings];
+			[self appSetDataSource];
 			break;
 		}
 	}
@@ -646,26 +668,37 @@ typedef void(^OPBlock)(NSInteger result);
 
 - (IBAction) appEditEnd: (id)sender
 {
+	_undoBindings = nil;
 	[self fadeOutAttachedWindow];
 }
 
 
-// <FPAppBindings> methods
+// FPAppBindings protocol methods
 - (void) setAppConfig: (NSString*)config forAppID: (NSString*)appid
 {
 	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
 	[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+	[_appsAction setEnabled: [self canUndo: kUndoBindings] forSegment: kSegmentAppsUndo];
 }
 
 
 - (void) appSelectionChanged: (NSString*)appid
 {
-	[_appsAction setEnabled: (appid != nil) forSegment: 1];
+	[_appsAction setEnabled: (appid != nil) forSegment: kSegmentAppsDelete];
 	_appSelectedID = appid;
 }
 
 
-#pragma mark --- Acknowledgements --------------------
+// FPAppTableView delegate method (to fix highlight to not make text bold)
+- (void) tableView: (NSTableView*)tableView willDisplayCell: (id)cell forTableColumn: (NSTableColumn*)column row: (NSInteger)row
+{
+	uint colid = NSSwapInt(*(uint*)StringToC([column identifier]));
+	if (colid == kAppTableColumnName && [tableView selectedRow] == row)
+		[cell setAttributedStringValue: [[NSAttributedString alloc] initWithString: [cell stringValue] attributes: _appAttrs]];
+}
+
+
+#pragma mark --- Credits / Donate ----------------------
 
 - (void) showCredits
 {
@@ -675,21 +708,32 @@ typedef void(^OPBlock)(NSInteger result);
 	          inWindow: [_btnCredits window]
 	          onSide: MAPositionTop
 	          atDistance: 4];
-	[_actionEdit setEnabled: NO];
-	[_actionUndo setEnabled: NO];
-	[_actionApps setEnabled: NO];
 	[_popup setViewMargin: 5.0];
 	[self fadeInAttachedWindow];
 }
 
 
-- (IBAction) closeCredits: (id)sender
+- (void) showDonate
 {
-	[self fadeOutAttachedWindow];
+	NSPoint buttonPoint = NSMakePoint(NSMidX([_btnDonate frame]), NSMidY([_btnDonate frame]));
+	_popup = [[MAAttachedWindow alloc] initWithView: _donateView
+	          attachedToPoint: buttonPoint
+	          inWindow: [_btnDonate window]
+	          onSide: MAPositionTop
+	          atDistance: 4];
+	[_popup setViewMargin: 5.0];
+	[self fadeInAttachedWindow];
 }
 
 
 #pragma mark --- PopUp Window Support -----------------
+
+// Generic close window for actions that do not require extra processing
+- (IBAction) closePopUpWindow: (id)sender
+{
+	[self fadeOutAttachedWindow];
+}
+
 
 - (void) crossFadeAttachedWindow
 {
@@ -754,200 +798,219 @@ typedef void(^OPBlock)(NSInteger result);
 
 #pragma mark --- Undo --------------------------------
 
-- (void) saveUndoState
+- (void) saveUndoState: (int)mode
 {
-	_undo.InvertLxAxis				= [_leftStickInvertX state];
-	_undo.DeadzoneLxAxis			= [_leftStickDeadzoneX deadzoneValue];
-	_undo.MappingLxAxis				= [[_leftStickMenuX selectedItem] tag];
+	if (mode == kUndoMappings) {
+		_undoMappings.InvertLxAxis				= [_leftStickInvertX state];
+		_undoMappings.DeadzoneLxAxis			= [_leftStickDeadzoneX deadzoneValue];
+		_undoMappings.MappingLxAxis				= [[_leftStickMenuX selectedItem] tag];
 
-	_undo.InvertLyAxis				= [_leftStickInvertY state];
-	_undo.DeadzoneLyAxis			= [_leftStickDeadzoneY deadzoneValue];
-	_undo.MappingLyAxis				= [[_leftStickMenuY selectedItem] tag];
+		_undoMappings.InvertLyAxis				= [_leftStickInvertY state];
+		_undoMappings.DeadzoneLyAxis			= [_leftStickDeadzoneY deadzoneValue];
+		_undoMappings.MappingLyAxis				= [[_leftStickMenuY selectedItem] tag];
 
-	_undo.InvertRxAxis				= [_rightStickInvertX state];
-	_undo.DeadzoneRxAxis			= [_rightStickDeadzoneX deadzoneValue];
-	_undo.MappingRxAxis				= [[_rightStickMenuX selectedItem] tag];
+		_undoMappings.InvertRxAxis				= [_rightStickInvertX state];
+		_undoMappings.DeadzoneRxAxis			= [_rightStickDeadzoneX deadzoneValue];
+		_undoMappings.MappingRxAxis				= [[_rightStickMenuX selectedItem] tag];
 
-	_undo.InvertRyAxis				= [_rightStickInvertY state];
-	_undo.DeadzoneRyAxis			= [_rightStickDeadzoneY deadzoneValue];
-	_undo.MappingRyAxis				= [[_rightStickMenuY selectedItem] tag];
+		_undoMappings.InvertRyAxis				= [_rightStickInvertY state];
+		_undoMappings.DeadzoneRyAxis			= [_rightStickDeadzoneY deadzoneValue];
+		_undoMappings.MappingRyAxis				= [[_rightStickMenuY selectedItem] tag];
 
-	_undo.MappingDPadUp				= [[_dpadUpMenu selectedItem] tag];
-	_undo.MappingDPadDown			= [[_dpadDownMenu selectedItem] tag];
-	_undo.MappingDPadLeft			= [[_dpadLeftMenu selectedItem] tag];
-	_undo.MappingDPadRight			= [[_dpadRightMenu selectedItem] tag];
+		_undoMappings.MappingDPadUp				= [[_dpadUpMenu selectedItem] tag];
+		_undoMappings.MappingDPadDown			= [[_dpadDownMenu selectedItem] tag];
+		_undoMappings.MappingDPadLeft			= [[_dpadLeftMenu selectedItem] tag];
+		_undoMappings.MappingDPadRight			= [[_dpadRightMenu selectedItem] tag];
 
-	_undo.MappingButtonStart		= [[_buttonStartMenu selectedItem] tag];
-	_undo.MappingButtonBack			= [[_buttonBackMenu selectedItem] tag];
+		_undoMappings.MappingButtonStart		= [[_buttonStartMenu selectedItem] tag];
+		_undoMappings.MappingButtonBack			= [[_buttonBackMenu selectedItem] tag];
 
-	_undo.MappingLeftClick			= [[_leftStickMenuBtn selectedItem] tag];
-	_undo.MappingRightClick			= [[_rightStickMenuBtn selectedItem] tag];
+		_undoMappings.MappingLeftClick			= [[_leftStickMenuBtn selectedItem] tag];
+		_undoMappings.MappingRightClick			= [[_rightStickMenuBtn selectedItem] tag];
 
-	_undo.AnalogAsDigital			= [self analogDigitalMask];
+		_undoMappings.AnalogAsDigital			= [self analogDigitalMask];
 
-	_undo.ThresholdLowLeftTrigger	= [_leftTriggerLivezone intLoValue];
-	_undo.ThresholdHighLeftTrigger	= [_leftTriggerLivezone intHiValue];
-	_undo.MappingLeftTrigger		= [[_leftTriggerMenu selectedItem] tag];
-	_undo.AlternateLeftTrigger		= [_leftTriggerAlt state];
+		_undoMappings.ThresholdLowLeftTrigger	= [_leftTriggerLivezone intLoValue];
+		_undoMappings.ThresholdHighLeftTrigger	= [_leftTriggerLivezone intHiValue];
+		_undoMappings.MappingLeftTrigger		= [[_leftTriggerMenu selectedItem] tag];
+		_undoMappings.AlternateLeftTrigger		= [_leftTriggerAlt state];
 
-	_undo.ThresholdLowRightTrigger  = [_rightTriggerLivezone intLoValue];
-	_undo.ThresholdHighRightTrigger	= [_rightTriggerLivezone intHiValue];
-	_undo.MappingRightTrigger		= [[_rightTriggerMenu selectedItem] tag];
-	_undo.AlternateRightTrigger		= [_rightTriggerAlt state];
+		_undoMappings.ThresholdLowRightTrigger  = [_rightTriggerLivezone intLoValue];
+		_undoMappings.ThresholdHighRightTrigger	= [_rightTriggerLivezone intHiValue];
+		_undoMappings.MappingRightTrigger		= [[_rightTriggerMenu selectedItem] tag];
+		_undoMappings.AlternateRightTrigger		= [_rightTriggerAlt state];
 
-	_undo.ThresholdLowButtonGreen	= [_buttonGreenLivezone intLoValue];
-	_undo.ThresholdHighButtonGreen	= [_buttonGreenLivezone intHiValue];
-	_undo.MappingButtonGreen		= [[_buttonGreenMenu selectedItem] tag];
+		_undoMappings.ThresholdLowButtonGreen	= [_buttonGreenLivezone intLoValue];
+		_undoMappings.ThresholdHighButtonGreen	= [_buttonGreenLivezone intHiValue];
+		_undoMappings.MappingButtonGreen		= [[_buttonGreenMenu selectedItem] tag];
 
-	_undo.ThresholdLowButtonRed		= [_buttonRedLivezone intLoValue];
-	_undo.ThresholdHighButtonRed	= [_buttonRedLivezone intHiValue];
-	_undo.MappingButtonRed			= [[_buttonRedMenu selectedItem] tag];
+		_undoMappings.ThresholdLowButtonRed		= [_buttonRedLivezone intLoValue];
+		_undoMappings.ThresholdHighButtonRed	= [_buttonRedLivezone intHiValue];
+		_undoMappings.MappingButtonRed			= [[_buttonRedMenu selectedItem] tag];
 
-	_undo.ThresholdLowButtonBlue	= [_buttonBlueLivezone intLoValue];
-	_undo.ThresholdHighButtonBlue	= [_buttonBlueLivezone intHiValue];
-	_undo.MappingButtonBlue			= [[_buttonBlueMenu selectedItem] tag];
+		_undoMappings.ThresholdLowButtonBlue	= [_buttonBlueLivezone intLoValue];
+		_undoMappings.ThresholdHighButtonBlue	= [_buttonBlueLivezone intHiValue];
+		_undoMappings.MappingButtonBlue			= [[_buttonBlueMenu selectedItem] tag];
 
-	_undo.ThresholdLowButtonYellow	= [_buttonYellowLivezone intLoValue];
-	_undo.ThresholdHighButtonYellow	= [_buttonYellowLivezone intHiValue];
-	_undo.MappingButtonYellow		= [[_buttonYellowMenu selectedItem] tag];
+		_undoMappings.ThresholdLowButtonYellow	= [_buttonYellowLivezone intLoValue];
+		_undoMappings.ThresholdHighButtonYellow	= [_buttonYellowLivezone intHiValue];
+		_undoMappings.MappingButtonYellow		= [[_buttonYellowMenu selectedItem] tag];
 
-	_undo.ThresholdLowButtonWhite	= [_buttonWhiteLivezone intLoValue];
-	_undo.ThresholdHighButtonWhite	= [_buttonWhiteLivezone intHiValue];
-	_undo.MappingButtonWhite		= [[_buttonWhiteMenu selectedItem] tag];
+		_undoMappings.ThresholdLowButtonWhite	= [_buttonWhiteLivezone intLoValue];
+		_undoMappings.ThresholdHighButtonWhite	= [_buttonWhiteLivezone intHiValue];
+		_undoMappings.MappingButtonWhite		= [[_buttonWhiteMenu selectedItem] tag];
 
-	_undo.ThresholdLowButtonBlack	= [_buttonBlackLivezone intLoValue];
-	_undo.ThresholdHighButtonBlack	= [_buttonBlackLivezone intHiValue];
-	_undo.MappingButtonBlack		= [[_buttonBlackMenu selectedItem] tag];
+		_undoMappings.ThresholdLowButtonBlack	= [_buttonBlackLivezone intLoValue];
+		_undoMappings.ThresholdHighButtonBlack	= [_buttonBlackLivezone intHiValue];
+		_undoMappings.MappingButtonBlack		= [[_buttonBlackMenu selectedItem] tag];
+
+	} else if (mode == kUndoBindings) {
+		_undoBindings = [FPXboxHIDPrefsLoader allAppBindings];
+
+	}
 }
 
 
-- (BOOL) canUndo
+- (BOOL) canUndo: (int)mode
 {
-	return ([_leftStickInvertX state]				!= _undo.InvertLxAxis				||
-			[_leftStickDeadzoneX deadzoneValue]		!= _undo.DeadzoneLxAxis				||
-			[[_leftStickMenuX selectedItem] tag]	!= _undo.MappingLxAxis				||
+	if (mode == kUndoMappings) {
+		return ([_leftStickInvertX state]				!= _undoMappings.InvertLxAxis				||
+				[_leftStickDeadzoneX deadzoneValue]		!= _undoMappings.DeadzoneLxAxis				||
+				[[_leftStickMenuX selectedItem] tag]	!= _undoMappings.MappingLxAxis				||
 
-			[_leftStickInvertY state]				!= _undo.InvertLyAxis				||
-			[_leftStickDeadzoneY deadzoneValue]		!= _undo.DeadzoneLyAxis				||
-			[[_leftStickMenuY selectedItem] tag]	!= _undo.MappingLyAxis				||
+				[_leftStickInvertY state]				!= _undoMappings.InvertLyAxis				||
+				[_leftStickDeadzoneY deadzoneValue]		!= _undoMappings.DeadzoneLyAxis				||
+				[[_leftStickMenuY selectedItem] tag]	!= _undoMappings.MappingLyAxis				||
 
-			[_rightStickInvertX state]				!= _undo.InvertRxAxis				||
-			[_rightStickDeadzoneX deadzoneValue]	!= _undo.DeadzoneRxAxis				||
-			[[_rightStickMenuX selectedItem] tag]	!= _undo.MappingRxAxis				||
+				[_rightStickInvertX state]				!= _undoMappings.InvertRxAxis				||
+				[_rightStickDeadzoneX deadzoneValue]	!= _undoMappings.DeadzoneRxAxis				||
+				[[_rightStickMenuX selectedItem] tag]	!= _undoMappings.MappingRxAxis				||
 
-			[_rightStickInvertY state]				!= _undo.InvertRyAxis				||
-			[_rightStickDeadzoneY deadzoneValue]	!= _undo.DeadzoneRyAxis				||
-			[[_rightStickMenuY selectedItem] tag]	!= _undo.MappingRyAxis				||
+				[_rightStickInvertY state]				!= _undoMappings.InvertRyAxis				||
+				[_rightStickDeadzoneY deadzoneValue]	!= _undoMappings.DeadzoneRyAxis				||
+				[[_rightStickMenuY selectedItem] tag]	!= _undoMappings.MappingRyAxis				||
 
-			[[_dpadUpMenu selectedItem] tag]		!= _undo.MappingDPadUp				||
-			[[_dpadDownMenu selectedItem] tag]		!= _undo.MappingDPadDown			||
-			[[_dpadLeftMenu selectedItem] tag]		!= _undo.MappingDPadLeft			||
-			[[_dpadRightMenu selectedItem] tag]		!= _undo.MappingDPadRight			||
+				[[_dpadUpMenu selectedItem] tag]		!= _undoMappings.MappingDPadUp				||
+				[[_dpadDownMenu selectedItem] tag]		!= _undoMappings.MappingDPadDown			||
+				[[_dpadLeftMenu selectedItem] tag]		!= _undoMappings.MappingDPadLeft			||
+				[[_dpadRightMenu selectedItem] tag]		!= _undoMappings.MappingDPadRight			||
 
-			[[_buttonStartMenu selectedItem] tag]	!= _undo.MappingButtonStart			||
-			[[_buttonBackMenu selectedItem] tag]	!= _undo.MappingButtonBack			||
+				[[_buttonStartMenu selectedItem] tag]	!= _undoMappings.MappingButtonStart			||
+				[[_buttonBackMenu selectedItem] tag]	!= _undoMappings.MappingButtonBack			||
 
-			[[_leftStickMenuBtn selectedItem] tag]	!= _undo.MappingLeftClick			||
-			[[_rightStickMenuBtn selectedItem] tag]	!= _undo.MappingRightClick			||
+				[[_leftStickMenuBtn selectedItem] tag]	!= _undoMappings.MappingLeftClick			||
+				[[_rightStickMenuBtn selectedItem] tag]	!= _undoMappings.MappingRightClick			||
 
-			[self analogDigitalMask]				!= _undo.AnalogAsDigital			||
+				[self analogDigitalMask]				!= _undoMappings.AnalogAsDigital			||
 
-			[_leftTriggerLivezone intLoValue]		!= _undo.ThresholdLowLeftTrigger	||
-			[_leftTriggerLivezone intHiValue]		!= _undo.ThresholdHighLeftTrigger	||
-			[[_leftTriggerMenu selectedItem] tag]	!= _undo.MappingLeftTrigger			||
-			[_leftTriggerAlt state]					!= _undo.AlternateLeftTrigger		||
+				[_leftTriggerLivezone intLoValue]		!= _undoMappings.ThresholdLowLeftTrigger	||
+				[_leftTriggerLivezone intHiValue]		!= _undoMappings.ThresholdHighLeftTrigger	||
+				[[_leftTriggerMenu selectedItem] tag]	!= _undoMappings.MappingLeftTrigger			||
+				[_leftTriggerAlt state]					!= _undoMappings.AlternateLeftTrigger		||
 
-			[_rightTriggerLivezone intLoValue]		!= _undo.ThresholdLowRightTrigger	||
-			[_rightTriggerLivezone intHiValue]		!= _undo.ThresholdHighRightTrigger	||
-			[[_rightTriggerMenu selectedItem] tag]	!= _undo.MappingRightTrigger		||
-			[_rightTriggerAlt state]				!= _undo.AlternateRightTrigger		||
+				[_rightTriggerLivezone intLoValue]		!= _undoMappings.ThresholdLowRightTrigger	||
+				[_rightTriggerLivezone intHiValue]		!= _undoMappings.ThresholdHighRightTrigger	||
+				[[_rightTriggerMenu selectedItem] tag]	!= _undoMappings.MappingRightTrigger		||
+				[_rightTriggerAlt state]				!= _undoMappings.AlternateRightTrigger		||
 
-			[_buttonGreenLivezone intLoValue]		!= _undo.ThresholdLowButtonGreen	||
-			[_buttonGreenLivezone intHiValue]		!= _undo.ThresholdHighButtonGreen	||
-			[[_buttonGreenMenu selectedItem] tag]	!= _undo.MappingButtonGreen			||
+				[_buttonGreenLivezone intLoValue]		!= _undoMappings.ThresholdLowButtonGreen	||
+				[_buttonGreenLivezone intHiValue]		!= _undoMappings.ThresholdHighButtonGreen	||
+				[[_buttonGreenMenu selectedItem] tag]	!= _undoMappings.MappingButtonGreen			||
 
-			[_buttonRedLivezone intLoValue]			!= _undo.ThresholdLowButtonRed		||
-			[_buttonRedLivezone intHiValue]			!= _undo.ThresholdHighButtonRed		||
-			[[_buttonRedMenu selectedItem] tag]		!= _undo.MappingButtonRed			||
+				[_buttonRedLivezone intLoValue]			!= _undoMappings.ThresholdLowButtonRed		||
+				[_buttonRedLivezone intHiValue]			!= _undoMappings.ThresholdHighButtonRed		||
+				[[_buttonRedMenu selectedItem] tag]		!= _undoMappings.MappingButtonRed			||
 
-			[_buttonBlueLivezone intLoValue]		!= _undo.ThresholdLowButtonBlue		||
-			[_buttonBlueLivezone intHiValue]		!= _undo.ThresholdHighButtonBlue	||
-			[[_buttonBlueMenu selectedItem] tag]	!= _undo.MappingButtonBlue			||
+				[_buttonBlueLivezone intLoValue]		!= _undoMappings.ThresholdLowButtonBlue		||
+				[_buttonBlueLivezone intHiValue]		!= _undoMappings.ThresholdHighButtonBlue	||
+				[[_buttonBlueMenu selectedItem] tag]	!= _undoMappings.MappingButtonBlue			||
 
-			[_buttonYellowLivezone intLoValue]		!= _undo.ThresholdLowButtonYellow	||
-			[_buttonYellowLivezone intHiValue]		!= _undo.ThresholdHighButtonYellow	||
-			[[_buttonYellowMenu selectedItem] tag]	!= _undo.MappingButtonYellow		||
+				[_buttonYellowLivezone intLoValue]		!= _undoMappings.ThresholdLowButtonYellow	||
+				[_buttonYellowLivezone intHiValue]		!= _undoMappings.ThresholdHighButtonYellow	||
+				[[_buttonYellowMenu selectedItem] tag]	!= _undoMappings.MappingButtonYellow		||
 
-			[_buttonWhiteLivezone intLoValue]		!= _undo.ThresholdLowButtonWhite	||
-			[_buttonWhiteLivezone intHiValue]		!= _undo.ThresholdHighButtonWhite	||
-			[[_buttonWhiteMenu selectedItem] tag]	!= _undo.MappingButtonWhite			||
+				[_buttonWhiteLivezone intLoValue]		!= _undoMappings.ThresholdLowButtonWhite	||
+				[_buttonWhiteLivezone intHiValue]		!= _undoMappings.ThresholdHighButtonWhite	||
+				[[_buttonWhiteMenu selectedItem] tag]	!= _undoMappings.MappingButtonWhite			||
 
-			[_buttonBlackLivezone intLoValue]		!= _undo.ThresholdLowButtonBlack	||
-			[_buttonBlackLivezone intHiValue]		!= _undo.ThresholdHighButtonBlack	||
-			[[_buttonBlackMenu selectedItem] tag]	!= _undo.MappingButtonBlack			);
+				[_buttonBlackLivezone intLoValue]		!= _undoMappings.ThresholdLowButtonBlack	||
+				[_buttonBlackLivezone intHiValue]		!= _undoMappings.ThresholdHighButtonBlack	||
+				[[_buttonBlackMenu selectedItem] tag]	!= _undoMappings.MappingButtonBlack			);
+
+	} else {
+		return ![_undoBindings isEqualToDictionary: [FPXboxHIDPrefsLoader allAppBindings]];
+
+	}
 }
 
 
-- (void) performUndo
+- (void) performUndo: (int)mode
 {
-	id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
+	if (mode == kUndoMappings) {
+		id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
 
-	[device setLeftStickHorizInvert: _undo.InvertLxAxis];
-	[device setLeftStickHorizDeadzone: _undo.DeadzoneLxAxis];
-	[device setLeftStickHorizMapping: _undo.MappingLxAxis];
+		[device setLeftStickHorizInvert: _undoMappings.InvertLxAxis];
+		[device setLeftStickHorizDeadzone: _undoMappings.DeadzoneLxAxis];
+		[device setLeftStickHorizMapping: _undoMappings.MappingLxAxis];
 
-	[device setLeftStickVertInvert: _undo.InvertLyAxis];
-	[device setLeftStickVertDeadzone: _undo.DeadzoneLyAxis];
-	[device setLeftStickVertMapping: _undo.MappingLyAxis];
+		[device setLeftStickVertInvert: _undoMappings.InvertLyAxis];
+		[device setLeftStickVertDeadzone: _undoMappings.DeadzoneLyAxis];
+		[device setLeftStickVertMapping: _undoMappings.MappingLyAxis];
 
-	[device setRightStickHorizInvert: _undo.InvertRxAxis];
-	[device setRightStickHorizDeadzone: _undo.DeadzoneRxAxis];
-	[device setRightStickHorizMapping: _undo.MappingRxAxis];
+		[device setRightStickHorizInvert: _undoMappings.InvertRxAxis];
+		[device setRightStickHorizDeadzone: _undoMappings.DeadzoneRxAxis];
+		[device setRightStickHorizMapping: _undoMappings.MappingRxAxis];
 
-	[device setRightStickVertInvert: _undo.InvertRyAxis];
-	[device setRightStickVertDeadzone: _undo.DeadzoneRyAxis];
-	[device setRightStickVertMapping: _undo.MappingRyAxis];
+		[device setRightStickVertInvert: _undoMappings.InvertRyAxis];
+		[device setRightStickVertDeadzone: _undoMappings.DeadzoneRyAxis];
+		[device setRightStickVertMapping: _undoMappings.MappingRyAxis];
 
-	[device setDpadUpMapping: _undo.MappingDPadUp];
-	[device setDpadDownMapping: _undo.MappingDPadDown];
-	[device setDpadLeftMapping: _undo.MappingDPadLeft];
-	[device setDpadRightMapping: _undo.MappingDPadRight];
+		[device setDpadUpMapping: _undoMappings.MappingDPadUp];
+		[device setDpadDownMapping: _undoMappings.MappingDPadDown];
+		[device setDpadLeftMapping: _undoMappings.MappingDPadLeft];
+		[device setDpadRightMapping: _undoMappings.MappingDPadRight];
 
-	[device setStartButtonMapping: _undo.MappingButtonStart];
-	[device setBackButtonMapping: _undo.MappingButtonBack];
+		[device setStartButtonMapping: _undoMappings.MappingButtonStart];
+		[device setBackButtonMapping: _undoMappings.MappingButtonBack];
 
-	[device setLeftClickMapping: _undo.MappingLeftClick];
-	[device setRightClickMapping: _undo.MappingRightClick];
+		[device setLeftClickMapping: _undoMappings.MappingLeftClick];
+		[device setRightClickMapping: _undoMappings.MappingRightClick];
 
-	[device setAnalogAsDigital: _undo.AnalogAsDigital];
+		[device setAnalogAsDigital: _undoMappings.AnalogAsDigital];
 
-	[device setLeftTriggerLow: _undo.ThresholdLowLeftTrigger andHighThreshold: _undo.ThresholdHighLeftTrigger];
-	[device setLeftTriggerMapping: _undo.MappingLeftTrigger];
-	[device setLeftTriggerAlternate: _undo.AlternateLeftTrigger];
+		[device setLeftTriggerLow: _undoMappings.ThresholdLowLeftTrigger andHighThreshold: _undoMappings.ThresholdHighLeftTrigger];
+		[device setLeftTriggerMapping: _undoMappings.MappingLeftTrigger];
+		[device setLeftTriggerAlternate: _undoMappings.AlternateLeftTrigger];
 
-	[device setRightTriggerLow: _undo.ThresholdLowRightTrigger andHighThreshold: _undo.ThresholdHighRightTrigger];
-	[device setRightTriggerMapping: _undo.MappingRightTrigger];
-	[device setRightTriggerAlternate: _undo.AlternateRightTrigger];
+		[device setRightTriggerLow: _undoMappings.ThresholdLowRightTrigger andHighThreshold: _undoMappings.ThresholdHighRightTrigger];
+		[device setRightTriggerMapping: _undoMappings.MappingRightTrigger];
+		[device setRightTriggerAlternate: _undoMappings.AlternateRightTrigger];
 
-	[device setGreenButtonLow: _undo.ThresholdLowButtonGreen andHighThreshold: _undo.ThresholdHighButtonGreen];
-	[device setGreenButtonMapping: _undo.MappingButtonGreen	];
+		[device setGreenButtonLow: _undoMappings.ThresholdLowButtonGreen andHighThreshold: _undoMappings.ThresholdHighButtonGreen];
+		[device setGreenButtonMapping: _undoMappings.MappingButtonGreen	];
 
-	[device setRedButtonLow: _undo.ThresholdLowButtonRed andHighThreshold: _undo.ThresholdHighButtonRed];
-	[device setRedButtonMapping: _undo.MappingButtonRed];
+		[device setRedButtonLow: _undoMappings.ThresholdLowButtonRed andHighThreshold: _undoMappings.ThresholdHighButtonRed];
+		[device setRedButtonMapping: _undoMappings.MappingButtonRed];
 
-	[device setBlueButtonLow: _undo.ThresholdLowButtonBlue andHighThreshold: _undo.ThresholdHighButtonBlue];
-	[device setBlueButtonMapping: _undo.MappingButtonBlue];
+		[device setBlueButtonLow: _undoMappings.ThresholdLowButtonBlue andHighThreshold: _undoMappings.ThresholdHighButtonBlue];
+		[device setBlueButtonMapping: _undoMappings.MappingButtonBlue];
 
-	[device setYellowButtonLow: _undo.ThresholdLowButtonYellow andHighThreshold: _undo.ThresholdHighButtonYellow];
-	[device setYellowButtonMapping: _undo.MappingButtonYellow];
+		[device setYellowButtonLow: _undoMappings.ThresholdLowButtonYellow andHighThreshold: _undoMappings.ThresholdHighButtonYellow];
+		[device setYellowButtonMapping: _undoMappings.MappingButtonYellow];
 
-	[device setWhiteButtonLow: _undo.ThresholdLowButtonWhite andHighThreshold: _undo.ThresholdHighButtonWhite];
-	[device setWhiteButtonMapping: _undo.MappingButtonWhite];
+		[device setWhiteButtonLow: _undoMappings.ThresholdLowButtonWhite andHighThreshold: _undoMappings.ThresholdHighButtonWhite];
+		[device setWhiteButtonMapping: _undoMappings.MappingButtonWhite];
 
-	[device setBlackButtonLow: _undo.ThresholdLowButtonBlack andHighThreshold: _undo.ThresholdHighButtonBlack];
-	[device setBlackButtonMapping: _undo.MappingButtonBlack];
+		[device setBlackButtonLow: _undoMappings.ThresholdLowButtonBlack andHighThreshold: _undoMappings.ThresholdHighButtonBlack];
+		[device setBlackButtonMapping: _undoMappings.MappingButtonBlack];
 
-	[self initPadOptionsWithDevice: device];
+		[self initPadOptionsWithDevice: device];
+
+	} else if (mode == kUndoBindings) {
+		[FPXboxHIDPrefsLoader setAllAppBindings: _undoBindings];
+		[self appSetDataSource];
+
+	}
 }
 
 
@@ -1004,7 +1067,7 @@ typedef void(^OPBlock)(NSInteger result);
 
 	[self initPadPopUpButtons: device];
 
-	[self saveUndoState];
+	[self saveUndoState: kUndoMappings];
 }
 
 
@@ -1110,9 +1173,9 @@ typedef void(^OPBlock)(NSInteger result);
 #define A2D_MAX(name, button) { \
 	id name = [self analogToDigitalControlForPopUp: _ ## name ## Menu]; \
 	if ([_ ## name ## Mode isLocked] == NO && [_ ## name ## Mode isDigital] == YES) \
-		[name setMax: 1]; \
+		[name setMax: kButtonMin + 1]; \
 	else \
-		[name setMax: 255]; \
+		[name setMax: kButtonAnalogMax]; \
 }
 
 	A2D_MAX(leftTrigger, LeftTrigger);
@@ -1680,6 +1743,8 @@ typedef void(^OPBlock)(NSInteger result);
 }
 
 
+#define kStickValueToLive(v)	(((v) + kStickRange) / (kStickRange * 2.0))
+
 - (void) updateRawReport
 {
 	FPXboxHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
@@ -1688,29 +1753,29 @@ typedef void(^OPBlock)(NSInteger result);
 
 		[device copyRawReport: &_rawReport];
 
-		[(SMDoubleSlider*)_buttonGreenLivezone setLiveValue: (_rawReport.a / 255.0)];
-		[(SMDoubleSlider*)_buttonRedLivezone setLiveValue: (_rawReport.b / 255.0)];
-		[(SMDoubleSlider*)_buttonBlueLivezone setLiveValue: (_rawReport.x / 255.0)];
-		[(SMDoubleSlider*)_buttonYellowLivezone setLiveValue: (_rawReport.y / 255.0)];
-		[(SMDoubleSlider*)_buttonBlackLivezone setLiveValue: (_rawReport.black / 255.0)];
-		[(SMDoubleSlider*)_buttonWhiteLivezone setLiveValue: (_rawReport.white / 255.0)];
-		[(SMDoubleSlider*)_leftTriggerLivezone setLiveValue: (_rawReport.lt / 255.0)];
-		[(SMDoubleSlider*)_rightTriggerLivezone setLiveValue: (_rawReport.rt / 255.0)];
+		[(SMDoubleSlider*)_buttonGreenLivezone setLiveValue: (_rawReport.a / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_buttonRedLivezone setLiveValue: (_rawReport.b / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_buttonBlueLivezone setLiveValue: (_rawReport.x / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_buttonYellowLivezone setLiveValue: (_rawReport.y / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_buttonBlackLivezone setLiveValue: (_rawReport.black / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_buttonWhiteLivezone setLiveValue: (_rawReport.white / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_leftTriggerLivezone setLiveValue: (_rawReport.lt / kButtonAnalogMaxF)];
+		[(SMDoubleSlider*)_rightTriggerLivezone setLiveValue: (_rawReport.rt / kButtonAnalogMaxF)];
 
-		axis = ((_rawReport.lxhi << 8) | _rawReport.lxlo);
-		[_leftStickDeadzoneX setLiveValue: (axis + 32768) / 65535.0];
+		axis = kStickHighLowToValue(_rawReport.lxhi, _rawReport.lxlo);
+		[_leftStickDeadzoneX setLiveValue: kStickValueToLive(axis)];
 		[_leftStickView setLiveX: axis];
 
-		axis = ((_rawReport.lyhi << 8) | _rawReport.lylo);
-		[_leftStickDeadzoneY setLiveValue: (axis + 32768) / 65535.0];
+		axis = kStickHighLowToValue(_rawReport.lyhi, _rawReport.lylo);
+		[_leftStickDeadzoneY setLiveValue: kStickValueToLive(axis)];
 		[_leftStickView setLiveY: axis];
 
-		axis = ((_rawReport.rxhi << 8) | _rawReport.rxlo);
-		[_rightStickDeadzoneX setLiveValue: (axis + 32768) / 65535.0];
+		axis = kStickHighLowToValue(_rawReport.rxhi, _rawReport.rxlo);
+		[_rightStickDeadzoneX setLiveValue: kStickValueToLive(axis)];
 		[_rightStickView setLiveX: axis];
 
-		axis = ((_rawReport.ryhi << 8) | _rawReport.rylo);
-		[_rightStickDeadzoneY setLiveValue: (axis + 32768) / 65535.0];
+		axis = kStickHighLowToValue(_rawReport.ryhi, _rawReport.rylo);
+		[_rightStickDeadzoneY setLiveValue: kStickValueToLive(axis)];
 		[_rightStickView setLiveY: axis];
 	}
 }
@@ -1828,6 +1893,12 @@ typedef void(^OPBlock)(NSInteger result);
 - (IBAction) clickCredits: (id)sender
 {
 	[self showCredits];
+}
+
+
+- (IBAction) clickDonate: (id)sender
+{
+	[self showDonate];
 }
 
 

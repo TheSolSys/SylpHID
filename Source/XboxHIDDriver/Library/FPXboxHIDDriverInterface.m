@@ -819,7 +819,7 @@
 	int max, i;
 
 	for (i = kCookiePadFirstAnalogButton; i < kCookiePadLastAnalogButton; i++) {
-		max = (mask & BITMASK((i - kCookiePadFirstAnalogButton))) ? 1 : 255;
+		max = (mask & BITMASK((i - kCookiePadFirstAnalogButton))) ? kButtonDigitalMax : kButtonAnalogMax;
 		element = [self elementWithCookie: i];
 
 		if (element) {
@@ -829,7 +829,7 @@
 	}
 
 	for (i = kCookiePadFirstTrigger; i < kCookiePadLastTrigger; i++) {
-		max = (mask & BITMASK((i - kCookiePadFirstTrigger))) ? 1 : 255;
+		max = (mask & BITMASK((i - kCookiePadFirstTrigger))) ? kButtonDigitalMax : kButtonAnalogMax;
 		element = [self elementWithCookie: i];
 
 		if (element) {

@@ -49,6 +49,13 @@
 }
 
 
+- (void) deselectAll: (id)sender
+{
+	[super deselectAll: sender];
+	_selection = -2;
+}
+
+
 - (void) mouseDown: (NSEvent*)event
 {
     NSPoint point = [self convertPoint: [event locationInWindow] fromView: nil];

@@ -432,38 +432,38 @@ void FPXboxHIDDriver::setDefaultOptions (void)
 												BITMASK(kXboxAnalogButtonWhite) | BITMASK(kXboxAnalogButtonBlack));
 
 		_xbDeviceOptions.pad.MappingButtonGreen = kCookiePadButtonGreen;
-		_xbDeviceOptions.pad.ThresholdLowButtonGreen = 1;
-		_xbDeviceOptions.pad.ThresholdHighButtonGreen = 255;
+		_xbDeviceOptions.pad.ThresholdLowButtonGreen = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighButtonGreen = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.MappingButtonRed = kCookiePadButtonRed;
-		_xbDeviceOptions.pad.ThresholdLowButtonRed = 1;
-		_xbDeviceOptions.pad.ThresholdHighButtonRed = 255;
+		_xbDeviceOptions.pad.ThresholdLowButtonRed = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighButtonRed = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.MappingButtonBlue = kCookiePadButtonBlue;
-		_xbDeviceOptions.pad.ThresholdLowButtonBlue = 1;
-		_xbDeviceOptions.pad.ThresholdHighButtonBlue = 255;
+		_xbDeviceOptions.pad.ThresholdLowButtonBlue = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighButtonBlue = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.MappingButtonYellow = kCookiePadButtonYellow;
-		_xbDeviceOptions.pad.ThresholdLowButtonYellow = 1;
-		_xbDeviceOptions.pad.ThresholdHighButtonYellow = 255;
+		_xbDeviceOptions.pad.ThresholdLowButtonYellow = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighButtonYellow = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.MappingButtonBlack = kCookiePadButtonBlack;
-		_xbDeviceOptions.pad.ThresholdLowButtonBlack = 1;
-		_xbDeviceOptions.pad.ThresholdHighButtonBlack = 255;
+		_xbDeviceOptions.pad.ThresholdLowButtonBlack = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighButtonBlack = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.MappingButtonWhite = kCookiePadButtonWhite;
-		_xbDeviceOptions.pad.ThresholdLowButtonWhite = 1;
-		_xbDeviceOptions.pad.ThresholdHighButtonWhite = 255;
+		_xbDeviceOptions.pad.ThresholdLowButtonWhite = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighButtonWhite = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.AlternateLeftTrigger = 0;
 		_xbDeviceOptions.pad.MappingLeftTrigger = kCookiePadLeftTrigger;
-		_xbDeviceOptions.pad.ThresholdLowLeftTrigger = 1;
-		_xbDeviceOptions.pad.ThresholdHighLeftTrigger = 255;
+		_xbDeviceOptions.pad.ThresholdLowLeftTrigger = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighLeftTrigger = kButtonAnalogMax;
 
 		_xbDeviceOptions.pad.AlternateRightTrigger = 0;
 		_xbDeviceOptions.pad.MappingRightTrigger = kCookiePadRightTrigger;
-		_xbDeviceOptions.pad.ThresholdLowRightTrigger = 1;
-		_xbDeviceOptions.pad.ThresholdHighRightTrigger = 255;
+		_xbDeviceOptions.pad.ThresholdLowRightTrigger = kButtonMin + 1;
+		_xbDeviceOptions.pad.ThresholdHighRightTrigger = kButtonAnalogMax;
 
 		// create options dict and populate it with defaults
 		_xbDeviceOptionsDict = OSDictionary::withCapacity(30);
@@ -779,70 +779,70 @@ void FPXboxHIDDriver::remapElement (int map, XBPadReport* report, int value)
 
 		// analog axis
 		case kCookiePadLxAxis:
-			report->lxhi = (value >> 8);
-			report->lxlo = (value & 0xFF);
+			report->lxhi = kValueToStickHigh(value);
+			report->lxlo = kValueToStickLow(value);
 			break;
 		case kCookiePadLyAxis:
-			report->lyhi = (value >> 8);
-			report->lylo = (value & 0xFF);
+			report->lyhi = kValueToStickHigh(value);
+			report->lylo = kValueToStickLow(value);
 			break;
 		case kCookiePadRxAxis:
-			report->rxhi = (value >> 8);
-			report->rxlo = (value & 0xFF);
+			report->rxhi = kValueToStickHigh(value);
+			report->rxlo = kValueToStickLow(value);
 			break;
 		case kCookiePadRyAxis:
-			report->ryhi = (value >> 8);
-			report->rylo = (value & 0xFF);
+			report->ryhi = kValueToStickHigh(value);
+			report->rylo = kValueToStickLow(value);
 			break;
 
 		// pseudo elements
 		case kCookiePadTriggers:
 			if (value > 0)
-				report->rt = 255 * (value / 32767.0);
+				report->rt = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->lt = 255 * (-value / 32768.0);
+				report->lt = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadGreenRed:
 			if (value > 0)
-				report->b = 255 * (value / 32767.0);
+				report->b = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->a = 255 * (-value / 32768.0);
+				report->a = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadBlueYellow:
 			if (value > 0)
-				report->y = 255 * (value / 32767.0);
+				report->y = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->x = 255 * (-value / 32768.0);
+				report->x = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadGreenYellow:
 			if (value > 0)
-				report->y = 255 * (value / 32767.0);
+				report->y = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->a = 255 * (-value / 32768.0);
+				report->a = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadBlueRed:
 			if (value > 0)
-				report->b = 255 * (value / 32767.0);
+				report->b = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->x = 255 * (-value / 32768.0);
+				report->x = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadRedYellow:
 			if (value > 0)
-				report->y = 255 * (value / 32767.0);
+				report->y = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->b = 255 * (-value / 32768.0);
+				report->b = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadGreenBlue:
 			if (value > 0)
-				report->x = 255 * (value / 32767.0);
+				report->x = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->a = 255 * (-value / 32768.0);
+				report->a = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadWhiteBlack:
 			if (value > 0)
-				report->black = 255 * (value / 32767.0);
+				report->black = kButtonAnalogMax * (value / kStickMax);
 			else
-				report->white = 255 * (-value / 32768.0);
+				report->white = kButtonAnalogMax * (value / kStickMin);
 			break;
 		case kCookiePadDPadUpDown:
 			if (value > 0)
@@ -885,8 +885,8 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 	if (_xbDeviceOptions.pad.Invert ## axis ## Axis) { \
 		SInt16 name = (raw->name ## hi << 8) | raw->name ## lo; \
 		name = -(name + 1); \
-		raw->name ## hi = name >> 8; \
-		raw->name ## lo = name & 0xFF; \
+		raw->name ## hi = kValueToStickHigh(name); \
+		raw->name ## lo = kValueToStickLow(name); \
 	}
 		INVERT_AXIS(lx, Lx);
 		INVERT_AXIS(ly, Ly);
@@ -898,17 +898,17 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 #define CLAMP_AXIS(name, dead) \
 	if (_xbDeviceOptions.pad.Deadzone ## dead ## Axis) { \
 		SInt16 name = ((raw->name ## hi << 8) | raw->name ## lo); \
-		int threshold = (32768 * (_xbDeviceOptions.pad.Deadzone ## dead ## Axis / 100.0)); \
+		int threshold = (kStickRange * (_xbDeviceOptions.pad.Deadzone ## dead ## Axis / 100.0)); \
 		if ((name > 0 && name <= threshold) || (name < 0 && name >= -threshold)) { \
 			raw->name ## hi = 0; \
 			raw->name ## lo = 0; \
 		} else if (name != 0) { \
 			if (name < 0) \
-				name = -(32768 * ((-name - threshold) / (32768.0 - threshold))); \
+				name = -(kStickRange * ((-name - threshold) / (kStickRange - threshold))); \
 			else \
-				name = 32768 * ((name - threshold - 1) / (32768.0 - threshold)); \
-			raw->name ## hi = (name >> 8); \
-			raw->name ## lo = (name & 0xFF); \
+				name = kStickRange * ((name - threshold - 1) / (kStickRange - threshold)); \
+			raw->name ## hi = kValueToStickHigh(name); \
+			raw->name ## lo = kValueToStickLow(name); \
 		} \
 	}
 		CLAMP_AXIS(lx, Lx);
@@ -923,9 +923,9 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 	if (raw->name > _xbDeviceOptions.pad.ThresholdLow ## button) { \
 		if (raw->name < _xbDeviceOptions.pad.ThresholdHigh ## button) { \
 			float range = _xbDeviceOptions.pad.ThresholdHigh ## button - _xbDeviceOptions.pad.ThresholdLow ## button; \
-			raw->name = 255 * ((raw->name - _xbDeviceOptions.pad.ThresholdLow ## button) / range); \
+			raw->name = kButtonAnalogMax * ((raw->name - _xbDeviceOptions.pad.ThresholdLow ## button) / range); \
 		} else { \
-			raw->name = 255; \
+			raw->name = kButtonAnalogMax; \
 		} \
 	} else { \
 		raw->name = 0; \
@@ -950,12 +950,12 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 
 #define MAP_DIGITAL(button) \
 	if (_xbDeviceOptions.pad.Mapping ## button && _xbDeviceOptions.pad.Mapping ## button != kCookiePad ## button && (raw->buttons & BITMASK(kXboxDigital ## button))) \
-		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, 255); \
+		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, kButtonAnalogMax); \
 	else if (_xbDeviceOptions.pad.Mapping ## button && raw->buttons & BITMASK(kXboxDigital ## button)) \
 		_mapReport.buttons |= BITMASK(kXboxDigital ## button)
 
 #define MAP_AXIS(name, axis) \
-	SInt16 name = ((raw->name ## hi << 8) | raw->name ## lo); \
+	SInt16 name = kStickHighLowToValue(raw->name ## hi, raw->name ## lo); \
 	if (_xbDeviceOptions.pad.Mapping ## axis && _xbDeviceOptions.pad.Mapping ## axis != kCookiePad ## axis && name) \
 		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## axis, &_mapReport, name); \
 	else if (_xbDeviceOptions.pad.Mapping ## axis && name) { \

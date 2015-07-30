@@ -284,7 +284,7 @@ typedef intptr_t BindingIndex;
     [context saveGraphicsState];
     [transform translateXBy: 4 + ((dirty.size.width - 13) * _liveValue) yBy: 0];
     [transform concat];
-    if ( ([self isDeadzoneSlider] && _liveValue >= (([self doubleLoValue]+6.5)/[self maxValue]) && _liveValue <= (([self doubleHiValue]-5.5)/[self maxValue])) ||
+    if ( ([self isDeadzoneSlider] && _liveValue >= (([self doubleLoValue]+6.5)/[self maxValue]) && _liveValue <= (([self doubleHiValue]-6.5)/[self maxValue])) ||
 	   (![self isDeadzoneSlider] && (_liveValue <= (([self doubleLoValue]-1.5)/[self maxValue]) || _liveValue >= (([self doubleHiValue]+1.5)/[self maxValue]))) )
 	   [[NSColor colorWithCalibratedRed: 0.5 green: 0.000 blue: 0.000 alpha: 1.000] set];
     else

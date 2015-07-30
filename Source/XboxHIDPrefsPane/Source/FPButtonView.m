@@ -28,6 +28,7 @@
 
 
 #import "FPButtonView.h"
+#import "FPXboxHIDDriverKeys.h"
 
 
 @implementation FPButtonView
@@ -43,7 +44,7 @@
 	self = [super initWithCoder: coder];
 	if (self) {
 		_value = 0;
-		_max = 255;
+		_max = kButtonAnalogMax;
 		_color = [NSColor grayColor];
 		_overlay = YES;
 	}

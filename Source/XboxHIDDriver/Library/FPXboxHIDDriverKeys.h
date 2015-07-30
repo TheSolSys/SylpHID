@@ -133,6 +133,19 @@ typedef struct XBPadOptions {
 } XBPadOptions;
 
 
+// min/max defines
+#define kButtonMin						0
+#define kButtonAnalogMax				255
+#define kButtonAnalogMaxF				255.0
+#define kButtonDigitalMax				1
+#define kStickMin					   -32768.0
+#define kStickMax						32767.0
+#define kStickRange						32768.0
+#define kValueToStickHigh(v)		   ((v) >> 8)
+#define kValueToStickLow(v)			   ((v) & 0xFF)
+#define kStickHighLowToValue(h,l)	   (((h) << 8) | (l))
+
+// macro for easily generating bitmasks
 #define BITMASK(bit)	(1 << bit)
 
 // kHIDUsage_Button_*

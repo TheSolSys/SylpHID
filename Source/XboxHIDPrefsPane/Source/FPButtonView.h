@@ -27,8 +27,6 @@
 // =========================================================================================================================
 
 
-#import <AppKit/AppKit.h>
-
 @interface FPButtonView : NSImageView {
     UInt8 _value, _max;
     NSColor *_color;

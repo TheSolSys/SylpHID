@@ -34,12 +34,12 @@
 
 		_fromRectTop.origin = NSMakePoint(0, 0);
 		_fromRectTop.size = frame.size;
-		_anidirTop = NSMakePoint(1, 2);
+		_anidirTop = NSMakePoint(1, 1.5);
 
 		_fromRectBot.origin = NSMakePoint([_colors size].width - frame.size.width, [_colors size].height - frame.size.height);
 		_fromRectBot.origin = NSMakePoint([_colors size].height - frame.size.width, [_colors size].height - frame.size.height);
 		_fromRectBot.size = frame.size;
-		_anidirBot = NSMakePoint(-2, -3);
+		_anidirBot = NSMakePoint(-1.5, -2);
 
 		_timer = [NSTimer scheduledTimerWithTimeInterval: 1.0/7.5
 												  target: self
@@ -87,7 +87,7 @@
 	NSRectFill(dirty);
 
 	[_colors drawInRect: dirty fromRect: _fromRectBot operation: NSCompositeSourceOver fraction: 1.0 respectFlipped: YES hints: NULL];
-	[_colors drawInRect: dirty fromRect: _fromRectTop operation: NSCompositeSourceOver fraction: 0.75 respectFlipped: NO hints: NULL];
+	[_colors drawInRect: dirty fromRect: _fromRectTop operation: NSCompositeSourceOver fraction: 0.66 respectFlipped: NO hints: NULL];
 
 	[super drawRect: dirty];
 }

@@ -851,7 +851,7 @@
 						</dict>
 					</array>
 					<key>NAME</key>
-					<string>Operating System (10.6+)</string>
+					<string>Operating System (10.6.8+)</string>
 					<key>STATE</key>
 					<true/>
 				</dict>

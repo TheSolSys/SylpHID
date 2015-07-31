@@ -37,6 +37,10 @@ echo "Checking if upgrading"
 if [ -d "/Library/PreferencePanes/Xbox HID.prefPane" ]; then
 	echo "Removing previous version"
 
+	launchctl stop com.fizzypopstudios.XboxHIDDaemon
+	launchctl unload /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist
+	sudo rm /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist
+
 	if [ -d "/System/Library/Extensions/Xbox HID.kext" ]; then
 		sudo kextunload "/System/Library/Extensions/Xbox HID.kext"
 		rm -rf "/System/Library/Extensions/Xbox HID.kext"
@@ -46,8 +50,4 @@ if [ -d "/Library/PreferencePanes/Xbox HID.prefPane" ]; then
 		rm -rf "/Library/Extensions/Xbox HID.kext"
 
 	fi
-
-	sudo launchctl stop com.fizzypopstudios.XboxHIDDaemon
-	sudo launchctl unload /Library/LaunchDaemons/com.fizzypopstudios.XboxHIDDaemon.plist
-	sudo rm /Library/LaunchDaemons/com.fizzypopstudios.XboxHIDDaemon.plist
 fi

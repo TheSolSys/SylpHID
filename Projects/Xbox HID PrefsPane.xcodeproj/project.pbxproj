@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		822239B81B6BFA5B00099615 /* FPAppBindingCells.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239B41B6BFA5B00099615 /* FPAppBindingCells.h */; };
+		822239B91B6BFA5B00099615 /* FPAppBindingCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239B51B6BFA5B00099615 /* FPAppBindingCells.m */; };
+		822239BA1B6BFA5B00099615 /* FPPopUpButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239B61B6BFA5B00099615 /* FPPopUpButtonCell.h */; };
+		822239BB1B6BFA5B00099615 /* FPPopUpButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239B71B6BFA5B00099615 /* FPPopUpButtonCell.m */; };
+		822239C41B6BFA6400099615 /* FPAnalogDigitalButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239BC1B6BFA6400099615 /* FPAnalogDigitalButton.h */; };
+		822239C51B6BFA6400099615 /* FPAnalogDigitalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239BD1B6BFA6400099615 /* FPAnalogDigitalButton.m */; };
+		822239C61B6BFA6400099615 /* FPConfigPopUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239BE1B6BFA6400099615 /* FPConfigPopUp.h */; };
+		822239C71B6BFA6400099615 /* FPConfigPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239BF1B6BFA6400099615 /* FPConfigPopUp.m */; };
+		822239C81B6BFA6400099615 /* FPScrollerCredits.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239C01B6BFA6400099615 /* FPScrollerCredits.h */; };
+		822239C91B6BFA6400099615 /* FPScrollerCredits.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239C11B6BFA6400099615 /* FPScrollerCredits.m */; };
+		822239CA1B6BFA6400099615 /* FPTextCredits.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239C21B6BFA6400099615 /* FPTextCredits.h */; };
+		822239CB1B6BFA6400099615 /* FPTextCredits.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239C31B6BFA6400099615 /* FPTextCredits.m */; };
+		822239DE1B6BFA7200099615 /* FPAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239CC1B6BFA7200099615 /* FPAlertView.h */; };
+		822239DF1B6BFA7200099615 /* FPAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239CD1B6BFA7200099615 /* FPAlertView.m */; };
+		822239E01B6BFA7200099615 /* FPAppTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239CE1B6BFA7200099615 /* FPAppTableView.h */; };
+		822239E11B6BFA7200099615 /* FPAppTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239CF1B6BFA7200099615 /* FPAppTableView.m */; };
+		822239E21B6BFA7200099615 /* FPAxisPairView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239D01B6BFA7200099615 /* FPAxisPairView.h */; };
+		822239E31B6BFA7200099615 /* FPAxisPairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239D11B6BFA7200099615 /* FPAxisPairView.m */; };
+		822239E41B6BFA7200099615 /* FPBoxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239D21B6BFA7200099615 /* FPBoxLine.h */; };
+		822239E51B6BFA7200099615 /* FPBoxLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239D31B6BFA7200099615 /* FPBoxLine.m */; };
+		822239E61B6BFA7200099615 /* FPButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239D41B6BFA7200099615 /* FPButtonView.h */; };
+		822239E71B6BFA7200099615 /* FPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239D51B6BFA7200099615 /* FPButtonView.m */; };
+		822239E81B6BFA7200099615 /* FPDpadView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239D61B6BFA7200099615 /* FPDpadView.h */; };
+		822239E91B6BFA7200099615 /* FPDpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239D71B6BFA7200099615 /* FPDpadView.m */; };
+		822239EA1B6BFA7200099615 /* FPImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239D81B6BFA7200099615 /* FPImageView.h */; };
+		822239EB1B6BFA7200099615 /* FPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239D91B6BFA7200099615 /* FPImageView.m */; };
+		822239EC1B6BFA7200099615 /* FPLogoView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239DA1B6BFA7200099615 /* FPLogoView.h */; };
+		822239ED1B6BFA7200099615 /* FPLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239DB1B6BFA7200099615 /* FPLogoView.m */; };
+		822239EE1B6BFA7200099615 /* FPTriggerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239DC1B6BFA7200099615 /* FPTriggerView.h */; };
+		822239EF1B6BFA7200099615 /* FPTriggerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239DD1B6BFA7200099615 /* FPTriggerView.m */; };
+		822239F31B6BFA9000099615 /* FPDataSourceApps.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F11B6BFA9000099615 /* FPDataSourceApps.h */; };
+		822239F41B6BFA9000099615 /* FPDataSourceApps.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F21B6BFA9000099615 /* FPDataSourceApps.m */; };
+		822239FB1B6BFAA300099615 /* FPHIDUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F51B6BFAA300099615 /* FPHIDUtilities.h */; };
+		822239FC1B6BFAA300099615 /* FPHIDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F61B6BFAA300099615 /* FPHIDUtilities.m */; };
+		822239FD1B6BFAA300099615 /* FPXboxHIDNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F71B6BFAA300099615 /* FPXboxHIDNotifier.h */; };
+		822239FE1B6BFAA300099615 /* FPXboxHIDNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F81B6BFAA300099615 /* FPXboxHIDNotifier.m */; };
+		822239FF1B6BFAA300099615 /* FPXboxHIDPrefsPane.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F91B6BFAA300099615 /* FPXboxHIDPrefsPane.h */; };
+		82223A001B6BFAA300099615 /* FPXboxHIDPrefsPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */; };
+		82223A041B6BFADB00099615 /* Prefix-PrefsPane.pch in Headers */ = {isa = PBXBuildFile; fileRef = 82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */; };
+		82223A0E1B6BFB2400099615 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0B1B6BFB2400099615 /* credits.rtf */; };
+		82223A0F1B6BFB2400099615 /* donate.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0C1B6BFB2400099615 /* donate.rtf */; };
+		82223A101B6BFB2400099615 /* Xbox HID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0D1B6BFB2400099615 /* Xbox HID.icns */; };
+		82223A271B6BFB3400099615 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A111B6BFB3400099615 /* controller.png */; };
+		82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A121B6BFB3400099615 /* controllerButtonBack.png */; };
+		82223A291B6BFB3400099615 /* controllerButtonBlk.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A131B6BFB3400099615 /* controllerButtonBlk.png */; };
+		82223A2A1B6BFB3400099615 /* controllerButtonBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A141B6BFB3400099615 /* controllerButtonBlue.png */; };
+		82223A2B1B6BFB3400099615 /* controllerButtonGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A151B6BFB3400099615 /* controllerButtonGreen.png */; };
+		82223A2C1B6BFB3400099615 /* controllerButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A161B6BFB3400099615 /* controllerButtonRed.png */; };
+		82223A2D1B6BFB3400099615 /* controllerButtonStart.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A171B6BFB3400099615 /* controllerButtonStart.png */; };
+		82223A2E1B6BFB3400099615 /* controllerButtonWht.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A181B6BFB3400099615 /* controllerButtonWht.png */; };
+		82223A2F1B6BFB3400099615 /* controllerButtonYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A191B6BFB3400099615 /* controllerButtonYellow.png */; };
+		82223A301B6BFB3400099615 /* controllerStick.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A1A1B6BFB3400099615 /* controllerStick.png */; };
+		82223A311B6BFB3400099615 /* controllerTriggerLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A1B1B6BFB3400099615 /* controllerTriggerLeft.png */; };
+		82223A321B6BFB3400099615 /* controllerTriggerRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A1C1B6BFB3400099615 /* controllerTriggerRight.png */; };
+		82223A331B6BFB3400099615 /* iconAppSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A1D1B6BFB3400099615 /* iconAppSmallTemplate.png */; };
+		82223A341B6BFB3400099615 /* iconAppTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A1E1B6BFB3400099615 /* iconAppTemplate.png */; };
+		82223A351B6BFB3400099615 /* iconEditTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A1F1B6BFB3400099615 /* iconEditTemplate.png */; };
+		82223A361B6BFB3400099615 /* iconUndoSmallTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A201B6BFB3400099615 /* iconUndoSmallTemplate.png */; };
+		82223A371B6BFB3400099615 /* iconUndoTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A211B6BFB3400099615 /* iconUndoTemplate.png */; };
+		82223A381B6BFB3400099615 /* iconUSBTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A221B6BFB3400099615 /* iconUSBTemplate.png */; };
+		82223A391B6BFB3400099615 /* logoColors.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A231B6BFB3400099615 /* logoColors.png */; };
+		82223A3A1B6BFB3400099615 /* logoOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A241B6BFB3400099615 /* logoOverlay.png */; };
+		82223A3B1B6BFB3400099615 /* toggleAnalog.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A251B6BFB3400099615 /* toggleAnalog.png */; };
+		82223A3C1B6BFB3400099615 /* toggleDigital.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A261B6BFB3400099615 /* toggleDigital.png */; };
+		82223A471B6C01BE00099615 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82223A411B6C01BE00099615 /* Cocoa.framework */; };
+		82223A4A1B6C01BE00099615 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82223A441B6C01BE00099615 /* IOKit.framework */; };
+		82223A4B1B6C01BE00099615 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82223A451B6C01BE00099615 /* PreferencePanes.framework */; };
+		82223A631B6C078D00099615 /* MAAttachedWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A611B6C078D00099615 /* MAAttachedWindow.h */; };
+		82223A641B6C078D00099615 /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A621B6C078D00099615 /* MAAttachedWindow.m */; };
+		82223A691B6C079900099615 /* SMDoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A651B6C079900099615 /* SMDoubleSlider.h */; };
+		82223A6A1B6C079900099615 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A661B6C079900099615 /* SMDoubleSlider.m */; };
+		82223A6B1B6C079900099615 /* SMDoubleSliderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A671B6C079900099615 /* SMDoubleSliderCell.h */; };
+		82223A6C1B6C079900099615 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A681B6C079900099615 /* SMDoubleSliderCell.m */; };
+		82223A731B6C090B00099615 /* FPXboxHIDDriverInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A6E1B6C090B00099615 /* FPXboxHIDDriverInterface.h */; };
+		82223A741B6C090B00099615 /* FPXboxHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A6F1B6C090B00099615 /* FPXboxHIDDriverInterface.m */; };
+		82223A751B6C090B00099615 /* FPXboxHIDDriverKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */; };
+		82223A761B6C090B00099615 /* FPXboxHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */; };
+		82223A771B6C090B00099615 /* FPXboxHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */; };
+		82223A7C1B6C0D5E00099615 /* Xbox HID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* Xbox HID.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		822239B41B6BFA5B00099615 /* FPAppBindingCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppBindingCells.h; path = "../Source/PrefsPane/Custom Cells/FPAppBindingCells.h"; sourceTree = SOURCE_ROOT; };
+		822239B51B6BFA5B00099615 /* FPAppBindingCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppBindingCells.m; path = "../Source/PrefsPane/Custom Cells/FPAppBindingCells.m"; sourceTree = SOURCE_ROOT; };
+		822239B61B6BFA5B00099615 /* FPPopUpButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPopUpButtonCell.h; path = "../Source/PrefsPane/Custom Cells/FPPopUpButtonCell.h"; sourceTree = SOURCE_ROOT; };
+		822239B71B6BFA5B00099615 /* FPPopUpButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPPopUpButtonCell.m; path = "../Source/PrefsPane/Custom Cells/FPPopUpButtonCell.m"; sourceTree = SOURCE_ROOT; };
+		822239BC1B6BFA6400099615 /* FPAnalogDigitalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAnalogDigitalButton.h; path = "../Source/PrefsPane/Custom Controls/FPAnalogDigitalButton.h"; sourceTree = SOURCE_ROOT; };
+		822239BD1B6BFA6400099615 /* FPAnalogDigitalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAnalogDigitalButton.m; path = "../Source/PrefsPane/Custom Controls/FPAnalogDigitalButton.m"; sourceTree = SOURCE_ROOT; };
+		822239BE1B6BFA6400099615 /* FPConfigPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPConfigPopUp.h; path = "../Source/PrefsPane/Custom Controls/FPConfigPopUp.h"; sourceTree = SOURCE_ROOT; };
+		822239BF1B6BFA6400099615 /* FPConfigPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPConfigPopUp.m; path = "../Source/PrefsPane/Custom Controls/FPConfigPopUp.m"; sourceTree = SOURCE_ROOT; };
+		822239C01B6BFA6400099615 /* FPScrollerCredits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPScrollerCredits.h; path = "../Source/PrefsPane/Custom Controls/FPScrollerCredits.h"; sourceTree = SOURCE_ROOT; };
+		822239C11B6BFA6400099615 /* FPScrollerCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPScrollerCredits.m; path = "../Source/PrefsPane/Custom Controls/FPScrollerCredits.m"; sourceTree = SOURCE_ROOT; };
+		822239C21B6BFA6400099615 /* FPTextCredits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPTextCredits.h; path = "../Source/PrefsPane/Custom Controls/FPTextCredits.h"; sourceTree = SOURCE_ROOT; };
+		822239C31B6BFA6400099615 /* FPTextCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPTextCredits.m; path = "../Source/PrefsPane/Custom Controls/FPTextCredits.m"; sourceTree = SOURCE_ROOT; };
+		822239CC1B6BFA7200099615 /* FPAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAlertView.h; path = "../Source/PrefsPane/Custom Views/FPAlertView.h"; sourceTree = SOURCE_ROOT; };
+		822239CD1B6BFA7200099615 /* FPAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAlertView.m; path = "../Source/PrefsPane/Custom Views/FPAlertView.m"; sourceTree = SOURCE_ROOT; };
+		822239CE1B6BFA7200099615 /* FPAppTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppTableView.h; path = "../Source/PrefsPane/Custom Views/FPAppTableView.h"; sourceTree = SOURCE_ROOT; };
+		822239CF1B6BFA7200099615 /* FPAppTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppTableView.m; path = "../Source/PrefsPane/Custom Views/FPAppTableView.m"; sourceTree = SOURCE_ROOT; };
+		822239D01B6BFA7200099615 /* FPAxisPairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAxisPairView.h; path = "../Source/PrefsPane/Custom Views/FPAxisPairView.h"; sourceTree = SOURCE_ROOT; };
+		822239D11B6BFA7200099615 /* FPAxisPairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAxisPairView.m; path = "../Source/PrefsPane/Custom Views/FPAxisPairView.m"; sourceTree = SOURCE_ROOT; };
+		822239D21B6BFA7200099615 /* FPBoxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPBoxLine.h; path = "../Source/PrefsPane/Custom Views/FPBoxLine.h"; sourceTree = SOURCE_ROOT; };
+		822239D31B6BFA7200099615 /* FPBoxLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPBoxLine.m; path = "../Source/PrefsPane/Custom Views/FPBoxLine.m"; sourceTree = SOURCE_ROOT; };
+		822239D41B6BFA7200099615 /* FPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPButtonView.h; path = "../Source/PrefsPane/Custom Views/FPButtonView.h"; sourceTree = SOURCE_ROOT; };
+		822239D51B6BFA7200099615 /* FPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPButtonView.m; path = "../Source/PrefsPane/Custom Views/FPButtonView.m"; sourceTree = SOURCE_ROOT; };
+		822239D61B6BFA7200099615 /* FPDpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPDpadView.h; path = "../Source/PrefsPane/Custom Views/FPDpadView.h"; sourceTree = SOURCE_ROOT; };
+		822239D71B6BFA7200099615 /* FPDpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPDpadView.m; path = "../Source/PrefsPane/Custom Views/FPDpadView.m"; sourceTree = SOURCE_ROOT; };
+		822239D81B6BFA7200099615 /* FPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPImageView.h; path = "../Source/PrefsPane/Custom Views/FPImageView.h"; sourceTree = SOURCE_ROOT; };
+		822239D91B6BFA7200099615 /* FPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPImageView.m; path = "../Source/PrefsPane/Custom Views/FPImageView.m"; sourceTree = SOURCE_ROOT; };
+		822239DA1B6BFA7200099615 /* FPLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLogoView.h; path = "../Source/PrefsPane/Custom Views/FPLogoView.h"; sourceTree = SOURCE_ROOT; };
+		822239DB1B6BFA7200099615 /* FPLogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLogoView.m; path = "../Source/PrefsPane/Custom Views/FPLogoView.m"; sourceTree = SOURCE_ROOT; };
+		822239DC1B6BFA7200099615 /* FPTriggerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPTriggerView.h; path = "../Source/PrefsPane/Custom Views/FPTriggerView.h"; sourceTree = SOURCE_ROOT; };
+		822239DD1B6BFA7200099615 /* FPTriggerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPTriggerView.m; path = "../Source/PrefsPane/Custom Views/FPTriggerView.m"; sourceTree = SOURCE_ROOT; };
+		822239F11B6BFA9000099615 /* FPDataSourceApps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPDataSourceApps.h; path = "../Source/PrefsPane/Data Source/FPDataSourceApps.h"; sourceTree = SOURCE_ROOT; };
+		822239F21B6BFA9000099615 /* FPDataSourceApps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPDataSourceApps.m; path = "../Source/PrefsPane/Data Source/FPDataSourceApps.m"; sourceTree = SOURCE_ROOT; };
+		822239F51B6BFAA300099615 /* FPHIDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPHIDUtilities.h; path = ../Source/PrefsPane/FPHIDUtilities.h; sourceTree = SOURCE_ROOT; };
+		822239F61B6BFAA300099615 /* FPHIDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPHIDUtilities.m; path = ../Source/PrefsPane/FPHIDUtilities.m; sourceTree = SOURCE_ROOT; };
+		822239F71B6BFAA300099615 /* FPXboxHIDNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDNotifier.h; path = ../Source/PrefsPane/FPXboxHIDNotifier.h; sourceTree = SOURCE_ROOT; };
+		822239F81B6BFAA300099615 /* FPXboxHIDNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDNotifier.m; path = ../Source/PrefsPane/FPXboxHIDNotifier.m; sourceTree = SOURCE_ROOT; };
+		822239F91B6BFAA300099615 /* FPXboxHIDPrefsPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsPane.h; path = ../Source/PrefsPane/FPXboxHIDPrefsPane.h; sourceTree = SOURCE_ROOT; };
+		822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsPane.m; path = ../Source/PrefsPane/FPXboxHIDPrefsPane.m; sourceTree = SOURCE_ROOT; };
+		82223A011B6BFAD200099615 /* Info-PrefsPane.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-PrefsPane.plist"; path = "Supporting Files/Info-PrefsPane.plist"; sourceTree = SOURCE_ROOT; };
+		82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Prefix-PrefsPane.pch"; path = "Supporting Files/Prefix-PrefsPane.pch"; sourceTree = SOURCE_ROOT; };
+		82223A0B1B6BFB2400099615 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = credits.rtf; path = ../Resources/credits.rtf; sourceTree = SOURCE_ROOT; };
+		82223A0C1B6BFB2400099615 /* donate.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = donate.rtf; path = ../Resources/donate.rtf; sourceTree = SOURCE_ROOT; };
+		82223A0D1B6BFB2400099615 /* Xbox HID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Xbox HID.icns"; path = "../Resources/Xbox HID.icns"; sourceTree = SOURCE_ROOT; };
+		82223A111B6BFB3400099615 /* controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controller.png; path = ../Resources/Images/controller.png; sourceTree = SOURCE_ROOT; };
+		82223A121B6BFB3400099615 /* controllerButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonBack.png; path = ../Resources/Images/controllerButtonBack.png; sourceTree = SOURCE_ROOT; };
+		82223A131B6BFB3400099615 /* controllerButtonBlk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonBlk.png; path = ../Resources/Images/controllerButtonBlk.png; sourceTree = SOURCE_ROOT; };
+		82223A141B6BFB3400099615 /* controllerButtonBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonBlue.png; path = ../Resources/Images/controllerButtonBlue.png; sourceTree = SOURCE_ROOT; };
+		82223A151B6BFB3400099615 /* controllerButtonGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonGreen.png; path = ../Resources/Images/controllerButtonGreen.png; sourceTree = SOURCE_ROOT; };
+		82223A161B6BFB3400099615 /* controllerButtonRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonRed.png; path = ../Resources/Images/controllerButtonRed.png; sourceTree = SOURCE_ROOT; };
+		82223A171B6BFB3400099615 /* controllerButtonStart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonStart.png; path = ../Resources/Images/controllerButtonStart.png; sourceTree = SOURCE_ROOT; };
+		82223A181B6BFB3400099615 /* controllerButtonWht.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonWht.png; path = ../Resources/Images/controllerButtonWht.png; sourceTree = SOURCE_ROOT; };
+		82223A191B6BFB3400099615 /* controllerButtonYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonYellow.png; path = ../Resources/Images/controllerButtonYellow.png; sourceTree = SOURCE_ROOT; };
+		82223A1A1B6BFB3400099615 /* controllerStick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerStick.png; path = ../Resources/Images/controllerStick.png; sourceTree = SOURCE_ROOT; };
+		82223A1B1B6BFB3400099615 /* controllerTriggerLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerTriggerLeft.png; path = ../Resources/Images/controllerTriggerLeft.png; sourceTree = SOURCE_ROOT; };
+		82223A1C1B6BFB3400099615 /* controllerTriggerRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerTriggerRight.png; path = ../Resources/Images/controllerTriggerRight.png; sourceTree = SOURCE_ROOT; };
+		82223A1D1B6BFB3400099615 /* iconAppSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAppSmallTemplate.png; path = ../Resources/Images/iconAppSmallTemplate.png; sourceTree = SOURCE_ROOT; };
+		82223A1E1B6BFB3400099615 /* iconAppTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconAppTemplate.png; path = ../Resources/Images/iconAppTemplate.png; sourceTree = SOURCE_ROOT; };
+		82223A1F1B6BFB3400099615 /* iconEditTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconEditTemplate.png; path = ../Resources/Images/iconEditTemplate.png; sourceTree = SOURCE_ROOT; };
+		82223A201B6BFB3400099615 /* iconUndoSmallTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUndoSmallTemplate.png; path = ../Resources/Images/iconUndoSmallTemplate.png; sourceTree = SOURCE_ROOT; };
+		82223A211B6BFB3400099615 /* iconUndoTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUndoTemplate.png; path = ../Resources/Images/iconUndoTemplate.png; sourceTree = SOURCE_ROOT; };
+		82223A221B6BFB3400099615 /* iconUSBTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconUSBTemplate.png; path = ../Resources/Images/iconUSBTemplate.png; sourceTree = SOURCE_ROOT; };
+		82223A231B6BFB3400099615 /* logoColors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoColors.png; path = ../Resources/Images/logoColors.png; sourceTree = SOURCE_ROOT; };
+		82223A241B6BFB3400099615 /* logoOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoOverlay.png; path = ../Resources/Images/logoOverlay.png; sourceTree = SOURCE_ROOT; };
+		82223A251B6BFB3400099615 /* toggleAnalog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toggleAnalog.png; path = ../Resources/Images/toggleAnalog.png; sourceTree = SOURCE_ROOT; };
+		82223A261B6BFB3400099615 /* toggleDigital.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = toggleDigital.png; path = ../Resources/Images/toggleDigital.png; sourceTree = SOURCE_ROOT; };
+		82223A411B6C01BE00099615 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		82223A431B6C01BE00099615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		82223A441B6C01BE00099615 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		82223A451B6C01BE00099615 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
+		82223A611B6C078D00099615 /* MAAttachedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAAttachedWindow.h; path = ../Source/External/MAAttachedWindow/MAAttachedWindow.h; sourceTree = SOURCE_ROOT; };
+		82223A621B6C078D00099615 /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = ../Source/External/MAAttachedWindow/MAAttachedWindow.m; sourceTree = SOURCE_ROOT; };
+		82223A651B6C079900099615 /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSlider.h; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSlider.h; sourceTree = SOURCE_ROOT; };
+		82223A661B6C079900099615 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSlider.m; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSlider.m; sourceTree = SOURCE_ROOT; };
+		82223A671B6C079900099615 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderCell.h; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.h; sourceTree = SOURCE_ROOT; };
+		82223A681B6C079900099615 /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderCell.m; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.m; sourceTree = SOURCE_ROOT; };
+		82223A6E1B6C090B00099615 /* FPXboxHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverInterface.h; path = ../Source/Common/FPXboxHIDDriverInterface.h; sourceTree = "<group>"; };
+		82223A6F1B6C090B00099615 /* FPXboxHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDriverInterface.m; path = ../Source/Common/FPXboxHIDDriverInterface.m; sourceTree = "<group>"; };
+		82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverKeys.h; path = ../Source/Common/FPXboxHIDDriverKeys.h; sourceTree = "<group>"; };
+		82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsLoader.h; path = ../Source/Common/FPXboxHIDPrefsLoader.h; sourceTree = "<group>"; };
+		82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsLoader.m; path = ../Source/Common/FPXboxHIDPrefsLoader.m; sourceTree = "<group>"; };
+		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "../Resources/en.lproj/Xbox HID.xib"; sourceTree = "<group>"; };
+		82A0B3E71B6BD80C00653468 /* Xbox HID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Xbox HID.prefPane"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		82A0B3E31B6BD80C00653468 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82223A471B6C01BE00099615 /* Cocoa.framework in Frameworks */,
+				82223A4A1B6C01BE00099615 /* IOKit.framework in Frameworks */,
+				82223A4B1B6C01BE00099615 /* PreferencePanes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		822239B01B6BFA1F00099615 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				82223A7A1B6C0D5E00099615 /* Xbox HID.xib */,
+				822239B11B6BFA3300099615 /* Custom Controls */,
+				822239B21B6BFA3D00099615 /* Custom Cells */,
+				822239B31B6BFA4300099615 /* Custom Views */,
+				82223A5E1B6C074400099615 /* Externals */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		822239B11B6BFA3300099615 /* Custom Controls */ = {
+			isa = PBXGroup;
+			children = (
+				822239BC1B6BFA6400099615 /* FPAnalogDigitalButton.h */,
+				822239BD1B6BFA6400099615 /* FPAnalogDigitalButton.m */,
+				822239BE1B6BFA6400099615 /* FPConfigPopUp.h */,
+				822239BF1B6BFA6400099615 /* FPConfigPopUp.m */,
+				822239C01B6BFA6400099615 /* FPScrollerCredits.h */,
+				822239C11B6BFA6400099615 /* FPScrollerCredits.m */,
+				822239C21B6BFA6400099615 /* FPTextCredits.h */,
+				822239C31B6BFA6400099615 /* FPTextCredits.m */,
+			);
+			name = "Custom Controls";
+			sourceTree = "<group>";
+		};
+		822239B21B6BFA3D00099615 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				822239B41B6BFA5B00099615 /* FPAppBindingCells.h */,
+				822239B51B6BFA5B00099615 /* FPAppBindingCells.m */,
+				822239B61B6BFA5B00099615 /* FPPopUpButtonCell.h */,
+				822239B71B6BFA5B00099615 /* FPPopUpButtonCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		822239B31B6BFA4300099615 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				822239CC1B6BFA7200099615 /* FPAlertView.h */,
+				822239CD1B6BFA7200099615 /* FPAlertView.m */,
+				822239CE1B6BFA7200099615 /* FPAppTableView.h */,
+				822239CF1B6BFA7200099615 /* FPAppTableView.m */,
+				822239D01B6BFA7200099615 /* FPAxisPairView.h */,
+				822239D11B6BFA7200099615 /* FPAxisPairView.m */,
+				822239D21B6BFA7200099615 /* FPBoxLine.h */,
+				822239D31B6BFA7200099615 /* FPBoxLine.m */,
+				822239D41B6BFA7200099615 /* FPButtonView.h */,
+				822239D51B6BFA7200099615 /* FPButtonView.m */,
+				822239D61B6BFA7200099615 /* FPDpadView.h */,
+				822239D71B6BFA7200099615 /* FPDpadView.m */,
+				822239D81B6BFA7200099615 /* FPImageView.h */,
+				822239D91B6BFA7200099615 /* FPImageView.m */,
+				822239DA1B6BFA7200099615 /* FPLogoView.h */,
+				822239DB1B6BFA7200099615 /* FPLogoView.m */,
+				822239DC1B6BFA7200099615 /* FPTriggerView.h */,
+				822239DD1B6BFA7200099615 /* FPTriggerView.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		822239F01B6BFA7C00099615 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				822239F11B6BFA9000099615 /* FPDataSourceApps.h */,
+				822239F21B6BFA9000099615 /* FPDataSourceApps.m */,
+			);
+			name = "Data Source";
+			sourceTree = "<group>";
+		};
+		82223A091B6BFAFC00099615 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				82223A0A1B6BFB1A00099615 /* Images */,
+				82223A0B1B6BFB2400099615 /* credits.rtf */,
+				82223A0C1B6BFB2400099615 /* donate.rtf */,
+				82223A0D1B6BFB2400099615 /* Xbox HID.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		82223A0A1B6BFB1A00099615 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				82223A111B6BFB3400099615 /* controller.png */,
+				82223A121B6BFB3400099615 /* controllerButtonBack.png */,
+				82223A131B6BFB3400099615 /* controllerButtonBlk.png */,
+				82223A141B6BFB3400099615 /* controllerButtonBlue.png */,
+				82223A151B6BFB3400099615 /* controllerButtonGreen.png */,
+				82223A161B6BFB3400099615 /* controllerButtonRed.png */,
+				82223A171B6BFB3400099615 /* controllerButtonStart.png */,
+				82223A181B6BFB3400099615 /* controllerButtonWht.png */,
+				82223A191B6BFB3400099615 /* controllerButtonYellow.png */,
+				82223A1A1B6BFB3400099615 /* controllerStick.png */,
+				82223A1B1B6BFB3400099615 /* controllerTriggerLeft.png */,
+				82223A1C1B6BFB3400099615 /* controllerTriggerRight.png */,
+				82223A1D1B6BFB3400099615 /* iconAppSmallTemplate.png */,
+				82223A201B6BFB3400099615 /* iconUndoSmallTemplate.png */,
+				82223A1E1B6BFB3400099615 /* iconAppTemplate.png */,
+				82223A1F1B6BFB3400099615 /* iconEditTemplate.png */,
+				82223A211B6BFB3400099615 /* iconUndoTemplate.png */,
+				82223A221B6BFB3400099615 /* iconUSBTemplate.png */,
+				82223A231B6BFB3400099615 /* logoColors.png */,
+				82223A241B6BFB3400099615 /* logoOverlay.png */,
+				82223A251B6BFB3400099615 /* toggleAnalog.png */,
+				82223A261B6BFB3400099615 /* toggleDigital.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		82223A3F1B6C017600099615 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				82223A411B6C01BE00099615 /* Cocoa.framework */,
+				82223A431B6C01BE00099615 /* Foundation.framework */,
+				82223A441B6C01BE00099615 /* IOKit.framework */,
+				82223A451B6C01BE00099615 /* PreferencePanes.framework */,
+			);
+			name = Frameworks;
+			path = "Xbox HID";
+			sourceTree = "<group>";
+		};
+		82223A5E1B6C074400099615 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				82223A5F1B6C077700099615 /* MAAttachedWindow */,
+				82223A601B6C078000099615 /* SMDoubleSlider */,
+			);
+			name = Externals;
+			sourceTree = "<group>";
+		};
+		82223A5F1B6C077700099615 /* MAAttachedWindow */ = {
+			isa = PBXGroup;
+			children = (
+				82223A611B6C078D00099615 /* MAAttachedWindow.h */,
+				82223A621B6C078D00099615 /* MAAttachedWindow.m */,
+			);
+			name = MAAttachedWindow;
+			sourceTree = "<group>";
+		};
+		82223A601B6C078000099615 /* SMDoubleSlider */ = {
+			isa = PBXGroup;
+			children = (
+				82223A651B6C079900099615 /* SMDoubleSlider.h */,
+				82223A661B6C079900099615 /* SMDoubleSlider.m */,
+				82223A671B6C079900099615 /* SMDoubleSliderCell.h */,
+				82223A681B6C079900099615 /* SMDoubleSliderCell.m */,
+			);
+			name = SMDoubleSlider;
+			sourceTree = "<group>";
+		};
+		82223A6D1B6C08EF00099615 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */,
+				82223A6E1B6C090B00099615 /* FPXboxHIDDriverInterface.h */,
+				82223A6F1B6C090B00099615 /* FPXboxHIDDriverInterface.m */,
+				82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */,
+				82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		82A0B3DD1B6BD80C00653468 = {
+			isa = PBXGroup;
+			children = (
+				82A0B3E91B6BD80C00653468 /* Prefs Pane */,
+				82223A6D1B6C08EF00099615 /* Common */,
+				822239F01B6BFA7C00099615 /* Data Source */,
+				822239B01B6BFA1F00099615 /* User Interface */,
+				82223A091B6BFAFC00099615 /* Resources */,
+				82A0B3EA1B6BD80C00653468 /* Supporting Files */,
+				82223A3F1B6C017600099615 /* Frameworks */,
+				82A0B3E81B6BD80C00653468 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		82A0B3E81B6BD80C00653468 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82A0B3E71B6BD80C00653468 /* Xbox HID.prefPane */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82A0B3E91B6BD80C00653468 /* Prefs Pane */ = {
+			isa = PBXGroup;
+			children = (
+				822239F51B6BFAA300099615 /* FPHIDUtilities.h */,
+				822239F61B6BFAA300099615 /* FPHIDUtilities.m */,
+				822239F71B6BFAA300099615 /* FPXboxHIDNotifier.h */,
+				822239F81B6BFAA300099615 /* FPXboxHIDNotifier.m */,
+				822239F91B6BFAA300099615 /* FPXboxHIDPrefsPane.h */,
+				822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */,
+			);
+			name = "Prefs Pane";
+			path = "Xbox HID";
+			sourceTree = "<group>";
+		};
+		82A0B3EA1B6BD80C00653468 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				82223A011B6BFAD200099615 /* Info-PrefsPane.plist */,
+				82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */,
+			);
+			name = "Supporting Files";
+			path = "Xbox HID";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		82A0B3E41B6BD80C00653468 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				822239B81B6BFA5B00099615 /* FPAppBindingCells.h in Headers */,
+				82223A731B6C090B00099615 /* FPXboxHIDDriverInterface.h in Headers */,
+				822239FB1B6BFAA300099615 /* FPHIDUtilities.h in Headers */,
+				82223A6B1B6C079900099615 /* SMDoubleSliderCell.h in Headers */,
+				822239EC1B6BFA7200099615 /* FPLogoView.h in Headers */,
+				822239BA1B6BFA5B00099615 /* FPPopUpButtonCell.h in Headers */,
+				82223A041B6BFADB00099615 /* Prefix-PrefsPane.pch in Headers */,
+				822239C81B6BFA6400099615 /* FPScrollerCredits.h in Headers */,
+				822239E81B6BFA7200099615 /* FPDpadView.h in Headers */,
+				822239DE1B6BFA7200099615 /* FPAlertView.h in Headers */,
+				822239CA1B6BFA6400099615 /* FPTextCredits.h in Headers */,
+				822239C41B6BFA6400099615 /* FPAnalogDigitalButton.h in Headers */,
+				822239F31B6BFA9000099615 /* FPDataSourceApps.h in Headers */,
+				822239E41B6BFA7200099615 /* FPBoxLine.h in Headers */,
+				822239EE1B6BFA7200099615 /* FPTriggerView.h in Headers */,
+				822239EA1B6BFA7200099615 /* FPImageView.h in Headers */,
+				82223A751B6C090B00099615 /* FPXboxHIDDriverKeys.h in Headers */,
+				82223A691B6C079900099615 /* SMDoubleSlider.h in Headers */,
+				822239E01B6BFA7200099615 /* FPAppTableView.h in Headers */,
+				82223A761B6C090B00099615 /* FPXboxHIDPrefsLoader.h in Headers */,
+				822239E61B6BFA7200099615 /* FPButtonView.h in Headers */,
+				822239FD1B6BFAA300099615 /* FPXboxHIDNotifier.h in Headers */,
+				822239E21B6BFA7200099615 /* FPAxisPairView.h in Headers */,
+				822239FF1B6BFAA300099615 /* FPXboxHIDPrefsPane.h in Headers */,
+				822239C61B6BFA6400099615 /* FPConfigPopUp.h in Headers */,
+				82223A631B6C078D00099615 /* MAAttachedWindow.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		82A0B3E61B6BD80C00653468 /* Xbox HID PrefsPane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82A0B3F71B6BD80C00653468 /* Build configuration list for PBXNativeTarget "Xbox HID PrefsPane" */;
+			buildPhases = (
+				82A0B3E21B6BD80C00653468 /* Sources */,
+				82A0B3E31B6BD80C00653468 /* Frameworks */,
+				82A0B3E41B6BD80C00653468 /* Headers */,
+				82A0B3E51B6BD80C00653468 /* Resources */,
+				82223A3E1B6BFEB000099615 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Xbox HID PrefsPane";
+			productName = "Xbox HID";
+			productReference = 82A0B3E71B6BD80C00653468 /* Xbox HID.prefPane */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82A0B3DE1B6BD80C00653468 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "FizzyPop Studios";
+				TargetAttributes = {
+					82A0B3E61B6BD80C00653468 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 82A0B3E11B6BD80C00653468 /* Build configuration list for PBXProject "Xbox HID PrefsPane" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 82A0B3DD1B6BD80C00653468;
+			productRefGroup = 82A0B3E81B6BD80C00653468 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				82A0B3E61B6BD80C00653468 /* Xbox HID PrefsPane */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82A0B3E51B6BD80C00653468 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82223A0E1B6BFB2400099615 /* credits.rtf in Resources */,
+				82223A0F1B6BFB2400099615 /* donate.rtf in Resources */,
+				82223A101B6BFB2400099615 /* Xbox HID.icns in Resources */,
+				82223A271B6BFB3400099615 /* controller.png in Resources */,
+				82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */,
+				82223A7C1B6C0D5E00099615 /* Xbox HID.xib in Resources */,
+				82223A291B6BFB3400099615 /* controllerButtonBlk.png in Resources */,
+				82223A2A1B6BFB3400099615 /* controllerButtonBlue.png in Resources */,
+				82223A2B1B6BFB3400099615 /* controllerButtonGreen.png in Resources */,
+				82223A2C1B6BFB3400099615 /* controllerButtonRed.png in Resources */,
+				82223A2D1B6BFB3400099615 /* controllerButtonStart.png in Resources */,
+				82223A2E1B6BFB3400099615 /* controllerButtonWht.png in Resources */,
+				82223A2F1B6BFB3400099615 /* controllerButtonYellow.png in Resources */,
+				82223A301B6BFB3400099615 /* controllerStick.png in Resources */,
+				82223A311B6BFB3400099615 /* controllerTriggerLeft.png in Resources */,
+				82223A321B6BFB3400099615 /* controllerTriggerRight.png in Resources */,
+				82223A331B6BFB3400099615 /* iconAppSmallTemplate.png in Resources */,
+				82223A361B6BFB3400099615 /* iconUndoSmallTemplate.png in Resources */,
+				82223A341B6BFB3400099615 /* iconAppTemplate.png in Resources */,
+				82223A351B6BFB3400099615 /* iconEditTemplate.png in Resources */,
+				82223A371B6BFB3400099615 /* iconUndoTemplate.png in Resources */,
+				82223A381B6BFB3400099615 /* iconUSBTemplate.png in Resources */,
+				82223A391B6BFB3400099615 /* logoColors.png in Resources */,
+				82223A3A1B6BFB3400099615 /* logoOverlay.png in Resources */,
+				82223A3B1B6BFB3400099615 /* toggleAnalog.png in Resources */,
+				82223A3C1B6BFB3400099615 /* toggleDigital.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82223A3E1B6BFEB000099615 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export SUDO_ASKPASS=\"/Users/pmd/Scripts/xcode_askpass.sh\"\nrm -rf \"/Users/pmd/Library/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/Xbox HID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"/Volumes/Projects/Development/Xbox HID/Packaging/Executables/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Volumes/Projects/Development/Xbox HID/Packaging/Executables/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.XboxHIDDaemon\nopen \"/Applications/System Preferences.app\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82A0B3E21B6BD80C00653468 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				822239F41B6BFA9000099615 /* FPDataSourceApps.m in Sources */,
+				82223A6C1B6C079900099615 /* SMDoubleSliderCell.m in Sources */,
+				82223A641B6C078D00099615 /* MAAttachedWindow.m in Sources */,
+				82223A6A1B6C079900099615 /* SMDoubleSlider.m in Sources */,
+				82223A741B6C090B00099615 /* FPXboxHIDDriverInterface.m in Sources */,
+				822239E51B6BFA7200099615 /* FPBoxLine.m in Sources */,
+				822239E91B6BFA7200099615 /* FPDpadView.m in Sources */,
+				82223A001B6BFAA300099615 /* FPXboxHIDPrefsPane.m in Sources */,
+				822239CB1B6BFA6400099615 /* FPTextCredits.m in Sources */,
+				822239DF1B6BFA7200099615 /* FPAlertView.m in Sources */,
+				822239E11B6BFA7200099615 /* FPAppTableView.m in Sources */,
+				822239E31B6BFA7200099615 /* FPAxisPairView.m in Sources */,
+				82223A771B6C090B00099615 /* FPXboxHIDPrefsLoader.m in Sources */,
+				822239C91B6BFA6400099615 /* FPScrollerCredits.m in Sources */,
+				822239C51B6BFA6400099615 /* FPAnalogDigitalButton.m in Sources */,
+				822239B91B6BFA5B00099615 /* FPAppBindingCells.m in Sources */,
+				822239EB1B6BFA7200099615 /* FPImageView.m in Sources */,
+				822239FE1B6BFAA300099615 /* FPXboxHIDNotifier.m in Sources */,
+				822239ED1B6BFA7200099615 /* FPLogoView.m in Sources */,
+				822239BB1B6BFA5B00099615 /* FPPopUpButtonCell.m in Sources */,
+				822239FC1B6BFAA300099615 /* FPHIDUtilities.m in Sources */,
+				822239E71B6BFA7200099615 /* FPButtonView.m in Sources */,
+				822239C71B6BFA6400099615 /* FPConfigPopUp.m in Sources */,
+				822239EF1B6BFA7200099615 /* FPTriggerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		82223A7A1B6C0D5E00099615 /* Xbox HID.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82223A7B1B6C0D5E00099615 /* en */,
+			);
+			name = "Xbox HID.xib";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		82A0B3F51B6BD80C00653468 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+			};
+			name = Debug;
+		};
+		82A0B3F61B6BD80C00653468 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		82A0B3F81B6BD80C00653468 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "Supporting Files/Prefix-PrefsPane.pch";
+				INFOPLIST_FILE = "Supporting Files/Info-PrefsPane.plist";
+				PRODUCT_NAME = "Xbox HID";
+				USER_HEADER_SEARCH_PATHS = ../Source/Common;
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Debug;
+		};
+		82A0B3F91B6BD80C00653468 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "Supporting Files/Prefix-PrefsPane.pch";
+				INFOPLIST_FILE = "Supporting Files/Info-PrefsPane.plist";
+				PRODUCT_NAME = "Xbox HID";
+				USER_HEADER_SEARCH_PATHS = ../Source/Common;
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82A0B3E11B6BD80C00653468 /* Build configuration list for PBXProject "Xbox HID PrefsPane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A0B3F51B6BD80C00653468 /* Debug */,
+				82A0B3F61B6BD80C00653468 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82A0B3F71B6BD80C00653468 /* Build configuration list for PBXNativeTarget "Xbox HID PrefsPane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82A0B3F81B6BD80C00653468 /* Debug */,
+				82A0B3F91B6BD80C00653468 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82A0B3DE1B6BD80C00653468 /* Project object */;
+}

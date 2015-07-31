@@ -5,13 +5,13 @@
 	<key>BuildMachineOSBuild</key>
 	<string>13F1096</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>Xbox HID</string>
 	<key>CFBundleGetInfoString</key>
-	<string>v1.0.0 (r333)</string>
+	<string>v1.0.0 (r420)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.Xbox-HID</string>
+	<string>com.fizzypopstudios.XboxHIDPrefsPane</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -31,18 +31,22 @@
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>11E52</string>
+	<string>14A383</string>
 	<key>DTSDKName</key>
-	<string>macosx10.7</string>
+	<string>macosx10.10</string>
 	<key>DTXcode</key>
 	<string>0620</string>
 	<key>DTXcodeBuild</key>
 	<string>6C131e</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2015 FizzyPop Studios. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>XboxHIDPrefsPane</string>
+	<string>Xbox HID</string>
 	<key>NSPrefPaneIconFile</key>
-	<string>xboxhidprefs.icns</string>
+	<string>Xbox HID.icns</string>
 	<key>NSPrefPaneIconLabel</key>
 	<string>Xbox HID</string>
+	<key>NSPrincipalClass</key>
+	<string>FPXboxHIDPrefsPane</string>
 </dict>
 </plist>

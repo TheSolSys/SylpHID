@@ -1,0 +1,871 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		53DF6901067E5B8E0090B5B0 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C056398708A954F8003078D8 /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				53DF6903067E5B930090B5B0 /* PBXTargetDependency */,
+				53DF6905067E5B930090B5B0 /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		13F8B89007B43554008AE28D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
+		141901360CA42848000DCA55 /* SMDoubleSliderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 141D1F470C9B27410007EEE7 /* SMDoubleSliderCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		141D1F480C9B27410007EEE7 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 141D1F460C9B27410007EEE7 /* SMDoubleSliderCell.m */; };
+		141D1FA70C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 141D1FA50C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.m */; };
+		54D33B2906778E3300C9C163 /* SMDoubleSlider.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 54D33B2806778E3300C9C163 /* SMDoubleSlider.classdescription */; };
+		8D1AC96C0486D14A00FE50C9 /* SMDoubleSliderIB3Inspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0259C577FE90428111CA0C5A /* SMDoubleSliderIB3Inspector.m */; settings = {ATTRIBUTES = (); }; };
+		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
+		973DF30B128DDF9B0090A499 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C059ACDC0A49E0A20079D97B /* SMDoubleSlider.m */; };
+		973DF30C128DDFA20090A499 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 141D1F460C9B27410007EEE7 /* SMDoubleSliderCell.m */; };
+		973DF426128DE86B0090A499 /* SMDoubleSliderIB3Inspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 973DF424128DE86B0090A499 /* SMDoubleSliderIB3Inspector.xib */; };
+		973DF427128DE86B0090A499 /* SMDoubleSliderIB3Library.xib in Resources */ = {isa = PBXBuildFile; fileRef = 973DF425128DE86B0090A499 /* SMDoubleSliderIB3Library.xib */; };
+		C059ACDD0A49E0A20079D97B /* SMDoubleSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = C059ACDB0A49E0A20079D97B /* SMDoubleSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C059ACDE0A49E0A20079D97B /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C059ACDC0A49E0A20079D97B /* SMDoubleSlider.m */; };
+		C08787290A49DE9A00E9B151 /* SMDoubleSliderIB3Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0259C576FE90428111CA0C5A /* SMDoubleSliderIB3Plugin.m */; };
+		C0D069560A49DF9100C95564 /* InterfaceBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D069550A49DF9100C95564 /* InterfaceBuilderKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		53DF6902067E5B930090B5B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0259C573FE90428111CA0C5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1AC9600486D14A00FE50C9;
+			remoteInfo = SMDoubleSliderIB3;
+		};
+		53DF6904067E5B930090B5B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0259C573FE90428111CA0C5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53DF68FC067E5B5A0090B5B0;
+			remoteInfo = SMDoubleSliderIB3Framework;
+		};
+		973DF30D128DDFBF0090A499 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0259C573FE90428111CA0C5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53DF68FC067E5B5A0090B5B0;
+			remoteInfo = SMDoubleSliderIB3Framework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0259C576FE90428111CA0C5A /* SMDoubleSliderIB3Plugin.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderIB3Plugin.m; path = IB_Plugin_code/SMDoubleSliderIB3Plugin.m; sourceTree = "<group>"; };
+		0259C577FE90428111CA0C5A /* SMDoubleSliderIB3Inspector.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderIB3Inspector.m; path = IB_Plugin_code/SMDoubleSliderIB3Inspector.m; sourceTree = "<group>"; };
+		0259C57AFE90428111CA0C5A /* SMDoubleSliderIB3Plugin.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderIB3Plugin.h; path = IB_Plugin_code/SMDoubleSliderIB3Plugin.h; sourceTree = "<group>"; };
+		0259C57BFE90428111CA0C5A /* SMDoubleSliderIB3Inspector.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderIB3Inspector.h; path = IB_Plugin_code/SMDoubleSliderIB3Inspector.h; sourceTree = "<group>"; };
+		13F8B88807B434F6008AE28D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		13F8B88907B434F6008AE28D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		13F8B88A07B434F6008AE28D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		141D1F460C9B27410007EEE7 /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderCell.m; path = Framework_code/SMDoubleSliderCell.m; sourceTree = "<group>"; };
+		141D1F470C9B27410007EEE7 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderCell.h; path = Framework_code/SMDoubleSliderCell.h; sourceTree = "<group>"; };
+		141D1FA50C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SMDoubleSlider+IBPlugin.m"; path = "IB_Plugin_code/SMDoubleSlider+IBPlugin.m"; sourceTree = "<group>"; };
+		141D1FA60C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SMDoubleSlider+IBPlugin.h"; path = "IB_Plugin_code/SMDoubleSlider+IBPlugin.h"; sourceTree = "<group>"; };
+		278A578B0D4941F500CD8A51 /* Read Me - SMDoubleSlider.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Read Me - SMDoubleSlider.rtf"; sourceTree = "<group>"; };
+		278A57A60D49425500CD8A51 /* License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
+		32DBCF980370C29C00C91783 /* SMDoubleSliderIB3_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderIB3_Prefix.pch; path = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch; sourceTree = "<group>"; };
+		53DF68FD067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMDoubleSliderIB3Framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53DF68FE067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SMDoubleSliderIB3Framework-Info.plist"; path = "Framework_code/SMDoubleSliderIB3Framework-Info.plist"; sourceTree = "<group>"; };
+		54D33B2806778E3300C9C163 /* SMDoubleSlider.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SMDoubleSlider.classdescription; path = IB_Plugin_code/SMDoubleSlider.classdescription; sourceTree = "<group>"; };
+		8D1AC9730486D14A00FE50C9 /* Info-IB_Plugin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-IB_Plugin.plist"; path = "IB_Plugin_code/Info-IB_Plugin.plist"; sourceTree = "<group>"; };
+		8D1AC9740486D14A00FE50C9 /* SMDoubleSliderIB3.ibplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMDoubleSliderIB3.ibplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		973DF424128DE86B0090A499 /* SMDoubleSliderIB3Inspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SMDoubleSliderIB3Inspector.xib; path = IB_Plugin_code/SMDoubleSliderIB3Inspector.xib; sourceTree = "<group>"; };
+		973DF425128DE86B0090A499 /* SMDoubleSliderIB3Library.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SMDoubleSliderIB3Library.xib; path = IB_Plugin_code/SMDoubleSliderIB3Library.xib; sourceTree = "<group>"; };
+		C059ACDB0A49E0A20079D97B /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSlider.h; path = Framework_code/SMDoubleSlider.h; sourceTree = "<group>"; };
+		C059ACDC0A49E0A20079D97B /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSlider.m; path = Framework_code/SMDoubleSlider.m; sourceTree = "<group>"; };
+		C0D069550A49DF9100C95564 /* InterfaceBuilderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InterfaceBuilderKit.framework; path = /Developer/Library/Frameworks/InterfaceBuilderKit.framework; sourceTree = "<absolute>"; };
+		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53DF68FB067E5B5A0090B5B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13F8B89007B43554008AE28D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D1AC96E0486D14A00FE50C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
+				C0D069560A49DF9100C95564 /* InterfaceBuilderKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0259C574FE90428111CA0C5A /* SMDoubleSliderIB3 */ = {
+			isa = PBXGroup;
+			children = (
+				278A578B0D4941F500CD8A51 /* Read Me - SMDoubleSlider.rtf */,
+				278A57A60D49425500CD8A51 /* License.rtf */,
+				32DBCF9E0370C38000C91783 /* Plugin */,
+				54D33B2C06778E4400C9C163 /* Framework */,
+				0259C582FE90428111CA0C5A /* Resources */,
+				1ED78706FE9D4A0611CA0C5A /* Products */,
+				2E58F364FFB232C311CA0CBA /* Frameworks */,
+			);
+			name = SMDoubleSliderIB3;
+			sourceTree = "<group>";
+		};
+		0259C582FE90428111CA0C5A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D1AC9730486D14A00FE50C9 /* Info-IB_Plugin.plist */,
+				53DF68FE067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		131E8FE8067F80F40006E0CE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				973DF424128DE86B0090A499 /* SMDoubleSliderIB3Inspector.xib */,
+				973DF425128DE86B0090A499 /* SMDoubleSliderIB3Library.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		13F8B6FD07B43410008AE28D /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD92D38A0106425D02CA0E72 /* Cocoa.framework */,
+				C0D069550A49DF9100C95564 /* InterfaceBuilderKit.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		13F8B70407B43425008AE28D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13F8B88807B434F6008AE28D /* AppKit.framework */,
+				13F8B88907B434F6008AE28D /* CoreData.framework */,
+				13F8B88A07B434F6008AE28D /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		1ED78706FE9D4A0611CA0C5A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1AC9740486D14A00FE50C9 /* SMDoubleSliderIB3.ibplugin */,
+				53DF68FD067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13F8B6FD07B43410008AE28D /* Linked Frameworks */,
+				13F8B70407B43425008AE28D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		32DBCF9E0370C38000C91783 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				54D33B2406778DD400C9C163 /* Class Descriptions */,
+				54D33B2506778DF000C9C163 /* Classes */,
+				32DBCF9F0370C38200C91783 /* Other Sources */,
+				131E8FE8067F80F40006E0CE /* Resources */,
+			);
+			name = Plugin;
+			sourceTree = "<group>";
+		};
+		32DBCF9F0370C38200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				141D1FA60C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.h */,
+				141D1FA50C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.m */,
+				32DBCF980370C29C00C91783 /* SMDoubleSliderIB3_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		54D33B2406778DD400C9C163 /* Class Descriptions */ = {
+			isa = PBXGroup;
+			children = (
+				54D33B2806778E3300C9C163 /* SMDoubleSlider.classdescription */,
+			);
+			name = "Class Descriptions";
+			sourceTree = "<group>";
+		};
+		54D33B2506778DF000C9C163 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0259C57AFE90428111CA0C5A /* SMDoubleSliderIB3Plugin.h */,
+				0259C576FE90428111CA0C5A /* SMDoubleSliderIB3Plugin.m */,
+				0259C57BFE90428111CA0C5A /* SMDoubleSliderIB3Inspector.h */,
+				0259C577FE90428111CA0C5A /* SMDoubleSliderIB3Inspector.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		54D33B2C06778E4400C9C163 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				C0894DA40C32F4C100401507 /* Classes */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		C0894DA40C32F4C100401507 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C059ACDB0A49E0A20079D97B /* SMDoubleSlider.h */,
+				C059ACDC0A49E0A20079D97B /* SMDoubleSlider.m */,
+				141D1F470C9B27410007EEE7 /* SMDoubleSliderCell.h */,
+				141D1F460C9B27410007EEE7 /* SMDoubleSliderCell.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		53DF68F8067E5B5A0090B5B0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C059ACDD0A49E0A20079D97B /* SMDoubleSlider.h in Headers */,
+				141901360CA42848000DCA55 /* SMDoubleSliderCell.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		53DF68FC067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C056397F08A954F8003078D8 /* Build configuration list for PBXNativeTarget "SMDoubleSliderIB3Framework" */;
+			buildPhases = (
+				53DF68F8067E5B5A0090B5B0 /* Headers */,
+				53DF68F9067E5B5A0090B5B0 /* Resources */,
+				53DF68FA067E5B5A0090B5B0 /* Sources */,
+				53DF68FB067E5B5A0090B5B0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SMDoubleSliderIB3Framework;
+			productName = SMDoubleSliderIB3Framework;
+			productReference = 53DF68FD067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8D1AC9600486D14A00FE50C9 /* SMDoubleSliderIB3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C056398308A954F8003078D8 /* Build configuration list for PBXNativeTarget "SMDoubleSliderIB3" */;
+			buildPhases = (
+				8D1AC9660486D14A00FE50C9 /* Resources */,
+				8D1AC96A0486D14A00FE50C9 /* Sources */,
+				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
+				27C0FF710D49232F00D817A0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				973DF30E128DDFBF0090A499 /* PBXTargetDependency */,
+			);
+			name = SMDoubleSliderIB3;
+			productInstallPath = "$(HOME)/Developer/Palettes";
+			productName = SMDoubleSliderIB3;
+			productReference = 8D1AC9740486D14A00FE50C9 /* SMDoubleSliderIB3.ibplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0259C573FE90428111CA0C5A /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C056398B08A954F8003078D8 /* Build configuration list for PBXProject "SMDoubleSliderIB3" */;
+			compatibilityVersion = "Xcode 3.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0259C574FE90428111CA0C5A /* SMDoubleSliderIB3 */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53DF6901067E5B8E0090B5B0 /* All */,
+				8D1AC9600486D14A00FE50C9 /* SMDoubleSliderIB3 */,
+				53DF68FC067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53DF68F9067E5B5A0090B5B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D1AC9660486D14A00FE50C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54D33B2906778E3300C9C163 /* SMDoubleSlider.classdescription in Resources */,
+				973DF426128DE86B0090A499 /* SMDoubleSliderIB3Inspector.xib in Resources */,
+				973DF427128DE86B0090A499 /* SMDoubleSliderIB3Library.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27C0FF710D49232F00D817A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "This build phase copies the IBPlugin's debugging symbols out of the release framework and into the build/Release folder.  If necessary, it erases any existing .dSym file first.";
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# If it already exists, remove the old dSYM file from the build/${Config} folder\nFILE=\"${BUILD_DIR}/${BUILD_STYLE}/${DWARF_DSYM_FILE_NAME}\"\nif test -e \"$FILE\"\nthen\n\techo \"rm -R \\\"${BUILD_DIR}/${BUILD_STYLE}/${DWARF_DSYM_FILE_NAME}\\\"\"\n\trm -R \"${BUILD_DIR}/${BUILD_STYLE}/${DWARF_DSYM_FILE_NAME}\"\nfi\n\n# If the dSYM file exists, move the dSYM file out of the framework and into the build/${Config} folder\nFILE=\"${DWARF_DSYM_FOLDER_PATH}${DWARF_DSYM_FILE_NAME}\"\nif test -e \"$FILE\"\nthen\n\techo \"mv \\\"${DWARF_DSYM_FOLDER_PATH}${DWARF_DSYM_FILE_NAME}\\\" \\\"${BUILD_DIR}/${BUILD_STYLE}/\\\"\"\n\tmv \"${DWARF_DSYM_FOLDER_PATH}${DWARF_DSYM_FILE_NAME}\" \"${BUILD_DIR}/${BUILD_STYLE}/\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53DF68FA067E5B5A0090B5B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C059ACDE0A49E0A20079D97B /* SMDoubleSlider.m in Sources */,
+				141D1F480C9B27410007EEE7 /* SMDoubleSliderCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D1AC96A0486D14A00FE50C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C08787290A49DE9A00E9B151 /* SMDoubleSliderIB3Plugin.m in Sources */,
+				8D1AC96C0486D14A00FE50C9 /* SMDoubleSliderIB3Inspector.m in Sources */,
+				141D1FA70C9B31410007EEE7 /* SMDoubleSlider+IBPlugin.m in Sources */,
+				973DF30B128DDF9B0090A499 /* SMDoubleSlider.m in Sources */,
+				973DF30C128DDFA20090A499 /* SMDoubleSliderCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53DF6903067E5B930090B5B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1AC9600486D14A00FE50C9 /* SMDoubleSliderIB3 */;
+			targetProxy = 53DF6902067E5B930090B5B0 /* PBXContainerItemProxy */;
+		};
+		53DF6905067E5B930090B5B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53DF68FC067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework */;
+			targetProxy = 53DF6904067E5B930090B5B0 /* PBXContainerItemProxy */;
+		};
+		973DF30E128DDFBF0090A499 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53DF68FC067E5B5A0090B5B0 /* SMDoubleSliderIB3Framework */;
+			targetProxy = 973DF30D128DDFBF0090A499 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		973DF342128DE0B60090A499 /* Release-32+64bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+			};
+			name = "Release-32+64bit";
+		};
+		973DF343128DE0B60090A499 /* Release-32+64bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				PRODUCT_NAME = All;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Release-32+64bit";
+		};
+		973DF344128DE0B60090A499 /* Release-32+64bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/SMDoubleSliderIB3Framework.framework/Resources/";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					$inherited,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_2,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_1,
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(HOME)/Library/Frameworks/\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(DEVELOPER_DIR)/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(BUILD_DIR)/$(CONFIGURATION)\"";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch;
+				INFOPLIST_FILE = "IB_Plugin_code/Info-IB_Plugin.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3;
+				WRAPPER_EXTENSION = ibplugin;
+			};
+			name = "Release-32+64bit";
+		};
+		973DF345128DE0B60090A499 /* Release-32+64bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Framework_code/SMDoubleSliderIB3Framework-Info.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3Framework;
+				SKIP_INSTALL = NO;
+			};
+			name = "Release-32+64bit";
+		};
+		973DF35C128DE1A90090A499 /* Debug-GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+			};
+			name = "Debug-GC";
+		};
+		973DF35D128DE1A90090A499 /* Debug-GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = All;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = YES;
+			};
+			name = "Debug-GC";
+		};
+		973DF35E128DE1A90090A499 /* Debug-GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/SMDoubleSliderIB3Framework.framework/Resources/";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					$inherited,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_2,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_1,
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(HOME)/Library/Frameworks/\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(DEVELOPER_DIR)/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(BUILD_DIR)/$(CONFIGURATION)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch;
+				INFOPLIST_FILE = "IB_Plugin_code/Info-IB_Plugin.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3;
+				WRAPPER_EXTENSION = ibplugin;
+				ZERO_LINK = YES;
+			};
+			name = "Debug-GC";
+		};
+		973DF35F128DE1A90090A499 /* Debug-GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Framework_code/SMDoubleSliderIB3Framework-Info.plist";
+				INSTALL_PATH = "$(BUILD_DIR)/$(CONFIGURATION)";
+				PRODUCT_NAME = SMDoubleSliderIB3Framework;
+				SKIP_INSTALL = NO;
+			};
+			name = "Debug-GC";
+		};
+		973DF364128DE1B30090A499 /* Release-32bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+			};
+			name = "Release-32bit GC";
+		};
+		973DF365128DE1B30090A499 /* Release-32bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				PRODUCT_NAME = All;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Release-32bit GC";
+		};
+		973DF366128DE1B30090A499 /* Release-32bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/SMDoubleSliderIB3Framework.framework/Resources/";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					$inherited,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_2,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_1,
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(HOME)/Library/Frameworks/\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(DEVELOPER_DIR)/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(BUILD_DIR)/$(CONFIGURATION)\"";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch;
+				INFOPLIST_FILE = "IB_Plugin_code/Info-IB_Plugin.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3;
+				WRAPPER_EXTENSION = ibplugin;
+			};
+			name = "Release-32bit GC";
+		};
+		973DF367128DE1B30090A499 /* Release-32bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Framework_code/SMDoubleSliderIB3Framework-Info.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3Framework;
+				SKIP_INSTALL = NO;
+			};
+			name = "Release-32bit GC";
+		};
+		973DF368128DE1C10090A499 /* Release-32+64bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+			};
+			name = "Release-32+64bit GC";
+		};
+		973DF369128DE1C10090A499 /* Release-32+64bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				PRODUCT_NAME = All;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Release-32+64bit GC";
+		};
+		973DF36A128DE1C10090A499 /* Release-32+64bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/SMDoubleSliderIB3Framework.framework/Resources/";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					$inherited,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_2,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_1,
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(HOME)/Library/Frameworks/\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(DEVELOPER_DIR)/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(BUILD_DIR)/$(CONFIGURATION)\"";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch;
+				INFOPLIST_FILE = "IB_Plugin_code/Info-IB_Plugin.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3;
+				WRAPPER_EXTENSION = ibplugin;
+			};
+			name = "Release-32+64bit GC";
+		};
+		973DF36B128DE1C10090A499 /* Release-32+64bit GC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Framework_code/SMDoubleSliderIB3Framework-Info.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3Framework;
+				SKIP_INSTALL = NO;
+			};
+			name = "Release-32+64bit GC";
+		};
+		C056398008A954F8003078D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Framework_code/SMDoubleSliderIB3Framework-Info.plist";
+				INSTALL_PATH = "$(BUILD_DIR)/$(CONFIGURATION)";
+				PRODUCT_NAME = SMDoubleSliderIB3Framework;
+				SKIP_INSTALL = NO;
+			};
+			name = Debug;
+		};
+		C056398108A954F8003078D8 /* Release-32bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "Framework_code/SMDoubleSliderIB3Framework-Info.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3Framework;
+				SKIP_INSTALL = NO;
+			};
+			name = "Release-32bit";
+		};
+		C056398408A954F8003078D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/SMDoubleSliderIB3Framework.framework/Resources/";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					$inherited,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_2,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_1,
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(HOME)/Library/Frameworks/\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(DEVELOPER_DIR)/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(BUILD_DIR)/$(CONFIGURATION)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch;
+				INFOPLIST_FILE = "IB_Plugin_code/Info-IB_Plugin.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3;
+				WRAPPER_EXTENSION = ibplugin;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C056398508A954F8003078D8 /* Release-32bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)/SMDoubleSliderIB3Framework.framework/Resources/";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					$inherited,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_2,
+					$FRAMEWORK_SEARCH_PATHS_QUOTED_1,
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(HOME)/Library/Frameworks/\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(DEVELOPER_DIR)/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(BUILD_DIR)/$(CONFIGURATION)\"";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = IB_Plugin_code/SMDoubleSliderIB3_Prefix.pch;
+				INFOPLIST_FILE = "IB_Plugin_code/Info-IB_Plugin.plist";
+				PRODUCT_NAME = SMDoubleSliderIB3;
+				WRAPPER_EXTENSION = ibplugin;
+			};
+			name = "Release-32bit";
+		};
+		C056398808A954F8003078D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = All;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		C056398908A954F8003078D8 /* Release-32bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				PRODUCT_NAME = All;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = "Release-32bit";
+		};
+		C056398C08A954F8003078D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+			};
+			name = Debug;
+		};
+		C056398D08A954F8003078D8 /* Release-32bit */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
+			};
+			name = "Release-32bit";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C056397F08A954F8003078D8 /* Build configuration list for PBXNativeTarget "SMDoubleSliderIB3Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C056398008A954F8003078D8 /* Debug */,
+				C056398108A954F8003078D8 /* Release-32bit */,
+				973DF345128DE0B60090A499 /* Release-32+64bit */,
+				973DF35F128DE1A90090A499 /* Debug-GC */,
+				973DF367128DE1B30090A499 /* Release-32bit GC */,
+				973DF36B128DE1C10090A499 /* Release-32+64bit GC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release-32bit";
+		};
+		C056398308A954F8003078D8 /* Build configuration list for PBXNativeTarget "SMDoubleSliderIB3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C056398408A954F8003078D8 /* Debug */,
+				C056398508A954F8003078D8 /* Release-32bit */,
+				973DF344128DE0B60090A499 /* Release-32+64bit */,
+				973DF35E128DE1A90090A499 /* Debug-GC */,
+				973DF366128DE1B30090A499 /* Release-32bit GC */,
+				973DF36A128DE1C10090A499 /* Release-32+64bit GC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release-32bit";
+		};
+		C056398708A954F8003078D8 /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C056398808A954F8003078D8 /* Debug */,
+				C056398908A954F8003078D8 /* Release-32bit */,
+				973DF343128DE0B60090A499 /* Release-32+64bit */,
+				973DF35D128DE1A90090A499 /* Debug-GC */,
+				973DF365128DE1B30090A499 /* Release-32bit GC */,
+				973DF369128DE1C10090A499 /* Release-32+64bit GC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release-32bit";
+		};
+		C056398B08A954F8003078D8 /* Build configuration list for PBXProject "SMDoubleSliderIB3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C056398C08A954F8003078D8 /* Debug */,
+				C056398D08A954F8003078D8 /* Release-32bit */,
+				973DF342128DE0B60090A499 /* Release-32+64bit */,
+				973DF35C128DE1A90090A499 /* Debug-GC */,
+				973DF364128DE1B30090A499 /* Release-32bit GC */,
+				973DF368128DE1C10090A499 /* Release-32+64bit GC */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Release-32bit";
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0259C573FE90428111CA0C5A /* Project object */;
+}

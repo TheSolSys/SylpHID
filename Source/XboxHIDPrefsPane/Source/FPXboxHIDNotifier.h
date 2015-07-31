@@ -27,27 +27,30 @@
 // =========================================================================================================================
 
 
-#import <Foundation/Foundation.h>
 #import <IOKit/IOKitLib.h>
 
 
+@protocol FPDeviceNotifier
+
+@required
+- (void) devicesUnplugged;
+- (void) devicesPluggedIn;
+
+@end
+
+
 @interface FPXboxHIDNotifier : NSObject {
-    SEL _matchedSelector;
-	IMP _matchedImp;
-    id _matchedTarget;
-    
-    SEL _terminatedSelector;
-	IMP _terminatedImp;
-    id _terminatedTarget;
-    
     IONotificationPortRef _notificationPort;
     CFRunLoopSourceRef _runLoopSource;
+	id _delegate;
 }
 
-+ (id )notifier;
++ (id) notifier;
++ (id) notifierWithDelegate: (id<FPDeviceNotifier>)delegate;
 
 - (id) init;
-- (void) setMatchedSelector: (SEL)selector target: (id)target;
-- (void) setTerminatedSelector: (SEL)selector target: (id)target;
+- (id) initWithDelegate: (id<FPDeviceNotifier>)delegate;
+
+- (void) setDelegate: (id<FPDeviceNotifier>)delegate;
 
 @end

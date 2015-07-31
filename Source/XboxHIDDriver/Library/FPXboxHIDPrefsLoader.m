@@ -37,7 +37,7 @@
 #define kConfigTypeKey              @"Type"
 #define kConfigSettingsKey          @"Settings"
 
-#define kDefaultsSuiteIdentifier    @"com.fizzypopstudios.XboxHIDDriver"
+#define kDefaultsSuiteIdentifier    @"com.fizzypopstudios.XboxHID"
 
 #define kAppFinder					@"com.apple.finder"
 

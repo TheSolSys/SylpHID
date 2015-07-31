@@ -38,14 +38,30 @@
 }
 
 
++ (id) notifierWithDelegate: (id<FPDeviceNotifier>)delegate
+{
+	return [[FPXboxHIDNotifier alloc] initWithDelegate: delegate];
+}
+
+
 - (id) init
 {
 	self = [super init];
 	if (self && ![self createRunLoopNotifications])
 		self = nil;
 
-	_matchedTarget = nil;
-	_terminatedTarget = nil;
+	_delegate = nil;
+
+	return self;
+}
+
+
+- (id) initWithDelegate: (id<FPDeviceNotifier>)delegate
+{
+	self = [self init];
+	if (self != nil) {
+		_delegate = delegate;
+	}
 
 	return self;
 }
@@ -57,18 +73,16 @@
 }
 
 
-- (void) setMatchedSelector: (SEL)selector target: (id)target
+- (void) setDelegate: (id<FPDeviceNotifier>)delegate
 {
-	_matchedSelector = selector;
-	_matchedTarget = target;
-	_matchedImp = [_matchedTarget methodForSelector: _matchedSelector];
+	_delegate = delegate;
 }
 
 
-- (void) fireMatchedSelector
+- (void) devicesPluggedIn
 {
-	if (_matchedTarget)
-		_matchedImp(_matchedTarget, _matchedSelector);
+	if (_delegate != nil)
+		[_delegate devicesPluggedIn];
 }
 
 
@@ -81,22 +95,14 @@ static void driversMatched (void* refcon, io_iterator_t iterator)
 		object = IOIteratorNext(iterator);
 	} while (object);
 
-	[self fireMatchedSelector];
+	[self devicesPluggedIn];
 }
 
 
-- (void) setTerminatedSelector: (SEL)selector target: (id)target
+- (void) devicesUnplugged
 {
-	_terminatedSelector = selector;
-	_terminatedTarget = target;
-	_terminatedImp = [_terminatedTarget methodForSelector: _terminatedSelector];
-}
-
-
-- (void) fireTerminatedSelector
-{
-	if (_terminatedTarget)
-		_terminatedImp(_terminatedTarget, _terminatedSelector);
+	if (_delegate != nil)
+		[_delegate devicesUnplugged];
 }
 
 
@@ -109,7 +115,7 @@ static void driversTerminated (void* refcon, io_iterator_t iterator)
 		object = IOIteratorNext(iterator);
 	} while (object);
 
-	[self fireTerminatedSelector];
+	[self devicesUnplugged];
 }
 
 

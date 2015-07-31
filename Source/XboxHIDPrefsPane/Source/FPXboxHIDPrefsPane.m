@@ -939,7 +939,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 				[[_buttonBlackMenu selectedItem] tag]	!= _undoMappings.MappingButtonBlack			);
 
 	} else {
-		return ![_undoBindings isEqualToDictionary: [FPXboxHIDPrefsLoader allAppBindings]];
+		return (_undoBindings != nil && ![_undoBindings isEqualToDictionary: [FPXboxHIDPrefsLoader allAppBindings]]);
 
 	}
 }
@@ -1807,27 +1807,24 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 }
 
 
-- (void) deviceConfigDidChange: (id)notify
+// FPDeviceNotifer protocol method
+- (void) devicesPluggedIn
 {
-	NSDictionary* appconf = [notify userInfo];
-	if ([appconf objectForKey: kNoticeAppKey])
-		[_appConfig setObject: appconf forKey: [appconf objectForKey: kNoticeDeviceKey]];
-	else
-		[_appConfig removeObjectForKey: [appconf objectForKey: kNoticeDeviceKey]];
-	_lastConfig = [_appConfig objectForKey: kNoticeConfigKey];
-	[self buildConfigurationPopUpButton];
-	[self configureInterface];
+	[self devicesPluggedOrUnplugged];
+}
+
+
+// FPDeviceNotifer protocol method
+- (void) devicesUnplugged
+{
+	[self devicesPluggedOrUnplugged];
 }
 
 
 - (void) registerForNotifications
 {
-	_notifier = [FPXboxHIDNotifier notifier];
-	if (_notifier) {
-		[_notifier setMatchedSelector: @selector(devicesPluggedOrUnplugged) target: self];
-		[_notifier setTerminatedSelector: @selector(devicesPluggedOrUnplugged) target: self];
-	}
 	// get notified when config changes out from under us (or when we change it ourselves)
+	_notifier = [FPXboxHIDNotifier notifierWithDelegate: self];
 	[[NSDistributedNotificationCenter defaultCenter] addObserver: self
 														selector: @selector(deviceConfigDidChange:)
 															name: kFPXboxHIDDeviceConfigurationDidChangeNotification
@@ -1843,6 +1840,19 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver: self
 	 name: kFPXboxHIDDeviceConfigurationDidChangeNotification
 	 object: kFPDistributedNotificationsObject];
+}
+
+
+- (void) deviceConfigDidChange: (id)notify
+{
+	NSDictionary* appconf = [notify userInfo];
+	if ([appconf objectForKey: kNoticeAppKey])
+		[_appConfig setObject: appconf forKey: [appconf objectForKey: kNoticeDeviceKey]];
+	else
+		[_appConfig removeObjectForKey: [appconf objectForKey: kNoticeDeviceKey]];
+	_lastConfig = [_appConfig objectForKey: kNoticeConfigKey];
+	[self buildConfigurationPopUpButton];
+	[self configureInterface];
 }
 
 

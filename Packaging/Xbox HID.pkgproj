@@ -605,9 +605,9 @@
 				<key>BACKGROUND_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>/Volumes/Projects/Development/XboxHID/Packaging/Resources/background.png</string>
+					<string>Resources/background.png</string>
 					<key>PATH_TYPE</key>
-					<integer>0</integer>
+					<integer>1</integer>
 				</dict>
 				<key>CUSTOM</key>
 				<integer>1</integer>
@@ -722,9 +722,9 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>/Volumes/Projects/Development/XboxHID/Packaging/Resources/Intro.rtf</string>
+							<string>Resources/Intro.rtf</string>
 							<key>PATH_TYPE</key>
-							<integer>0</integer>
+							<integer>1</integer>
 						</dict>
 					</dict>
 				</array>
@@ -741,9 +741,9 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>/Volumes/Projects/Development/XboxHID/Packaging/Resources/License.rtf</string>
+							<string>Resources/License.rtf</string>
 							<key>PATH_TYPE</key>
-							<integer>0</integer>
+							<integer>1</integer>
 						</dict>
 					</dict>
 				</array>
@@ -760,9 +760,9 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>/Volumes/Projects/Development/XboxHID/Packaging/Resources/ReadMe.rtf</string>
+							<string>Resources/ReadMe.rtf</string>
 							<key>PATH_TYPE</key>
-							<integer>0</integer>
+							<integer>1</integer>
 						</dict>
 					</dict>
 				</array>

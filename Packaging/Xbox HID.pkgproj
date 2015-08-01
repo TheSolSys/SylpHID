@@ -170,7 +170,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>Executables/com.fizzypopstudios.XboxHIDDaemon.plist</string>
+											<string>Products/com.fizzypopstudios.XboxHIDDaemon.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -219,7 +219,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>Executables/Xbox HID.prefPane</string>
+											<string>Products/Xbox HID.prefPane</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -416,7 +416,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>Executables/Xbox HID.kext</string>
+													<string>Products/Xbox HID.kext</string>
 													<key>PATH_TYPE</key>
 													<integer>1</integer>
 													<key>PERMISSIONS</key>
@@ -563,11 +563,11 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.fizzypopstudios.pkg.XboxHIDDriver</string>
+				<string>com.fizzypopstudios.pkg.XboxHID</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>Xbox HID</string>
+				<string>Install Xbox HID</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
@@ -1064,7 +1064,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>Xbox HID</string>
+			<string>Install Xbox HID</string>
 		</dict>
 	</dict>
 	<key>SHARED_GLOBAL_DATA</key>

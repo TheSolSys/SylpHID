@@ -14,7 +14,8 @@ fi
 
 rm -f "Build/build.dmg"
 rm -f "Build/Xbox HID.dmg"
-cp "Resources/DiskImage/template.dmg" "Build/build.dmg"
+cp "Resources/DiskImage/template.dmg.bz2" "Build/build.dmg.bz2"
+bunzip2 "Build/build.dmg.bz2"
 if [ ! -e "Build/build.dmg" ]; then
 	echo -e "Unable to copy template.dmg from Resources directory!\n"
 	exit

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\nCreating release DMG for Xbox HID..."
+echo -e "\nCreating release DMG for Xbox HID"
 
 if [ ! -e "Xbox HID.pkgproj" ]; then
 	echo -e "MakeDMG.sh must be run in Packaging directory!\n"
@@ -12,15 +12,28 @@ if [ -d DiskImage ]; then
 	exit
 fi
 
-rm -f "Resources/Xbox HID.dmg"
-cp "Resources/template.dmg" "Build/Xbox HID.dmg"
-if [ ! -e "Resources/Xbox HID.dmg" ]; then
+rm -f "Build/build.dmg"
+rm -f "Build/Xbox HID.dmg"
+cp "Resources/DiskImage/template.dmg" "Build/build.dmg"
+if [ ! -e "Build/build.dmg" ]; then
 	echo -e "Unable to copy template.dmg from Resources directory!\n"
 	exit
 fi
 
-mkdir DiskImage
-hdiutil attach "Resources/template.dmg" -noautoopen -quiet -mountpoint DiskImage
+echo "Preparing Xbox HID distribtion package"
+packagesbuild "Xbox HID.pkgproj"
 
-cp "Build/Install Xbox HID.pkg" "DiskImage/Xbox HID.pkg"
-cp -R "Build/
+echo "Preparing distribution disk image"
+mkdir DiskImage
+hdiutil attach "Build/build.dmg" -noautoopen -quiet -mountpoint DiskImage
+
+cp -r "Build/Xbox HID.pkg" "DiskImage/Install Xbox HID.pkg"
+cp -r "Build/Uninstall.app" "DiskImage/Uninstall Xbox HID.app"
+
+hdiutil detach DiskImage -quiet -force
+rm -rf "DiskImage"
+
+hdiutil convert "Build/build.dmg" -quiet -format UDBZ -o "Build/Xbox HID.dmg"
+rm "Build/build.dmg"
+
+echo -e "Disk image for Xbox HID prepared!\n"

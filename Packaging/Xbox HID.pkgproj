@@ -525,14 +525,14 @@
 				<key>POSTINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>Resources/postflight.sh</string>
+					<string>Resources/Installer/postflight.sh</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
 				<key>PREINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>Resources/preflight.sh</string>
+					<string>Resources/Installer/preflight.sh</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
@@ -544,7 +544,7 @@
 						<key>GID</key>
 						<integer>0</integer>
 						<key>PATH</key>
-						<string>Resources/xhdLoginItem</string>
+						<string>Resources/Installer/xhdLoginItem</string>
 						<key>PATH_TYPE</key>
 						<integer>1</integer>
 						<key>PERMISSIONS</key>
@@ -567,7 +567,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>Install Xbox HID</string>
+				<string>Xbox HID</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
@@ -605,7 +605,7 @@
 				<key>BACKGROUND_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>Resources/background.png</string>
+					<string>Resources/Installer/background.png</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
@@ -634,6 +634,8 @@
 								</dict>
 								<key>PACKAGE_UUID</key>
 								<string>8BE5749F-B3A9-415D-841E-D95B08BE1458</string>
+								<key>REQUIREMENTS</key>
+								<array/>
 								<key>TITLE</key>
 								<array/>
 								<key>TOOLTIP</key>
@@ -722,7 +724,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>Resources/Intro.rtf</string>
+							<string>Resources/Installer/Intro.rtf</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -741,7 +743,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>Resources/License.rtf</string>
+							<string>Resources/Installer/License.rtf</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -760,7 +762,7 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>Resources/ReadMe.rtf</string>
+							<string>Resources/Installer/ReadMe.rtf</string>
 							<key>PATH_TYPE</key>
 							<integer>1</integer>
 						</dict>
@@ -868,7 +870,7 @@
 					<key>GID</key>
 					<integer>0</integer>
 					<key>PATH</key>
-					<string>Resources/xhdLoginItem</string>
+					<string>Resources/Installer/xhdLoginItem</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 					<key>PERMISSIONS</key>
@@ -1064,7 +1066,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>Install Xbox HID</string>
+			<string>Xbox HID</string>
 		</dict>
 	</dict>
 	<key>SHARED_GLOBAL_DATA</key>

@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++8752</key>
-		<string>http://svn.eidola.its/Xbox%2525252525252525252525252520HID/trunk</string>
+		<string>http://svn.eidola.its/Xbox%252525252525252525252525252520HID/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Projects/Xbox HID.xcworkspace</string>
@@ -26,7 +26,7 @@
 		<string>http://svn.eidola.its</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://svn.eidola.its/Xbox%2525252525252525252525252520HID/trunk/Projects/Xbox%20HID.xcworkspace</string>
+	<string>http://svn.eidola.its/Xbox%252525252525252525252525252520HID/trunk/Projects/Xbox%20HID.xcworkspace</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

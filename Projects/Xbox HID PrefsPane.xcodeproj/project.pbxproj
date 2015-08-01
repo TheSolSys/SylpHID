@@ -535,7 +535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/Xbox HID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Executables/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Executables/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.XboxHIDDaemon\nopen \"/Applications/System Preferences.app\"";
+			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/Xbox HID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.XboxHIDDaemon\nopen \"/Applications/System Preferences.app\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -9,9 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>applet</string>
 	<key>CFBundleIconFile</key>
-	<string>applet</string>
+	<string>applet.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.ScriptEditor.id.Uninstall-Xbox-HID</string>
+	<string>com.fizzypopstudios.XboxHIDUninstall</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -25,24 +25,9 @@
 	<key>LSMinimumSystemVersionByArchitecture</key>
 	<dict>
 		<key>x86_64</key>
-		<string>10.6</string>
+		<string>10.7</string>
 	</dict>
 	<key>LSRequiresCarbon</key>
 	<true/>
-	<key>WindowState</key>
-	<dict>
-		<key>dividerCollapsed</key>
-		<false/>
-		<key>eventLogLevel</key>
-		<integer>-1</integer>
-		<key>name</key>
-		<string>ScriptWindowState</string>
-		<key>positionOfDivider</key>
-		<real>512</real>
-		<key>savedFrame</key>
-		<string>453 139 1206 877 0 0 1920 1058 </string>
-		<key>selectedTabView</key>
-		<string>result</string>
-	</dict>
 </dict>
 </plist>

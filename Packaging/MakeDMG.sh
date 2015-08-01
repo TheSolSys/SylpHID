@@ -21,7 +21,7 @@ if [ ! -e "Build/build.dmg" ]; then
 fi
 
 echo "Preparing Xbox HID distribtion package"
-packagesbuild "Xbox HID.pkgproj"
+packagesbuild "Xbox HID.pkgproj" >/dev/null
 
 echo "Preparing distribution disk image"
 mkdir DiskImage

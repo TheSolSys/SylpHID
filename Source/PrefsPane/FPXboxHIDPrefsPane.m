@@ -223,16 +223,24 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) willSelect
 {
-	[self configureInterface];
-	[self saveLastDeviceIdentifier];
-	[self registerForNotifications];
-	[self startHIDDeviceInput];
 	[self getVersion];
 
-	// if opening sysprefs for first time load saved config for all devices
-	// this prevents app-specific configs from overwriting other configs!
-	for (id device in _devices)
-		[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+	// check if kernel extension is loaded, if not generate more informative error
+	if (system("/usr/sbin/kextstat -l -b com.fizzypopstudios.XboxHIDDriver | grep fizzy") != 0) {
+		[self showLargeError: @"Kernel Extension Not Loaded"];
+		[self disableConfigPopUpButton];
+		[self clearDevicesPopUpButton];
+	} else {
+		[self configureInterface];
+		[self saveLastDeviceIdentifier];
+		[self registerForNotifications];
+		[self startHIDDeviceInput];
+
+		// if opening sysprefs for first time load saved config for all devices
+		// this prevents app-specific configs from overwriting other configs!
+		for (id device in _devices)
+			[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+	}
 }
 
 
@@ -258,7 +266,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) getVersion
 {
-	NSBundle* bundle = [NSBundle bundleWithPath: @"/System/Library/Extensions/Xbox HID.kext"];
+	NSBundle* bundle = [NSBundle bundleWithPath: @"/Library/PreferencePanes/Xbox HID.prefPane"];
 	NSString* version = [[bundle infoDictionary] objectForKey: @"CFBundleGetInfoString"];
 	if (version == nil) version = @"Unknown Version";
 	[_textVersion setStringValue: version];

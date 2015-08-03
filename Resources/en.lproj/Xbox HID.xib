@@ -1138,7 +1138,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2686">
                         <rect key="frame" x="37" y="47" width="592" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Mappings for this controller will only work when it is plugged into the same physical USB port!" id="2687">
+                        <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Mappings for classic Xbox controllers are tied to the physical USB port, not the controller itself!" id="2687">
                             <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1813,7 +1813,7 @@ DQ
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2652">
                     <rect key="frame" x="90" y="16" width="250" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Application bindings for this controller will only work" id="2653">
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Application bindings for classic Xbox controllers are" id="2653">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1822,14 +1822,14 @@ DQ
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2665">
                     <rect key="frame" x="90" y="5" width="250" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="when it is plugged into the same physical USB port!" id="2666">
+                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="tied to the physical USB port, not the controller itself!" id="2666">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="94" y="362"/>
+            <point key="canvasLocation" x="31" y="407"/>
         </customView>
         <customView id="2370" userLabel="USB Info">
             <rect key="frame" x="0.0" y="0.0" width="270" height="217"/>
@@ -2063,7 +2063,7 @@ DQ
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-46" y="169"/>
+            <point key="canvasLocation" x="0.0" y="361"/>
         </customView>
         <customView id="2667" userLabel="Donations">
             <rect key="frame" x="0.0" y="0.0" width="312" height="286"/>

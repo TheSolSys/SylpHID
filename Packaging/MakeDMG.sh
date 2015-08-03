@@ -28,7 +28,10 @@ echo "Preparing distribution disk image"
 mkdir DiskImage
 hdiutil attach "Build/build.dmg" -noautoopen -quiet -mountpoint DiskImage
 
+rm -f "DiskImage/Install Xbox HID.pkg"
 cp -r "Build/Xbox HID.pkg" "DiskImage/Install Xbox HID.pkg"
+
+rm -f "DiskImage/Uninstall Xbox HID.app"
 cp -r "Build/Uninstall.app" "DiskImage/Uninstall Xbox HID.app"
 
 hdiutil detach DiskImage -quiet -force

@@ -36,94 +36,8 @@
 
 @implementation FPXboxHIDDriverInterface
 
-#pragma mark === private methods ===
 
-- (BOOL) getDeviceProperties
-{
-	CFMutableDictionaryRef ioRegistryProperties = 0;
-
-	// get the ioregistry properties
-	if (kIOReturnSuccess != IORegistryEntryCreateCFProperties(_driver, &ioRegistryProperties, kCFAllocatorDefault, 0))
-		return NO;
-	if (!ioRegistryProperties)
-		return NO;
-	_ioRegistryProperties = (__bridge NSMutableDictionary*)ioRegistryProperties;
-
-	// set the device type
-	_deviceType = [_ioRegistryProperties objectForKey: NSSTR(kTypeKey)];
-	if (!_deviceType)
-		return NO;
-	_deviceOptions = [_ioRegistryProperties objectForKey: NSSTR(kDeviceOptionsKey)];
-
-	return YES;
-}
-
-
-- (void) setOptionWithKey: (NSString*)key andValue: (id)value
-{
-	NSDictionary* request;
-	IOReturn ret;
-
-	request = [NSDictionary dictionaryWithObjectsAndKeys: _deviceType, NSSTR(kTypeKey),
-														  key, NSSTR(kClientOptionKeyKey),
-														  value, NSSTR(kClientOptionValueKey), nil];
-	CFDictionaryRef dict = (__bridge CFDictionaryRef)request;
-	ret = IORegistryEntrySetCFProperties(_driver, dict);
-	if (ret != kIOReturnSuccess)
-		NSLog(@"Failed setting driver properties: 0x%x", ret);
-}
-
-
-- (NSMutableDictionary*) elementWithCookieRec: (int)cookie elements: (NSArray*)elements
-{
-	NSUInteger i, count;
-
-	for (i = 0, count = [elements count]; i < count; i++) {
-		NSMutableDictionary* element = [elements objectAtIndex: i];
-		NSArray* subElements;
-
-		if (cookie == [[element objectForKey: NSSTR(kIOHIDElementCookieKey)] intValue])
-			return element;
-		else {
-			subElements = [element objectForKey: NSSTR(kIOHIDElementKey)];
-			if (subElements) {
-				element = [self elementWithCookieRec: cookie elements: subElements];
-				if (element)
-					return element;
-			}
-		}
-	}
-
-	return nil;
-}
-
-
-- (NSMutableDictionary*) elementWithCookie: (int)cookie
-{
-	NSArray* elements = [_ioRegistryProperties objectForKey: NSSTR(kIOHIDElementKey)];
-	return elements ? [self elementWithCookieRec: cookie elements: elements] : nil;
-}
-
-
-- (void) commitElements
-{
-	NSArray* elements = [_ioRegistryProperties objectForKey: NSSTR(kIOHIDElementKey)];
-	IOReturn ret;
-
-	if (elements) {
-		NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys: elements, NSSTR(kClientOptionSetElementsKey), nil];
-
-		if (request) {
-			CFDictionaryRef dict = (__bridge CFDictionaryRef)request;
-			ret = IORegistryEntrySetCFProperties(_driver, dict);
-			if (ret != kIOReturnSuccess)
-				NSLog(@"Failed setting driver properties: 0x%x", ret);
-		}
-	}
-}
-
-
-#pragma mark === interface methods ===
+#pragma mark === Interface Methods =============
 
 + (NSArray*) interfaces
 {
@@ -134,21 +48,21 @@
 	io_object_t driver = 0;
 	NSMutableArray* interfaceList = nil;
 
-	result = IOMasterPort (bootstrap_port, &masterPort);
+	result = IOMasterPort(bootstrap_port, &masterPort);
 	if (kIOReturnSuccess != result) {
 		NSLog(@"IOMasterPort error with bootstrap_port");
 		return nil;
 	}
 
 	// Set up a matching dictionary to search I/O Registry by class name for all HID class devices
-	matchDictionary = IOServiceMatching ("FPXboxHIDDriver");
+	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
 	if (matchDictionary == NULL) {
 		NSLog(@"Failed to get CFMutableDictionaryRef via IOServiceMatching");
 		return nil;
 	}
 
 	// Now search I/O Registry for matching devices
-	result = IOServiceGetMatchingServices (masterPort, matchDictionary, &objectIterator);
+	result = IOServiceGetMatchingServices(masterPort, matchDictionary, &objectIterator);
 	if (kIOReturnSuccess != result) {
 		NSLog(@"Couldn't create an object iterator");
 		return nil;
@@ -160,7 +74,7 @@
 	interfaceList = [[NSMutableArray alloc] init];
 
 	// IOServiceGetMatchingServices consumes a reference to the dictionary, so we don't need to release the dictionary ref
-	while ((driver = IOIteratorNext (objectIterator))) {
+	while ((driver = IOIteratorNext(objectIterator))) {
 		id intf = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
 		if (intf)
 			[interfaceList addObject: intf];
@@ -529,8 +443,95 @@
 }
 
 
-#pragma mark === Left Stick ===
-#pragma mark --- Horizontal ---
+#pragma mark === Private Methods ==============
+
+- (BOOL) getDeviceProperties
+{
+	CFMutableDictionaryRef ioRegistryProperties = 0;
+
+	// get the ioregistry properties
+	if (kIOReturnSuccess != IORegistryEntryCreateCFProperties(_driver, &ioRegistryProperties, kCFAllocatorDefault, 0))
+		return NO;
+	if (!ioRegistryProperties)
+		return NO;
+	_ioRegistryProperties = (__bridge NSMutableDictionary*)ioRegistryProperties;
+
+	// set the device type
+	_deviceType = [_ioRegistryProperties objectForKey: NSSTR(kTypeKey)];
+	if (!_deviceType)
+		return NO;
+	_deviceOptions = [_ioRegistryProperties objectForKey: NSSTR(kDeviceOptionsKey)];
+
+	return YES;
+}
+
+
+- (void) setOptionWithKey: (NSString*)key andValue: (id)value
+{
+	NSDictionary* request;
+	IOReturn ret;
+
+	request = [NSDictionary dictionaryWithObjectsAndKeys: _deviceType, NSSTR(kTypeKey),
+														  key, NSSTR(kClientOptionKeyKey),
+														  value, NSSTR(kClientOptionValueKey), nil];
+	CFDictionaryRef dict = (__bridge CFDictionaryRef)request;
+	ret = IORegistryEntrySetCFProperties(_driver, dict);
+	if (ret != kIOReturnSuccess)
+		NSLog(@"Failed setting driver properties: 0x%x", ret);
+}
+
+
+- (NSMutableDictionary*) elementWithCookieRec: (int)cookie elements: (NSArray*)elements
+{
+	NSUInteger i, count;
+
+	for (i = 0, count = [elements count]; i < count; i++) {
+		NSMutableDictionary* element = [elements objectAtIndex: i];
+		NSArray* subElements;
+
+		if (cookie == [[element objectForKey: NSSTR(kIOHIDElementCookieKey)] intValue])
+			return element;
+		else {
+			subElements = [element objectForKey: NSSTR(kIOHIDElementKey)];
+			if (subElements) {
+				element = [self elementWithCookieRec: cookie elements: subElements];
+				if (element)
+					return element;
+			}
+		}
+	}
+
+	return nil;
+}
+
+
+- (NSMutableDictionary*) elementWithCookie: (int)cookie
+{
+	NSArray* elements = [_ioRegistryProperties objectForKey: NSSTR(kIOHIDElementKey)];
+	return elements ? [self elementWithCookieRec: cookie elements: elements] : nil;
+}
+
+
+- (void) commitElements
+{
+	NSArray* elements = [_ioRegistryProperties objectForKey: NSSTR(kIOHIDElementKey)];
+	IOReturn ret;
+
+	if (elements) {
+		NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys: elements, NSSTR(kClientOptionSetElementsKey), nil];
+
+		if (request) {
+			CFDictionaryRef dict = (__bridge CFDictionaryRef)request;
+			ret = IORegistryEntrySetCFProperties(_driver, dict);
+			if (ret != kIOReturnSuccess)
+				NSLog(@"Failed setting driver properties: 0x%x", ret);
+		}
+	}
+}
+
+
+#pragma mark === Left Stick ==================
+#pragma mark --- Horizontal ----------------------
 
 - (int) leftStickHorizMapping
 {
@@ -571,7 +572,7 @@
 }
 
 
-#pragma mark --- Vertical ---
+#pragma mark --- Vertical ------------------------
 
 - (int) leftStickVertMapping
 {
@@ -612,8 +613,8 @@
 }
 
 
-#pragma mark === Right Stick ===
-#pragma mark --- Horizontal ---
+#pragma mark === Right Stick =================
+#pragma mark --- Horizontal ----------------------
 
 - (int) rightStickHorizMapping
 {
@@ -654,7 +655,7 @@
 }
 
 
-#pragma mark --- Vertical ---
+#pragma mark --- Vertical ------------------------
 
 - (int) rightStickVertMapping
 {
@@ -695,8 +696,8 @@
 }
 
 
-#pragma mark === Digital Button Mappings ===
-#pragma mark --- Directional Pad ---
+#pragma mark === Digital Button Mappings ========
+#pragma mark --- Directional Pad ------------------
 
 - (int) dpadUpMapping
 {
@@ -749,7 +750,7 @@
 }
 
 
-#pragma mark --- Start / Back ---
+#pragma mark --- Start / Back ---------------------
 
 - (int) startButtonMapping
 {
@@ -777,7 +778,7 @@
 }
 
 
-#pragma mark --- Left / Right Click ---
+#pragma mark --- Left / Right Click -----------------
 
 - (int) leftClickMapping
 {
@@ -805,7 +806,7 @@
 }
 
 
-#pragma mark === Analog Button Mappings ===
+#pragma mark === Analog Button Mappings ========
 
 - (int) analogAsDigital
 {
@@ -863,7 +864,7 @@
 }
 
 
-#pragma mark --- Left Trigger ---
+#pragma mark --- Left Trigger ---------------------
 
 - (BOOL) leftTriggerAlternate
 {
@@ -910,7 +911,7 @@
 }
 
 
-#pragma mark --- Right Trigger ---
+#pragma mark --- Right Trigger --------------------
 
 - (BOOL) rightTriggerAlternate
 {
@@ -957,7 +958,7 @@
 }
 
 
-#pragma mark --- Green (A) ---
+#pragma mark --- Green (A) -----------------------
 
 - (int) greenButtonMapping
 {
@@ -992,7 +993,7 @@
 }
 
 
-#pragma mark --- Red (B) ---
+#pragma mark --- Red (B) -------------------------
 
 - (int) redButtonMapping
 {
@@ -1027,7 +1028,7 @@
 }
 
 
-#pragma mark --- Blue (X) ---
+#pragma mark --- Blue (X) ------------------------
 
 - (int) blueButtonMapping
 {
@@ -1062,7 +1063,7 @@
 }
 
 
-#pragma mark --- Yellow (Y) ---
+#pragma mark --- Yellow (Y) ----------------------
 
 - (int) yellowButtonMapping
 {
@@ -1097,7 +1098,7 @@
 }
 
 
-#pragma mark --- Black Button ---
+#pragma mark --- Black Button ---------------------
 
 - (int) blackButtonMapping
 {
@@ -1132,7 +1133,7 @@
 }
 
 
-#pragma mark --- White Button ---
+#pragma mark --- White Button --------------------
 
 - (int) whiteButtonMapping
 {
@@ -1170,7 +1171,7 @@
 @end
 
 
-#pragma mark === Utility Functions ===
+#pragma mark === Utility Functions ===============
 
 BOOL idToBOOL(id obj)
 {

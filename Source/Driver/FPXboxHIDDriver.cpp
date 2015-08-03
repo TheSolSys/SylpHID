@@ -2401,7 +2401,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 //
 // Modifications to Original Apple Code:
 // -------------------------------------
-// 05-16-2003 (XHD Version 1.0 Changes):
+// 05-16-2003 (XHD Version 1.0 Changes by Darrell Walisser):
 // • Added manipulateReport() method to allow subclasses to modify the HID report before it's passed to handleReport()
 // • Changed getReport() to read from interface 0, endpoint 0 (input) rather than use a HID control request.
 // • Changed GetHIDDescriptor() to read a hardcoded report rather than use a HID control request.
@@ -2409,7 +2409,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • Changed newManufacturerString(), newProductNameString(), newSerialNumbeString() to use hardcoded index.
 // • Added hardcoded tables for aformentioned changes.
 //
-// 05-22-2003 (XHD Version 1.1 Changes):
+// 05-22-2003 (XHD Version 1.1 Changes by Darrell Walisser):
 // • Initial remote control support
 //	• Added IOTimerEventSource to send remote button-up events
 //	• Added generateTimedEvent() method which fires at _xbTimedEventsInterval millisecond intervals (currently 80ms)
@@ -2434,7 +2434,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • Removed GetIndexedString() hack, replaced with property list strings if needed
 // • Printing out more error messages
 //
-// 06-16-2003 (XHD Version 1.2 ßeta Changes):
+// 06-16-2003 (XHD Version 1.2 ßeta Changes by Darrell Walisser):
 // This is a major overhaul that allows an external program to modify the driver's settings. The way this works is that
 // when the driver loads, it uses a default set of settings. A daemon application can detect when a driver loads and call
 // the IORegistryEntrySetCFProperties() to modify the driver settings.
@@ -2446,7 +2446,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 //					  LeftTriggerThreshold, RightTriggerThreshold;
 // • Mew methods to handle prefs setting from user space: setProperties, setDefaultOptions, setupDevice;
 //
-// 10-13-04 (XHD Version 1.3 Changes):
+// 10-13-04 (XHD Version 1.3 Changes by Darrell Walisser):
 // In this version I'm trying to further improve compatibility with 3rd-party controllers. It turns out that the generic
 // identification routine (findGenericDevice) is not generic enough. Probably the only constant between 3rd-party
 // controllers is that they will always have the same interface class/subclass (88/66) and two interrupt endpoints
@@ -2462,5 +2462,28 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • Compiled with Mac OS X 10.6 SDK
 //
 // 07/15/2015 (Xbox HID v1.0.0 Changes by Paige DePol)
-// • TODO: ADD CHANGES!
+// • Upgraded all three projects to use ARC (Automatic Reference Counting)
+// • Re-created all projects using Xcode 6.2 due to issues with old projects
+//   • Created common workspace to consolidate all 3 projects together
+//   • Re-organised all source code, assets and other resources
+//   • IMPORTANT: New run script phase for Kext/PrefsPane uses 'sudo'! I specify a script for SUDO_ASKPASS,
+//     ========== however, you may wish to configure the system differently for providing sudo your password!
+// • Updated Daemon process to use a LaunchAgent instead of older LoginItem system
+// • Updated PrefsNotifier class to use a protocol instead of saving target and selector
+// • Updated graphics used in prefs pane to more accurately represent an Xbox controller
+// • Added a User Client class to pass data through the kernel/userspace barrier
+//   • Allows retrieving raw data from controller for indicators on slider controls
+//   • Allows reloading of default settings, which are stored in the driver
+//   • Allows retrieving USB bus information (speed, power, address) for display in USB info panel
+// • Now compiled as 64-bit kext for OSX 10.7+  (32-bit kext requires building with Xcode 4.x)
+// • All buttons and axes are now remappable
+// • All analog buttons (and triggers) may independently be set to analog or digital mode
+// • Both sticks now have configurable deadzone areas, remaining active area is mapped to full stick range
+//   • Deadzones can be specified for both horizontal and vertical stick movement
+// • All analog buttons (and triggers) have configurable low and high thresholds
+//   • If button (or trigger) is in digital mode the button only activates once low threshold has been reached
+//   • If button is in analog mode entire button range is mapped between low and high threshold markers
+// • Added application specific bindings
+//   • Specified configuration will be loaded when an app becomes active
+//   • Default configuration will be loaded when Finder becomes active
 // =========================================================================================================================

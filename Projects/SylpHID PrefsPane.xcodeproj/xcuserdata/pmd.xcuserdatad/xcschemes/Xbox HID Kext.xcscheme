@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82A0B3CE1B6BD7BA00653468"
-               BuildableName = "Xbox HID.kext"
-               BlueprintName = "Xbox HID Kext"
-               ReferencedContainer = "container:Xbox HID Driver.xcodeproj">
+               BuildableName = "SylpHID.kext"
+               BlueprintName = "SylpHID Kext"
+               ReferencedContainer = "container:SylpHID Driver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82A0B4021B6BD84200653468"
-               BuildableName = "Xbox HID Daemon"
-               BlueprintName = "Xbox HID Daemon"
-               ReferencedContainer = "container:Xbox HID Daemon.xcodeproj">
+               BuildableName = "SylpHID Daemon"
+               BlueprintName = "SylpHID Daemon"
+               ReferencedContainer = "container:SylpHID Daemon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82A0B3E61B6BD80C00653468"
-               BuildableName = "Xbox HID.prefPane"
-               BlueprintName = "Xbox HID PrefsPane"
-               ReferencedContainer = "container:Xbox HID PrefsPane.xcodeproj">
+               BuildableName = "SylpHID.prefPane"
+               BlueprintName = "SylpHID PrefsPane"
+               ReferencedContainer = "container:SylpHID PrefsPane.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B3E61B6BD80C00653468"
-            BuildableName = "Xbox HID.prefPane"
-            BlueprintName = "Xbox HID PrefsPane"
-            ReferencedContainer = "container:Xbox HID PrefsPane.xcodeproj">
+            BuildableName = "SylpHID.prefPane"
+            BlueprintName = "SylpHID PrefsPane"
+            ReferencedContainer = "container:SylpHID PrefsPane.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B3E61B6BD80C00653468"
-            BuildableName = "Xbox HID.prefPane"
-            BlueprintName = "Xbox HID PrefsPane"
-            ReferencedContainer = "container:Xbox HID PrefsPane.xcodeproj">
+            BuildableName = "SylpHID.prefPane"
+            BlueprintName = "SylpHID PrefsPane"
+            ReferencedContainer = "container:SylpHID PrefsPane.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -98,9 +98,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B3E61B6BD80C00653468"
-            BuildableName = "Xbox HID.prefPane"
-            BlueprintName = "Xbox HID PrefsPane"
-            ReferencedContainer = "container:Xbox HID PrefsPane.xcodeproj">
+            BuildableName = "SylpHID.prefPane"
+            BlueprintName = "SylpHID PrefsPane"
+            ReferencedContainer = "container:SylpHID PrefsPane.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

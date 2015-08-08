@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82A0B3CE1B6BD7BA00653468"
-               BuildableName = "Xbox HID.kext"
-               BlueprintName = "Xbox HID Kext"
-               ReferencedContainer = "container:Xbox HID Driver.xcodeproj">
+               BuildableName = "SylpHID.kext"
+               BlueprintName = "SylpHID Kext"
+               ReferencedContainer = "container:SylpHID Driver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B3CE1B6BD7BA00653468"
-            BuildableName = "Xbox HID.kext"
-            BlueprintName = "Xbox HID Kext"
-            ReferencedContainer = "container:Xbox HID Driver.xcodeproj">
+            BuildableName = "SylpHID.kext"
+            BlueprintName = "SylpHID Kext"
+            ReferencedContainer = "container:SylpHID Driver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B3CE1B6BD7BA00653468"
-            BuildableName = "Xbox HID.kext"
-            BlueprintName = "Xbox HID Kext"
-            ReferencedContainer = "container:Xbox HID Driver.xcodeproj">
+            BuildableName = "SylpHID.kext"
+            BlueprintName = "SylpHID Kext"
+            ReferencedContainer = "container:SylpHID Driver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

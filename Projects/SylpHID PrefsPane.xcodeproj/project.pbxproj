@@ -85,7 +85,7 @@
 		82223A751B6C090B00099615 /* FPXboxHIDDriverKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */; };
 		82223A761B6C090B00099615 /* FPXboxHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */; };
 		82223A771B6C090B00099615 /* FPXboxHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */; };
-		82223A7C1B6C0D5E00099615 /* Xbox HID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* Xbox HID.xib */; };
+		82223A7C1B6C0D5E00099615 /* SylpHID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* SylpHID.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,8 +169,8 @@
 		82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverKeys.h; path = ../Source/Common/FPXboxHIDDriverKeys.h; sourceTree = "<group>"; };
 		82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsLoader.h; path = ../Source/Common/FPXboxHIDPrefsLoader.h; sourceTree = "<group>"; };
 		82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsLoader.m; path = ../Source/Common/FPXboxHIDPrefsLoader.m; sourceTree = "<group>"; };
-		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "../Resources/en.lproj/Xbox HID.xib"; sourceTree = "<group>"; };
-		82A0B3E71B6BD80C00653468 /* Xbox HID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Xbox HID.prefPane"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "../Resources/en.lproj/SylpHID.xib"; sourceTree = "<group>"; };
+		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SylpHID.prefPane"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +190,7 @@
 		822239B01B6BFA1F00099615 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				82223A7A1B6C0D5E00099615 /* Xbox HID.xib */,
+				82223A7A1B6C0D5E00099615 /* SylpHID.xib */,
 				822239B11B6BFA3300099615 /* Custom Controls */,
 				822239B21B6BFA3D00099615 /* Custom Cells */,
 				822239B31B6BFA4300099615 /* Custom Views */,
@@ -308,7 +308,7 @@
 				82223A451B6C01BE00099615 /* PreferencePanes.framework */,
 			);
 			name = Frameworks;
-			path = "Xbox HID";
+			path = "SylpHID";
 			sourceTree = "<group>";
 		};
 		82223A5E1B6C074400099615 /* Externals */ = {
@@ -369,7 +369,7 @@
 		82A0B3E81B6BD80C00653468 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82A0B3E71B6BD80C00653468 /* Xbox HID.prefPane */,
+				82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,7 +385,7 @@
 				822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */,
 			);
 			name = "Prefs Pane";
-			path = "Xbox HID";
+			path = "SylpHID";
 			sourceTree = "<group>";
 		};
 		82A0B3EA1B6BD80C00653468 /* Supporting Files */ = {
@@ -395,7 +395,7 @@
 				82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */,
 			);
 			name = "Supporting Files";
-			path = "Xbox HID";
+			path = "SylpHID";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,9 +437,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		82A0B3E61B6BD80C00653468 /* Xbox HID PrefsPane */ = {
+		82A0B3E61B6BD80C00653468 /* SylpHID PrefsPane */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82A0B3F71B6BD80C00653468 /* Build configuration list for PBXNativeTarget "Xbox HID PrefsPane" */;
+			buildConfigurationList = 82A0B3F71B6BD80C00653468 /* Build configuration list for PBXNativeTarget "SylpHID PrefsPane" */;
 			buildPhases = (
 				82A0B3E21B6BD80C00653468 /* Sources */,
 				82A0B3E31B6BD80C00653468 /* Frameworks */,
@@ -451,9 +451,9 @@
 			);
 			dependencies = (
 			);
-			name = "Xbox HID PrefsPane";
-			productName = "Xbox HID";
-			productReference = 82A0B3E71B6BD80C00653468 /* Xbox HID.prefPane */;
+			name = "SylpHID PrefsPane";
+			productName = "SylpHID";
+			productReference = 82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -470,7 +470,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 82A0B3E11B6BD80C00653468 /* Build configuration list for PBXProject "Xbox HID PrefsPane" */;
+			buildConfigurationList = 82A0B3E11B6BD80C00653468 /* Build configuration list for PBXProject "SylpHID PrefsPane" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -482,7 +482,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82A0B3E61B6BD80C00653468 /* Xbox HID PrefsPane */,
+				82A0B3E61B6BD80C00653468 /* SylpHID PrefsPane */,
 			);
 		};
 /* End PBXProject section */
@@ -497,7 +497,7 @@
 				82223A0F1B6BFB2400099615 /* donate.rtf in Resources */,
 				82223A271B6BFB3400099615 /* controller.png in Resources */,
 				82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */,
-				82223A7C1B6C0D5E00099615 /* Xbox HID.xib in Resources */,
+				82223A7C1B6C0D5E00099615 /* SylpHID.xib in Resources */,
 				82223A291B6BFB3400099615 /* controllerButtonBlk.png in Resources */,
 				82223A2A1B6BFB3400099615 /* controllerButtonBlue.png in Resources */,
 				82223A2B1B6BFB3400099615 /* controllerButtonGreen.png in Resources */,
@@ -535,7 +535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/Xbox HID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.XboxHIDDaemon\nopen \"/Applications/System Preferences.app\"";
+			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.XboxHIDDaemon\nopen \"/Applications/System Preferences.app\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -575,12 +575,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		82223A7A1B6C0D5E00099615 /* Xbox HID.xib */ = {
+		82223A7A1B6C0D5E00099615 /* SylpHID.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				82223A7B1B6C0D5E00099615 /* en */,
 			);
-			name = "Xbox HID.xib";
+			name = "SylpHID.xib";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -664,7 +664,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/Prefix-PrefsPane.pch";
 				INFOPLIST_FILE = "Supporting Files/Info-PrefsPane.plist";
-				PRODUCT_NAME = "Xbox HID";
+				PRODUCT_NAME = "SylpHID";
 				USER_HEADER_SEARCH_PATHS = ../Source/Common;
 				WRAPPER_EXTENSION = prefPane;
 			};
@@ -677,7 +677,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/Prefix-PrefsPane.pch";
 				INFOPLIST_FILE = "Supporting Files/Info-PrefsPane.plist";
-				PRODUCT_NAME = "Xbox HID";
+				PRODUCT_NAME = "SylpHID";
 				USER_HEADER_SEARCH_PATHS = ../Source/Common;
 				WRAPPER_EXTENSION = prefPane;
 			};
@@ -686,7 +686,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82A0B3E11B6BD80C00653468 /* Build configuration list for PBXProject "Xbox HID PrefsPane" */ = {
+		82A0B3E11B6BD80C00653468 /* Build configuration list for PBXProject "SylpHID PrefsPane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A0B3F51B6BD80C00653468 /* Debug */,
@@ -695,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82A0B3F71B6BD80C00653468 /* Build configuration list for PBXNativeTarget "Xbox HID PrefsPane" */ = {
+		82A0B3F71B6BD80C00653468 /* Build configuration list for PBXNativeTarget "SylpHID PrefsPane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A0B3F81B6BD80C00653468 /* Debug */,

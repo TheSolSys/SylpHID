@@ -39,7 +39,7 @@
 		82223A511B6C01FB00099615 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		82223A521B6C01FB00099615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		82223A531B6C01FB00099615 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		82A0B4031B6BD84200653468 /* Xbox HID Daemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Xbox HID Daemon"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A0B4031B6BD84200653468 /* SylpHID Daemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SylpHID Daemon"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A1598C1B6C3391003934D5 /* com.fizzypopstudios.XboxHIDDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.fizzypopstudios.XboxHIDDaemon.plist; path = ../Packaging/Products/com.fizzypopstudios.XboxHIDDaemon.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +103,7 @@
 		82A0B4041B6BD84200653468 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82A0B4031B6BD84200653468 /* Xbox HID Daemon */,
+				82A0B4031B6BD84200653468 /* SylpHID Daemon */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,15 +114,15 @@
 				822239A61B6BF9C500099615 /* FPXboxHIDDaemon.m */,
 			);
 			name = Daemon;
-			path = "Xbox HID Daemon";
+			path = "SylpHID Daemon";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82A0B4021B6BD84200653468 /* Xbox HID Daemon */ = {
+		82A0B4021B6BD84200653468 /* SylpHID Daemon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82A0B40A1B6BD84200653468 /* Build configuration list for PBXNativeTarget "Xbox HID Daemon" */;
+			buildConfigurationList = 82A0B40A1B6BD84200653468 /* Build configuration list for PBXNativeTarget "SylpHID Daemon" */;
 			buildPhases = (
 				82A0B3FF1B6BD84200653468 /* Sources */,
 				82A0B4001B6BD84200653468 /* Frameworks */,
@@ -132,9 +132,9 @@
 			);
 			dependencies = (
 			);
-			name = "Xbox HID Daemon";
-			productName = "Xbox HID Daemon";
-			productReference = 82A0B4031B6BD84200653468 /* Xbox HID Daemon */;
+			name = "SylpHID Daemon";
+			productName = "SylpHID Daemon";
+			productReference = 82A0B4031B6BD84200653468 /* SylpHID Daemon */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -151,7 +151,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 82A0B3FE1B6BD84200653468 /* Build configuration list for PBXProject "Xbox HID Daemon" */;
+			buildConfigurationList = 82A0B3FE1B6BD84200653468 /* Build configuration list for PBXProject "SylpHID Daemon" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -163,7 +163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82A0B4021B6BD84200653468 /* Xbox HID Daemon */,
+				82A0B4021B6BD84200653468 /* SylpHID Daemon */,
 			);
 		};
 /* End PBXProject section */
@@ -258,21 +258,21 @@
 		82A0B40B1B6BD84200653468 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "Xbox HID Daemon";
+				PRODUCT_NAME = "SylpHID Daemon";
 			};
 			name = Debug;
 		};
 		82A0B40C1B6BD84200653468 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "Xbox HID Daemon";
+				PRODUCT_NAME = "SylpHID Daemon";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82A0B3FE1B6BD84200653468 /* Build configuration list for PBXProject "Xbox HID Daemon" */ = {
+		82A0B3FE1B6BD84200653468 /* Build configuration list for PBXProject "SylpHID Daemon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A0B4081B6BD84200653468 /* Debug */,
@@ -281,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82A0B40A1B6BD84200653468 /* Build configuration list for PBXNativeTarget "Xbox HID Daemon" */ = {
+		82A0B40A1B6BD84200653468 /* Build configuration list for PBXNativeTarget "SylpHID Daemon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A0B40B1B6BD84200653468 /* Debug */,

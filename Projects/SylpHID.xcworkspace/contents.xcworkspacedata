@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Xbox HID Driver.xcodeproj">
+      location = "group:SylpHID Driver.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Xbox HID Daemon.xcodeproj">
+      location = "group:SylpHID Daemon.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Xbox HID PrefsPane.xcodeproj">
+      location = "group:SylpHID PrefsPane.xcodeproj">
    </FileRef>
 </Workspace>

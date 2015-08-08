@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82A0B4021B6BD84200653468"
-               BuildableName = "Xbox HID Daemon"
-               BlueprintName = "Xbox HID Daemon"
-               ReferencedContainer = "container:Xbox HID Daemon.xcodeproj">
+               BuildableName = "SylpHID Daemon"
+               BlueprintName = "SylpHID Daemon"
+               ReferencedContainer = "container:SylpHID Daemon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B4021B6BD84200653468"
-            BuildableName = "Xbox HID Daemon"
-            BlueprintName = "Xbox HID Daemon"
-            ReferencedContainer = "container:Xbox HID Daemon.xcodeproj">
+            BuildableName = "SylpHID Daemon"
+            BlueprintName = "SylpHID Daemon"
+            ReferencedContainer = "container:SylpHID Daemon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B4021B6BD84200653468"
-            BuildableName = "Xbox HID Daemon"
-            BlueprintName = "Xbox HID Daemon"
-            ReferencedContainer = "container:Xbox HID Daemon.xcodeproj">
+            BuildableName = "SylpHID Daemon"
+            BlueprintName = "SylpHID Daemon"
+            ReferencedContainer = "container:SylpHID Daemon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82A0B4021B6BD84200653468"
-            BuildableName = "Xbox HID Daemon"
-            BlueprintName = "Xbox HID Daemon"
-            ReferencedContainer = "container:Xbox HID Daemon.xcodeproj">
+            BuildableName = "SylpHID Daemon"
+            BlueprintName = "SylpHID Daemon"
+            ReferencedContainer = "container:SylpHID Daemon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

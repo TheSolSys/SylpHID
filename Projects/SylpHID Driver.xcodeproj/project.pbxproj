@@ -20,7 +20,7 @@
 		8222399E1B6BF97C00099615 /* FPXboxHIDUserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FPXboxHIDUserClient.cpp; path = ../Source/Driver/FPXboxHIDUserClient.cpp; sourceTree = SOURCE_ROOT; };
 		8222399F1B6BF97C00099615 /* FPXboxHIDUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDUserClient.h; path = ../Source/Driver/FPXboxHIDUserClient.h; sourceTree = SOURCE_ROOT; };
 		82223A5C1B6C021C00099615 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
-		82A0B3CF1B6BD7BA00653468 /* Xbox HID.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Xbox HID.kext"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82A0B3CF1B6BD7BA00653468 /* SylpHID.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SylpHID.kext"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 		82A0B3D01B6BD7BA00653468 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82A0B3CF1B6BD7BA00653468 /* Xbox HID.kext */,
+				82A0B3CF1B6BD7BA00653468 /* SylpHID.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,7 +69,7 @@
 				8222399E1B6BF97C00099615 /* FPXboxHIDUserClient.cpp */,
 			);
 			name = "Kext Source";
-			path = "Xbox HID Driver";
+			path = "SylpHID Driver";
 			sourceTree = "<group>";
 		};
 		82A0B3D21B6BD7BA00653468 /* Supporting Files */ = {
@@ -78,7 +78,7 @@
 				822239981B6BF94400099615 /* Info-Driver.plist */,
 			);
 			name = "Supporting Files";
-			path = "Xbox HID Driver";
+			path = "SylpHID Driver";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,9 +96,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		82A0B3CE1B6BD7BA00653468 /* Xbox HID Kext */ = {
+		82A0B3CE1B6BD7BA00653468 /* SylpHID Kext */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82A0B3DA1B6BD7BA00653468 /* Build configuration list for PBXNativeTarget "Xbox HID Kext" */;
+			buildConfigurationList = 82A0B3DA1B6BD7BA00653468 /* Build configuration list for PBXNativeTarget "SylpHID Kext" */;
 			buildPhases = (
 				82A0B3CA1B6BD7BA00653468 /* Sources */,
 				82A0B3CB1B6BD7BA00653468 /* Frameworks */,
@@ -110,9 +110,9 @@
 			);
 			dependencies = (
 			);
-			name = "Xbox HID Kext";
-			productName = "Xbox HID Driver";
-			productReference = 82A0B3CF1B6BD7BA00653468 /* Xbox HID.kext */;
+			name = "SylpHID Kext";
+			productName = "SylpHID Driver";
+			productReference = 82A0B3CF1B6BD7BA00653468 /* SylpHID.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
 /* End PBXNativeTarget section */
@@ -129,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 82A0B3C91B6BD7BA00653468 /* Build configuration list for PBXProject "Xbox HID Driver" */;
+			buildConfigurationList = 82A0B3C91B6BD7BA00653468 /* Build configuration list for PBXProject "SylpHID Driver" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -141,7 +141,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82A0B3CE1B6BD7BA00653468 /* Xbox HID Kext */,
+				82A0B3CE1B6BD7BA00653468 /* SylpHID Kext */,
 			);
 		};
 /* End PBXProject section */
@@ -168,7 +168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nkillall \"System Preferences\" &>/dev/null\nkillall \"XBox HID\" &>/dev/null\nlaunchctl stop com.fizzypopstudios.XboxHIDDaemon\nlaunchctl unload /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nsudo -A kextunload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\nif [[ \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" -nt \"/System/Library/Extensions/$FULL_PRODUCT_NAME\" ]]; then\n  sudo -A rm -rf \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  sudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" /System/Library/Extensions\n  rm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\n  cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nfi\nsudo -A kextload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"";
+			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nkillall \"System Preferences\" &>/dev/null\nkillall \"SylpHID\" &>/dev/null\nlaunchctl stop com.fizzypopstudios.XboxHIDDaemon\nlaunchctl unload /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nsudo -A kextunload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\nif [[ \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" -nt \"/System/Library/Extensions/$FULL_PRODUCT_NAME\" ]]; then\n  sudo -A rm -rf \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  sudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" /System/Library/Extensions\n  rm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\n  cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nfi\nsudo -A kextload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -221,7 +221,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "Xbox HID";
+				PRODUCT_NAME = "SylpHID";
 				USER_HEADER_SEARCH_PATHS = ../Source/Common;
 			};
 			name = Debug;
@@ -256,7 +256,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "Xbox HID";
+				PRODUCT_NAME = "SylpHID";
 				USER_HEADER_SEARCH_PATHS = ../Source/Common;
 			};
 			name = Release;
@@ -269,7 +269,7 @@
 				INFOPLIST_FILE = "Supporting Files/Info-Driver.plist";
 				MODULE_NAME = com.fizzypopstudios.XboxHIDDriver;
 				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = "Xbox HID";
+				PRODUCT_NAME = "SylpHID";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -282,7 +282,7 @@
 				INFOPLIST_FILE = "Supporting Files/Info-Driver.plist";
 				MODULE_NAME = com.fizzypopstudios.XboxHIDDriver;
 				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = "Xbox HID";
+				PRODUCT_NAME = "SylpHID";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -290,7 +290,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82A0B3C91B6BD7BA00653468 /* Build configuration list for PBXProject "Xbox HID Driver" */ = {
+		82A0B3C91B6BD7BA00653468 /* Build configuration list for PBXProject "SylpHID Driver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A0B3D81B6BD7BA00653468 /* Debug */,
@@ -299,7 +299,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82A0B3DA1B6BD7BA00653468 /* Build configuration list for PBXNativeTarget "Xbox HID Kext" */ = {
+		82A0B3DA1B6BD7BA00653468 /* Build configuration list for PBXNativeTarget "SylpHID Kext" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82A0B3DB1B6BD7BA00653468 /* Debug */,

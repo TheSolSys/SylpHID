@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820F2C761B7666DF00C07710 /* SylpHID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 820F2C751B7666DF00C07710 /* SylpHID.icns */; };
 		822239B81B6BFA5B00099615 /* FPAppBindingCells.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239B41B6BFA5B00099615 /* FPAppBindingCells.h */; };
 		822239B91B6BFA5B00099615 /* FPAppBindingCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239B51B6BFA5B00099615 /* FPAppBindingCells.m */; };
 		822239BA1B6BFA5B00099615 /* FPPopUpButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239B61B6BFA5B00099615 /* FPPopUpButtonCell.h */; };
@@ -48,7 +49,6 @@
 		82223A041B6BFADB00099615 /* Prefix-PrefsPane.pch in Headers */ = {isa = PBXBuildFile; fileRef = 82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */; };
 		82223A0E1B6BFB2400099615 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0B1B6BFB2400099615 /* credits.rtf */; };
 		82223A0F1B6BFB2400099615 /* donate.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0C1B6BFB2400099615 /* donate.rtf */; };
-		82223A101B6BFB2400099615 /* Xbox HID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0D1B6BFB2400099615 /* Xbox HID.icns */; };
 		82223A271B6BFB3400099615 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A111B6BFB3400099615 /* controller.png */; };
 		82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A121B6BFB3400099615 /* controllerButtonBack.png */; };
 		82223A291B6BFB3400099615 /* controllerButtonBlk.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A131B6BFB3400099615 /* controllerButtonBlk.png */; };
@@ -89,6 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		820F2C751B7666DF00C07710 /* SylpHID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SylpHID.icns; path = ../Resources/SylpHID.icns; sourceTree = "<group>"; };
 		822239B41B6BFA5B00099615 /* FPAppBindingCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppBindingCells.h; path = "../Source/PrefsPane/Custom Cells/FPAppBindingCells.h"; sourceTree = SOURCE_ROOT; };
 		822239B51B6BFA5B00099615 /* FPAppBindingCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPAppBindingCells.m; path = "../Source/PrefsPane/Custom Cells/FPAppBindingCells.m"; sourceTree = SOURCE_ROOT; };
 		822239B61B6BFA5B00099615 /* FPPopUpButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPPopUpButtonCell.h; path = "../Source/PrefsPane/Custom Cells/FPPopUpButtonCell.h"; sourceTree = SOURCE_ROOT; };
@@ -131,7 +132,6 @@
 		82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Prefix-PrefsPane.pch"; path = "Supporting Files/Prefix-PrefsPane.pch"; sourceTree = SOURCE_ROOT; };
 		82223A0B1B6BFB2400099615 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = credits.rtf; path = ../Resources/credits.rtf; sourceTree = SOURCE_ROOT; };
 		82223A0C1B6BFB2400099615 /* donate.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = donate.rtf; path = ../Resources/donate.rtf; sourceTree = SOURCE_ROOT; };
-		82223A0D1B6BFB2400099615 /* Xbox HID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Xbox HID.icns"; path = "../Resources/Xbox HID.icns"; sourceTree = SOURCE_ROOT; };
 		82223A111B6BFB3400099615 /* controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controller.png; path = ../Resources/Images/controller.png; sourceTree = SOURCE_ROOT; };
 		82223A121B6BFB3400099615 /* controllerButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonBack.png; path = ../Resources/Images/controllerButtonBack.png; sourceTree = SOURCE_ROOT; };
 		82223A131B6BFB3400099615 /* controllerButtonBlk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonBlk.png; path = ../Resources/Images/controllerButtonBlk.png; sourceTree = SOURCE_ROOT; };
@@ -265,7 +265,7 @@
 				82223A0A1B6BFB1A00099615 /* Images */,
 				82223A0B1B6BFB2400099615 /* credits.rtf */,
 				82223A0C1B6BFB2400099615 /* donate.rtf */,
-				82223A0D1B6BFB2400099615 /* Xbox HID.icns */,
+				820F2C751B7666DF00C07710 /* SylpHID.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -492,9 +492,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820F2C761B7666DF00C07710 /* SylpHID.icns in Resources */,
 				82223A0E1B6BFB2400099615 /* credits.rtf in Resources */,
 				82223A0F1B6BFB2400099615 /* donate.rtf in Resources */,
-				82223A101B6BFB2400099615 /* Xbox HID.icns in Resources */,
 				82223A271B6BFB3400099615 /* controller.png in Resources */,
 				82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */,
 				82223A7C1B6C0D5E00099615 /* Xbox HID.xib in Resources */,

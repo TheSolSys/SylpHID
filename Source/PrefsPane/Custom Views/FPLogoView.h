@@ -24,6 +24,8 @@
 	NSImage* _colors;
 	NSTimer* _timer;
 
+	NSRect _toRect;
+	
 	NSRect _fromRectTop;
 	NSPoint _anidirTop;
 

@@ -29,7 +29,7 @@
 	<key>NSPrefPaneIconFile</key>
 	<string>Xbox HID.icns</string>
 	<key>NSPrefPaneIconLabel</key>
-	<string>Xbox HID</string>
+	<string>SylphHID</string>
 	<key>NSPrincipalClass</key>
 	<string>FPXboxHIDPrefsPane</string>
 </dict>

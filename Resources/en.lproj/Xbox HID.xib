@@ -174,6 +174,16 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <box hidden="YES" autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="2198">
+                                            <rect key="frame" x="11" y="-8" width="595" height="502"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="0.0" y="0.0" width="595" height="502"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <color key="borderColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="fillColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="0.5" colorSpace="deviceRGB"/>
+                                        </box>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -1140,20 +1150,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Mappings for classic Xbox controllers are tied to the physical USB port, not the controller itself!" id="2687">
                             <font key="font" metaFont="miniSystem"/>
-                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" white="0.33223083941605841" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box hidden="YES" autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="2198">
-                        <rect key="frame" x="37" y="47" width="595" height="502"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="595" height="502"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        </view>
-                        <color key="borderColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="fillColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="0.5" colorSpace="deviceRGB"/>
-                    </box>
                 </subviews>
             </view>
             <point key="canvasLocation" x="190" y="433"/>
@@ -1576,7 +1576,7 @@ Gw
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="-193" y="314"/>
+            <point key="canvasLocation" x="-109" y="530"/>
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="2622" userLabel="Reset Default">
@@ -1772,9 +1772,6 @@ Gw
                     <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2519">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
                     </buttonCell>
                     <connections>
                         <action selector="appEditEnd:" target="-2" id="2551"/>
@@ -1815,7 +1812,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Application bindings for classic Xbox controllers are" id="2653">
                         <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.32937956204379559" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -1824,7 +1821,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="tied to the physical USB port, not the controller itself!" id="2666">
                         <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.33000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -2009,7 +2006,7 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="297" y="209.5"/>
+            <point key="canvasLocation" x="-92" y="384.5"/>
         </customView>
         <customView id="2348" userLabel="Acknowledgements">
             <rect key="frame" x="0.0" y="0.0" width="460" height="350"/>
@@ -2106,7 +2103,7 @@ DQ
                     </scroller>
                 </scrollView>
                 <button verticalHuggingPriority="750" id="2668">
-                    <rect key="frame" x="233" y="-3" width="73" height="28"/>
+                    <rect key="frame" x="240" y="-3" width="73" height="28"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2673">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2117,7 +2114,7 @@ DQ
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="501" y="500"/>
+            <point key="canvasLocation" x="-155" y="206"/>
         </customView>
     </objects>
     <resources>

@@ -135,10 +135,10 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	[_rightStickAlertY setHidden: YES];
 	[_rightStickAlertY setAlertView: _alertView];
 
-	[_actionEdit setTooltip: @"Edit Config Name" withTipControl: _actionTip andBaseControl: _actionBase];
-	[_actionUndo setTooltip: @"Undo All Changes" withTipControl: _actionTip andBaseControl: _actionBase];
-	[_actionApps setTooltip: @"Edit App Bindings" withTipControl: _actionTip andBaseControl: _actionBase];
-	[_actionInfo setTooltip: @"View Pad Information" withTipControl: _actionTip andBaseControl: _actionBase];
+	[_actionEdit setTooltip: @"Edit Configuration Name" withTipControl: _actionTip andBaseControl: _actionBase];
+	[_actionUndo setTooltip: @"Undo All Recent Changes" withTipControl: _actionTip andBaseControl: _actionBase];
+	[_actionApps setTooltip: @"Edit Application Bindings" withTipControl: _actionTip andBaseControl: _actionBase];
+	[_actionInfo setTooltip: @"View Device Information" withTipControl: _actionTip andBaseControl: _actionBase];
 
 	NSBundle* bundle = [NSBundle bundleForClass: [self class]];
 	[_creditsText readRTFDFromFile: [bundle pathForResource: @"credits" ofType: @"rtf"]];
@@ -431,7 +431,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	          inWindow: [_configButtons window]
 	          onSide: MAPositionTop
 	          atDistance: 4];
-	[(isDefault ? _defaultOK : _deleteOK) setKeyEquivalent: @"\r"];
+	[(isDefault ? _defaultNO : _deleteNO) setKeyEquivalent: @"\r"];
 	if (isDefault == NO) {
 		int total = [FPXboxHIDPrefsLoader totalAppBindingsForConfigNamed: config];
 		[_deleteApps setStringValue: total == 0 ? @"No Apps" : total == 1 ? @"1 App" : [NSString stringWithFormat: @"%d Apps", total]];
@@ -523,6 +523,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 				  onSide: MAPositionTop
 				  atDistance: 4];
 		[_popup setViewMargin: 1.0];
+		[_appsOK setKeyEquivalent: @"\r"];
 		[self saveUndoState: kUndoBindings];
 		[self appSetDataSource];
 		[self crossFadeAttachedWindow];

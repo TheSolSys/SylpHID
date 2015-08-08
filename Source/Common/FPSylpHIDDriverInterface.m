@@ -1,6 +1,6 @@
 //
-// FPXboxHIDDriverInterface.m
-// "Xbox HID"
+// FPSylpHIDDriverInterface.m
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,15 +14,15 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
@@ -31,10 +31,10 @@
 #import <IOKit/hid/IOHIDKeys.h>
 #import <IOKit/hid/IOHIDUsageTables.h>
 
-#import "FPXboxHIDDriverInterface.h"
+#import "FPSylpHIDDriverInterface.h"
 
 
-@implementation FPXboxHIDDriverInterface
+@implementation FPSylpHIDDriverInterface
 
 
 #pragma mark === Interface Methods =============
@@ -55,7 +55,7 @@
 	}
 
 	// Set up a matching dictionary to search I/O Registry by class name for all HID class devices
-	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
+	matchDictionary = IOServiceMatching("FPSylpHIDDriver");
 	if (matchDictionary == NULL) {
 		NSLog(@"Failed to get CFMutableDictionaryRef via IOServiceMatching");
 		return nil;
@@ -75,7 +75,7 @@
 
 	// IOServiceGetMatchingServices consumes a reference to the dictionary, so we don't need to release the dictionary ref
 	while ((driver = IOIteratorNext(objectIterator))) {
-		id intf = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
+		id intf = [FPSylpHIDDriverInterface interfaceWithDriver: driver];
 		if (intf)
 			[interfaceList addObject: intf];
 	}
@@ -86,9 +86,9 @@
 }
 
 
-+ (FPXboxHIDDriverInterface*) interfaceWithDriver: (io_object_t)driver
++ (FPSylpHIDDriverInterface*) interfaceWithDriver: (io_object_t)driver
 {
-	return [[FPXboxHIDDriverInterface alloc] initWithDriver: driver];
+	return [[FPSylpHIDDriverInterface alloc] initWithDriver: driver];
 }
 
 
@@ -104,12 +104,12 @@
 	_driver = driver;
 	_service = 0;
 
-	// check that driver is FPXboxHIDDriver
+	// check that driver is FPSylpHIDDriver
 	if (kIOReturnSuccess != IOObjectGetClass(_driver, className)) {
 		return nil;
 	}
 
-	if (0 != strcmp(className, "FPXboxHIDDriver")) {
+	if (0 != strcmp(className, "FPSylpHIDDriver")) {
 		return nil;
 	}
 
@@ -150,7 +150,7 @@
 {
 	if (_service != 0) {
 		size_t size = sizeof(XBPadReport);
-		IOReturn ret = IOConnectCallStructMethod(_service, kXboxHIDDriverClientMethodRawReport, NULL, 0, report, &size);
+		IOReturn ret = IOConnectCallStructMethod(_service, kSylpHIDDriverClientMethodRawReport, NULL, 0, report, &size);
 		if (ret != kIOReturnSuccess)
 			NSLog(@"copyRawReport:%p Failure(%x) Service(%d)\n", report, ret, _service);
 	}
@@ -243,7 +243,7 @@
 	uint64_t speed = 0;
 	if (_service != 0) {
 		uint32_t size = 1;
-		IOReturn ret = IOConnectCallScalarMethod(_service, kXboxHIDDriverClientMethodGetSpeed, NULL, 0, &speed, &size);
+		IOReturn ret = IOConnectCallScalarMethod(_service, kSylpHIDDriverClientMethodGetSpeed, NULL, 0, &speed, &size);
 		if (ret != kIOReturnSuccess)
 			NSLog(@"deviceSpeed Failure(%x) Service(%d)\n", ret, _service);
 	}
@@ -262,7 +262,7 @@
 	uint64_t power[2] = { 0, 0 };
 	if (_service != 0) {
 		uint32_t size = 2;
-		IOReturn ret = IOConnectCallScalarMethod(_service, kXboxHIDDriverClientMethodGetPower, NULL, 0, power, &size);
+		IOReturn ret = IOConnectCallScalarMethod(_service, kSylpHIDDriverClientMethodGetPower, NULL, 0, power, &size);
 		if (ret != kIOReturnSuccess)
 			NSLog(@"devicePower Failure(%x) Service(%d)\n", ret, _service);
 	}
@@ -275,7 +275,7 @@
 	uint64_t addr = 0;
 	if (_service != 0) {
 		uint32_t size = 1;
-		IOReturn ret = IOConnectCallScalarMethod(_service, kXboxHIDDriverClientMethodGetAddress, NULL, 0, &addr, &size);
+		IOReturn ret = IOConnectCallScalarMethod(_service, kSylpHIDDriverClientMethodGetAddress, NULL, 0, &addr, &size);
 		if (ret != kIOReturnSuccess)
 			NSLog(@"deviceAddress Failure(%x) Service(%d)\n", ret, _service);
 	}
@@ -292,7 +292,7 @@
 - (void) loadDefaultLayout
 {
 	if (_service != 0) {
-		IOReturn ret = IOConnectCallMethod(_service, kXboxHIDDriverClientMethodLoadDefault, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
+		IOReturn ret = IOConnectCallMethod(_service, kSylpHIDDriverClientMethodLoadDefault, NULL, 0, NULL, 0, NULL, NULL, NULL, NULL);
 		if (ret != kIOReturnSuccess)
 			NSLog(@"loadDefaultLayout Failure(%x) Service(%d)\n", ret, _service);
 		else

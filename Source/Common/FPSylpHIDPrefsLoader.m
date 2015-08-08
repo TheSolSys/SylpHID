@@ -1,6 +1,6 @@
 //
-// FPXboxHIDPrefsLoader.m
-// "Xbox HID"
+// FPSylpHIDPrefsLoader.m
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,20 +14,20 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
-#import "FPXboxHIDPrefsLoader.h"
+#import "FPSylpHIDPrefsLoader.h"
 
 
 #define kConfigsKey                 @"Configurations"
@@ -37,12 +37,12 @@
 #define kConfigTypeKey              @"Type"
 #define kConfigSettingsKey          @"Settings"
 
-#define kUserDefaultsDomain			@"com.fizzypopstudios.XboxHID"
+#define kUserDefaultsDomain			@"com.fizzypopstudios.SylpHID"
 
 #define kAppFinder					@"com.apple.finder"
 
 
-@implementation FPXboxHIDPrefsLoader
+@implementation FPSylpHIDPrefsLoader
 
 + (NSMutableDictionary*) defaults
 {
@@ -68,7 +68,7 @@
 
 
 // this needs to be called immediately after the driver loads, before any other prefs are set for the device
-+ (BOOL) createDefaultsForDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) createDefaultsForDevice: (FPSylpHIDDriverInterface*)device
 {
 	NSMutableDictionary* defaults = [self defaults];
 
@@ -100,7 +100,7 @@
 		[defaults setObject: bindings forKey: kBindingsKey];
 	}
 
-	[FPXboxHIDPrefsLoader setDefaults: defaults];
+	[FPSylpHIDPrefsLoader setDefaults: defaults];
 
 	return YES;
 }
@@ -109,7 +109,7 @@
 // list all the config names for a particular device type
 + (NSArray*) configNamesForDeviceType: (NSString*)deviceType
 {
-	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* prefs = [FPSylpHIDPrefsLoader defaults];
 	NSDictionary* configs = [prefs objectForKey: kConfigsKey];
 	NSMutableArray* array = nil;
 
@@ -130,11 +130,11 @@
 
 
 // get the config name of the specified device
-+ (NSString*) configNameForDevice: (FPXboxHIDDriverInterface*)device
++ (NSString*) configNameForDevice: (FPSylpHIDDriverInterface*)device
 {
 	NSString* configName;
 
-	configName = [[[FPXboxHIDPrefsLoader defaults] objectForKey: kBindingsKey] objectForKey: [device identifier]];
+	configName = [[[FPSylpHIDPrefsLoader defaults] objectForKey: kBindingsKey] objectForKey: [device identifier]];
 	if (!configName)
 		configName = kConfigNameDefault;
 
@@ -143,22 +143,22 @@
 
 
 // rename current config
-+ (BOOL) renameCurrentConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) renameCurrentConfig: (NSString*)rename forDevice: (FPSylpHIDDriverInterface*)device
 {
-	return [self renameConfigNamed: [FPXboxHIDPrefsLoader configNameForDevice: device] withNewName: rename forDevice: device];
+	return [self renameConfigNamed: [FPSylpHIDPrefsLoader configNameForDevice: device] withNewName: rename forDevice: device];
 }
 
 
 // rename specific coniguration
-+ (BOOL) renameConfigNamed: (NSString*)current withNewName: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) renameConfigNamed: (NSString*)current withNewName: (NSString*)rename forDevice: (FPSylpHIDDriverInterface*)device
 {
 	if ([rename isEqualToString: @""] || [rename isEqualToString: kConfigNameDefault] || [current isEqualToString: kConfigNameDefault])
 		return false;	// Can't rename default config, or rename anything else to default name
 
-	if ([[FPXboxHIDPrefsLoader configNamesForDeviceType: [device deviceType]] containsObject: rename])
+	if ([[FPSylpHIDPrefsLoader configNamesForDeviceType: [device deviceType]] containsObject: rename])
 		return false;	// Don't rename if name already exists
 
-	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* prefs = [FPSylpHIDPrefsLoader defaults];
 	NSDictionary* settings = [[prefs objectForKey: kConfigsKey] objectForKey: current];
 
 	// add new key as copy of settings, then remove old key
@@ -188,7 +188,7 @@
 		}
 	}
 
-	[FPXboxHIDPrefsLoader setDefaults: prefs];
+	[FPSylpHIDPrefsLoader setDefaults: prefs];
 
 	return true;
 }
@@ -197,7 +197,7 @@
 // returns all current app bindings
 + (NSDictionary*) allAppBindings
 {
-	NSDictionary* bindings = [[FPXboxHIDPrefsLoader defaults] objectForKey: kAppsKey];
+	NSDictionary* bindings = [[FPSylpHIDPrefsLoader defaults] objectForKey: kAppsKey];
 	if (bindings != nil)
 		return [NSDictionary dictionaryWithDictionary: bindings];
 	return nil;
@@ -207,9 +207,9 @@
 // set all app bindings (used for undo feature)
 + (BOOL) setAllAppBindings: (NSDictionary*)apps
 {
-	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* prefs = [FPSylpHIDPrefsLoader defaults];
 	[prefs setObject: apps forKey: kAppsKey];
-	[FPXboxHIDPrefsLoader setDefaults: prefs];
+	[FPSylpHIDPrefsLoader setDefaults: prefs];
 	return true;
 }
 
@@ -218,7 +218,7 @@
 + (int) totalAppBindingsForConfigNamed: (NSString*)config
 {
 	int total = 0;
-	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* prefs = [FPSylpHIDPrefsLoader defaults];
 
 	// iterate through application bindings to count apps bound to name
 	NSDictionary* apps = [prefs objectForKey: kAppsKey];
@@ -236,7 +236,7 @@
 // set or create app binding
 + (BOOL) setConfigNamed: (NSString*)config forAppID: (NSString*)appid andDeviceID: (NSString*)devid
 {
-	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* prefs = [FPSylpHIDPrefsLoader defaults];
 	NSMutableDictionary* apps = [prefs objectForKey: kAppsKey];
 
 	if (apps == nil) {
@@ -249,7 +249,7 @@
 			[apps setObject: config forKey: devid];
 	}
 
-	[FPXboxHIDPrefsLoader setDefaults: prefs];
+	[FPSylpHIDPrefsLoader setDefaults: prefs];
 
 	return YES;
 }
@@ -258,14 +258,14 @@
 // remove app binding
 + (BOOL) removeAppID: (NSString*)appid forDeviceID: (NSString*)devid
 {
-	NSMutableDictionary* prefs = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* prefs = [FPSylpHIDPrefsLoader defaults];
 	NSMutableDictionary* app = [[prefs objectForKey: kAppsKey] objectForKey: appid];
 
 	if (app != nil) {
 		[app removeObjectForKey: devid];
 		if ([app count] == 0)
 			[[prefs objectForKey: kAppsKey] removeObjectForKey: appid];
-		[FPXboxHIDPrefsLoader setDefaults: prefs];
+		[FPSylpHIDPrefsLoader setDefaults: prefs];
 	}
 
 	return YES;
@@ -273,32 +273,32 @@
 
 
 // is current config the default config?
-+ (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) isDefaultConfigForDevice: (FPSylpHIDDriverInterface*)device
 {
 	return [[self configNameForDevice: device] isEqualToString: kConfigNameDefault];
 }
 
 
 // load the current config for the specified device
-+ (BOOL) loadSavedConfigForDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) loadSavedConfigForDevice: (FPSylpHIDDriverInterface*)device
 {
-	return [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: [FPXboxHIDPrefsLoader configNameForDevice: device]];
+	return [FPSylpHIDPrefsLoader loadConfigForDevice: device withName: [FPSylpHIDPrefsLoader configNameForDevice: device]];
 }
 
 
 // save the current config using selected config name for device
-+ (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device
++ (BOOL) saveConfigForDevice: (FPSylpHIDDriverInterface*)device
 {
-	return [self saveConfigForDevice: device withConfigName: [FPXboxHIDPrefsLoader configNameForDevice: device]];
+	return [self saveConfigForDevice: device withConfigName: [FPSylpHIDPrefsLoader configNameForDevice: device]];
 }
 
 
 // save current config under specific name (used for app config support)
-+ (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device withConfigName: configName
++ (BOOL) saveConfigForDevice: (FPSylpHIDDriverInterface*)device withConfigName: configName
 {
 	NSDictionary* settings = [device deviceOptions];
 	NSString* configType = [device deviceType];
-	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* defaults = [FPSylpHIDPrefsLoader defaults];
 	NSMutableDictionary* config = [NSMutableDictionary dictionary];
 
 	[config setObject: settings forKey: kConfigSettingsKey];
@@ -306,23 +306,23 @@
 
 	[[defaults objectForKey: kConfigsKey] setObject: config forKey: configName];
 
-	[FPXboxHIDPrefsLoader setDefaults: defaults];
+	[FPSylpHIDPrefsLoader setDefaults: defaults];
 
 	return YES;
 }
 
 
 // load named config for device
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName
++ (BOOL) loadConfigForDevice: (FPSylpHIDDriverInterface*)device withName: (NSString*)configName
 {
 	return [self loadConfigForDevice: device withName: configName andAppID: nil];
 }
 
 
 // load named config for device, with optional appid to support app specific config bindings
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	andAppID: (NSString*)appid
++ (BOOL) loadConfigForDevice: (FPSylpHIDDriverInterface*)device withName: (NSString*)configName	andAppID: (NSString*)appid
 {
-	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* defaults = [FPSylpHIDPrefsLoader defaults];
 	NSDictionary* config = [[defaults objectForKey: kConfigsKey] objectForKey: configName];
 
 	// first check that config type matches
@@ -338,7 +338,7 @@
 
 				// change the binding for the device if not loading config for app
 				[[defaults objectForKey: kBindingsKey] setObject: configName forKey: [device identifier]];
-				[FPXboxHIDPrefsLoader setDefaults: defaults];
+				[FPSylpHIDPrefsLoader setDefaults: defaults];
 
 				NSLog(@"Loaded config \"%@\" for Device \"%@\"", configName, [device identifier]);
 			} else {
@@ -350,7 +350,7 @@
 			}
 
 			// broadcast a message to other applications that the device's configuration has changed
-			[[NSDistributedNotificationCenter defaultCenter] postNotificationName: kFPXboxHIDDeviceConfigurationDidChangeNotification
+			[[NSDistributedNotificationCenter defaultCenter] postNotificationName: kFPSylpHIDDeviceConfigurationDidChangeNotification
 																		   object: kFPDistributedNotificationsObject
 																		 userInfo: userInfo
 															   deliverImmediately: YES];
@@ -363,35 +363,35 @@
 
 
 // load app-specific confg (if present) for device
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device forAppID: (NSString*)appid
++ (BOOL) loadConfigForDevice: (FPSylpHIDDriverInterface*)device forAppID: (NSString*)appid
 {
-	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* defaults = [FPSylpHIDPrefsLoader defaults];
 
 	// load default config for device when finder activated
 	if ([appid isEqualToString: kAppFinder]) {
-		return [FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+		return [FPSylpHIDPrefsLoader loadSavedConfigForDevice: device];
 
 	// otherwise, check if an app specific config for device exists and load it if it does
 	} else {
 		NSString* config = [[[defaults objectForKey: kAppsKey] objectForKey: appid] objectForKey: [device identifier]];
-		return (config != nil ? [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: config andAppID: appid] : NO);
+		return (config != nil ? [FPSylpHIDPrefsLoader loadConfigForDevice: device withName: config andAppID: appid] : NO);
 
 	}
 }
 
 
 // create a new config with current settings, and make it the device's configuration
-+ (BOOL) createConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName
++ (BOOL) createConfigForDevice: (FPSylpHIDDriverInterface*)device withName: (NSString*)configName
 {
-	NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+	NSMutableDictionary* defaults = [FPSylpHIDPrefsLoader defaults];
 
 	// change the binding to the new config name
 	[[defaults objectForKey: kBindingsKey] setObject: configName forKey: [device identifier]];
 
-	[FPXboxHIDPrefsLoader setDefaults: defaults];
+	[FPSylpHIDPrefsLoader setDefaults: defaults];
 
 	// save the current config with the new name
-	return [FPXboxHIDPrefsLoader saveConfigForDevice: device];
+	return [FPSylpHIDPrefsLoader saveConfigForDevice: device];
 }
 
 
@@ -400,7 +400,7 @@
 {
 	// don't allow deleting the default config
 	if (![configName isEqualTo: kConfigNameDefault]) {
-		NSMutableDictionary* defaults = [FPXboxHIDPrefsLoader defaults];
+		NSMutableDictionary* defaults = [FPSylpHIDPrefsLoader defaults];
 		NSDictionary* iterate;
 
 		// remove the config
@@ -423,7 +423,7 @@
 			}
 		}
 
-		[FPXboxHIDPrefsLoader setDefaults: defaults];
+		[FPSylpHIDPrefsLoader setDefaults: defaults];
 
 		return YES;
 	}

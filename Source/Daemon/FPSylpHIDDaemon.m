@@ -1,6 +1,6 @@
 //
-// FPXboxHIDDaemon.m
-// "Xbox HID"
+// FPSylpHIDDaemon.m
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -11,18 +11,18 @@
 //
 // Forked and Modified by Paige Marie DePol <pmd@fizzypopstudios.com>
 // Copyright (c)2015 FizzyPop Studios. All Rights Reserved.
-// http://xboxhid.fizzypopstudios.com
+// http://sylphid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
@@ -31,8 +31,8 @@
 #import <IOKit/IOKitLib.h>
 #import <signal.h>
 
-#import "FPXboxHIDDriverInterface.h"
-#import "FPXboxHIDPrefsLoader.h"
+#import "FPSylpHIDDriverInterface.h"
+#import "FPSylpHIDPrefsLoader.h"
 
 
 // wait for an xbox device to be connected
@@ -43,9 +43,9 @@ static void driversDidLoad(void* refcon, io_iterator_t iterator)
 
 	while ((driver = IOIteratorNext(iterator))) {
 		@autoreleasepool {
-			FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
-			[FPXboxHIDPrefsLoader createDefaultsForDevice: device];
-			[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+			FPSylpHIDDriverInterface* device = [FPSylpHIDDriverInterface interfaceWithDriver: driver];
+			[FPSylpHIDPrefsLoader createDefaultsForDevice: device];
+			[FPSylpHIDPrefsLoader loadSavedConfigForDevice: device];
 		}
 	}
 }
@@ -64,7 +64,7 @@ static void appBecameActive(NSString* appid)
 		printf("IOMasterPort error with bootstrap_port\n");
 		exit(-1);
 	}
-	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
+	matchDictionary = IOServiceMatching("FPSylpHIDDriver");
 	if (!matchDictionary) {
 		printf("IOServiceMatching returned NULL\n");
 		exit(-3);
@@ -76,8 +76,8 @@ static void appBecameActive(NSString* appid)
 	}
 	while ((driver = IOIteratorNext(iterator))) {
 		@autoreleasepool {
-			FPXboxHIDDriverInterface* device = [FPXboxHIDDriverInterface interfaceWithDriver: driver];
-			[FPXboxHIDPrefsLoader loadConfigForDevice: device forAppID: appid];
+			FPSylpHIDDriverInterface* device = [FPSylpHIDDriverInterface interfaceWithDriver: driver];
+			[FPSylpHIDPrefsLoader loadConfigForDevice: device forAppID: appid];
 		}
 	}
 
@@ -106,7 +106,7 @@ static void registerForDriverLoadedNotification()
 	runLoopSource = IONotificationPortGetRunLoopSource(notificationPort);
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopDefaultMode);
 
-	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
+	matchDictionary = IOServiceMatching("FPSylpHIDDriver");
 	if (!matchDictionary) {
 		printf("IOServiceMatching returned NULL\n");
 		exit(-3);

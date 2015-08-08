@@ -1,6 +1,6 @@
 //
-// FPXboxHIDNotifier.m
-// "Xbox HID"
+// FPSylpHIDNotifier.m
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,33 +14,33 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
-#import "FPXboxHIDNotifier.h"
+#import "FPSylpHIDNotifier.h"
 
 
-@implementation FPXboxHIDNotifier
+@implementation FPSylpHIDNotifier
 
 + (id) notifier
 {
-	return [[FPXboxHIDNotifier alloc] init];
+	return [[FPSylpHIDNotifier alloc] init];
 }
 
 
 + (id) notifierWithDelegate: (id<FPDeviceNotifier>)delegate
 {
-	return [[FPXboxHIDNotifier alloc] initWithDelegate: delegate];
+	return [[FPSylpHIDNotifier alloc] initWithDelegate: delegate];
 }
 
 
@@ -88,7 +88,7 @@
 
 static void driversMatched (void* refcon, io_iterator_t iterator)
 {
-	FPXboxHIDNotifier* self = (__bridge FPXboxHIDNotifier*)refcon;
+	FPSylpHIDNotifier* self = (__bridge FPSylpHIDNotifier*)refcon;
 	io_object_t object;
 
 	do {
@@ -108,7 +108,7 @@ static void driversMatched (void* refcon, io_iterator_t iterator)
 
 static void driversTerminated (void* refcon, io_iterator_t iterator)
 {
-	FPXboxHIDNotifier* self = (__bridge FPXboxHIDNotifier*)refcon;
+	FPSylpHIDNotifier* self = (__bridge FPSylpHIDNotifier*)refcon;
 	io_object_t object;
 
 	do {
@@ -142,7 +142,7 @@ static void driversTerminated (void* refcon, io_iterator_t iterator)
 	_runLoopSource = IONotificationPortGetRunLoopSource (_notificationPort);
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), _runLoopSource, kCFRunLoopDefaultMode);
 
-	matchDictionary = IOServiceMatching("FPXboxHIDDriver");
+	matchDictionary = IOServiceMatching("FPSylpHIDDriver");
 	if (!matchDictionary) {
 		NSLog(@"IOServiceMatching returned NULL\n");
 		return NO;

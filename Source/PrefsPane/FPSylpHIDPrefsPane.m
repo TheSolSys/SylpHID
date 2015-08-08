@@ -1,6 +1,6 @@
 //
-// FPXboxHIDPrefsPane.m
-// "Xbox HID"
+// FPSylpHIDPrefsPane.m
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,24 +14,24 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
 #import <IOKit/hid/IOHIDUsageTables.h>
 
-#import "FPXboxHIDPrefsPane.h"
-#import "FPXboxHIDDriverInterface.h"
-#import "FPXboxHIDPrefsLoader.h"
+#import "FPSylpHIDPrefsPane.h"
+#import "FPSylpHIDDriverInterface.h"
+#import "FPSylpHIDPrefsLoader.h"
 #import "FPHIDUtilities.h"
 #import "FPTriggerView.h"
 #import "FPAxisPairView.h"
@@ -64,7 +64,7 @@
 typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 
-@implementation FPXboxHIDPrefsPane
+@implementation FPSylpHIDPrefsPane
 
 #pragma mark === NSPreferencesPane Methods ==========
 
@@ -226,7 +226,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	[self getVersion];
 
 	// check if kernel extension is loaded, if not generate more informative error
-	if (system("/usr/sbin/kextstat -l -b com.fizzypopstudios.XboxHIDDriver | grep fizzy") != 0) {
+	if (system("/usr/sbin/kextstat -l -b com.fizzypopstudios.SylpHIDDriver | grep fizzy") != 0) {
 		[self showLargeError: @"Kernel Extension Not Loaded"];
 		[self disableConfigPopUpButton];
 		[self clearDevicesPopUpButton];
@@ -239,7 +239,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		// if opening sysprefs for first time load saved config for all devices
 		// this prevents app-specific configs from overwriting other configs!
 		for (id device in _devices)
-			[FPXboxHIDPrefsLoader loadSavedConfigForDevice: device];
+			[FPSylpHIDPrefsLoader loadSavedConfigForDevice: device];
 	}
 }
 
@@ -266,7 +266,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) getVersion
 {
-	NSBundle* bundle = [NSBundle bundleWithPath: @"/Library/PreferencePanes/Xbox HID.prefPane"];
+	NSBundle* bundle = [NSBundle bundleWithPath: @"/Library/PreferencePanes/SylpHID.prefPane"];
 	NSString* version = [[bundle infoDictionary] objectForKey: @"CFBundleGetInfoString"];
 	if (version == nil) version = @"Unknown Version";
 	[_textVersion setStringValue: version];
@@ -330,7 +330,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) buildConfigurationPopUpButton
 {
 	id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
-	[self buildConfigurationPopUpButton: _configPopUp withDefaultConfig: [FPXboxHIDPrefsLoader configNameForDevice: device]];
+	[self buildConfigurationPopUpButton: _configPopUp withDefaultConfig: [FPSylpHIDPrefsLoader configNameForDevice: device]];
 }
 
 
@@ -340,7 +340,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
 
 	NSDictionary* appconf = [_appConfig objectForKey: [device identifier]];
-	NSArray* configs = [FPXboxHIDPrefsLoader configNamesForDeviceType: [device deviceType]];
+	NSArray* configs = [FPSylpHIDPrefsLoader configNamesForDeviceType: [device deviceType]];
 	configs = [configs sortedArrayUsingSelector: @selector(compare:)];
 
 	[button removeAllItems];
@@ -406,14 +406,14 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 {
 	if (sender == _createOK) {
 		id device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
-		[FPXboxHIDPrefsLoader createConfigForDevice: device withName: [_createText stringValue]];
+		[FPSylpHIDPrefsLoader createConfigForDevice: device withName: [_createText stringValue]];
 		[self buildConfigurationPopUpButton];
 		_lastConfig = [_configPopUp titleOfSelectedItem];
 
 		if ([_createCopy state] == NSOffState) {
 			// Reset configuration if copy checkbox not checked
 			[device loadDefaultLayout];
-			[FPXboxHIDPrefsLoader saveConfigForDevice: device];
+			[FPSylpHIDPrefsLoader saveConfigForDevice: device];
 			[self initPadOptionsWithDevice: device];
 		}
 	}
@@ -433,7 +433,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	          atDistance: 4];
 	[(isDefault ? _defaultNO : _deleteNO) setKeyEquivalent: @"\r"];
 	if (isDefault == NO) {
-		int total = [FPXboxHIDPrefsLoader totalAppBindingsForConfigNamed: config];
+		int total = [FPSylpHIDPrefsLoader totalAppBindingsForConfigNamed: config];
 		[_deleteApps setStringValue: total == 0 ? @"No Apps" : total == 1 ? @"1 App" : [NSString stringWithFormat: @"%d Apps", total]];
 	}
 	[_popup setViewMargin: 1.0];
@@ -447,17 +447,17 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 	if (sender == _deleteOK) {
 		// Delete configuration
-		[FPXboxHIDPrefsLoader deleteConfigWithName: [_configPopUp titleOfSelectedItem]];
+		[FPSylpHIDPrefsLoader deleteConfigWithName: [_configPopUp titleOfSelectedItem]];
 		[self buildConfigurationPopUpButton];
 		_lastConfig = [_configPopUp titleOfSelectedItem];
 
 		// Load configuration now selected in popup
-        [FPXboxHIDPrefsLoader loadConfigForDevice: device withName: [_configPopUp titleOfSelectedItem]];
+        [FPSylpHIDPrefsLoader loadConfigForDevice: device withName: [_configPopUp titleOfSelectedItem]];
 
 	} else if (sender == _defaultOK) {
 		// Reset configuration
 		[device loadDefaultLayout];
-		[FPXboxHIDPrefsLoader saveConfigForDevice: device];
+		[FPSylpHIDPrefsLoader saveConfigForDevice: device];
 		[self initPadOptionsWithDevice: device];
 	}
 
@@ -474,7 +474,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	          inWindow: [_configButtons window]
 	          onSide: MAPositionTop
 	          atDistance: 4];
-	[_actionEdit setEnabled: ![FPXboxHIDPrefsLoader isDefaultConfigForDevice: device]];
+	[_actionEdit setEnabled: ![FPSylpHIDPrefsLoader isDefaultConfigForDevice: device]];
 	[_actionEdit resetImage];
 	[_actionUndo setEnabled: [self canUndo: kUndoMappings]];
 	[_actionUndo resetImage];
@@ -494,7 +494,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		[self fadeOutAttachedWindow];
 		return;
 
-	} else if (sender == _actionEdit && ![FPXboxHIDPrefsLoader isDefaultConfigForDevice: device]) {
+	} else if (sender == _actionEdit && ![FPSylpHIDPrefsLoader isDefaultConfigForDevice: device]) {
 		_xfade = _popup;
 		NSPoint buttonPoint = NSMakePoint(NSMidX([_configButtons frame]) + 19, NSMidY([_configButtons frame]));
 		_popup = [[MAAttachedWindow alloc] initWithView: _editView
@@ -504,7 +504,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 				  atDistance: 4];
 		NSDictionary* appconf = [_appConfig objectForKey: [device identifier]];
 		[_editText setStringValue: appconf != nil ? [appconf objectForKey: kNoticeConfigKey]
-												  : [FPXboxHIDPrefsLoader configNameForDevice: device]];
+												  : [FPSylpHIDPrefsLoader configNameForDevice: device]];
 		[_editOK setKeyEquivalent: @"\r"];
 		[_editOK setEnabled: NO];
 		[_popup setViewMargin: 1.0];
@@ -552,14 +552,14 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		NSDictionary* appconf = [_appConfig objectForKey: [device identifier]];
 		if (appconf != nil) {
 			NSString* appid = [appconf objectForKey: kNoticeAppKey];
-			[FPXboxHIDPrefsLoader renameConfigNamed: [appconf objectForKey: kNoticeConfigKey]
+			[FPSylpHIDPrefsLoader renameConfigNamed: [appconf objectForKey: kNoticeConfigKey]
 										withNewName: [_editText stringValue]
 										  forDevice: device];
 			[_appConfig setObject: [NSDictionary dictionaryWithObjectsAndKeys: [_editText stringValue], kNoticeConfigKey,
 																				appid, kNoticeAppKey, nil]
 						   forKey: [device identifier]];
 		} else {
-			[FPXboxHIDPrefsLoader renameCurrentConfig: [_editText stringValue] forDevice: device];
+			[FPSylpHIDPrefsLoader renameCurrentConfig: [_editText stringValue] forDevice: device];
 
 		}
 
@@ -594,7 +594,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) populateUSBInfo
 {
-	FPXboxHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
+	FPSylpHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
 	NSString* serial = [device serialNumber];
 	[_usbVendorID setStringValue: [device vendorID]];
 	[_usbProductID setStringValue: [device productID]];
@@ -613,7 +613,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) appSetDataSource
 {
 	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-	[_appData setSource: [FPXboxHIDPrefsLoader allAppBindings] forDeviceID: devid withTableView: _appsTable];
+	[_appData setSource: [FPSylpHIDPrefsLoader allAppBindings] forDeviceID: devid withTableView: _appsTable];
 	[_appsTable deselectAll: nil];
 	[_appsAction setEnabled: NO forSegment: kSegmentAppsDelete];
 	[_appsAction setEnabled: [self canUndo: kUndoBindings] forSegment: kSegmentAppsUndo];
@@ -648,7 +648,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 									if (appid != nil && ![appid isEqualToString: @""]) {
 										NSString* config = [_configPopUp titleOfSelectedItem];
 										NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-										[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+										[FPSylpHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
 										[self appSetDataSource];
 									} else {
 										appid = nil;
@@ -691,7 +691,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		case kSegmentAppsDelete: {
 			if (_appSelectedID != nil) {
 				NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-				[FPXboxHIDPrefsLoader removeAppID: _appSelectedID forDeviceID: devid];
+				[FPSylpHIDPrefsLoader removeAppID: _appSelectedID forDeviceID: devid];
 				[self appSetDataSource];
 			}
 			break;
@@ -717,7 +717,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) setAppConfig: (NSString*)config forAppID: (NSString*)appid
 {
 	NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-	[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+	[FPSylpHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
 	[_appsAction setEnabled: [self canUndo: kUndoBindings] forSegment: kSegmentAppsUndo];
 }
 
@@ -907,7 +907,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		_undoMappings.MappingButtonBlack		= [[_buttonBlackMenu selectedItem] tag];
 
 	} else if (mode == kUndoBindings) {
-		_undoBindings = [FPXboxHIDPrefsLoader allAppBindings];
+		_undoBindings = [FPSylpHIDPrefsLoader allAppBindings];
 
 	}
 }
@@ -980,7 +980,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 				[[_buttonBlackMenu selectedItem] tag]	!= _undoMappings.MappingButtonBlack			);
 
 	} else {
-		return (_undoBindings != nil && ![_undoBindings isEqualToDictionary: [FPXboxHIDPrefsLoader allAppBindings]]);
+		return (_undoBindings != nil && ![_undoBindings isEqualToDictionary: [FPSylpHIDPrefsLoader allAppBindings]]);
 
 	}
 }
@@ -1049,7 +1049,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		[self initPadOptionsWithDevice: device];
 
 	} else if (mode == kUndoBindings) {
-		[FPXboxHIDPrefsLoader setAllAppBindings: _undoBindings];
+		[FPSylpHIDPrefsLoader setAllAppBindings: _undoBindings];
 		[self appSetDataSource];
 
 	}
@@ -1286,7 +1286,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) configureInterface
 {
-	_devices = [FPXboxHIDDriverInterface interfaces];
+	_devices = [FPSylpHIDDriverInterface interfaces];
 
 	if (_devices) {
 		[self buildDevicesPopUpButton];
@@ -1294,7 +1294,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		[self buildConfigurationPopUpButton];
 		[self initOptionsInterface];
 	} else {
-		[self showLargeError: @"No Xbox Devices Found"];
+		[self showLargeError: @"No Compatible Devices Found"];
 		[self disableConfigPopUpButton];
 		[self clearDevicesPopUpButton];
 	}
@@ -1695,7 +1695,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) hidDeviceInputPoller: (id)object
 {
-	FPXboxHID_JoystickUpdate(self);
+	FPSylpHID_JoystickUpdate(self);
 }
 
 
@@ -1791,7 +1791,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) updateRawReport
 {
-	FPXboxHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
+	FPSylpHIDDriverInterface* device = [_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]];
 	if (device && [device deviceIsPad] && [device rawReportsActive]) {
 		SInt16 axis;
 
@@ -1827,7 +1827,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) startHIDDeviceInput
 {
-	FPXboxHID_JoystickInit();
+	FPSylpHID_JoystickInit();
 	_timer = [NSTimer scheduledTimerWithTimeInterval: 1.0/30.0 target: self selector: @selector(hidDeviceInputPoller:)
 	          userInfo: nil repeats: YES];
 }
@@ -1836,7 +1836,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) stopHIDDeviceInput
 {
 	[_timer invalidate];
-	FPXboxHID_JoystickQuit();
+	FPSylpHID_JoystickQuit();
 }
 
 
@@ -1865,10 +1865,10 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 - (void) registerForNotifications
 {
 	// get notified when config changes out from under us (or when we change it ourselves)
-	_notifier = [FPXboxHIDNotifier notifierWithDelegate: self];
+	_notifier = [FPSylpHIDNotifier notifierWithDelegate: self];
 	[[NSDistributedNotificationCenter defaultCenter] addObserver: self
 														selector: @selector(deviceConfigDidChange:)
-															name: kFPXboxHIDDeviceConfigurationDidChangeNotification
+															name: kFPSylpHIDDeviceConfigurationDidChangeNotification
 														  object: kFPDistributedNotificationsObject];
 }
 
@@ -1879,7 +1879,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 		_notifier = nil;
 	}
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver: self
-	 name: kFPXboxHIDDeviceConfigurationDidChangeNotification
+	 name: kFPSylpHIDDeviceConfigurationDidChangeNotification
 	 object: kFPDistributedNotificationsObject];
 }
 
@@ -1916,9 +1916,9 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	if ([device deviceIsPad])
 		[self padOptionChanged: device withControl: sender];
 	if (appconf != nil)
-		[FPXboxHIDPrefsLoader saveConfigForDevice: device withConfigName: [appconf objectForKey: kNoticeConfigKey]];
+		[FPSylpHIDPrefsLoader saveConfigForDevice: device withConfigName: [appconf objectForKey: kNoticeConfigKey]];
 	else
-		[FPXboxHIDPrefsLoader saveConfigForDevice: device];
+		[FPSylpHIDPrefsLoader saveConfigForDevice: device];
 }
 
 
@@ -1966,15 +1966,15 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 		// first save the current config
 		if (appconf != nil) {
-			[FPXboxHIDPrefsLoader saveConfigForDevice: device withConfigName: [appconf objectForKey: kNoticeConfigKey]];
+			[FPSylpHIDPrefsLoader saveConfigForDevice: device withConfigName: [appconf objectForKey: kNoticeConfigKey]];
 			[_configPopUp clearAppConfig];
 			[_appConfig removeObjectForKey: [device identifier]];
 		} else {
-			[FPXboxHIDPrefsLoader saveConfigForDevice: device];
+			[FPSylpHIDPrefsLoader saveConfigForDevice: device];
 		}
 
 		// now load the new config
-		[FPXboxHIDPrefsLoader loadConfigForDevice: device withName: configName];
+		[FPSylpHIDPrefsLoader loadConfigForDevice: device withName: configName];
 
 		// GUI update is handled in deviceConfigDidChange:
 	}

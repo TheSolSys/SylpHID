@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="FPXboxHIDPrefsPane">
+        <customObject id="-2" userLabel="File's Owner" customClass="FPSylpHIDPrefsPane">
             <connections>
                 <outlet property="_actionApps" destination="2174" id="2224"/>
                 <outlet property="_actionBase" destination="2266" id="2270"/>
@@ -1156,7 +1156,7 @@
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="190" y="433"/>
+            <point key="canvasLocation" x="166" y="271"/>
         </window>
         <menu id="1932">
             <items>

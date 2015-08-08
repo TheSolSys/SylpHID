@@ -1,6 +1,6 @@
 //
-// FPXboxHIDDriverKeys.h
-// "Xbox HID"
+// FPSylpHIDDriverKeys.h
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,31 +14,31 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
-#ifndef _FPXboxHIDDriverKeys_h_
-#define _FPXboxHIDDriverKeys_h_
+#ifndef _FPSylpHIDDriverKeys_h_
+#define _FPSylpHIDDriverKeys_h_
 
 
-// Request codes for FPXboxHIDUserClient in driver
-enum XboxHIDDriverRequestCode {
-	kXboxHIDDriverClientMethodRawReport,		// Returns raw report data for use by live-report markers on sliders
-	kXboxHIDDriverClientMethodLoadDefault,		// Load default settings into current configuration
-	kXboxHIDDriverClientMethodGetSpeed,			// Get speed of USB bus device is plugged into
-	kXboxHIDDriverClientMethodGetPower,			// Get power requirements of USB device and Max power avilable
-	kXboxHIDDriverClientMethodGetAddress,		// Get USB address for displaying with locationID
-	kXboxHIDDriverClientMethodCount
+// Request codes for FPSylpHIDUserClient in driver
+enum SylpHIDDriverRequestCode {
+	kSylpHIDDriverClientMethodRawReport,		// Returns raw report data for use by live-report markers on sliders
+	kSylpHIDDriverClientMethodLoadDefault,		// Load default settings into current configuration
+	kSylpHIDDriverClientMethodGetSpeed,			// Get speed of USB bus device is plugged into
+	kSylpHIDDriverClientMethodGetPower,			// Get power requirements of USB device and Max power avilable
+	kSylpHIDDriverClientMethodGetAddress,		// Get USB address for displaying with locationID
+	kSylpHIDDriverClientMethodCount
 };
 
 
@@ -344,4 +344,4 @@ typedef struct XBPadOptions {
 #define kNameKey								"Name"
 #define kTypeKey								"Type"
 
-#endif // _FPXboxHIDDriverKeys_h_
+#endif // _FPSylpHIDDriverKeys_h_

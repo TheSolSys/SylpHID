@@ -1,40 +1,40 @@
 //
-// FPXboxHIDUserClient.cpp
-// "Xbox HID"
+// FPSylpHIDUserClient.cpp
+// "SylpHID"
 //
 // Created by Paige Marie DePol <pmd@fizzypopstudios.com>
 // Copyright (c)2015 FizzyPop Studios. All Rights Reserved.
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
-#include "FPXboxHIDUserClient.h"
-#include "FPXboxHIDDriverKeys.h"
+#include "FPSylpHIDUserClient.h"
+#include "FPSylpHIDDriverKeys.h"
 
 #define DEBUG_LEVEL 0 // 0=disable all logging, 7=full logging
 #include <IOKit/usb/IOUSBLog.h>
 
 #define super IOUserClient
 
-OSDefineMetaClassAndStructors(FPXboxHIDUserClient, IOUserClient)
+OSDefineMetaClassAndStructors(FPSylpHIDUserClient, IOUserClient)
 
 
-IOReturn FPXboxHIDUserClient::sGetRawReport (OSObject* target, void* reference, IOExternalMethodArguments* args)
+IOReturn FPSylpHIDUserClient::sGetRawReport (OSObject* target, void* reference, IOExternalMethodArguments* args)
 {
 	XBPadReport* source;
-	IOReturn ret = ((FPXboxHIDUserClient*)target)->getRawReport(&source);
+	IOReturn ret = ((FPSylpHIDUserClient*)target)->getRawReport(&source);
 	if (ret != kIOReturnSuccess)
 		return ret;
 	XBPadReport* dest = (XBPadReport*)args->structureOutput;
@@ -46,7 +46,7 @@ IOReturn FPXboxHIDUserClient::sGetRawReport (OSObject* target, void* reference, 
 }
 
 
-IOReturn FPXboxHIDUserClient::getRawReport (XBPadReport** report)
+IOReturn FPSylpHIDUserClient::getRawReport (XBPadReport** report)
 {
 	if (_driver == NULL || isInactive()) {
 		// Return an error if we don't have a provider. This could happen if the user process
@@ -63,13 +63,13 @@ IOReturn FPXboxHIDUserClient::getRawReport (XBPadReport** report)
 }
 
 
-IOReturn FPXboxHIDUserClient::sLoadDefaultLayout (OSObject* target, void* reference, IOExternalMethodArguments* args)
+IOReturn FPSylpHIDUserClient::sLoadDefaultLayout (OSObject* target, void* reference, IOExternalMethodArguments* args)
 {
-	return ((FPXboxHIDUserClient*)target)->loadDefaultLayout();
+	return ((FPSylpHIDUserClient*)target)->loadDefaultLayout();
 }
 
 
-IOReturn FPXboxHIDUserClient::loadDefaultLayout (void)
+IOReturn FPSylpHIDUserClient::loadDefaultLayout (void)
 {
 	if (_driver == NULL || isInactive()) {
 		// Return an error if we don't have a provider. This could happen if the user process
@@ -87,10 +87,10 @@ IOReturn FPXboxHIDUserClient::loadDefaultLayout (void)
 }
 
 
-IOReturn FPXboxHIDUserClient::sGetSpeed (OSObject* target, void* reference, IOExternalMethodArguments* args)
+IOReturn FPSylpHIDUserClient::sGetSpeed (OSObject* target, void* reference, IOExternalMethodArguments* args)
 {
 	uint64_t* speed = args->scalarOutput;
-	IOReturn ret = ((FPXboxHIDUserClient*)target)->getSpeed(speed);
+	IOReturn ret = ((FPSylpHIDUserClient*)target)->getSpeed(speed);
 	if (ret != kIOReturnSuccess)
 		return ret;
 	args->scalarOutputCount = 1;
@@ -99,7 +99,7 @@ IOReturn FPXboxHIDUserClient::sGetSpeed (OSObject* target, void* reference, IOEx
 }
 
 
-IOReturn FPXboxHIDUserClient::getSpeed (uint64_t* speed)
+IOReturn FPSylpHIDUserClient::getSpeed (uint64_t* speed)
 {
 	if (_driver == NULL || isInactive()) {
 		// Return an error if we don't have a provider. This could happen if the user process
@@ -116,10 +116,10 @@ IOReturn FPXboxHIDUserClient::getSpeed (uint64_t* speed)
 }
 
 
-IOReturn FPXboxHIDUserClient::sGetPower (OSObject* target, void* reference, IOExternalMethodArguments* args)
+IOReturn FPSylpHIDUserClient::sGetPower (OSObject* target, void* reference, IOExternalMethodArguments* args)
 {
 	uint64_t* power = args->scalarOutput;
-	IOReturn ret = ((FPXboxHIDUserClient*)target)->getPower(power);
+	IOReturn ret = ((FPSylpHIDUserClient*)target)->getPower(power);
 	if (ret != kIOReturnSuccess)
 		return ret;
 	args->scalarOutputCount = 2;
@@ -128,7 +128,7 @@ IOReturn FPXboxHIDUserClient::sGetPower (OSObject* target, void* reference, IOEx
 }
 
 
-IOReturn FPXboxHIDUserClient::getPower (uint64_t* power)
+IOReturn FPSylpHIDUserClient::getPower (uint64_t* power)
 {
 	if (_driver == NULL || isInactive()) {
 		// Return an error if we don't have a provider. This could happen if the user process
@@ -146,10 +146,10 @@ IOReturn FPXboxHIDUserClient::getPower (uint64_t* power)
 }
 
 
-IOReturn FPXboxHIDUserClient::sGetAddress (OSObject* target, void* reference, IOExternalMethodArguments* args)
+IOReturn FPSylpHIDUserClient::sGetAddress (OSObject* target, void* reference, IOExternalMethodArguments* args)
 {
 	uint64_t* addr = args->scalarOutput;
-	IOReturn ret = ((FPXboxHIDUserClient*)target)->getAddress(addr);
+	IOReturn ret = ((FPSylpHIDUserClient*)target)->getAddress(addr);
 	if (ret != kIOReturnSuccess)
 		return ret;
 	args->scalarOutputCount = 1;
@@ -158,7 +158,7 @@ IOReturn FPXboxHIDUserClient::sGetAddress (OSObject* target, void* reference, IO
 }
 
 
-IOReturn FPXboxHIDUserClient::getAddress (uint64_t* addr)
+IOReturn FPSylpHIDUserClient::getAddress (uint64_t* addr)
 {
 	if (_driver == NULL || isInactive()) {
 		// Return an error if we don't have a provider. This could happen if the user process
@@ -175,7 +175,7 @@ IOReturn FPXboxHIDUserClient::getAddress (uint64_t* addr)
 }
 
 
-bool FPXboxHIDUserClient::initWithTask (task_t owningTask, void* securityToken, UInt32 type, OSDictionary* properties)
+bool FPSylpHIDUserClient::initWithTask (task_t owningTask, void* securityToken, UInt32 type, OSDictionary* properties)
 {
 	if (!owningTask || !super::initWithTask(owningTask, securityToken, type, properties))
 		return false;
@@ -188,11 +188,11 @@ bool FPXboxHIDUserClient::initWithTask (task_t owningTask, void* securityToken, 
 }
 
 
-bool FPXboxHIDUserClient::start (IOService* provider)
+bool FPSylpHIDUserClient::start (IOService* provider)
 {
 	if (!_task || !super::start(provider))
 		return false;
-	_driver = OSDynamicCast(FPXboxHIDDriver, provider);
+	_driver = OSDynamicCast(FPSylpHIDDriver, provider);
 	if (!attach(_driver))
 		return false;
 	return true;
@@ -200,7 +200,7 @@ bool FPXboxHIDUserClient::start (IOService* provider)
 
 
 
-IOReturn FPXboxHIDUserClient::clientClose (void)
+IOReturn FPSylpHIDUserClient::clientClose (void)
 {
 	if (_task) {
 		task_deallocate(_task);
@@ -215,11 +215,11 @@ IOReturn FPXboxHIDUserClient::clientClose (void)
 }
 
 
-IOReturn FPXboxHIDUserClient::externalMethod (uint32_t selector, IOExternalMethodArguments* args,
+IOReturn FPSylpHIDUserClient::externalMethod (uint32_t selector, IOExternalMethodArguments* args,
                                               IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
 {
 	// Ensure the requested control selector is within range.
-	if (selector >= kXboxHIDDriverClientMethodCount)
+	if (selector >= kSylpHIDDriverClientMethodCount)
 		return kIOReturnUnsupported;
 	dispatch = (IOExternalMethodDispatch*)&sMethods[selector];
 	target = this;
@@ -228,13 +228,13 @@ IOReturn FPXboxHIDUserClient::externalMethod (uint32_t selector, IOExternalMetho
 	return super::externalMethod(selector, args, dispatch, target, reference);
 }
 
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  0);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  1);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  2);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  3);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  4);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  5);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  6);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  7);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  8);
-OSMetaClassDefineReservedUnused(FPXboxHIDUserClient,  9);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  0);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  1);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  2);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  3);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  4);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  5);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  6);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  7);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  8);
+OSMetaClassDefineReservedUnused(FPSylpHIDUserClient,  9);

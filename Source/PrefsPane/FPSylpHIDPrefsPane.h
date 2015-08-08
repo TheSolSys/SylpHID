@@ -1,6 +1,6 @@
 //
-// FPXboxHIDPrefsPane.h
-// "Xbox HID"
+// FPSylpHIDPrefsPane.h
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,23 +14,23 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
 #import <Cocoa/Cocoa.h>
 #import <PreferencePanes/PreferencePanes.h>
-#import "FPXboxHIDNotifier.h"
-#import "FPXboxHIDDriverKeys.h"
+#import "FPSylpHIDNotifier.h"
+#import "FPSylpHIDDriverKeys.h"
 #import "FPDataSourceApps.h"
 #import "MAAttachedWindow.h"
 
@@ -84,13 +84,13 @@ enum eMenuEntriesButtons {
 };
 
 
-@interface FPXboxHIDPrefsPane : NSPreferencePane <FPAppBindings, FPDeviceNotifier, NSFileManagerDelegate> {
+@interface FPSylpHIDPrefsPane : NSPreferencePane <FPAppBindings, FPDeviceNotifier, NSFileManagerDelegate> {
 	// state information
     NSArray* _devices;
     NSTimer* _timer;
 	MAAttachedWindow* _popup;
 	MAAttachedWindow* _xfade;
-    FPXboxHIDNotifier* _notifier;
+    FPSylpHIDNotifier* _notifier;
     XBPadReport _rawReport;
 	XBPadOptions _undoMappings;
 	NSDictionary* _undoBindings;

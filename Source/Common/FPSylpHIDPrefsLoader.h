@@ -1,6 +1,6 @@
 //
-// FPXboxHIDPrefsLoader.h
-// "Xbox HID"
+// FPSylpHIDPrefsLoader.h
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,22 +14,22 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
 
 #import <Foundation/Foundation.h>
 
-#import "FPXboxHIDDriverInterface.h"
+#import "FPSylpHIDDriverInterface.h"
 
 
 #define kConfigNameDefault	@"Default Layout"
@@ -38,26 +38,26 @@
 #define kNoticeConfigKey	@"Config"
 #define kNoticeDeviceKey	@"Device"
 
-#define kFPDistributedNotificationsObject	@"com.fizzypopstudios.XboxHIDDriver"
-#define kFPXboxHIDDeviceConfigurationDidChangeNotification	  @"ConfigDidChange"
+#define kFPDistributedNotificationsObject	@"com.fizzypopstudios.SylpHIDDriver"
+#define kFPSylpHIDDeviceConfigurationDidChangeNotification	  @"ConfigDidChange"
 
 
-@interface FPXboxHIDPrefsLoader : NSObject
+@interface FPSylpHIDPrefsLoader : NSObject
 
 // create the default set of settings
-+ (BOOL) createDefaultsForDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) createDefaultsForDevice: (FPSylpHIDDriverInterface*)device;
 
 // list all the config names for a particular device type
 + (NSArray*) configNamesForDeviceType: (NSString*)deviceType;
 
 // get the config name of the specified device
-+ (NSString*) configNameForDevice: (FPXboxHIDDriverInterface*)device;
++ (NSString*) configNameForDevice: (FPSylpHIDDriverInterface*)device;
 
 // rename current configuration
-+ (BOOL) renameCurrentConfig: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) renameCurrentConfig: (NSString*)rename forDevice: (FPSylpHIDDriverInterface*)device;
 
 // rename specific configuration
-+ (BOOL) renameConfigNamed: (NSString*)existing withNewName: (NSString*)rename forDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) renameConfigNamed: (NSString*)existing withNewName: (NSString*)rename forDevice: (FPSylpHIDDriverInterface*)device;
 
 // returns all current app bindings
 + (NSDictionary*) allAppBindings;
@@ -75,28 +75,28 @@
 + (BOOL) removeAppID: (NSString*)appid forDeviceID: (NSString*)devid;
 
 // is current config the default config?
-+ (BOOL) isDefaultConfigForDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) isDefaultConfigForDevice: (FPSylpHIDDriverInterface*)device;
 
 // load the current config for the specified device
-+ (BOOL) loadSavedConfigForDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) loadSavedConfigForDevice: (FPSylpHIDDriverInterface*)device;
 
 // save the current config
-+ (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device;
++ (BOOL) saveConfigForDevice: (FPSylpHIDDriverInterface*)device;
 
 // save current config under specific name
-+ (BOOL) saveConfigForDevice: (FPXboxHIDDriverInterface*)device withConfigName: configName;
++ (BOOL) saveConfigForDevice: (FPSylpHIDDriverInterface*)device withConfigName: configName;
 
 // load named config for device
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName;
++ (BOOL) loadConfigForDevice: (FPSylpHIDDriverInterface*)device withName: (NSString*)configName;
 
 // load named config for device, with optional appid to support app specific config bindings
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName	andAppID: (NSString*)appid;
++ (BOOL) loadConfigForDevice: (FPSylpHIDDriverInterface*)device withName: (NSString*)configName	andAppID: (NSString*)appid;
 
 // load application specific config (if present) for device
-+ (BOOL) loadConfigForDevice: (FPXboxHIDDriverInterface*)device forAppID: (NSString*)appid;
++ (BOOL) loadConfigForDevice: (FPSylpHIDDriverInterface*)device forAppID: (NSString*)appid;
 
 // create a new config with specified settings, and make it the device's configuration
-+ (BOOL) createConfigForDevice: (FPXboxHIDDriverInterface*)device withName: (NSString*)configName;
++ (BOOL) createConfigForDevice: (FPSylpHIDDriverInterface*)device withName: (NSString*)configName;
 
 // delete the specified configuration
 + (BOOL) deleteConfigWithName: (NSString*)configName;

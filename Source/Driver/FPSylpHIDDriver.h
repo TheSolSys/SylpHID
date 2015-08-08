@@ -1,6 +1,6 @@
 //
-// FPXboxHIDDriver.h
-// "Xbox HID"
+// FPSylpHIDDriver.h
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,15 +14,15 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 // Portions Copyright (c) 1999-2003 Apple Computer, Inc. All Rights Reserved.
@@ -32,12 +32,12 @@
 //
 // Please obtain a copy of the License at http://www.apple.com/publicsource and read it before using this file.
 //
-// As per license requirements see end of "FPXboxHIDDriver.cpp" for a list of changes made to the original source code.
+// As per license requirements see end of "FPSylpHIDDriver.cpp" for a list of changes made to the original source code.
 // =========================================================================================================================
 
 
-#ifndef _FPXboxHIDDriver_h_
-#define _FPXboxHIDDriver_h_
+#ifndef _FPSylpHIDDriver_h_
+#define _FPSylpHIDDriver_h_
 
 #include <IOKit/IOService.h>
 
@@ -52,7 +52,7 @@
 #include <IOKit/usb/IOUSBInterface.h>
 #include <IOKit/usb/USB.h>
 
-#include "FPXboxHIDDriverKeys.h"
+#include "FPSylpHIDDriverKeys.h"
 
 
 // remote control keys (index into ButtonMapping table which is generated
@@ -188,9 +188,9 @@ typedef struct {
 #define kHIDDriverRetryCount    3
 
 
-class FPXboxHIDDriver: public IOHIDDevice
+class FPSylpHIDDriver: public IOHIDDevice
 {
-	OSDeclareDefaultStructors(FPXboxHIDDriver)
+	OSDeclareDefaultStructors(FPSylpHIDDriver)
 
 	IOUSBInterface* _interface;
 	IOUSBDevice* _device;
@@ -358,26 +358,26 @@ private:    // Should these be protected or virtual?
 #endif
 
 public:
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  0);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  1);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  2);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  3);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  4);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  5);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  6);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  7);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  8);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver,  9);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 10);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 11);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 12);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 13);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 14);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 15);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 16);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 17);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 18);
-	OSMetaClassDeclareReservedUnused(FPXboxHIDDriver, 19);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  0);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  1);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  2);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  3);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  4);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  5);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  6);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  7);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  8);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver,  9);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 10);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 11);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 12);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 13);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 14);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 15);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 16);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 17);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 18);
+	OSMetaClassDeclareReservedUnused(FPSylpHIDDriver, 19);
 };
 
-#endif  // _FPXboxHIDDriver_h_
+#endif  // _FPSylpHIDDriver_h_

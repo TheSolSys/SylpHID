@@ -1,6 +1,6 @@
 //
-// FPXboxHIDDriver.cpp
-// "Xbox HID"
+// FPSylpHIDDriver.cpp
+// "SylpHID"
 //
 // Created by Darrell Walisser <walisser@mac.com>
 // Copyright (c)2007 Darrell Walisser. All Rights Reserved.
@@ -14,15 +14,15 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 // Portions Copyright (c) 1999-2003 Apple Computer, Inc. All Rights Reserved.
@@ -36,7 +36,7 @@
 // =========================================================================================================================
 
 
-#include "FPXboxHIDDriver.h"
+#include "FPSylpHIDDriver.h"
 
 #include <mach/mach_types.h>
 
@@ -52,22 +52,22 @@
 #include <IOKit/usb/IOUSBLog.h>
 
 #define super IOHIDDevice
-OSDefineMetaClassAndStructors(FPXboxHIDDriver, super)
+OSDefineMetaClassAndStructors(FPSylpHIDDriver, super)
 
 
-kern_return_t FPXboxHIDDriver_start(kmod_info_t* ki, void* d) {
+kern_return_t FPSylpHIDDriver_start(kmod_info_t* ki, void* d) {
 	return KERN_SUCCESS;
 }
 
-kern_return_t FPXboxHIDDriver_stop(kmod_info_t* ki, void* d) {
+kern_return_t FPSylpHIDDriver_stop(kmod_info_t* ki, void* d) {
 	return KERN_SUCCESS;
 }
 
 
 // Do what is necessary to start device before probe is called.
-bool FPXboxHIDDriver::init (OSDictionary* properties)
+bool FPSylpHIDDriver::init (OSDictionary* properties)
 {
-	USBLog(6, "FPXboxHIDDriver[%p]::init", this);
+	USBLog(6, "FPSylpHIDDriver[%p]::init", this);
 
 	if (!super::init(properties)) {
 		return false;
@@ -104,7 +104,7 @@ bool FPXboxHIDDriver::init (OSDictionary* properties)
 // initialization by that method, but before it calls registerService this method needs to open the provider, and make
 // sure to have enough state (basically _interface and _device) to be able to get information from the device.
 // NOTE: we do NOT need to start the interrupt read yet!
-bool FPXboxHIDDriver::handleStart (IOService* provider)
+bool FPSylpHIDDriver::handleStart (IOService* provider)
 {
 	HIDPreparsedDataRef parseData;
 	HIDCapabilities myHIDCaps;
@@ -189,7 +189,7 @@ bool FPXboxHIDDriver::handleStart (IOService* provider)
 }
 
 
-void FPXboxHIDDriver::handleStop (IOService* provider)
+void FPSylpHIDDriver::handleStop (IOService* provider)
 {
 	USBLog(7, "%s[%p]::handleStop", getName(), this);
 
@@ -225,7 +225,7 @@ void FPXboxHIDDriver::handleStop (IOService* provider)
 }
 
 
-void FPXboxHIDDriver::free (void)
+void FPSylpHIDDriver::free (void)
 {
 	USBLog(6, "%s[%p]::free", getName(), this);
 
@@ -233,9 +233,9 @@ void FPXboxHIDDriver::free (void)
 }
 
 
-void FPXboxHIDDriver::processPacket (void* data, UInt32 size)
+void FPSylpHIDDriver::processPacket (void* data, UInt32 size)
 {
-	IOLog("Should not be here, FPXboxHIDDriver::processPacket()\n");
+	IOLog("Should not be here, FPSylpHIDDriver::processPacket()\n");
 
 	return;
 }
@@ -246,7 +246,7 @@ void FPXboxHIDDriver::processPacket (void* data, UInt32 size)
 // find enough documentation for implementing the "OSCollection * copyCollection (OSDictionary cycleDict = 0)" code, so I ended
 // up fixing the problem a different way. Basically I created a new dictionary and called in the default values. Then I overwrote
 // the new values (optionKey & optionValue) with setObject, and finally used setProperty to replace the old "Options" property.
-IOReturn FPXboxHIDDriver::setProperties (OSObject* properties)
+IOReturn FPSylpHIDDriver::setProperties (OSObject* properties)
 {
 	// called from IORegistryEntrySetCFProperties() from user context
 	USBLog(6, "%s[%p]::setProperties", getName(), this);
@@ -375,9 +375,9 @@ IOReturn FPXboxHIDDriver::setProperties (OSObject* properties)
 	return kIOReturnError;
 }
 
-void FPXboxHIDDriver::generateTimedEvent (OSObject* object, IOTimerEventSource* tes)
+void FPSylpHIDDriver::generateTimedEvent (OSObject* object, IOTimerEventSource* tes)
 {
-	FPXboxHIDDriver* driver = OSDynamicCast(FPXboxHIDDriver, object);
+	FPSylpHIDDriver* driver = OSDynamicCast(FPSylpHIDDriver, object);
 	if (driver) {
 		//USBLog(1, "should generate event here...");
 		if (driver->_xbDeviceType->isEqualTo(kDeviceTypeIRKey)) {
@@ -395,7 +395,7 @@ void FPXboxHIDDriver::generateTimedEvent (OSObject* object, IOTimerEventSource* 
 }
 
 
-void FPXboxHIDDriver::setDefaultOptions (void)
+void FPSylpHIDDriver::setDefaultOptions (void)
 {
 	if (_xbDeviceType->isEqualTo(kDeviceTypePadKey)) {
 		_xbDeviceOptions.pad.MappingLxAxis = kCookiePadLxAxis;
@@ -560,7 +560,7 @@ void FPXboxHIDDriver::setDefaultOptions (void)
 		setProperty(kDeviceOptionsKey, _xbDeviceOptionsDict);
 }
 
-void FPXboxHIDDriver::setDeviceOptions (void)
+void FPSylpHIDDriver::setDeviceOptions (void)
 {
 	if (_xbDeviceType->isEqualTo(kDeviceTypePadKey)) {
 
@@ -649,7 +649,7 @@ void FPXboxHIDDriver::setDeviceOptions (void)
 	}
 }
 
-bool FPXboxHIDDriver::setupDevice (void)
+bool FPSylpHIDDriver::setupDevice (void)
 {
 	// called from handleStart()
 	OSDictionary* deviceDict = 0;
@@ -705,7 +705,7 @@ bool FPXboxHIDDriver::setupDevice (void)
 }
 
 
-XBPadReport* FPXboxHIDDriver::lastRawReport (void)
+XBPadReport* FPSylpHIDDriver::lastRawReport (void)
 {
 	return &_rawReport;
 }
@@ -714,7 +714,7 @@ XBPadReport* FPXboxHIDDriver::lastRawReport (void)
 #define IS_DIGITAL(mask)	(_xbDeviceOptions.pad.AnalogAsDigital & BITMASK(kXboxAnalog ## mask))
 
 // this function is only called when value is NOT zero!
-void FPXboxHIDDriver::remapElement (int map, XBPadReport* report, int value)
+void FPSylpHIDDriver::remapElement (int map, XBPadReport* report, int value)
 {
 	switch (map) {
 		// analog buttons
@@ -872,7 +872,7 @@ void FPXboxHIDDriver::remapElement (int map, XBPadReport* report, int value)
 }
 
 
-bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
+bool FPSylpHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 {
 	// change the report before it's sent to the HID layer
 	// return true if report should be sent to HID layer,
@@ -944,20 +944,20 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 
 #define MAP_ANALOG(name, button) \
 	if (_xbDeviceOptions.pad.Mapping ## button && _xbDeviceOptions.pad.Mapping ## button != kCookiePad ## button && raw->name) \
-		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, raw->name); \
+		FPSylpHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, raw->name); \
 	else if (_xbDeviceOptions.pad.Mapping ## button && raw->name > _mapReport.name) \
 		_mapReport.name = raw->name
 
 #define MAP_DIGITAL(button) \
 	if (_xbDeviceOptions.pad.Mapping ## button && _xbDeviceOptions.pad.Mapping ## button != kCookiePad ## button && (raw->buttons & BITMASK(kXboxDigital ## button))) \
-		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, kButtonAnalogMax); \
+		FPSylpHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## button, &_mapReport, kButtonAnalogMax); \
 	else if (_xbDeviceOptions.pad.Mapping ## button && raw->buttons & BITMASK(kXboxDigital ## button)) \
 		_mapReport.buttons |= BITMASK(kXboxDigital ## button)
 
 #define MAP_AXIS(name, axis) \
 	SInt16 name = kStickHighLowToValue(raw->name ## hi, raw->name ## lo); \
 	if (_xbDeviceOptions.pad.Mapping ## axis && _xbDeviceOptions.pad.Mapping ## axis != kCookiePad ## axis && name) \
-		FPXboxHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## axis, &_mapReport, name); \
+		FPSylpHIDDriver::remapElement(_xbDeviceOptions.pad.Mapping ## axis, &_mapReport, name); \
 	else if (_xbDeviceOptions.pad.Mapping ## axis && name) { \
 		_mapReport.name ## hi = raw->name ## hi; \
 		_mapReport.name ## lo = raw->name ## hi; \
@@ -1066,7 +1066,7 @@ bool FPXboxHIDDriver::manipulateReport (IOBufferMemoryDescriptor* report)
 	return true;
 }
 
-bool FPXboxHIDDriver::isKnownDevice (IOService* provider)
+bool FPSylpHIDDriver::isKnownDevice (IOService* provider)
 {
 	// Check for a known vendor and product id
 	bool isKnown = false;
@@ -1117,7 +1117,7 @@ bool FPXboxHIDDriver::isKnownDevice (IOService* provider)
 	return isKnown;
 }
 
-bool FPXboxHIDDriver::findGenericDevice (IOService* provider)
+bool FPSylpHIDDriver::findGenericDevice (IOService* provider)
 {
 	// This attempts to identify a supported "generic" device by walking the device's property
 	// tree and comparing it to a known standard (Microsoft)
@@ -1289,7 +1289,7 @@ bool FPXboxHIDDriver::findGenericDevice (IOService* provider)
 }
 
 
-IOService* FPXboxHIDDriver::probe (IOService* provider, SInt32* score)
+IOService* FPSylpHIDDriver::probe (IOService* provider, SInt32* score)
 {
 	if (this->isKnownDevice(provider)) {
 		USBLog(3, "%s[%p]::probe found known device", getName(), this);
@@ -1320,10 +1320,10 @@ IOService* FPXboxHIDDriver::probe (IOService* provider, SInt32* score)
 }
 
 
-IOReturn FPXboxHIDDriver::newUserClient (task_t owningTask, void* securityID, UInt32 type, OSDictionary* properties, IOUserClient** handler)
+IOReturn FPSylpHIDDriver::newUserClient (task_t owningTask, void* securityID, UInt32 type, OSDictionary* properties, IOUserClient** handler)
 {
 	// Have this set in Info.plist but it seems to only work if set here!?
-	setProperty("IOUserClientClass", "FPXboxHIDUserClient");
+	setProperty("IOUserClientClass", "FPSylpHIDUserClient");
 
 	return IOHIDDevice::newUserClient(owningTask, securityID, type, properties, handler);
 }
@@ -1332,13 +1332,13 @@ IOReturn FPXboxHIDDriver::newUserClient (task_t owningTask, void* securityID, UI
 // ***********************************************************************************
 // ************************ HID Driver Dispatch Table Functions *********************
 // **********************************************************************************
-IOReturn FPXboxHIDDriver::GetReport (UInt8 inReportType, UInt8 inReportID, UInt8* vInBuf, UInt32* vInSize)
+IOReturn FPSylpHIDDriver::GetReport (UInt8 inReportType, UInt8 inReportID, UInt8* vInBuf, UInt32* vInSize)
 {
 	return kIOReturnSuccess;
 }
 
 
-IOReturn FPXboxHIDDriver::getReport (IOMemoryDescriptor* report, IOHIDReportType reportType, IOOptionBits options)
+IOReturn FPSylpHIDDriver::getReport (IOMemoryDescriptor* report, IOHIDReportType reportType, IOOptionBits options)
 {
 	//UInt8     reportID;
 	IOReturn ret = kIOReturnSuccess;
@@ -1372,13 +1372,13 @@ IOReturn FPXboxHIDDriver::getReport (IOMemoryDescriptor* report, IOHIDReportType
 
 
 // DEPRECATED (By What?!)
-IOReturn FPXboxHIDDriver::SetReport (UInt8 outReportType, UInt8 outReportID, UInt8* vOutBuf, UInt32 vOutSize)
+IOReturn FPSylpHIDDriver::SetReport (UInt8 outReportType, UInt8 outReportID, UInt8* vOutBuf, UInt32 vOutSize)
 {
 	return kIOReturnSuccess;
 }
 
 
-IOReturn FPXboxHIDDriver::setReport (IOMemoryDescriptor* report, IOHIDReportType reportType, IOOptionBits options)
+IOReturn FPSylpHIDDriver::setReport (IOMemoryDescriptor* report, IOHIDReportType reportType, IOOptionBits options)
 {
 	UInt8 reportID;
 	IOReturn ret;
@@ -1436,7 +1436,7 @@ IOReturn FPXboxHIDDriver::setReport (IOMemoryDescriptor* report, IOHIDReportType
 
 // HIDGetHIDDescriptor is used to get a specific HID descriptor from a HID device
 // (such as a report descriptor).
-IOReturn FPXboxHIDDriver::GetHIDDescriptor (UInt8 inDescriptorType, UInt8 inDescriptorIndex, UInt8* vOutBuf, UInt32* vOutSize)
+IOReturn FPSylpHIDDriver::GetHIDDescriptor (UInt8 inDescriptorType, UInt8 inDescriptorIndex, UInt8* vOutBuf, UInt32* vOutSize)
 {
 	//IOUSBDevRequest       requestPB;
 	IOUSBHIDDescriptor* theHIDDesc;
@@ -1583,11 +1583,11 @@ IOReturn FPXboxHIDDriver::GetHIDDescriptor (UInt8 inDescriptorType, UInt8 inDesc
 }
 
 
-IOReturn FPXboxHIDDriver::newReportDescriptor (IOMemoryDescriptor** desc) const
+IOReturn FPSylpHIDDriver::newReportDescriptor (IOMemoryDescriptor** desc) const
 {
 	IOBufferMemoryDescriptor* bufferDesc = NULL;
 	IOReturn ret = kIOReturnNoMemory;
-	FPXboxHIDDriver* me = (FPXboxHIDDriver*) this;
+	FPSylpHIDDriver* me = (FPSylpHIDDriver*) this;
 
 	// Get the proper HID report descriptor size.
 	UInt32 inOutSize = 0;
@@ -1610,25 +1610,25 @@ IOReturn FPXboxHIDDriver::newReportDescriptor (IOMemoryDescriptor** desc) const
 }
 
 
-OSString* FPXboxHIDDriver::newTransportString (void) const
+OSString* FPSylpHIDDriver::newTransportString (void) const
 {
 	return OSString::withCString("USB");
 }
 
 
-OSNumber* FPXboxHIDDriver::newPrimaryUsageNumber (void) const
+OSNumber* FPSylpHIDDriver::newPrimaryUsageNumber (void) const
 {
 	return OSNumber::withNumber(_deviceUsage, 32);
 }
 
 
-OSNumber* FPXboxHIDDriver::newPrimaryUsagePageNumber (void) const
+OSNumber* FPSylpHIDDriver::newPrimaryUsagePageNumber (void) const
 {
 	return OSNumber::withNumber(_deviceUsagePage, 32);
 }
 
 
-OSNumber* FPXboxHIDDriver::newVendorIDNumber (void) const
+OSNumber* FPSylpHIDDriver::newVendorIDNumber (void) const
 {
 	UInt16 vendorID = 0;
 	if (_device != NULL)
@@ -1637,7 +1637,7 @@ OSNumber* FPXboxHIDDriver::newVendorIDNumber (void) const
 }
 
 
-OSNumber* FPXboxHIDDriver::newProductIDNumber (void) const
+OSNumber* FPSylpHIDDriver::newProductIDNumber (void) const
 {
 	UInt16 productID = 0;
 	if (_device != NULL)
@@ -1646,7 +1646,7 @@ OSNumber* FPXboxHIDDriver::newProductIDNumber (void) const
 }
 
 
-OSNumber* FPXboxHIDDriver::newVersionNumber(void) const
+OSNumber* FPSylpHIDDriver::newVersionNumber(void) const
 {
 	UInt16 releaseNum = 0;
 	if (_device != NULL)
@@ -1655,7 +1655,7 @@ OSNumber* FPXboxHIDDriver::newVersionNumber(void) const
 }
 
 
-UInt8 FPXboxHIDDriver::deviceSpeed(void) const
+UInt8 FPSylpHIDDriver::deviceSpeed(void) const
 {
 	UInt8 speed = 0;
 	if (_device != NULL)
@@ -1664,13 +1664,13 @@ UInt8 FPXboxHIDDriver::deviceSpeed(void) const
 }
 
 
-UInt32 FPXboxHIDDriver::currentPower(void) const
+UInt32 FPSylpHIDDriver::currentPower(void) const
 {
 	return _maxPower * 2.0;  // in units of 2 mA
 }
 
 
-UInt32 FPXboxHIDDriver::availablePower(void) const
+UInt32 FPSylpHIDDriver::availablePower(void) const
 {
 	UInt32 power = 0;
 	if (_device != NULL)
@@ -1679,19 +1679,19 @@ UInt32 FPXboxHIDDriver::availablePower(void) const
 }
 
 
-USBDeviceAddress FPXboxHIDDriver::deviceAddress(void) const
+USBDeviceAddress FPSylpHIDDriver::deviceAddress(void) const
 {
 	return _device->GetAddress();
 }
 
 
-UInt32 FPXboxHIDDriver::getMaxReportSize()
+UInt32 FPSylpHIDDriver::getMaxReportSize()
 {
 	return _maxReportSize;
 }
 
 
-OSString* FPXboxHIDDriver::newManufacturerString (void) const
+OSString* FPSylpHIDDriver::newManufacturerString (void) const
 {
 	char manufacturerString[256];
 	UInt32 strSize;
@@ -1714,7 +1714,7 @@ OSString* FPXboxHIDDriver::newManufacturerString (void) const
 }
 
 
-OSString* FPXboxHIDDriver::newProductString (void) const
+OSString* FPSylpHIDDriver::newProductString (void) const
 {
 	char productString[256];
 	UInt32 strSize;
@@ -1737,7 +1737,7 @@ OSString* FPXboxHIDDriver::newProductString (void) const
 }
 
 
-OSString* FPXboxHIDDriver::newSerialNumberString (void) const
+OSString* FPSylpHIDDriver::newSerialNumberString (void) const
 {
 	char serialNumberString[256];
 	UInt32 strSize;
@@ -1758,7 +1758,7 @@ OSString* FPXboxHIDDriver::newSerialNumberString (void) const
 }
 
 
-OSNumber* FPXboxHIDDriver::newLocationIDNumber (void) const
+OSNumber* FPSylpHIDDriver::newLocationIDNumber (void) const
 {
 	OSNumber* newLocationID = NULL;
 
@@ -1772,7 +1772,7 @@ OSNumber* FPXboxHIDDriver::newLocationIDNumber (void) const
 }
 
 
-IOReturn FPXboxHIDDriver::GetIndexedString (UInt8 index, UInt8* vOutBuf, UInt32* vOutSize, UInt16 lang) const
+IOReturn FPSylpHIDDriver::GetIndexedString (UInt8 index, UInt8* vOutBuf, UInt32* vOutSize, UInt16 lang) const
 {
 	char strBuf[256];
 	UInt16 strLen = sizeof(strBuf) - 1;     // GetStringDescriptor MaxLen = 255
@@ -1809,7 +1809,7 @@ IOReturn FPXboxHIDDriver::GetIndexedString (UInt8 index, UInt8* vOutBuf, UInt32*
 }
 
 
-OSString* FPXboxHIDDriver::newIndexedString (UInt8 index) const
+OSString* FPSylpHIDDriver::newIndexedString (UInt8 index) const
 {
 	char string[256];
 	UInt32 strSize;
@@ -1827,7 +1827,7 @@ OSString* FPXboxHIDDriver::newIndexedString (UInt8 index) const
 }
 
 
-IOReturn FPXboxHIDDriver::message (UInt32 type, IOService* provider, void* argument)
+IOReturn FPSylpHIDDriver::message (UInt32 type, IOService* provider, void* argument)
 {
 	IOReturn err;
 	super::message(type, provider, argument);
@@ -1860,7 +1860,7 @@ IOReturn FPXboxHIDDriver::message (UInt32 type, IOService* provider, void* argum
 }
 
 
-bool FPXboxHIDDriver::willTerminate (IOService* provider, IOOptionBits options)
+bool FPSylpHIDDriver::willTerminate (IOService* provider, IOOptionBits options)
 {
 	// this method is intended to be used to stop any pending I/O and to make sure that
 	// we have begun getting our callbacks in order. by the time we get here, the
@@ -1873,7 +1873,7 @@ bool FPXboxHIDDriver::willTerminate (IOService* provider, IOOptionBits options)
 }
 
 
-bool FPXboxHIDDriver::didTerminate (IOService* provider, IOOptionBits options, bool* defer)
+bool FPSylpHIDDriver::didTerminate (IOService* provider, IOOptionBits options, bool* defer)
 {
 	// this method comes at the end of the termination sequence. Hopefully, all of our outstanding IO is complete
 	// in which case we can just close our provider and IOKit will take care of the rest. Otherwise, we need to
@@ -1887,7 +1887,7 @@ bool FPXboxHIDDriver::didTerminate (IOService* provider, IOOptionBits options, b
 }
 
 
-bool FPXboxHIDDriver::start (IOService* provider)
+bool FPSylpHIDDriver::start (IOService* provider)
 {
 	IOReturn err = kIOReturnSuccess;
 	IOWorkLoop* wl = NULL;
@@ -1983,9 +1983,9 @@ bool FPXboxHIDDriver::start (IOService* provider)
 
 
 // InterruptReadHandlerEntry is called to process any data coming in through our interrupt pipe
-void FPXboxHIDDriver::InterruptReadHandlerEntry (OSObject* target, void* param, IOReturn status, UInt32 bufferSizeRemaining)
+void FPSylpHIDDriver::InterruptReadHandlerEntry (OSObject* target, void* param, IOReturn status, UInt32 bufferSizeRemaining)
 {
-	FPXboxHIDDriver*   me = OSDynamicCast(FPXboxHIDDriver, target);
+	FPSylpHIDDriver*   me = OSDynamicCast(FPSylpHIDDriver, target);
 
 	if (!me)
 		return;
@@ -1994,7 +1994,7 @@ void FPXboxHIDDriver::InterruptReadHandlerEntry (OSObject* target, void* param, 
 }
 
 
-void FPXboxHIDDriver::InterruptReadHandler (IOReturn status, UInt32 bufferSizeRemaining)
+void FPSylpHIDDriver::InterruptReadHandler (IOReturn status, UInt32 bufferSizeRemaining)
 {
 	bool queueAnother = true;
 	bool timeToGoAway = false;
@@ -2140,9 +2140,9 @@ void FPXboxHIDDriver::InterruptReadHandler (IOReturn status, UInt32 bufferSizeRe
 // In case (1), we just need to close the driver and go.  In case (2), we need to ask if we are still attached.
 // If we are, then we update our retry count.  Once our retry count (3 from the 9 sources) are exhausted, then
 // we issue a DeviceReset to our provider, with the understanding that we will go away (as an interface).
-void FPXboxHIDDriver::CheckForDeadDeviceEntry (OSObject* target)
+void FPSylpHIDDriver::CheckForDeadDeviceEntry (OSObject* target)
 {
-	FPXboxHIDDriver*   me = OSDynamicCast(FPXboxHIDDriver, target);
+	FPSylpHIDDriver*   me = OSDynamicCast(FPSylpHIDDriver, target);
 
 	if (!me)
 		return;
@@ -2151,7 +2151,7 @@ void FPXboxHIDDriver::CheckForDeadDeviceEntry (OSObject* target)
 }
 
 
-void FPXboxHIDDriver::CheckForDeadDevice (void)
+void FPSylpHIDDriver::CheckForDeadDevice (void)
 {
 	IOReturn err = kIOReturnSuccess;
 
@@ -2192,9 +2192,9 @@ void FPXboxHIDDriver::CheckForDeadDevice (void)
 // ClearFeatureEndpointHaltEntry is called when we get an OHCI error from our interrupt read
 // (except for kIOReturnNotResponding which will check for a dead device). In these cases we need
 // to clear the halted bit in the controller AND we need to reset the data toggle on the device.
-void FPXboxHIDDriver::ClearFeatureEndpointHaltEntry (OSObject* target)
+void FPSylpHIDDriver::ClearFeatureEndpointHaltEntry (OSObject* target)
 {
-	FPXboxHIDDriver*   me = OSDynamicCast(FPXboxHIDDriver, target);
+	FPSylpHIDDriver*   me = OSDynamicCast(FPSylpHIDDriver, target);
 
 	if (!me)
 		return;
@@ -2203,7 +2203,7 @@ void FPXboxHIDDriver::ClearFeatureEndpointHaltEntry (OSObject* target)
 }
 
 
-void FPXboxHIDDriver::ClearFeatureEndpointHalt (void)
+void FPSylpHIDDriver::ClearFeatureEndpointHalt (void)
 {
 	IOReturn status;
 	IOUSBDevRequest request;
@@ -2242,13 +2242,13 @@ void FPXboxHIDDriver::ClearFeatureEndpointHalt (void)
 }
 
 
-IOReturn FPXboxHIDDriver::ChangeOutstandingIO (OSObject* target, void* param1, void* param2, void* param3, void* param4)
+IOReturn FPSylpHIDDriver::ChangeOutstandingIO (OSObject* target, void* param1, void* param2, void* param3, void* param4)
 {
-	FPXboxHIDDriver* me = OSDynamicCast(FPXboxHIDDriver, target);
+	FPSylpHIDDriver* me = OSDynamicCast(FPSylpHIDDriver, target);
 	SInt64 direction = (SInt64)param1;
 
 	if (!me) {
-		USBLog(1, "FPXboxHIDDriver::ChangeOutstandingIO - invalid target");
+		USBLog(1, "FPSylpHIDDriver::ChangeOutstandingIO - invalid target");
 		return kIOReturnSuccess;
 	}
 	switch (direction) {
@@ -2271,7 +2271,7 @@ IOReturn FPXboxHIDDriver::ChangeOutstandingIO (OSObject* target, void* param1, v
 }
 
 
-void FPXboxHIDDriver::DecrementOutstandingIO (void)
+void FPSylpHIDDriver::DecrementOutstandingIO (void)
 {
 	if (!_gate) {
 		if (!--_outstandingIO && _needToClose) {
@@ -2285,7 +2285,7 @@ void FPXboxHIDDriver::DecrementOutstandingIO (void)
 }
 
 
-void FPXboxHIDDriver::IncrementOutstandingIO (void)
+void FPSylpHIDDriver::IncrementOutstandingIO (void)
 {
 	if (!_gate) {
 		_outstandingIO++;
@@ -2298,12 +2298,12 @@ void FPXboxHIDDriver::IncrementOutstandingIO (void)
 // This method may have a confusing name. This is not talking about Final Processing of the driver (as in
 // the driver is going away or something like that. It is talking about FinalProcessing of the start method.
 // It is called as the very last thing in the start method, and by default it issues a read on the interrupt pipe.
-IOReturn FPXboxHIDDriver::StartFinalProcessing (void)
+IOReturn FPSylpHIDDriver::StartFinalProcessing (void)
 {
 	IOReturn err = kIOReturnSuccess;
 
 	_completion.target = (void*)this;
-	_completion.action = (IOUSBCompletionAction) &FPXboxHIDDriver::InterruptReadHandlerEntry;
+	_completion.action = (IOUSBCompletionAction) &FPSylpHIDDriver::InterruptReadHandlerEntry;
 	_completion.parameter = (void*)0;
 
 	IncrementOutstandingIO();
@@ -2317,7 +2317,7 @@ IOReturn FPXboxHIDDriver::StartFinalProcessing (void)
 }
 
 
-IOReturn FPXboxHIDDriver::SetIdleMillisecs (UInt16 msecs)
+IOReturn FPSylpHIDDriver::SetIdleMillisecs (UInt16 msecs)
 {
 	IOReturn err = kIOReturnSuccess;
 	IOUSBDevRequest request;
@@ -2331,7 +2331,7 @@ IOReturn FPXboxHIDDriver::SetIdleMillisecs (UInt16 msecs)
 
 	err = _device->DeviceRequest(&request, 5000, 0);
 	if (err != kIOReturnSuccess) {
-		USBLog(3, "%s[%p]: FPXboxHIDDriver::SetIdleMillisecs returned error 0x%x",getName(), this, err);
+		USBLog(3, "%s[%p]: FPSylpHIDDriver::SetIdleMillisecs returned error 0x%x",getName(), this, err);
 	}
 	return err;
 
@@ -2339,7 +2339,7 @@ IOReturn FPXboxHIDDriver::SetIdleMillisecs (UInt16 msecs)
 
 
 #if ENABLE_HIDREPORT_LOGGING
-void FPXboxHIDDriver::LogMemReport (IOMemoryDescriptor* reportBuffer)
+void FPSylpHIDDriver::LogMemReport (IOMemoryDescriptor* reportBuffer)
 {
 	IOByteCount reportSize;
 	char outBuffer[1024];
@@ -2364,7 +2364,7 @@ void FPXboxHIDDriver::LogMemReport (IOMemoryDescriptor* reportBuffer)
 }
 
 
-char FPXboxHIDDriver::GetHexChar (char hexChar)
+char FPSylpHIDDriver::GetHexChar (char hexChar)
 {
 	char hexChars[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 	return hexChars[0x0F & hexChar];
@@ -2372,26 +2372,26 @@ char FPXboxHIDDriver::GetHexChar (char hexChar)
 #endif
 
 
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  0);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  1);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  2);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  3);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  4);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  5);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  6);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  7);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  8);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver,  9);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 10);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 11);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 12);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 13);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 14);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 15);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 16);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 17);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 18);
-OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  0);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  1);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  2);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  3);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  4);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  5);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  6);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  7);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  8);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver,  9);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 10);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 11);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 12);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 13);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 14);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 15);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 16);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 17);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 18);
+OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 19);
 
 // =========================================================================================================================
 // This is a basic HID driver to provide support for USB Class 3 (HID) devices, heavily modified to support Xbox Controllers
@@ -2440,7 +2440,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // the IORegistryEntrySetCFProperties() to modify the driver settings.
 // Clients also can call IORegistryEntryCreateCFProperties() to see what the current settings are.
 //
-// • Moved property list keys into a FPXboxHIDDriverKeys.h
+// • Moved property list keys into a FPSylpHIDDriverKeys.h
 // • Removed device type enumeration - use string instead
 // • Mew pad options: InvertXAxis. InvertRyAxis, InvertRxAxis, ClampButtons, ClampLeftTrigger, ClampRightTrigger,
 //					  LeftTriggerThreshold, RightTriggerThreshold;
@@ -2461,7 +2461,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • Changed to support Standard 32/64-bit architecture
 // • Compiled with Mac OS X 10.6 SDK
 //
-// 07/15/2015 (Xbox HID v1.0.0 Changes by Paige DePol)
+// 07/15/2015 (SylpHID v1.0.0 Changes by Paige DePol)
 // • Re-created all projects using Xcode 6.2 due to issues with old projects
 //   • Upgraded all projects to use ARC (Automatic Reference Counting)
 //   • Created common workspace to consolidate all 3 projects together

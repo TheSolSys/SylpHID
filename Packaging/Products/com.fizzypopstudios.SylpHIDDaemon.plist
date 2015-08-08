@@ -5,10 +5,10 @@
 	<key>KeepAlive</key>
 	<true/>
 	<key>Label</key>
-	<string>com.fizzypopstudios.XboxHIDDaemon</string>
+	<string>com.fizzypopstudios.SylpHIDDaemon</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Library/PreferencePanes/Xbox HID.prefPane/Contents/MacOS/Xbox HID Daemon</string>
+		<string>/Library/PreferencePanes/SylpHID.prefPane/Contents/MacOS/SylpHID Daemon</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>

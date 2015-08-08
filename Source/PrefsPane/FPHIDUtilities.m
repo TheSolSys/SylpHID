@@ -1,6 +1,6 @@
 //
 // FPHIDUtilities.m
-// "Xbox HID"
+// "SylpHID"
 //
 // Based on SDL Joystick Driver (Simple DirectMedia Layer)
 // Copyright (c)1997, 1998, 1999, 2000, 2001, 2002  Sam Lantinga
@@ -12,15 +12,15 @@
 // http://xboxhid.fizzypopstudios.com
 //
 // =========================================================================================================================
-// This file is part of the Xbox HID Driver, Daemon, and Preference Pane software (known as "Xbox HID").
+// This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").
 //
-// "Xbox HID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
+// "SylpHID" is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License
 // as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 //
-// "Xbox HID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+// "SylpHID" is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with "Xbox HID";
+// You should have received a copy of the GNU General Public License along with "SylpHID";
 // if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // =========================================================================================================================
 
@@ -95,7 +95,7 @@ typedef struct HIDDevice {
 } HIDDevice;
 
 
-// Dummy interface for target in FPXboxHID_JoystickUpdate
+// Dummy interface for target in FPSylpHID_JoystickUpdate
 @interface Dummy : NSObject
 
 - (void) updateRawReport;
@@ -519,7 +519,7 @@ static HIDDevice* HIDDisposeDevice (HIDDevice** ppDevice)
 // Function to scan the system for joysticks
 // Joystick 0 should be the system default joystick
 // This function should return the number of available joysticks, or -1 on an unrecoverable fatal error
-int FPXboxHID_JoystickInit()
+int FPSylpHID_JoystickInit()
 {
 	IOReturn result = kIOReturnSuccess;
 	mach_port_t masterPort = 0;
@@ -542,7 +542,7 @@ int FPXboxHID_JoystickInit()
 	}
 
 	// Set up a matching dictionary to search I/O Registry by class name for all HID class devices
-	hidMatchDictionary = IOServiceMatching("FPXboxHIDDriver");
+	hidMatchDictionary = IOServiceMatching("FPSylpHIDDriver");
 	if (hidMatchDictionary == NULL) {
 		HIDReportErrorNum("Joystick: Failed to get HID CFMutableDictionaryRef via IOServiceMatching", 0);
 		return -1;
@@ -603,7 +603,7 @@ int FPXboxHID_JoystickInit()
 
 
 // Update joystick information, this is called via a polling timer
-void FPXboxHID_JoystickUpdate(id target)
+void FPSylpHID_JoystickUpdate(id target)
 {
 	HIDDevice* device;
 	HIDElement* element;
@@ -658,7 +658,7 @@ void FPXboxHID_JoystickUpdate(id target)
 
 
 // Function to perform any system-specific joystick related cleanup
-void FPXboxHID_JoystickQuit(void)
+void FPSylpHID_JoystickQuit(void)
 {
 	while (NULL != gpDeviceList)
 		gpDeviceList = HIDDisposeDevice(&gpDeviceList);

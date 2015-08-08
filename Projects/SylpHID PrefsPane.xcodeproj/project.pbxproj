@@ -42,10 +42,10 @@
 		822239F41B6BFA9000099615 /* FPDataSourceApps.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F21B6BFA9000099615 /* FPDataSourceApps.m */; };
 		822239FB1B6BFAA300099615 /* FPHIDUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F51B6BFAA300099615 /* FPHIDUtilities.h */; };
 		822239FC1B6BFAA300099615 /* FPHIDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F61B6BFAA300099615 /* FPHIDUtilities.m */; };
-		822239FD1B6BFAA300099615 /* FPXboxHIDNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F71B6BFAA300099615 /* FPXboxHIDNotifier.h */; };
-		822239FE1B6BFAA300099615 /* FPXboxHIDNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F81B6BFAA300099615 /* FPXboxHIDNotifier.m */; };
-		822239FF1B6BFAA300099615 /* FPXboxHIDPrefsPane.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F91B6BFAA300099615 /* FPXboxHIDPrefsPane.h */; };
-		82223A001B6BFAA300099615 /* FPXboxHIDPrefsPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */; };
+		822239FD1B6BFAA300099615 /* FPSylpHIDNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F71B6BFAA300099615 /* FPSylpHIDNotifier.h */; };
+		822239FE1B6BFAA300099615 /* FPSylpHIDNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239F81B6BFAA300099615 /* FPSylpHIDNotifier.m */; };
+		822239FF1B6BFAA300099615 /* FPSylpHIDPrefsPane.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F91B6BFAA300099615 /* FPSylpHIDPrefsPane.h */; };
+		82223A001B6BFAA300099615 /* FPSylpHIDPrefsPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239FA1B6BFAA300099615 /* FPSylpHIDPrefsPane.m */; };
 		82223A041B6BFADB00099615 /* Prefix-PrefsPane.pch in Headers */ = {isa = PBXBuildFile; fileRef = 82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */; };
 		82223A0E1B6BFB2400099615 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0B1B6BFB2400099615 /* credits.rtf */; };
 		82223A0F1B6BFB2400099615 /* donate.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0C1B6BFB2400099615 /* donate.rtf */; };
@@ -80,11 +80,11 @@
 		82223A6A1B6C079900099615 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A661B6C079900099615 /* SMDoubleSlider.m */; };
 		82223A6B1B6C079900099615 /* SMDoubleSliderCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A671B6C079900099615 /* SMDoubleSliderCell.h */; };
 		82223A6C1B6C079900099615 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A681B6C079900099615 /* SMDoubleSliderCell.m */; };
-		82223A731B6C090B00099615 /* FPXboxHIDDriverInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A6E1B6C090B00099615 /* FPXboxHIDDriverInterface.h */; };
-		82223A741B6C090B00099615 /* FPXboxHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A6F1B6C090B00099615 /* FPXboxHIDDriverInterface.m */; };
-		82223A751B6C090B00099615 /* FPXboxHIDDriverKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */; };
-		82223A761B6C090B00099615 /* FPXboxHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */; };
-		82223A771B6C090B00099615 /* FPXboxHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */; };
+		82223A731B6C090B00099615 /* FPSylpHIDDriverInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A6E1B6C090B00099615 /* FPSylpHIDDriverInterface.h */; };
+		82223A741B6C090B00099615 /* FPSylpHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A6F1B6C090B00099615 /* FPSylpHIDDriverInterface.m */; };
+		82223A751B6C090B00099615 /* FPSylpHIDDriverKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A701B6C090B00099615 /* FPSylpHIDDriverKeys.h */; };
+		82223A761B6C090B00099615 /* FPSylpHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */; };
+		82223A771B6C090B00099615 /* FPSylpHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */; };
 		82223A7C1B6C0D5E00099615 /* SylpHID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* SylpHID.xib */; };
 /* End PBXBuildFile section */
 
@@ -124,10 +124,10 @@
 		822239F21B6BFA9000099615 /* FPDataSourceApps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPDataSourceApps.m; path = "../Source/PrefsPane/Data Source/FPDataSourceApps.m"; sourceTree = SOURCE_ROOT; };
 		822239F51B6BFAA300099615 /* FPHIDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPHIDUtilities.h; path = ../Source/PrefsPane/FPHIDUtilities.h; sourceTree = SOURCE_ROOT; };
 		822239F61B6BFAA300099615 /* FPHIDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPHIDUtilities.m; path = ../Source/PrefsPane/FPHIDUtilities.m; sourceTree = SOURCE_ROOT; };
-		822239F71B6BFAA300099615 /* FPXboxHIDNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDNotifier.h; path = ../Source/PrefsPane/FPXboxHIDNotifier.h; sourceTree = SOURCE_ROOT; };
-		822239F81B6BFAA300099615 /* FPXboxHIDNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDNotifier.m; path = ../Source/PrefsPane/FPXboxHIDNotifier.m; sourceTree = SOURCE_ROOT; };
-		822239F91B6BFAA300099615 /* FPXboxHIDPrefsPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsPane.h; path = ../Source/PrefsPane/FPXboxHIDPrefsPane.h; sourceTree = SOURCE_ROOT; };
-		822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsPane.m; path = ../Source/PrefsPane/FPXboxHIDPrefsPane.m; sourceTree = SOURCE_ROOT; };
+		822239F71B6BFAA300099615 /* FPSylpHIDNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDNotifier.h; path = ../Source/PrefsPane/FPSylpHIDNotifier.h; sourceTree = SOURCE_ROOT; };
+		822239F81B6BFAA300099615 /* FPSylpHIDNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDNotifier.m; path = ../Source/PrefsPane/FPSylpHIDNotifier.m; sourceTree = SOURCE_ROOT; };
+		822239F91B6BFAA300099615 /* FPSylpHIDPrefsPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDPrefsPane.h; path = ../Source/PrefsPane/FPSylpHIDPrefsPane.h; sourceTree = SOURCE_ROOT; };
+		822239FA1B6BFAA300099615 /* FPSylpHIDPrefsPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDPrefsPane.m; path = ../Source/PrefsPane/FPSylpHIDPrefsPane.m; sourceTree = SOURCE_ROOT; };
 		82223A011B6BFAD200099615 /* Info-PrefsPane.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-PrefsPane.plist"; path = "Supporting Files/Info-PrefsPane.plist"; sourceTree = SOURCE_ROOT; };
 		82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Prefix-PrefsPane.pch"; path = "Supporting Files/Prefix-PrefsPane.pch"; sourceTree = SOURCE_ROOT; };
 		82223A0B1B6BFB2400099615 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = credits.rtf; path = ../Resources/credits.rtf; sourceTree = SOURCE_ROOT; };
@@ -164,11 +164,11 @@
 		82223A661B6C079900099615 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSlider.m; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSlider.m; sourceTree = SOURCE_ROOT; };
 		82223A671B6C079900099615 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMDoubleSliderCell.h; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.h; sourceTree = SOURCE_ROOT; };
 		82223A681B6C079900099615 /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMDoubleSliderCell.m; path = ../Source/External/SMDoubleSlider/Framework_code/SMDoubleSliderCell.m; sourceTree = SOURCE_ROOT; };
-		82223A6E1B6C090B00099615 /* FPXboxHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverInterface.h; path = ../Source/Common/FPXboxHIDDriverInterface.h; sourceTree = "<group>"; };
-		82223A6F1B6C090B00099615 /* FPXboxHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDriverInterface.m; path = ../Source/Common/FPXboxHIDDriverInterface.m; sourceTree = "<group>"; };
-		82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverKeys.h; path = ../Source/Common/FPXboxHIDDriverKeys.h; sourceTree = "<group>"; };
-		82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsLoader.h; path = ../Source/Common/FPXboxHIDPrefsLoader.h; sourceTree = "<group>"; };
-		82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsLoader.m; path = ../Source/Common/FPXboxHIDPrefsLoader.m; sourceTree = "<group>"; };
+		82223A6E1B6C090B00099615 /* FPSylpHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDDriverInterface.h; path = ../Source/Common/FPSylpHIDDriverInterface.h; sourceTree = "<group>"; };
+		82223A6F1B6C090B00099615 /* FPSylpHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDDriverInterface.m; path = ../Source/Common/FPSylpHIDDriverInterface.m; sourceTree = "<group>"; };
+		82223A701B6C090B00099615 /* FPSylpHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDDriverKeys.h; path = ../Source/Common/FPSylpHIDDriverKeys.h; sourceTree = "<group>"; };
+		82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDPrefsLoader.h; path = ../Source/Common/FPSylpHIDPrefsLoader.h; sourceTree = "<group>"; };
+		82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDPrefsLoader.m; path = ../Source/Common/FPSylpHIDPrefsLoader.m; sourceTree = "<group>"; };
 		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "../Resources/en.lproj/SylpHID.xib"; sourceTree = "<group>"; };
 		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SylpHID.prefPane"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -343,11 +343,11 @@
 		82223A6D1B6C08EF00099615 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				82223A701B6C090B00099615 /* FPXboxHIDDriverKeys.h */,
-				82223A6E1B6C090B00099615 /* FPXboxHIDDriverInterface.h */,
-				82223A6F1B6C090B00099615 /* FPXboxHIDDriverInterface.m */,
-				82223A711B6C090B00099615 /* FPXboxHIDPrefsLoader.h */,
-				82223A721B6C090B00099615 /* FPXboxHIDPrefsLoader.m */,
+				82223A701B6C090B00099615 /* FPSylpHIDDriverKeys.h */,
+				82223A6E1B6C090B00099615 /* FPSylpHIDDriverInterface.h */,
+				82223A6F1B6C090B00099615 /* FPSylpHIDDriverInterface.m */,
+				82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */,
+				82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -379,10 +379,10 @@
 			children = (
 				822239F51B6BFAA300099615 /* FPHIDUtilities.h */,
 				822239F61B6BFAA300099615 /* FPHIDUtilities.m */,
-				822239F71B6BFAA300099615 /* FPXboxHIDNotifier.h */,
-				822239F81B6BFAA300099615 /* FPXboxHIDNotifier.m */,
-				822239F91B6BFAA300099615 /* FPXboxHIDPrefsPane.h */,
-				822239FA1B6BFAA300099615 /* FPXboxHIDPrefsPane.m */,
+				822239F71B6BFAA300099615 /* FPSylpHIDNotifier.h */,
+				822239F81B6BFAA300099615 /* FPSylpHIDNotifier.m */,
+				822239F91B6BFAA300099615 /* FPSylpHIDPrefsPane.h */,
+				822239FA1B6BFAA300099615 /* FPSylpHIDPrefsPane.m */,
 			);
 			name = "Prefs Pane";
 			path = "SylpHID";
@@ -406,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822239B81B6BFA5B00099615 /* FPAppBindingCells.h in Headers */,
-				82223A731B6C090B00099615 /* FPXboxHIDDriverInterface.h in Headers */,
+				82223A731B6C090B00099615 /* FPSylpHIDDriverInterface.h in Headers */,
 				822239FB1B6BFAA300099615 /* FPHIDUtilities.h in Headers */,
 				82223A6B1B6C079900099615 /* SMDoubleSliderCell.h in Headers */,
 				822239EC1B6BFA7200099615 /* FPLogoView.h in Headers */,
@@ -421,14 +421,14 @@
 				822239E41B6BFA7200099615 /* FPBoxLine.h in Headers */,
 				822239EE1B6BFA7200099615 /* FPTriggerView.h in Headers */,
 				822239EA1B6BFA7200099615 /* FPImageView.h in Headers */,
-				82223A751B6C090B00099615 /* FPXboxHIDDriverKeys.h in Headers */,
+				82223A751B6C090B00099615 /* FPSylpHIDDriverKeys.h in Headers */,
 				82223A691B6C079900099615 /* SMDoubleSlider.h in Headers */,
 				822239E01B6BFA7200099615 /* FPAppTableView.h in Headers */,
-				82223A761B6C090B00099615 /* FPXboxHIDPrefsLoader.h in Headers */,
+				82223A761B6C090B00099615 /* FPSylpHIDPrefsLoader.h in Headers */,
 				822239E61B6BFA7200099615 /* FPButtonView.h in Headers */,
-				822239FD1B6BFAA300099615 /* FPXboxHIDNotifier.h in Headers */,
+				822239FD1B6BFAA300099615 /* FPSylpHIDNotifier.h in Headers */,
 				822239E21B6BFA7200099615 /* FPAxisPairView.h in Headers */,
-				822239FF1B6BFAA300099615 /* FPXboxHIDPrefsPane.h in Headers */,
+				822239FF1B6BFAA300099615 /* FPSylpHIDPrefsPane.h in Headers */,
 				822239C61B6BFA6400099615 /* FPConfigPopUp.h in Headers */,
 				82223A631B6C078D00099615 /* MAAttachedWindow.h in Headers */,
 			);
@@ -535,7 +535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.XboxHIDDaemon\nopen \"/Applications/System Preferences.app\"";
+			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.SylpHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.SylpHIDDaemon\nopen \"/Applications/System Preferences.app\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -549,20 +549,20 @@
 				82223A6C1B6C079900099615 /* SMDoubleSliderCell.m in Sources */,
 				82223A641B6C078D00099615 /* MAAttachedWindow.m in Sources */,
 				82223A6A1B6C079900099615 /* SMDoubleSlider.m in Sources */,
-				82223A741B6C090B00099615 /* FPXboxHIDDriverInterface.m in Sources */,
+				82223A741B6C090B00099615 /* FPSylpHIDDriverInterface.m in Sources */,
 				822239E51B6BFA7200099615 /* FPBoxLine.m in Sources */,
 				822239E91B6BFA7200099615 /* FPDpadView.m in Sources */,
-				82223A001B6BFAA300099615 /* FPXboxHIDPrefsPane.m in Sources */,
+				82223A001B6BFAA300099615 /* FPSylpHIDPrefsPane.m in Sources */,
 				822239CB1B6BFA6400099615 /* FPTextCredits.m in Sources */,
 				822239DF1B6BFA7200099615 /* FPAlertView.m in Sources */,
 				822239E11B6BFA7200099615 /* FPAppTableView.m in Sources */,
 				822239E31B6BFA7200099615 /* FPAxisPairView.m in Sources */,
-				82223A771B6C090B00099615 /* FPXboxHIDPrefsLoader.m in Sources */,
+				82223A771B6C090B00099615 /* FPSylpHIDPrefsLoader.m in Sources */,
 				822239C91B6BFA6400099615 /* FPScrollerCredits.m in Sources */,
 				822239C51B6BFA6400099615 /* FPAnalogDigitalButton.m in Sources */,
 				822239B91B6BFA5B00099615 /* FPAppBindingCells.m in Sources */,
 				822239EB1B6BFA7200099615 /* FPImageView.m in Sources */,
-				822239FE1B6BFAA300099615 /* FPXboxHIDNotifier.m in Sources */,
+				822239FE1B6BFAA300099615 /* FPSylpHIDNotifier.m in Sources */,
 				822239ED1B6BFA7200099615 /* FPLogoView.m in Sources */,
 				822239BB1B6BFA5B00099615 /* FPPopUpButtonCell.m in Sources */,
 				822239FC1B6BFAA300099615 /* FPHIDUtilities.m in Sources */,

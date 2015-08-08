@@ -7,7 +7,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>v1.0.0 (r420)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.XboxHIDPrefsPane</string>
+	<string>com.fizzypopstudios.SylpHIDPrefsPane</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -31,6 +31,6 @@
 	<key>NSPrefPaneIconLabel</key>
 	<string>SylpHID</string>
 	<key>NSPrincipalClass</key>
-	<string>FPXboxHIDPrefsPane</string>
+	<string>FPSylpHIDPrefsPane</string>
 </dict>
 </plist>

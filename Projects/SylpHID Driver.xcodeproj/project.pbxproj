@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		822239A01B6BF97C00099615 /* FPXboxHIDDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8222399C1B6BF97C00099615 /* FPXboxHIDDriver.cpp */; };
-		822239A11B6BF97C00099615 /* FPXboxHIDDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8222399D1B6BF97C00099615 /* FPXboxHIDDriver.h */; };
-		822239A21B6BF97C00099615 /* FPXboxHIDUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8222399E1B6BF97C00099615 /* FPXboxHIDUserClient.cpp */; };
-		822239A31B6BF97C00099615 /* FPXboxHIDUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8222399F1B6BF97C00099615 /* FPXboxHIDUserClient.h */; };
+		822239A01B6BF97C00099615 /* FPSylpHIDDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8222399C1B6BF97C00099615 /* FPSylpHIDDriver.cpp */; };
+		822239A11B6BF97C00099615 /* FPSylpHIDDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 8222399D1B6BF97C00099615 /* FPSylpHIDDriver.h */; };
+		822239A21B6BF97C00099615 /* FPSylpHIDUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8222399E1B6BF97C00099615 /* FPSylpHIDUserClient.cpp */; };
+		822239A31B6BF97C00099615 /* FPSylpHIDUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 8222399F1B6BF97C00099615 /* FPSylpHIDUserClient.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		822239981B6BF94400099615 /* Info-Driver.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-Driver.plist"; path = "Supporting Files/Info-Driver.plist"; sourceTree = SOURCE_ROOT; };
-		8222399C1B6BF97C00099615 /* FPXboxHIDDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FPXboxHIDDriver.cpp; path = ../Source/Driver/FPXboxHIDDriver.cpp; sourceTree = SOURCE_ROOT; };
-		8222399D1B6BF97C00099615 /* FPXboxHIDDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriver.h; path = ../Source/Driver/FPXboxHIDDriver.h; sourceTree = SOURCE_ROOT; };
-		8222399E1B6BF97C00099615 /* FPXboxHIDUserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FPXboxHIDUserClient.cpp; path = ../Source/Driver/FPXboxHIDUserClient.cpp; sourceTree = SOURCE_ROOT; };
-		8222399F1B6BF97C00099615 /* FPXboxHIDUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDUserClient.h; path = ../Source/Driver/FPXboxHIDUserClient.h; sourceTree = SOURCE_ROOT; };
+		8222399C1B6BF97C00099615 /* FPSylpHIDDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FPSylpHIDDriver.cpp; path = ../Source/Driver/FPSylpHIDDriver.cpp; sourceTree = SOURCE_ROOT; };
+		8222399D1B6BF97C00099615 /* FPSylpHIDDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDDriver.h; path = ../Source/Driver/FPSylpHIDDriver.h; sourceTree = SOURCE_ROOT; };
+		8222399E1B6BF97C00099615 /* FPSylpHIDUserClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FPSylpHIDUserClient.cpp; path = ../Source/Driver/FPSylpHIDUserClient.cpp; sourceTree = SOURCE_ROOT; };
+		8222399F1B6BF97C00099615 /* FPSylpHIDUserClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDUserClient.h; path = ../Source/Driver/FPSylpHIDUserClient.h; sourceTree = SOURCE_ROOT; };
 		82223A5C1B6C021C00099615 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		82A0B3CF1B6BD7BA00653468 /* SylpHID.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SylpHID.kext"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,10 +63,10 @@
 		82A0B3D11B6BD7BA00653468 /* Kext Source */ = {
 			isa = PBXGroup;
 			children = (
-				8222399D1B6BF97C00099615 /* FPXboxHIDDriver.h */,
-				8222399C1B6BF97C00099615 /* FPXboxHIDDriver.cpp */,
-				8222399F1B6BF97C00099615 /* FPXboxHIDUserClient.h */,
-				8222399E1B6BF97C00099615 /* FPXboxHIDUserClient.cpp */,
+				8222399D1B6BF97C00099615 /* FPSylpHIDDriver.h */,
+				8222399C1B6BF97C00099615 /* FPSylpHIDDriver.cpp */,
+				8222399F1B6BF97C00099615 /* FPSylpHIDUserClient.h */,
+				8222399E1B6BF97C00099615 /* FPSylpHIDUserClient.cpp */,
 			);
 			name = "Kext Source";
 			path = "SylpHID Driver";
@@ -88,8 +88,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				822239A11B6BF97C00099615 /* FPXboxHIDDriver.h in Headers */,
-				822239A31B6BF97C00099615 /* FPXboxHIDUserClient.h in Headers */,
+				822239A11B6BF97C00099615 /* FPSylpHIDDriver.h in Headers */,
+				822239A31B6BF97C00099615 /* FPSylpHIDUserClient.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nkillall \"System Preferences\" &>/dev/null\nkillall \"SylpHID\" &>/dev/null\nlaunchctl stop com.fizzypopstudios.XboxHIDDaemon\nlaunchctl unload /Library/LaunchAgents/com.fizzypopstudios.XboxHIDDaemon.plist\nsudo -A kextunload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\nif [[ \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" -nt \"/System/Library/Extensions/$FULL_PRODUCT_NAME\" ]]; then\n  sudo -A rm -rf \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  sudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" /System/Library/Extensions\n  rm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\n  cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nfi\nsudo -A kextload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"";
+			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nkillall \"System Preferences\" &>/dev/null\nkillall \"SylpHID\" &>/dev/null\nlaunchctl stop com.fizzypopstudios.SylpHIDDaemon\nlaunchctl unload /Library/LaunchAgents/com.fizzypopstudios.SylpHIDDaemon.plist\nsudo -A kextunload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\nif [[ \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" -nt \"/System/Library/Extensions/$FULL_PRODUCT_NAME\" ]]; then\n  sudo -A rm -rf \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"\n  sudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" /System/Library/Extensions\n  rm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\n  cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nfi\nsudo -A kextload \"/System/Library/Extensions/$FULL_PRODUCT_NAME\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -178,8 +178,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				822239A01B6BF97C00099615 /* FPXboxHIDDriver.cpp in Sources */,
-				822239A21B6BF97C00099615 /* FPXboxHIDUserClient.cpp in Sources */,
+				822239A01B6BF97C00099615 /* FPSylpHIDDriver.cpp in Sources */,
+				822239A21B6BF97C00099615 /* FPSylpHIDUserClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +267,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				INFOPLIST_FILE = "Supporting Files/Info-Driver.plist";
-				MODULE_NAME = com.fizzypopstudios.XboxHIDDriver;
+				MODULE_NAME = com.fizzypopstudios.SylpHIDDriver;
 				MODULE_VERSION = 1.0.0d1;
 				PRODUCT_NAME = "SylpHID";
 				WRAPPER_EXTENSION = kext;
@@ -280,7 +280,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
 				INFOPLIST_FILE = "Supporting Files/Info-Driver.plist";
-				MODULE_NAME = com.fizzypopstudios.XboxHIDDriver;
+				MODULE_NAME = com.fizzypopstudios.SylpHIDDriver;
 				MODULE_VERSION = 1.0.0d1;
 				PRODUCT_NAME = "SylpHID";
 				WRAPPER_EXTENSION = kext;

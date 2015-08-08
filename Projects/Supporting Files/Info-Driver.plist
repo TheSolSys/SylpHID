@@ -5,7 +5,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.XboxHIDDriver</string>
+	<string>com.fizzypopstudios.SylpHIDDriver</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleGetInfoString</key>
@@ -266,11 +266,11 @@
 				</dict>
 			</dict>
 			<key>IOClass</key>
-			<string>FPXboxHIDDriver</string>
+			<string>FPSylpHIDDriver</string>
 			<key>IOProviderClass</key>
 			<string>IOUSBInterface</string>
 			<key>IOUserClientClass</key>
-			<string>FPXboxHIDUserClient</string>
+			<string>FPSylpHIDUserClient</string>
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderMergeProperties</key>

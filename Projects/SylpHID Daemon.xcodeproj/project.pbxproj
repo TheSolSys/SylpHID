@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		822239A71B6BF9C500099615 /* FPXboxHIDDaemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239A61B6BF9C500099615 /* FPXboxHIDDaemon.m */; };
-		822239AE1B6BF9F900099615 /* FPXboxHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239AA1B6BF9F900099615 /* FPXboxHIDDriverInterface.m */; };
-		822239AF1B6BF9F900099615 /* FPXboxHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239AD1B6BF9F900099615 /* FPXboxHIDPrefsLoader.m */; };
+		822239A71B6BF9C500099615 /* FPSylpHIDDaemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239A61B6BF9C500099615 /* FPSylpHIDDaemon.m */; };
+		822239AE1B6BF9F900099615 /* FPSylpHIDDriverInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239AA1B6BF9F900099615 /* FPSylpHIDDriverInterface.m */; };
+		822239AF1B6BF9F900099615 /* FPSylpHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239AD1B6BF9F900099615 /* FPSylpHIDPrefsLoader.m */; };
 		82223A561B6C01FB00099615 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82223A4F1B6C01FB00099615 /* Cocoa.framework */; };
 		82223A581B6C01FB00099615 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82223A511B6C01FB00099615 /* CoreFoundation.framework */; };
 		82223A591B6C01FB00099615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82223A521B6C01FB00099615 /* Foundation.framework */; };
@@ -29,18 +29,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		822239A61B6BF9C500099615 /* FPXboxHIDDaemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDaemon.m; path = ../Source/Daemon/FPXboxHIDDaemon.m; sourceTree = SOURCE_ROOT; };
-		822239A91B6BF9F900099615 /* FPXboxHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverInterface.h; path = ../Source/Common/FPXboxHIDDriverInterface.h; sourceTree = "<group>"; };
-		822239AA1B6BF9F900099615 /* FPXboxHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDDriverInterface.m; path = ../Source/Common/FPXboxHIDDriverInterface.m; sourceTree = "<group>"; };
-		822239AB1B6BF9F900099615 /* FPXboxHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDDriverKeys.h; path = ../Source/Common/FPXboxHIDDriverKeys.h; sourceTree = "<group>"; };
-		822239AC1B6BF9F900099615 /* FPXboxHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPXboxHIDPrefsLoader.h; path = ../Source/Common/FPXboxHIDPrefsLoader.h; sourceTree = "<group>"; };
-		822239AD1B6BF9F900099615 /* FPXboxHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPXboxHIDPrefsLoader.m; path = ../Source/Common/FPXboxHIDPrefsLoader.m; sourceTree = "<group>"; };
+		822239A61B6BF9C500099615 /* FPSylpHIDDaemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDDaemon.m; path = ../Source/Daemon/FPSylpHIDDaemon.m; sourceTree = SOURCE_ROOT; };
+		822239A91B6BF9F900099615 /* FPSylpHIDDriverInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDDriverInterface.h; path = ../Source/Common/FPSylpHIDDriverInterface.h; sourceTree = "<group>"; };
+		822239AA1B6BF9F900099615 /* FPSylpHIDDriverInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDDriverInterface.m; path = ../Source/Common/FPSylpHIDDriverInterface.m; sourceTree = "<group>"; };
+		822239AB1B6BF9F900099615 /* FPSylpHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDDriverKeys.h; path = ../Source/Common/FPSylpHIDDriverKeys.h; sourceTree = "<group>"; };
+		822239AC1B6BF9F900099615 /* FPSylpHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDPrefsLoader.h; path = ../Source/Common/FPSylpHIDPrefsLoader.h; sourceTree = "<group>"; };
+		822239AD1B6BF9F900099615 /* FPSylpHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDPrefsLoader.m; path = ../Source/Common/FPSylpHIDPrefsLoader.m; sourceTree = "<group>"; };
 		82223A4F1B6C01FB00099615 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		82223A511B6C01FB00099615 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		82223A521B6C01FB00099615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		82223A531B6C01FB00099615 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		82A0B4031B6BD84200653468 /* SylpHID Daemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SylpHID Daemon"; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A1598C1B6C3391003934D5 /* com.fizzypopstudios.XboxHIDDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.fizzypopstudios.XboxHIDDaemon.plist; path = ../Packaging/Products/com.fizzypopstudios.XboxHIDDaemon.plist; sourceTree = "<group>"; };
+		82A1598C1B6C3391003934D5 /* com.fizzypopstudios.SylpHIDDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.fizzypopstudios.SylpHIDDaemon.plist; path = ../Packaging/Products/com.fizzypopstudios.SylpHIDDaemon.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +61,11 @@
 		822239A81B6BF9EC00099615 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				822239AB1B6BF9F900099615 /* FPXboxHIDDriverKeys.h */,
-				822239A91B6BF9F900099615 /* FPXboxHIDDriverInterface.h */,
-				822239AA1B6BF9F900099615 /* FPXboxHIDDriverInterface.m */,
-				822239AC1B6BF9F900099615 /* FPXboxHIDPrefsLoader.h */,
-				822239AD1B6BF9F900099615 /* FPXboxHIDPrefsLoader.m */,
+				822239AB1B6BF9F900099615 /* FPSylpHIDDriverKeys.h */,
+				822239A91B6BF9F900099615 /* FPSylpHIDDriverInterface.h */,
+				822239AA1B6BF9F900099615 /* FPSylpHIDDriverInterface.m */,
+				822239AC1B6BF9F900099615 /* FPSylpHIDPrefsLoader.h */,
+				822239AD1B6BF9F900099615 /* FPSylpHIDPrefsLoader.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 		828857141B6C2F29004A3CA6 /* LaunchAgent */ = {
 			isa = PBXGroup;
 			children = (
-				82A1598C1B6C3391003934D5 /* com.fizzypopstudios.XboxHIDDaemon.plist */,
+				82A1598C1B6C3391003934D5 /* com.fizzypopstudios.SylpHIDDaemon.plist */,
 			);
 			name = LaunchAgent;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 		82A0B4051B6BD84200653468 /* Daemon */ = {
 			isa = PBXGroup;
 			children = (
-				822239A61B6BF9C500099615 /* FPXboxHIDDaemon.m */,
+				822239A61B6BF9C500099615 /* FPSylpHIDDaemon.m */,
 			);
 			name = Daemon;
 			path = "SylpHID Daemon";
@@ -173,9 +173,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				822239AF1B6BF9F900099615 /* FPXboxHIDPrefsLoader.m in Sources */,
-				822239AE1B6BF9F900099615 /* FPXboxHIDDriverInterface.m in Sources */,
-				822239A71B6BF9C500099615 /* FPXboxHIDDaemon.m in Sources */,
+				822239AF1B6BF9F900099615 /* FPSylpHIDPrefsLoader.m in Sources */,
+				822239AE1B6BF9F900099615 /* FPSylpHIDDriverInterface.m in Sources */,
+				822239A71B6BF9C500099615 /* FPSylpHIDDaemon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

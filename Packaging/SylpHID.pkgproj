@@ -170,7 +170,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>Products/com.fizzypopstudios.XboxHIDDaemon.plist</string>
+											<string>Products/com.fizzypopstudios.SylpHIDDaemon.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -219,7 +219,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>Products/Xbox HID.prefPane</string>
+											<string>Products/SylpHID.prefPane</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -416,7 +416,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>Products/Xbox HID.kext</string>
+													<string>Products/SylpHID.kext</string>
 													<key>PATH_TYPE</key>
 													<integer>1</integer>
 													<key>PERMISSIONS</key>
@@ -563,11 +563,11 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.fizzypopstudios.pkg.XboxHID</string>
+				<string>com.fizzypopstudios.pkg.SylpHID</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>Xbox HID</string>
+				<string>SylpHID</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>VERSION</key>
@@ -782,7 +782,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>"Xbox HID"</string>
+						<string>"SylpHID"</string>
 					</dict>
 				</array>
 			</dict>
@@ -1066,7 +1066,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>Xbox HID</string>
+			<string>SylpHID</string>
 		</dict>
 	</dict>
 	<key>SHARED_GLOBAL_DATA</key>

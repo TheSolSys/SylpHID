@@ -40,8 +40,6 @@
 }
 
 
-
-
 - (void) setAlertView: (NSView*)view
 {
 	// copy the view by archiving and unarchiving it
@@ -82,6 +80,7 @@
 	}
 }
 
+
 - (void) fadeInAlertWindow
 {
 	[self createAlertWindow];
@@ -103,8 +102,8 @@
 - (void) mouseEntered: (NSEvent*)event
 {
 	if (_hover == NO) {
-		[self fadeInAlertWindow];
 		_hover = YES;
+		[self fadeInAlertWindow];
 	}
 }
 

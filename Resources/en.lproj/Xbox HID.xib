@@ -2022,7 +2022,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="445" height="324"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" verticallyResizable="YES" id="2354" customClass="FPTextCredits">
+                            <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" id="2354" customClass="FPTextCredits">
                                 <rect key="frame" x="0.0" y="0.0" width="445" height="324"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2076,7 +2076,7 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="312" height="262"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="NO" findStyle="panel" id="2672">
+                            <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="NO" id="2672">
                                 <rect key="frame" x="0.0" y="0.0" width="312" height="262"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2117,7 +2117,7 @@ DQ
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-50" y="405"/>
+            <point key="canvasLocation" x="501" y="500"/>
         </customView>
     </objects>
     <resources>

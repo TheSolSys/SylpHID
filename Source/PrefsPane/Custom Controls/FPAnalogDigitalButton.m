@@ -39,8 +39,6 @@
 }
 
 
-
-
 - (void) setLocked: (BOOL)locked
 {
     _locked = locked;

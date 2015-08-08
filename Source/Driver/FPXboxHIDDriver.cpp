@@ -2462,8 +2462,8 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • Compiled with Mac OS X 10.6 SDK
 //
 // 07/15/2015 (Xbox HID v1.0.0 Changes by Paige DePol)
-// • Upgraded all three projects to use ARC (Automatic Reference Counting)
 // • Re-created all projects using Xcode 6.2 due to issues with old projects
+//   • Upgraded all projects to use ARC (Automatic Reference Counting)
 //   • Created common workspace to consolidate all 3 projects together
 //   • Re-organised all source code, assets and other resources
 //   • IMPORTANT: New run script phase for Kext/PrefsPane uses 'sudo'! I specify a script for SUDO_ASKPASS,
@@ -2471,7 +2471,7 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • Updated Daemon process to use a LaunchAgent instead of older LoginItem system
 // • Updated PrefsNotifier class to use a protocol instead of saving target and selector
 // • Updated graphics used in prefs pane to more accurately represent an Xbox controller
-// • Added a User Client class to pass data through the kernel/userspace barrier
+// • Added a IOUserClient subclass to pass data through the kernel/userspace barrier
 //   • Allows retrieving raw data from controller for indicators on slider controls
 //   • Allows reloading of default settings, which are stored in the driver
 //   • Allows retrieving USB bus information (speed, power, address) for display in USB info panel
@@ -2480,10 +2480,12 @@ OSMetaClassDefineReservedUnused(FPXboxHIDDriver, 19);
 // • All analog buttons (and triggers) may independently be set to analog or digital mode
 // • Both sticks now have configurable deadzone areas, remaining active area is mapped to full stick range
 //   • Deadzones can be specified for both horizontal and vertical stick movement
-// • All analog buttons (and triggers) have configurable low and high thresholds
+// • All analog buttons (and triggers) have configurable low and high
+// • All analog buttons (and triggers) have configutable analog or digital operation
 //   • If button (or trigger) is in digital mode the button only activates once low threshold has been reached
 //   • If button is in analog mode entire button range is mapped between low and high threshold markers
 // • Added application specific bindings
-//   • Specified configuration will be loaded when an app becomes active
-//   • Default configuration will be loaded when Finder becomes active
+//   • Specified configuration will be loaded whenever an app becomes active
+//   • Due to multi-stage loaders configurations are not unloaded when an app becomes inactive
+//   • "Default Layout" configuration will be loaded when the Finder becomes active
 // =========================================================================================================================

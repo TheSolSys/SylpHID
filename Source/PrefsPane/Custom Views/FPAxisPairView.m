@@ -33,6 +33,22 @@
 
 @implementation FPAxisPairView
 
+- (id) initWithCoder: (NSCoder*)coder {
+	self = [super initWithCoder: coder];
+	if (self) {
+		_x = 0;
+		_y = 0;
+		_minx = kStickMin;
+		_maxx = kStickMax;
+		_miny = kStickMin;
+		_maxy = kStickMax;
+		_pressed = 0;
+		_home = [self frame].origin;
+	}
+	return self;
+}
+
+
 - (void) setPressed: (BOOL)pressed
 {
 	_pressed = pressed;
@@ -75,22 +91,6 @@
 	float xoff = (_livex / (kStickRange / 10));
 	float yoff = (_livey / (kStickRange / 10));
 	[self setFrameOrigin: NSMakePoint(_home.x + xoff, _home.y + yoff)];
-}
-
-
-- (id) initWithCoder: (NSCoder*)coder {
-	self = [super initWithCoder: coder];
-	if (self) {
-		_x = 0;
-		_y = 0;
-		_minx = kStickMin;
-		_maxx = kStickMax;
-		_miny = kStickMin;
-		_maxy = kStickMax;
-		_pressed = 0;
-		_home = [self frame].origin;
-	}
-	return self;
 }
 
 

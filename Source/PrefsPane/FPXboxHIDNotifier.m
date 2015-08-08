@@ -49,8 +49,8 @@
 	self = [super init];
 	if (self && ![self createRunLoopNotifications])
 		self = nil;
-
-	_delegate = nil;
+	else
+		_delegate = nil;
 
 	return self;
 }

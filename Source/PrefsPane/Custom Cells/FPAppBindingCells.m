@@ -35,13 +35,13 @@
 @end
 
 
-// for adding padding (1px) around icon
+// for adding padding (1px) to right and bottom edge of icon
 @implementation FPAppImageCell
 
 - (void) drawInteriorWithFrame: (NSRect)cellFrame inView:(NSView *)controlView
 {
 	cellFrame.size.width -= 1;
-	cellFrame.size.height -= 1; // = NSInsetRect(cellFrame, 1, 1);
+	cellFrame.size.height -= 1;
 	[super drawInteriorWithFrame: cellFrame inView: controlView];
 }
 

@@ -45,8 +45,6 @@
 }
 
 
-
-
 - (void) selectItemForAppConfig: (NSDictionary*)appconfig withDeviceConfig: (NSString*)devconfig
 {
 	_appConfig = appconfig;

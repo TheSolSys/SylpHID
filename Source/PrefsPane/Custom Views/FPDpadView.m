@@ -33,9 +33,9 @@
 
 @implementation FPDPadView
 
-- (id) initWithFrame: (NSRect)frame {
-	self = [super initWithFrame: frame];
-	if (self) {
+- (id) initWithCoder: (NSCoder*)coder {
+	self = [super initWithCoder: coder];
+	if (self != nil) {
 		_up = 0;
 		_down = 0;
 		_left = 0;

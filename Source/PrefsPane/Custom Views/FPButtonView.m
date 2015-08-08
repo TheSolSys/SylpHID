@@ -33,13 +33,6 @@
 
 @implementation FPButtonView
 
-- (void) setValue: (UInt8)value
-{
-	_value = value;
-	[self setNeedsDisplay: YES];
-}
-
-
 - (id) initWithCoder: (NSCoder*)coder {
 	self = [super initWithCoder: coder];
 	if (self) {
@@ -52,6 +45,11 @@
 }
 
 
+- (void) setValue: (UInt8)value
+{
+	_value = value;
+	[self setNeedsDisplay: YES];
+}
 
 
 - (void) showOverlayOnlyWhenActive

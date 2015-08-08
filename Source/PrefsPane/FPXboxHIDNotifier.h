@@ -42,7 +42,7 @@
 @interface FPXboxHIDNotifier : NSObject {
     IONotificationPortRef _notificationPort;
     CFRunLoopSourceRef _runLoopSource;
-	id _delegate;
+	id<FPDeviceNotifier> _delegate;
 }
 
 + (id) notifier;

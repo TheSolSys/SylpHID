@@ -27,9 +27,6 @@
 // =========================================================================================================================
 
 
-#import <AppKit/AppKit.h>
-
-
 @interface FPTriggerView : NSImageView {
     float _max;
     float _value;

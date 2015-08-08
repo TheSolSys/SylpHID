@@ -28,9 +28,21 @@
 
 
 #import "FPTriggerView.h"
+#import "FPXboxHIDDriverKeys.h"
 
 
 @implementation FPTriggerView
+
+- (id) initWithCoder: (NSCoder*)coder
+{
+	self = [super initWithCoder: coder];
+	if (self != nil) {
+		_max = kButtonAnalogMaxF;
+		_value = 0;
+	}
+
+	return self;
+}
 
 - (BOOL) isOpaque
 {

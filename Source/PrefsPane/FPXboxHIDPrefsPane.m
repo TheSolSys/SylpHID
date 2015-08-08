@@ -639,17 +639,47 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 			[_popup setLevel: NSNormalWindowLevel];	 // make pop not "always on top" so sheet slides in over it
 
 			OPBlock block = ^(NSInteger result) {
+								NSString* appid = nil;
+								NSString* file = nil;
 								if (result == NSFileHandlingPanelOKButton) {
-									NSString* file = [[openPanel URL] path];
-									NSString* appid = [[NSBundle bundleWithPath: file] bundleIdentifier];
-									NSString* config = [_configPopUp titleOfSelectedItem];
-									NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-									[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
-									[self appSetDataSource];
+									file = [[openPanel URL] path];
+									appid = [[NSBundle bundleWithPath: file] bundleIdentifier];
+									if (appid != nil && ![appid isEqualToString: @""]) {
+										NSString* config = [_configPopUp titleOfSelectedItem];
+										NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
+										[FPXboxHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+										[self appSetDataSource];
+									} else {
+										appid = nil;
+									}
 								}
+
 								[openPanel close];
 								[_popup setLevel: NSFloatingWindowLevel];
-								[sharedapp runModalForWindow: _popup];
+
+								if (result == NSFileHandlingPanelOKButton && appid == nil) {
+									NSAlert *alert = [NSAlert alertWithMessageText: @"Incompatible Application"
+																	 defaultButton: @"Cancel" alternateButton: nil otherButton: nil
+														 informativeTextWithFormat: @"Selected application can not be used "
+														   "for binding because it does not have a valid bundle identifier!"];
+									[alert setIcon: [[NSWorkspace sharedWorkspace] iconForFile: file]];
+									[alert setAlertStyle: NSCriticalAlertStyle];
+									[_appsOK setEnabled: NO];
+									[_appsAction setEnabled: NO];
+									[_appsTable setEnabled: NO];
+									[alert beginSheetModalForWindow: [sharedapp mainWindow]
+												  completionHandler: ^(NSModalResponse response){
+																		[_appsOK setEnabled: YES];
+																		[_appsAction setEnabled: YES];
+																		[_appsTable setEnabled: YES];
+																		// delay required so sheet can animate sliding back up
+																		[sharedapp performSelector: @selector(runModalForWindow:)
+																						withObject: _popup
+																						afterDelay: 0.1];
+																	 }];
+								} else {
+									[sharedapp runModalForWindow: _popup];
+								}
 							};
 
 			[openPanel beginSheetModalForWindow: [sharedapp mainWindow]
@@ -718,6 +748,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	          onSide: MAPositionTop
 	          atDistance: 4];
 	[_popup setViewMargin: 5.0];
+	[_creditsOK setKeyEquivalent: @"\r"];
 	[self fadeInAttachedWindow];
 }
 
@@ -731,6 +762,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	          onSide: MAPositionTop
 	          atDistance: 4];
 	[_popup setViewMargin: 5.0];
+	[_donateOK setKeyEquivalent: @"\r"];
 	[self fadeInAttachedWindow];
 }
 

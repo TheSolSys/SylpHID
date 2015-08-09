@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>SylpHID</string>
+	<string>Sylpʜıᴅ</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -45,7 +45,7 @@
 	<key>NSPrefPaneIconFile</key>
 	<string>SylpHID.icns</string>
 	<key>NSPrefPaneIconLabel</key>
-	<string>SylpHID</string>
+	<string>Sylpʜıᴅ</string>
 	<key>NSPrincipalClass</key>
 	<string>FPSylpHIDPrefsPane</string>
 </dict>

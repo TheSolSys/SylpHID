@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo -e "\nCreating release DMG for Xbox HID"
+echo -e "\nCreating release DMG for SylpHID"
 
-if [ ! -e "Xbox HID.pkgproj" ]; then
+if [ ! -e "SylpHID.pkgproj" ]; then
 	echo -e "MakeDMG.sh must be run in Packaging directory!\n"
 	exit
 fi
@@ -13,7 +13,7 @@ if [ -d DiskImage ]; then
 fi
 
 rm -f "Build/build.dmg"
-rm -f "Build/Xbox HID.dmg"
+rm -f "Build/SylpHID.dmg"
 cp "Resources/DiskImage/template.dmg.bz2" "Build/build.dmg.bz2"
 bunzip2 "Build/build.dmg.bz2"
 if [ ! -e "Build/build.dmg" ]; then
@@ -21,23 +21,23 @@ if [ ! -e "Build/build.dmg" ]; then
 	exit
 fi
 
-echo "Preparing Xbox HID distribtion package"
-packagesbuild "Xbox HID.pkgproj" >/dev/null
+echo "Preparing SylpHID distribtion package"
+packagesbuild "SylpHID.pkgproj" >/dev/null
 
 echo "Preparing distribution disk image"
 mkdir DiskImage
 hdiutil attach "Build/build.dmg" -noautoopen -quiet -mountpoint DiskImage
 
-rm -f "DiskImage/Install Xbox HID.pkg"
-cp -r "Build/Xbox HID.pkg" "DiskImage/Install Xbox HID.pkg"
+rm -f "DiskImage/Install Sylpʜıᴅ.pkg"
+cp -r "Build/SylpHID.pkg" "DiskImage/Install Sylpʜıᴅ.pkg"
 
-rm -f "DiskImage/Uninstall Xbox HID.app"
-cp -r "Build/Uninstall.app" "DiskImage/Uninstall Xbox HID.app"
+rm -f "DiskImage/Uninstall Sylpʜıᴅ.app"
+cp -r "Build/Uninstall.app" "DiskImage/Uninstall Sylpʜıᴅ.app"
 
 hdiutil detach DiskImage -quiet -force
 rm -rf "DiskImage"
 
-hdiutil convert "Build/build.dmg" -quiet -format UDBZ -o "Build/Xbox HID.dmg"
+hdiutil convert "Build/build.dmg" -quiet -format UDBZ -o "Build/SylpHID.dmg"
 rm "Build/build.dmg"
 
-echo -e "Disk image for Xbox HID prepared!\n"
+echo -e "Disk image for SylpHID prepared!\n"

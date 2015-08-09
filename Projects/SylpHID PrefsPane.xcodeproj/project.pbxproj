@@ -47,7 +47,6 @@
 		822239FF1B6BFAA300099615 /* FPSylpHIDPrefsPane.h in Headers */ = {isa = PBXBuildFile; fileRef = 822239F91B6BFAA300099615 /* FPSylpHIDPrefsPane.h */; };
 		82223A001B6BFAA300099615 /* FPSylpHIDPrefsPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 822239FA1B6BFAA300099615 /* FPSylpHIDPrefsPane.m */; };
 		82223A041B6BFADB00099615 /* Prefix-PrefsPane.pch in Headers */ = {isa = PBXBuildFile; fileRef = 82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */; };
-		82223A0E1B6BFB2400099615 /* credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0B1B6BFB2400099615 /* credits.rtf */; };
 		82223A0F1B6BFB2400099615 /* donate.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82223A0C1B6BFB2400099615 /* donate.rtf */; };
 		82223A271B6BFB3400099615 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A111B6BFB3400099615 /* controller.png */; };
 		82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 82223A121B6BFB3400099615 /* controllerButtonBack.png */; };
@@ -86,6 +85,7 @@
 		82223A761B6C090B00099615 /* FPSylpHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */; };
 		82223A771B6C090B00099615 /* FPSylpHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */; };
 		82223A7C1B6C0D5E00099615 /* SylpHID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* SylpHID.xib */; };
+		82F04EF61B77AA1300F4F952 /* credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 82F04EF51B77AA1300F4F952 /* credits.rtfd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,7 +130,6 @@
 		822239FA1B6BFAA300099615 /* FPSylpHIDPrefsPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDPrefsPane.m; path = ../Source/PrefsPane/FPSylpHIDPrefsPane.m; sourceTree = SOURCE_ROOT; };
 		82223A011B6BFAD200099615 /* Info-PrefsPane.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-PrefsPane.plist"; path = "Supporting Files/Info-PrefsPane.plist"; sourceTree = SOURCE_ROOT; };
 		82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Prefix-PrefsPane.pch"; path = "Supporting Files/Prefix-PrefsPane.pch"; sourceTree = SOURCE_ROOT; };
-		82223A0B1B6BFB2400099615 /* credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = credits.rtf; path = ../Resources/credits.rtf; sourceTree = SOURCE_ROOT; };
 		82223A0C1B6BFB2400099615 /* donate.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = donate.rtf; path = ../Resources/donate.rtf; sourceTree = SOURCE_ROOT; };
 		82223A111B6BFB3400099615 /* controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controller.png; path = ../Resources/Images/controller.png; sourceTree = SOURCE_ROOT; };
 		82223A121B6BFB3400099615 /* controllerButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controllerButtonBack.png; path = ../Resources/Images/controllerButtonBack.png; sourceTree = SOURCE_ROOT; };
@@ -169,8 +168,9 @@
 		82223A701B6C090B00099615 /* FPSylpHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDDriverKeys.h; path = ../Source/Common/FPSylpHIDDriverKeys.h; sourceTree = "<group>"; };
 		82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDPrefsLoader.h; path = ../Source/Common/FPSylpHIDPrefsLoader.h; sourceTree = "<group>"; };
 		82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDPrefsLoader.m; path = ../Source/Common/FPSylpHIDPrefsLoader.m; sourceTree = "<group>"; };
-		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "../Resources/en.lproj/SylpHID.xib"; sourceTree = "<group>"; };
-		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SylpHID.prefPane"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../Resources/en.lproj/SylpHID.xib; sourceTree = "<group>"; };
+		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SylpHID.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		82F04EF51B77AA1300F4F952 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = credits.rtfd; path = ../Resources/credits.rtfd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,7 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				82223A0A1B6BFB1A00099615 /* Images */,
-				82223A0B1B6BFB2400099615 /* credits.rtf */,
+				82F04EF51B77AA1300F4F952 /* credits.rtfd */,
 				82223A0C1B6BFB2400099615 /* donate.rtf */,
 				820F2C751B7666DF00C07710 /* SylpHID.icns */,
 			);
@@ -308,7 +308,7 @@
 				82223A451B6C01BE00099615 /* PreferencePanes.framework */,
 			);
 			name = Frameworks;
-			path = "SylpHID";
+			path = SylpHID;
 			sourceTree = "<group>";
 		};
 		82223A5E1B6C074400099615 /* Externals */ = {
@@ -385,7 +385,7 @@
 				822239FA1B6BFAA300099615 /* FPSylpHIDPrefsPane.m */,
 			);
 			name = "Prefs Pane";
-			path = "SylpHID";
+			path = SylpHID;
 			sourceTree = "<group>";
 		};
 		82A0B3EA1B6BD80C00653468 /* Supporting Files */ = {
@@ -395,7 +395,7 @@
 				82223A031B6BFADB00099615 /* Prefix-PrefsPane.pch */,
 			);
 			name = "Supporting Files";
-			path = "SylpHID";
+			path = SylpHID;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,7 +452,7 @@
 			dependencies = (
 			);
 			name = "SylpHID PrefsPane";
-			productName = "SylpHID";
+			productName = SylpHID;
 			productReference = 82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */;
 			productType = "com.apple.product-type.bundle";
 		};
@@ -493,7 +493,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				820F2C761B7666DF00C07710 /* SylpHID.icns in Resources */,
-				82223A0E1B6BFB2400099615 /* credits.rtf in Resources */,
 				82223A0F1B6BFB2400099615 /* donate.rtf in Resources */,
 				82223A271B6BFB3400099615 /* controller.png in Resources */,
 				82223A281B6BFB3400099615 /* controllerButtonBack.png in Resources */,
@@ -502,6 +501,7 @@
 				82223A2A1B6BFB3400099615 /* controllerButtonBlue.png in Resources */,
 				82223A2B1B6BFB3400099615 /* controllerButtonGreen.png in Resources */,
 				82223A2C1B6BFB3400099615 /* controllerButtonRed.png in Resources */,
+				82F04EF61B77AA1300F4F952 /* credits.rtfd in Resources */,
 				82223A2D1B6BFB3400099615 /* controllerButtonStart.png in Resources */,
 				82223A2E1B6BFB3400099615 /* controllerButtonWht.png in Resources */,
 				82223A2F1B6BFB3400099615 /* controllerButtonYellow.png in Resources */,
@@ -580,7 +580,7 @@
 			children = (
 				82223A7B1B6C0D5E00099615 /* en */,
 			);
-			name = "SylpHID.xib";
+			name = SylpHID.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -664,7 +664,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/Prefix-PrefsPane.pch";
 				INFOPLIST_FILE = "Supporting Files/Info-PrefsPane.plist";
-				PRODUCT_NAME = "SylpHID";
+				PRODUCT_NAME = SylpHID;
 				USER_HEADER_SEARCH_PATHS = ../Source/Common;
 				WRAPPER_EXTENSION = prefPane;
 			};
@@ -677,7 +677,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = "Supporting Files/Prefix-PrefsPane.pch";
 				INFOPLIST_FILE = "Supporting Files/Info-PrefsPane.plist";
-				PRODUCT_NAME = "SylpHID";
+				PRODUCT_NAME = SylpHID;
 				USER_HEADER_SEARCH_PATHS = ../Source/Common;
 				WRAPPER_EXTENSION = prefPane;
 			};

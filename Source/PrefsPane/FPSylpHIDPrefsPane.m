@@ -141,7 +141,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	[_actionInfo setTooltip: @"View Device Information" withTipControl: _actionTip andBaseControl: _actionBase];
 
 	NSBundle* bundle = [NSBundle bundleForClass: [self class]];
-	[_creditsText readRTFDFromFile: [bundle pathForResource: @"credits" ofType: @"rtf"]];
+	[_creditsText readRTFDFromFile: [bundle pathForResource: @"credits" ofType: @"rtfd"]];
 	[_creditsText setEditable: YES];
 	[_creditsText checkTextInDocument: nil];  // activates hyperlinks
 	[_creditsText setEditable: NO];

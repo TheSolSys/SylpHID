@@ -2009,11 +2009,11 @@ Gw
             <point key="canvasLocation" x="-92" y="384.5"/>
         </customView>
         <customView id="2348" userLabel="Acknowledgements">
-            <rect key="frame" x="0.0" y="0.0" width="460" height="350"/>
+            <rect key="frame" x="0.0" y="0.0" width="490" height="350"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="2353">
-                    <rect key="frame" x="0.0" y="26" width="460" height="324"/>
+                    <rect key="frame" x="0.0" y="26" width="490" height="324"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <clipView key="contentView" copiesOnScroll="NO" id="6Xp-Ob-IyZ">
                         <rect key="frame" x="0.0" y="0.0" width="445" height="324"/>
@@ -2023,8 +2023,8 @@ Gw
                                 <rect key="frame" x="0.0" y="0.0" width="445" height="324"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="445" height="324"/>
-                                <size key="maxSize" width="463" height="10000000"/>
+                                <size key="minSize" width="475" height="324"/>
+                                <size key="maxSize" width="485" height="10000000"/>
                                 <attributedString key="textStorage">
                                     <fragment content="Loads &quot;{bundle}/Resources/credits.rtf&quot;">
                                         <attributes>
@@ -2034,8 +2034,8 @@ Gw
                                     </fragment>
                                 </attributedString>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="445" height="324"/>
-                                <size key="maxSize" width="463" height="10000000"/>
+                                <size key="minSize" width="475" height="324"/>
+                                <size key="maxSize" width="485" height="10000000"/>
                             </textView>
                         </subviews>
                     </clipView>
@@ -2049,7 +2049,7 @@ Gw
                     </scroller>
                 </scrollView>
                 <button verticalHuggingPriority="750" id="2357">
-                    <rect key="frame" x="391" y="-3" width="70" height="28"/>
+                    <rect key="frame" x="421" y="-3" width="70" height="28"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2358">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2060,7 +2060,7 @@ Gw
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="0.0" y="361"/>
+            <point key="canvasLocation" x="58" y="134"/>
         </customView>
         <customView id="2667" userLabel="Donations">
             <rect key="frame" x="0.0" y="0.0" width="312" height="286"/>

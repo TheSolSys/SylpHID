@@ -89,10 +89,10 @@
 	NSRectFill(dirty);
 
 	[_colors drawInRect: _toRect	fromRect: _fromRectBot	operation: NSCompositeSourceOver
-			   fraction: 0.5  respectFlipped: YES				hints: NULL];
+			   fraction: 1.0  respectFlipped: YES				hints: NULL];
 
 	[_colors drawInRect: _toRect	fromRect: _fromRectTop	operation: NSCompositeSourceOver
-			   fraction: 0.5  respectFlipped: YES				hints: NULL];
+			   fraction: 0.5  respectFlipped: NO				hints: NULL];
 
 	[super drawRect: dirty];
 }

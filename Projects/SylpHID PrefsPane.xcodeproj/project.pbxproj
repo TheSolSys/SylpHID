@@ -86,6 +86,10 @@
 		82223A771B6C090B00099615 /* FPSylpHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */; };
 		82223A7C1B6C0D5E00099615 /* SylpHID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* SylpHID.xib */; };
 		82F04EF61B77AA1300F4F952 /* credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 82F04EF51B77AA1300F4F952 /* credits.rtfd */; };
+		82F04EFE1B77E40200F4F952 /* NSBezierPath+String.h in Headers */ = {isa = PBXBuildFile; fileRef = 82F04EFC1B77E40200F4F952 /* NSBezierPath+String.h */; };
+		82F04EFF1B77E40200F4F952 /* NSBezierPath+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F04EFD1B77E40200F4F952 /* NSBezierPath+String.m */; };
+		82F04F021B77EE2300F4F952 /* FPInsetText.h in Headers */ = {isa = PBXBuildFile; fileRef = 82F04F001B77EE2300F4F952 /* FPInsetText.h */; };
+		82F04F031B77EE2300F4F952 /* FPInsetText.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F04F011B77EE2300F4F952 /* FPInsetText.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +175,10 @@
 		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../Resources/en.lproj/SylpHID.xib; sourceTree = "<group>"; };
 		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SylpHID.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F04EF51B77AA1300F4F952 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = credits.rtfd; path = ../Resources/credits.rtfd; sourceTree = "<group>"; };
+		82F04EFC1B77E40200F4F952 /* NSBezierPath+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+String.h"; sourceTree = "<group>"; };
+		82F04EFD1B77E40200F4F952 /* NSBezierPath+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+String.m"; sourceTree = "<group>"; };
+		82F04F001B77EE2300F4F952 /* FPInsetText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPInsetText.h; path = "../Source/PrefsPane/Custom Controls/FPInsetText.h"; sourceTree = "<group>"; };
+		82F04F011B77EE2300F4F952 /* FPInsetText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPInsetText.m; path = "../Source/PrefsPane/Custom Controls/FPInsetText.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +218,8 @@
 				822239C11B6BFA6400099615 /* FPScrollerCredits.m */,
 				822239C21B6BFA6400099615 /* FPTextCredits.h */,
 				822239C31B6BFA6400099615 /* FPTextCredits.m */,
+				82F04F001B77EE2300F4F952 /* FPInsetText.h */,
+				82F04F011B77EE2300F4F952 /* FPInsetText.m */,
 			);
 			name = "Custom Controls";
 			sourceTree = "<group>";
@@ -358,6 +368,7 @@
 				82A0B3E91B6BD80C00653468 /* Prefs Pane */,
 				82223A6D1B6C08EF00099615 /* Common */,
 				822239F01B6BFA7C00099615 /* Data Source */,
+				82F04EFB1B77E40200F4F952 /* Extensions */,
 				822239B01B6BFA1F00099615 /* User Interface */,
 				82223A091B6BFAFC00099615 /* Resources */,
 				82A0B3EA1B6BD80C00653468 /* Supporting Files */,
@@ -398,6 +409,16 @@
 			path = SylpHID;
 			sourceTree = "<group>";
 		};
+		82F04EFB1B77E40200F4F952 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				82F04EFC1B77E40200F4F952 /* NSBezierPath+String.h */,
+				82F04EFD1B77E40200F4F952 /* NSBezierPath+String.m */,
+			);
+			name = Extensions;
+			path = ../Source/PrefsPane/Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -413,6 +434,7 @@
 				822239BA1B6BFA5B00099615 /* FPPopUpButtonCell.h in Headers */,
 				82223A041B6BFADB00099615 /* Prefix-PrefsPane.pch in Headers */,
 				822239C81B6BFA6400099615 /* FPScrollerCredits.h in Headers */,
+				82F04F021B77EE2300F4F952 /* FPInsetText.h in Headers */,
 				822239E81B6BFA7200099615 /* FPDpadView.h in Headers */,
 				822239DE1B6BFA7200099615 /* FPAlertView.h in Headers */,
 				822239CA1B6BFA6400099615 /* FPTextCredits.h in Headers */,
@@ -428,6 +450,7 @@
 				822239E61B6BFA7200099615 /* FPButtonView.h in Headers */,
 				822239FD1B6BFAA300099615 /* FPSylpHIDNotifier.h in Headers */,
 				822239E21B6BFA7200099615 /* FPAxisPairView.h in Headers */,
+				82F04EFE1B77E40200F4F952 /* NSBezierPath+String.h in Headers */,
 				822239FF1B6BFAA300099615 /* FPSylpHIDPrefsPane.h in Headers */,
 				822239C61B6BFA6400099615 /* FPConfigPopUp.h in Headers */,
 				82223A631B6C078D00099615 /* MAAttachedWindow.h in Headers */,
@@ -567,6 +590,8 @@
 				822239BB1B6BFA5B00099615 /* FPPopUpButtonCell.m in Sources */,
 				822239FC1B6BFAA300099615 /* FPHIDUtilities.m in Sources */,
 				822239E71B6BFA7200099615 /* FPButtonView.m in Sources */,
+				82F04F031B77EE2300F4F952 /* FPInsetText.m in Sources */,
+				82F04EFF1B77E40200F4F952 /* NSBezierPath+String.m in Sources */,
 				822239C71B6BFA6400099615 /* FPConfigPopUp.m in Sources */,
 				822239EF1B6BFA7200099615 /* FPTriggerView.m in Sources */,
 			);

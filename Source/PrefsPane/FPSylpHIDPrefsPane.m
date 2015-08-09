@@ -41,6 +41,7 @@
 #import "FPImageView.h"
 #import "FPAlertView.h"
 #import "FPConfigPopUp.h"
+#import "FPInsetText.h"
 #import "SMDoubleSlider.h"
 
 
@@ -204,6 +205,8 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 	_undoBindings = nil;
 
 	_appConfig = [NSMutableDictionary dictionary];
+
+	[_errorImage setAlphaValue: 0.25];
 
 	NSShadow *textShadow = [[NSShadow alloc] init];
 	[textShadow setShadowOffset: NSMakeSize(0.5, -1)];
@@ -1060,7 +1063,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) showLargeError: (NSString*)errorMessage
 {
-	[_largeErrorMessage setStringValue: errorMessage];
+	[_errorText setStringValue: errorMessage];
 	[_textMapping setHidden: YES];
 	[_tabView selectTabViewItemAtIndex: 0];
 }

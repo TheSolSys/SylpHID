@@ -110,7 +110,8 @@ enum eMenuEntriesButtons {
 	IBOutlet id _tabMask;
 
     // error tab message
-    IBOutlet id _largeErrorMessage;
+    IBOutlet id _errorText;
+	IBOutlet id _errorImage;
 
     // popup menus for controller remapping
     IBOutlet id _menuAxisXbox;

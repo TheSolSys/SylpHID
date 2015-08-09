@@ -86,7 +86,8 @@
                 <outlet property="_editOK" destination="2595" id="2605"/>
                 <outlet property="_editText" destination="2596" id="2604"/>
                 <outlet property="_editView" destination="2592" id="2603"/>
-                <outlet property="_largeErrorMessage" destination="1905" id="1907"/>
+                <outlet property="_errorImage" destination="4mi-mm-mig" id="MRr-sf-FJv"/>
+                <outlet property="_errorText" destination="1905" id="q75-us-PE9"/>
                 <outlet property="_leftStickAlertX" destination="2282" id="2330"/>
                 <outlet property="_leftStickAlertY" destination="2280" id="2331"/>
                 <outlet property="_leftStickDeadzoneX" destination="1888" id="1890"/>
@@ -165,25 +166,20 @@
                                     <rect key="frame" x="10" y="7" width="616" height="509"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1905">
-                                            <rect key="frame" x="12" y="245" width="592" height="29"/>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4mi-mm-mig">
+                                            <rect key="frame" x="83" y="27" width="450" height="450"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="SylpHID" id="q8U-ez-1NB"/>
+                                        </imageView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1905" customClass="FPInsetText">
+                                            <rect key="frame" x="12" y="277" width="592" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Error Message" id="1906">
-                                                <font key="font" metaFont="system" size="24"/>
-                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="font" metaFont="systemBold" size="28"/>
+                                                <color key="textColor" white="0.25364963503649635" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box hidden="YES" autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="2198">
-                                            <rect key="frame" x="11" y="-8" width="595" height="502"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="595" height="502"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <color key="borderColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="fillColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="0.5" colorSpace="deviceRGB"/>
-                                        </box>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -1058,6 +1054,16 @@
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box hidden="YES" autoresizesSubviews="NO" boxType="custom" borderType="none" titlePosition="noTitle" id="2198">
+                                            <rect key="frame" x="10" y="1" width="595" height="502"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="0.0" y="0.0" width="595" height="502"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <color key="borderColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="fillColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="0.5" colorSpace="deviceRGB"/>
                                         </box>
                                     </subviews>
                                 </view>
@@ -2024,7 +2030,7 @@ Gw
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="minSize" width="475" height="324"/>
-                                <size key="maxSize" width="485" height="10000000"/>
+                                <size key="maxSize" width="490" height="10000000"/>
                                 <attributedString key="textStorage">
                                     <fragment content="Loads &quot;{bundle}/Resources/credits.rtf&quot;">
                                         <attributes>
@@ -2035,7 +2041,7 @@ Gw
                                 </attributedString>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <size key="minSize" width="475" height="324"/>
-                                <size key="maxSize" width="485" height="10000000"/>
+                                <size key="maxSize" width="490" height="10000000"/>
                             </textView>
                         </subviews>
                     </clipView>
@@ -2122,6 +2128,7 @@ Gw
         <image name="NSAddTemplate" width="8" height="8"/>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="8" height="8"/>
+        <image name="SylpHID" width="512" height="512"/>
         <image name="controller" width="287" height="214"/>
         <image name="controllerButtonBack" width="15" height="15"/>
         <image name="controllerButtonBlk" width="20" height="20"/>

@@ -3,3 +3,30 @@
 @function img($file) {
   @return url(../#{$file})
 }
+
+
+// This function returns rgba() in integer color notation from floating point
+@function rgbaf($r,$g,$b,$a) {
+  @return rgba((255 * $r), (255 * $g), (255 * $b), $a)
+}
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+@mixin text-shadow($shadows...) {
+  -webkit-text-shadow: $shadows;
+  -moz-text-shadow: $shadows;
+  text-shadow: $shadows;
+}
+
+
+@mixin box-shadow($shadows...) {
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  box-shadow: $shadows;
+}

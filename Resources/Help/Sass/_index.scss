@@ -1,0 +1,41 @@
+// CSS rules for index/topic page only
+
+body.root {
+	background-image: url(fizzypop.png);
+}
+
+
+.root h1:before {
+	background: url(titlelogo.png);
+}
+
+div.left {
+	width: 49%;
+	display: inline-block;
+	margin-top: 1.0em;
+
+	ul {
+		float: right;
+		width: 130px;
+	}
+}
+
+div.right {
+	width: 49%;
+	display: inline-block;
+	margin-top: 1.5em;
+
+	& > div {
+		width: 140px;
+		float: left;
+		margin-left: 0.75em;
+	}
+
+	ul {
+		width: 130px;
+
+		&.comingsoon {
+			margin-top: 3.1em;
+		}
+	}
+}

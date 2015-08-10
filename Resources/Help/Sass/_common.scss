@@ -1,3 +1,4 @@
+// CSS rules for all pages in help book
 
 body {
 	background: {
@@ -5,28 +6,24 @@ body {
 		position: bottom right;
 		attachment: fixed;
 		repeat: no-repeat;
+		color: #eee;
 	}
 
 	font: {
 		family: "Lucida Grande";
-		size: 12pt;
+		size: 10pt;
 	}
-}
-
-
-body.root {
-	background-image: url(fizzypop.png);
 }
 
 
 h1.title {
 	font: {
 		weight: bold;
-		size: 350%;
+		size: 450%;
 	}
 
 	text-align: center;
-	margin: 0.125em 0 0 80px;
+	margin: 0.0625em 0 0 80px;
 
 	&:before {
 		content: "";
@@ -53,23 +50,42 @@ h1.title {
 }
 
 
-.root h1:before {
-	background: url(titlelogo.png);
-}
-
-
 h2.title {
 	position: relative;
-	top: -0.25em;
-	margin: 0 0 0 80px;
+	top: -0.125em;
+	margin: 0 0 1.0em 80px;
 
 	font: {
 		weight: bold;
-		size: 94%;
+		size: 120%;
 	}
 
 	text: {
 		align: center;
 		shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 12px #fff;
+	}
+}
+
+
+span.sylphid span {
+	font: {
+		variant: small-caps;
+		weight: 900;
+		size: 100%;
+	}
+}
+
+
+p.center {
+	margin-top: 0.5em;
+	text-align: center;
+}
+
+
+a, a:visited, a:active {
+	color: #000;
+
+	&:hover {
+		color: #a44;
 	}
 }

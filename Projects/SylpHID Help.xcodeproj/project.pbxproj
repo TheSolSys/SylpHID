@@ -20,12 +20,14 @@
 		8242295F1B7897D200E0D9F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = SylpHID.html; sourceTree = "<group>"; };
 		824229611B78984900E0D9F6 /* SylpHID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SylpHID.icns; path = ../Resources/SylpHID.icns; sourceTree = "<group>"; };
 		8242299D1B78DFB100E0D9F6 /* SylpHID.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = SylpHID.css; sourceTree = "<group>"; };
-		8242299F1B78DFC400E0D9F6 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; };
-		824229A01B78DFC400E0D9F6 /* SylpHID.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = SylpHID.scss; sourceTree = "<group>"; };
+		8242299F1B78DFC400E0D9F6 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		824229A01B78DFC400E0D9F6 /* SylpHID.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = SylpHID.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 		827B9AA91B78E8F8005DC99A /* _common.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _common.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 		827B9AAB1B78EEDF005DC99A /* titlelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlelogo.png; sourceTree = "<group>"; };
-		827B9AAD1B78EFF0005DC99A /* _partials.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _partials.scss; sourceTree = "<group>"; };
+		827B9AAD1B78EFF0005DC99A /* _partials.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _partials.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 		827B9AAE1B78F621005DC99A /* fizzypop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fizzypop.png; sourceTree = "<group>"; };
+		827B9AB01B790973005DC99A /* _index.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _index.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		827B9AB21B790A69005DC99A /* _boxview.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _boxview.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,9 @@
 		8242299B1B78DB8100E0D9F6 /* Sass */ = {
 			isa = PBXGroup;
 			children = (
+				827B9AB21B790A69005DC99A /* _boxview.scss */,
 				827B9AA91B78E8F8005DC99A /* _common.scss */,
+				827B9AB01B790973005DC99A /* _index.scss */,
 				8242299F1B78DFC400E0D9F6 /* _reset.scss */,
 				827B9AAD1B78EFF0005DC99A /* _partials.scss */,
 				824229A01B78DFC400E0D9F6 /* SylpHID.scss */,

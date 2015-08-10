@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		824229601B7897D200E0D9F6 /* SylpHID.html in Resources */ = {isa = PBXBuildFile; fileRef = 8242295E1B7897D200E0D9F6 /* SylpHID.html */; };
 		824229621B78984900E0D9F6 /* SylpHID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 824229611B78984900E0D9F6 /* SylpHID.icns */; };
+		8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */ = {isa = PBXBuildFile; fileRef = 8242299D1B78DFB100E0D9F6 /* SylpHID.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,9 @@
 		824229561B78962C00E0D9F6 /* Info-Help.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-Help.plist"; path = "Supporting Files/Info-Help.plist"; sourceTree = SOURCE_ROOT; };
 		8242295F1B7897D200E0D9F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = SylpHID.html; sourceTree = "<group>"; };
 		824229611B78984900E0D9F6 /* SylpHID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SylpHID.icns; path = ../Resources/SylpHID.icns; sourceTree = "<group>"; };
+		8242299D1B78DFB100E0D9F6 /* SylpHID.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = SylpHID.css; sourceTree = "<group>"; };
+		8242299F1B78DFC400E0D9F6 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; };
+		824229A01B78DFC400E0D9F6 /* SylpHID.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = SylpHID.scss; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 		824229581B78976D00E0D9F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8242299B1B78DB8100E0D9F6 /* Sass */,
 				8242299A1B78D92400E0D9F6 /* Common */,
+				8242299C1B78DB9B00E0D9F6 /* Images */,
 				8242295B1B7897D200E0D9F6 /* Pages */,
 				8242295E1B7897D200E0D9F6 /* SylpHID.html */,
 				824229611B78984900E0D9F6 /* SylpHID.icns */,
@@ -77,9 +83,28 @@
 		8242299A1B78D92400E0D9F6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8242299D1B78DFB100E0D9F6 /* SylpHID.css */,
 			);
 			name = Common;
 			path = ../Resources/Help/Common;
+			sourceTree = "<group>";
+		};
+		8242299B1B78DB8100E0D9F6 /* Sass */ = {
+			isa = PBXGroup;
+			children = (
+				8242299F1B78DFC400E0D9F6 /* _reset.scss */,
+				824229A01B78DFC400E0D9F6 /* SylpHID.scss */,
+			);
+			name = Sass;
+			path = ../Resources/Help/Sass;
+			sourceTree = "<group>";
+		};
+		8242299C1B78DB9B00E0D9F6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			path = ../Resources/Help/en.lproj/Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +116,7 @@
 			buildPhases = (
 				824229481B78954500E0D9F6 /* Sources */,
 				824229491B78954500E0D9F6 /* Frameworks */,
+				827B9AA81B78E119005DC99A /* Run Script */,
 				8242294A1B78954500E0D9F6 /* Resources */,
 				824229631B789F8200E0D9F6 /* ShellScript */,
 			);
@@ -140,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				824229621B78984900E0D9F6 /* SylpHID.icns in Resources */,
+				8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */,
 				824229601B7897D200E0D9F6 /* SylpHID.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +186,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "hiutil -C -v -a -l en -s en -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/en.lproj/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
+			showEnvVarsInLog = 0;
+		};
+		827B9AA81B78E119005DC99A /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sass --scss --update \"$SOURCE_ROOT/../Resources/Help/Sass\":\"$SOURCE_ROOT/../Resources/Help/Common\" --style compressed --sourcemap=none --no-cache --stop-on-error";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

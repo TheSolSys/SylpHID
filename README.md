@@ -4,4 +4,3 @@
 Driver for game console controllers for OSX.
 
 Currently supports classic Xbox controllers via USB connection.
-

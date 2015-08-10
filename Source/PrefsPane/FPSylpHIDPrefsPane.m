@@ -28,6 +28,7 @@
 
 
 #import <IOKit/hid/IOHIDUsageTables.h>
+#import <Carbon/Carbon.h>
 
 #import "FPSylpHIDPrefsPane.h"
 #import "FPSylpHIDDriverInterface.h"
@@ -62,7 +63,7 @@
 #define kUndoBindings			2
 
 
-typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
+typedef void(^OPCH)(NSInteger result);	// for OpenPanel completion handler
 
 
 @implementation FPSylpHIDPrefsPane
@@ -206,6 +207,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 	_appConfig = [NSMutableDictionary dictionary];
 
+	[(FPInsetText*)_errorText setTextColor: [NSColor colorWithCalibratedRed:0.850 green:0.500 blue:0.500 alpha:1.000]];
 	[_errorImage setAlphaValue: 0.25];
 
 	NSShadow *textShadow = [[NSShadow alloc] init];
@@ -221,6 +223,8 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 															textShadow,	NSShadowAttributeName,
 															/* textColor,	NSForegroundColorAttributeName, */
 															paragraph,	NSParagraphStyleAttributeName,	nil];
+
+	[[NSHelpManager sharedHelpManager] registerBooksInBundle: [self bundle]];
 }
 
 
@@ -269,8 +273,7 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 - (void) getVersion
 {
-	NSBundle* bundle = [NSBundle bundleWithPath: @"/Library/PreferencePanes/SylpHID.prefPane"];
-	NSString* version = [[bundle infoDictionary] objectForKey: @"CFBundleGetInfoString"];
+	NSString* version = [[[self bundle] infoDictionary] objectForKey: @"CFBundleGetInfoString"];
 	if (version == nil) version = @"Unknown Version";
 	[_textVersion setStringValue: version];
 }
@@ -642,49 +645,49 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 			[sharedapp stopModal];  // stop modal for popup so sheet works, reenable modal when sheet dismissed
 			[_popup setLevel: NSNormalWindowLevel];	 // make pop not "always on top" so sheet slides in over it
 
-			OPBlock block = ^(NSInteger result) {
-								NSString* appid = nil;
-								NSString* file = nil;
-								if (result == NSFileHandlingPanelOKButton) {
-									file = [[openPanel URL] path];
-									appid = [[NSBundle bundleWithPath: file] bundleIdentifier];
-									if (appid != nil && ![appid isEqualToString: @""]) {
-										NSString* config = [_configPopUp titleOfSelectedItem];
-										NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
-										[FPSylpHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
-										[self appSetDataSource];
-									} else {
-										appid = nil;
-									}
-								}
-
-								[openPanel close];
-								[_popup setLevel: NSFloatingWindowLevel];
-
-								if (result == NSFileHandlingPanelOKButton && appid == nil) {
-									NSAlert *alert = [NSAlert alertWithMessageText: @"Incompatible Application"
-																	 defaultButton: @"Cancel" alternateButton: nil otherButton: nil
-														 informativeTextWithFormat: @"Selected application can not be used "
-														   "for binding because it does not have a valid bundle identifier!"];
-									[alert setIcon: [[NSWorkspace sharedWorkspace] iconForFile: file]];
-									[alert setAlertStyle: NSCriticalAlertStyle];
-									[_appsOK setEnabled: NO];
-									[_appsAction setEnabled: NO];
-									[_appsTable setEnabled: NO];
-									[alert beginSheetModalForWindow: [sharedapp mainWindow]
-												  completionHandler: ^(NSModalResponse response){
-																		[_appsOK setEnabled: YES];
-																		[_appsAction setEnabled: YES];
-																		[_appsTable setEnabled: YES];
-																		// delay required so sheet can animate sliding back up
-																		[sharedapp performSelector: @selector(runModalForWindow:)
-																						withObject: _popup
-																						afterDelay: 0.1];
-																	 }];
+			OPCH block = ^(NSInteger result) {
+							NSString* appid = nil;
+							NSString* file = nil;
+							if (result == NSFileHandlingPanelOKButton) {
+								file = [[openPanel URL] path];
+								appid = [[NSBundle bundleWithPath: file] bundleIdentifier];
+								if (appid != nil && ![appid isEqualToString: @""]) {
+									NSString* config = [_configPopUp titleOfSelectedItem];
+									NSString* devid = [[_devices objectAtIndex: [_devicePopUp indexOfSelectedItem]] identifier];
+									[FPSylpHIDPrefsLoader setConfigNamed: config forAppID: appid andDeviceID: devid];
+									[self appSetDataSource];
 								} else {
-									[sharedapp runModalForWindow: _popup];
+									appid = nil;
 								}
-							};
+							}
+
+							[openPanel close];
+							[_popup setLevel: NSFloatingWindowLevel];
+
+							if (result == NSFileHandlingPanelOKButton && appid == nil) {
+								NSAlert *alert = [NSAlert alertWithMessageText: @"Incompatible Application"
+																 defaultButton: @"Cancel" alternateButton: nil otherButton: nil
+													 informativeTextWithFormat: @"Selected application can not be used "
+													   "for binding because it does not have a valid bundle identifier!"];
+								[alert setIcon: [[NSWorkspace sharedWorkspace] iconForFile: file]];
+								[alert setAlertStyle: NSCriticalAlertStyle];
+								[_appsOK setEnabled: NO];
+								[_appsAction setEnabled: NO];
+								[_appsTable setEnabled: NO];
+								[alert beginSheetModalForWindow: [sharedapp mainWindow]
+											  completionHandler: ^(NSModalResponse response){
+																	[_appsOK setEnabled: YES];
+																	[_appsAction setEnabled: YES];
+																	[_appsTable setEnabled: YES];
+																	// delay required so sheet can animate sliding back up
+																	[sharedapp performSelector: @selector(runModalForWindow:)
+																					withObject: _popup
+																					afterDelay: 0.1];
+																 }];
+							} else {
+								[sharedapp runModalForWindow: _popup];
+							}
+						};
 
 			[openPanel beginSheetModalForWindow: [sharedapp mainWindow]
 							  completionHandler: block];
@@ -1901,6 +1904,13 @@ typedef void(^OPBlock)(NSInteger result);	// for OpenPanel completion block
 
 
 #pragma mark --- Actions ------------------------------
+
+- (IBAction) clickedHelp: (id)sender
+{
+	NSString* book = [[[self bundle] infoDictionary] objectForKey: @"CFBundleHelpBookName"];
+	AHGotoPage((__bridge CFStringRef)(book), NULL, NULL);
+}
+
 
 - (IBAction) selectDevice: (id)sender
 {

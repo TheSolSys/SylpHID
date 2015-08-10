@@ -1,0 +1,328 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		824229601B7897D200E0D9F6 /* SylpHID.html in Resources */ = {isa = PBXBuildFile; fileRef = 8242295E1B7897D200E0D9F6 /* SylpHID.html */; };
+		824229621B78984900E0D9F6 /* SylpHID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 824229611B78984900E0D9F6 /* SylpHID.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8242294C1B78954500E0D9F6 /* SylpHID.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SylpHID.help; sourceTree = BUILT_PRODUCTS_DIR; };
+		824229561B78962C00E0D9F6 /* Info-Help.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-Help.plist"; path = "Supporting Files/Info-Help.plist"; sourceTree = SOURCE_ROOT; };
+		8242295F1B7897D200E0D9F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = SylpHID.html; sourceTree = "<group>"; };
+		824229611B78984900E0D9F6 /* SylpHID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SylpHID.icns; path = ../Resources/SylpHID.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		824229491B78954500E0D9F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		824229431B78954500E0D9F6 = {
+			isa = PBXGroup;
+			children = (
+				824229581B78976D00E0D9F6 /* Resources */,
+				8242294F1B78954500E0D9F6 /* Supporting Files */,
+				8242294D1B78954500E0D9F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8242294D1B78954500E0D9F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8242294C1B78954500E0D9F6 /* SylpHID.help */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8242294F1B78954500E0D9F6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				824229561B78962C00E0D9F6 /* Info-Help.plist */,
+			);
+			name = "Supporting Files";
+			path = "SylpHID Help";
+			sourceTree = "<group>";
+		};
+		824229581B78976D00E0D9F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8242295A1B7897D200E0D9F6 /* Images */,
+				8242295B1B7897D200E0D9F6 /* Pages */,
+				8242295C1B7897D200E0D9F6 /* Scripts */,
+				8242295D1B7897D200E0D9F6 /* Styles */,
+				8242295E1B7897D200E0D9F6 /* SylpHID.html */,
+				824229611B78984900E0D9F6 /* SylpHID.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8242295A1B7897D200E0D9F6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			path = ../Resources/Help/en.lproj/Images;
+			sourceTree = "<group>";
+		};
+		8242295B1B7897D200E0D9F6 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pages;
+			path = ../Resources/Help/en.lproj/Pages;
+			sourceTree = "<group>";
+		};
+		8242295C1B7897D200E0D9F6 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Scripts;
+			path = ../Resources/Help/en.lproj/Scripts;
+			sourceTree = "<group>";
+		};
+		8242295D1B7897D200E0D9F6 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Styles;
+			path = ../Resources/Help/en.lproj/Styles;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8242294B1B78954500E0D9F6 /* SylpHID Help */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 824229531B78954500E0D9F6 /* Build configuration list for PBXNativeTarget "SylpHID Help" */;
+			buildPhases = (
+				824229481B78954500E0D9F6 /* Sources */,
+				824229491B78954500E0D9F6 /* Frameworks */,
+				8242294A1B78954500E0D9F6 /* Resources */,
+				824229631B789F8200E0D9F6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SylpHID Help";
+			productName = "SylpHID Help";
+			productReference = 8242294C1B78954500E0D9F6 /* SylpHID.help */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		824229441B78954500E0D9F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "FizzyPop Studios";
+				TargetAttributes = {
+					8242294B1B78954500E0D9F6 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 824229471B78954500E0D9F6 /* Build configuration list for PBXProject "SylpHID Help" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 824229431B78954500E0D9F6;
+			productRefGroup = 8242294D1B78954500E0D9F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8242294B1B78954500E0D9F6 /* SylpHID Help */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8242294A1B78954500E0D9F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				824229621B78984900E0D9F6 /* SylpHID.icns in Resources */,
+				824229601B7897D200E0D9F6 /* SylpHID.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		824229631B789F8200E0D9F6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hiutil -C -v -a -l en -s en -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/en.lproj/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		824229481B78954500E0D9F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8242295E1B7897D200E0D9F6 /* SylpHID.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8242295F1B7897D200E0D9F6 /* en */,
+			);
+			name = SylpHID.html;
+			path = ../Resources/Help/en.lproj;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		824229511B78954500E0D9F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+			};
+			name = Debug;
+		};
+		824229521B78954500E0D9F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		824229541B78954500E0D9F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Supporting Files/Info-Help.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_MODULE_NAME = SylpHID;
+				PRODUCT_NAME = SylpHID;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Debug;
+		};
+		824229551B78954500E0D9F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Supporting Files/Info-Help.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_MODULE_NAME = SylpHID;
+				PRODUCT_NAME = SylpHID;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		824229471B78954500E0D9F6 /* Build configuration list for PBXProject "SylpHID Help" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824229511B78954500E0D9F6 /* Debug */,
+				824229521B78954500E0D9F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		824229531B78954500E0D9F6 /* Build configuration list for PBXNativeTarget "SylpHID Help" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				824229541B78954500E0D9F6 /* Debug */,
+				824229551B78954500E0D9F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 824229441B78954500E0D9F6 /* Project object */;
+}

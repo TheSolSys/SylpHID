@@ -85,6 +85,7 @@
 		82223A761B6C090B00099615 /* FPSylpHIDPrefsLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */; };
 		82223A771B6C090B00099615 /* FPSylpHIDPrefsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */; };
 		82223A7C1B6C0D5E00099615 /* SylpHID.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82223A7A1B6C0D5E00099615 /* SylpHID.xib */; };
+		824229651B78ABA600E0D9F6 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824229641B78ABA600E0D9F6 /* Carbon.framework */; };
 		82F04EF61B77AA1300F4F952 /* credits.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 82F04EF51B77AA1300F4F952 /* credits.rtfd */; };
 		82F04EFE1B77E40200F4F952 /* NSBezierPath+String.h in Headers */ = {isa = PBXBuildFile; fileRef = 82F04EFC1B77E40200F4F952 /* NSBezierPath+String.h */; };
 		82F04EFF1B77E40200F4F952 /* NSBezierPath+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F04EFD1B77E40200F4F952 /* NSBezierPath+String.m */; };
@@ -173,6 +174,7 @@
 		82223A711B6C090B00099615 /* FPSylpHIDPrefsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPSylpHIDPrefsLoader.h; path = ../Source/Common/FPSylpHIDPrefsLoader.h; sourceTree = "<group>"; };
 		82223A721B6C090B00099615 /* FPSylpHIDPrefsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPSylpHIDPrefsLoader.m; path = ../Source/Common/FPSylpHIDPrefsLoader.m; sourceTree = "<group>"; };
 		82223A7B1B6C0D5E00099615 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ../Resources/en.lproj/SylpHID.xib; sourceTree = "<group>"; };
+		824229641B78ABA600E0D9F6 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SylpHID.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F04EF51B77AA1300F4F952 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = credits.rtfd; path = ../Resources/credits.rtfd; sourceTree = "<group>"; };
 		82F04EFC1B77E40200F4F952 /* NSBezierPath+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+String.h"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824229651B78ABA600E0D9F6 /* Carbon.framework in Frameworks */,
 				82223A471B6C01BE00099615 /* Cocoa.framework in Frameworks */,
 				82223A4A1B6C01BE00099615 /* IOKit.framework in Frameworks */,
 				82223A4B1B6C01BE00099615 /* PreferencePanes.framework in Frameworks */,
@@ -312,6 +315,7 @@
 		82223A3F1B6C017600099615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				824229641B78ABA600E0D9F6 /* Carbon.framework */,
 				82223A411B6C01BE00099615 /* Cocoa.framework */,
 				82223A431B6C01BE00099615 /* Foundation.framework */,
 				82223A441B6C01BE00099615 /* IOKit.framework */,
@@ -558,7 +562,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.SylpHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.SylpHIDDaemon\nopen \"/Applications/System Preferences.app\"";
+			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID.help\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.SylpHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.SylpHIDDaemon\nopen \"/Applications/System Preferences.app\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

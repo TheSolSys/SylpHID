@@ -296,4 +296,6 @@ enum eMenuEntriesButtons {
 - (IBAction) clickCredits: (id)sender;
 - (IBAction) clickDonate: (id)sender;
 
+- (IBAction) clickedHelp: (id)sender;
+
 @end

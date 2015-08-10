@@ -42,6 +42,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8242294B1B78954500E0D9F6"
+               BuildableName = "SylpHID.help"
+               BlueprintName = "SylpHID Help"
+               ReferencedContainer = "container:SylpHID Help.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "82A0B3E61B6BD80C00653468"
                BuildableName = "SylpHID.prefPane"
                BlueprintName = "SylpHID PrefsPane"

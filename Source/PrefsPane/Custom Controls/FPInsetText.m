@@ -32,26 +32,26 @@
 }
 
 
-- (NSColor*) colorText
+- (NSColor*) textColor
 {
 	return _colorText;
 }
 
 
-- (void) setColorText: (NSColor*)color
+- (void) setTextColor: (NSColor*)color
 {
 	_colorText = color;
 	_path = nil;
 }
 
 
-- (NSColor*) colorShadow
+- (NSColor*) shadowColor
 {
 	return _colorShadow;
 }
 
 
-- (void) setColorShadow: (NSColor*)color
+- (void) setShadowColor: (NSColor*)color
 {
 	_colorShadow = color;
 	_path = nil;

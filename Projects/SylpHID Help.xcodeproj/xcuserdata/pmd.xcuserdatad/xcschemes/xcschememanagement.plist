@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SylpHID Driver.xcscheme</key>
+		<key>SylpHID Help.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>82A0B3CE1B6BD7BA00653468</key>
+		<key>8242294B1B78954500E0D9F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

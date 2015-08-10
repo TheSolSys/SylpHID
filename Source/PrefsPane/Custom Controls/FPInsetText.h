@@ -15,4 +15,13 @@
 	NSNumber* _kerning;
 }
 
+- (NSColor*) textColor;
+- (void) setTextColor: (NSColor*)color;
+
+- (NSColor*) shadowColor;
+- (void) setShadowColor: (NSColor*)color;
+
+- (NSNumber*) kerning;
+- (void) setKerning: (NSNumber*)kern;
+
 @end

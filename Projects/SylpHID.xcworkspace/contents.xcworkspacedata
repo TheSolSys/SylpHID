@@ -8,6 +8,9 @@
       location = "group:SylpHID Daemon.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:SylpHID Help.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SylpHID PrefsPane.xcodeproj">
    </FileRef>
 </Workspace>

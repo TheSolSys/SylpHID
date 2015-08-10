@@ -58,22 +58,12 @@
 		824229581B78976D00E0D9F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8242295A1B7897D200E0D9F6 /* Images */,
+				8242299A1B78D92400E0D9F6 /* Common */,
 				8242295B1B7897D200E0D9F6 /* Pages */,
-				8242295C1B7897D200E0D9F6 /* Scripts */,
-				8242295D1B7897D200E0D9F6 /* Styles */,
 				8242295E1B7897D200E0D9F6 /* SylpHID.html */,
 				824229611B78984900E0D9F6 /* SylpHID.icns */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		8242295A1B7897D200E0D9F6 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Images;
-			path = ../Resources/Help/en.lproj/Images;
 			sourceTree = "<group>";
 		};
 		8242295B1B7897D200E0D9F6 /* Pages */ = {
@@ -84,20 +74,12 @@
 			path = ../Resources/Help/en.lproj/Pages;
 			sourceTree = "<group>";
 		};
-		8242295C1B7897D200E0D9F6 /* Scripts */ = {
+		8242299A1B78D92400E0D9F6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Scripts;
-			path = ../Resources/Help/en.lproj/Scripts;
-			sourceTree = "<group>";
-		};
-		8242295D1B7897D200E0D9F6 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Styles;
-			path = ../Resources/Help/en.lproj/Styles;
+			name = Common;
+			path = ../Resources/Help/Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

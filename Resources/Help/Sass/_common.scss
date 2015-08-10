@@ -1,0 +1,75 @@
+
+body {
+	background: {
+		image: img("fizzypop.png");
+		position: bottom right;
+		attachment: fixed;
+		repeat: no-repeat;
+	}
+
+	font: {
+		family: "Lucida Grande";
+		size: 12pt;
+	}
+}
+
+
+body.root {
+	background-image: url(fizzypop.png);
+}
+
+
+h1.title {
+	font: {
+		weight: bold;
+		size: 350%;
+	}
+
+	text-align: center;
+	margin: 0.125em 0 0 80px;
+
+	&:before {
+		content: "";
+		background: img("titlelogo.png");
+		position: absolute;
+		margin-left: -80px;
+		width: 70px;
+		height: 80px;
+	}
+
+	span {
+		font: {
+			variant: small-caps;
+			weight: 900;
+			size: 105%;
+		}
+
+		&:before {
+			content: "hid";
+			position: absolute;
+			margin-left: 1px;
+		}
+	}
+}
+
+
+.root h1:before {
+	background: url(titlelogo.png);
+}
+
+
+h2.title {
+	position: relative;
+	top: -0.25em;
+	margin: 0 0 0 80px;
+
+	font: {
+		weight: bold;
+		size: 94%;
+	}
+
+	text: {
+		align: center;
+		shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 12px #fff;
+	}
+}

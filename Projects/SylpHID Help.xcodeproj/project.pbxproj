@@ -10,6 +10,8 @@
 		824229601B7897D200E0D9F6 /* SylpHID.html in Resources */ = {isa = PBXBuildFile; fileRef = 8242295E1B7897D200E0D9F6 /* SylpHID.html */; };
 		824229621B78984900E0D9F6 /* SylpHID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 824229611B78984900E0D9F6 /* SylpHID.icns */; };
 		8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */ = {isa = PBXBuildFile; fileRef = 8242299D1B78DFB100E0D9F6 /* SylpHID.css */; };
+		827B9AAC1B78EEDF005DC99A /* titlelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 827B9AAB1B78EEDF005DC99A /* titlelogo.png */; };
+		827B9AAF1B78F621005DC99A /* fizzypop.png in Resources */ = {isa = PBXBuildFile; fileRef = 827B9AAE1B78F621005DC99A /* fizzypop.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,10 @@
 		8242299D1B78DFB100E0D9F6 /* SylpHID.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = SylpHID.css; sourceTree = "<group>"; };
 		8242299F1B78DFC400E0D9F6 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; };
 		824229A01B78DFC400E0D9F6 /* SylpHID.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = SylpHID.scss; sourceTree = "<group>"; };
+		827B9AA91B78E8F8005DC99A /* _common.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _common.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		827B9AAB1B78EEDF005DC99A /* titlelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlelogo.png; sourceTree = "<group>"; };
+		827B9AAD1B78EFF0005DC99A /* _partials.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _partials.scss; sourceTree = "<group>"; };
+		827B9AAE1B78F621005DC99A /* fizzypop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fizzypop.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,8 @@
 		8242299A1B78D92400E0D9F6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				827B9AAB1B78EEDF005DC99A /* titlelogo.png */,
+				827B9AAE1B78F621005DC99A /* fizzypop.png */,
 				8242299D1B78DFB100E0D9F6 /* SylpHID.css */,
 			);
 			name = Common;
@@ -92,7 +100,9 @@
 		8242299B1B78DB8100E0D9F6 /* Sass */ = {
 			isa = PBXGroup;
 			children = (
+				827B9AA91B78E8F8005DC99A /* _common.scss */,
 				8242299F1B78DFC400E0D9F6 /* _reset.scss */,
+				827B9AAD1B78EFF0005DC99A /* _partials.scss */,
 				824229A01B78DFC400E0D9F6 /* SylpHID.scss */,
 			);
 			name = Sass;
@@ -168,6 +178,8 @@
 				824229621B78984900E0D9F6 /* SylpHID.icns in Resources */,
 				8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */,
 				824229601B7897D200E0D9F6 /* SylpHID.html in Resources */,
+				827B9AAC1B78EEDF005DC99A /* titlelogo.png in Resources */,
+				827B9AAF1B78F621005DC99A /* fizzypop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "hiutil -C -v -a -l en -s en -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/en.lproj/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
+			shellScript = "hiutil -C -v -a -l en -s en -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/en.lproj/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nkillall \"HelpViewer\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
 			showEnvVarsInLog = 0;
 		};
 		827B9AA81B78E119005DC99A /* Run Script */ = {

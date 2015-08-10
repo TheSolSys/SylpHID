@@ -1,0 +1,5 @@
+
+// This function returns the correct url() syntax for common images
+@function img($file) {
+  @return url(../#{$file})
+}

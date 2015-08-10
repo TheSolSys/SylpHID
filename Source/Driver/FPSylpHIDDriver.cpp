@@ -2464,10 +2464,11 @@ OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 19);
 // 07/15/2015 (SylpHID v1.0.0 Changes by Paige DePol)
 // • Re-created all projects using Xcode 6.2 due to issues with old projects
 //   • Upgraded all projects to use ARC (Automatic Reference Counting)
-//   • Created common workspace to consolidate all 3 projects together
+//   • Created common workspace to consolidate all 3 projects together, and added 4th project for Help Book
 //   • Re-organised all source code, assets and other resources
 //   • IMPORTANT: New run script phase for Kext/PrefsPane uses 'sudo'! I specify a script for SUDO_ASKPASS,
 //     ========== however, you may wish to configure the system differently for providing sudo your password!
+//   • Uses Sass: Run script phase for the Help Book project requires Sass to compile the necessary CSS file!
 // • Updated Daemon process to use a LaunchAgent instead of older LoginItem system
 // • Updated PrefsNotifier class to use a protocol instead of saving target and selector
 // • Updated graphics used in prefs pane to more accurately represent an Xbox controller
@@ -2476,11 +2477,11 @@ OSMetaClassDefineReservedUnused(FPSylpHIDDriver, 19);
 //   • Allows reloading of default settings, which are stored in the driver
 //   • Allows retrieving USB bus information (speed, power, address) for display in USB info panel
 // • Now compiled as 64-bit kext for OSX 10.7+  (32-bit kext requires building with Xcode 4.x)
-// • All buttons and axes are now remappable
+// • All controller elements are now fully remappable
 // • All analog buttons (and triggers) may independently be set to analog or digital mode
 // • Both sticks now have configurable deadzone areas, remaining active area is mapped to full stick range
 //   • Deadzones can be specified for both horizontal and vertical stick movement
-// • All analog buttons (and triggers) have configurable low and high
+// • All analog buttons (and triggers) have configurable low and high threshold
 // • All analog buttons (and triggers) have configutable analog or digital operation
 //   • If button (or trigger) is in digital mode the button only activates once low threshold has been reached
 //   • If button is in analog mode entire button range is mapped between low and high threshold markers

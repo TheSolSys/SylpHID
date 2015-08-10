@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8242294B1B78954500E0D9F6"
-               BuildableName = "SylpHID Help.help"
+               BuildableName = "SylpHID.help"
                BlueprintName = "SylpHID Help"
                ReferencedContainer = "container:SylpHID Help.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8242294B1B78954500E0D9F6"
-            BuildableName = "SylpHID Help.help"
+            BuildableName = "SylpHID.help"
             BlueprintName = "SylpHID Help"
             ReferencedContainer = "container:SylpHID Help.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8242294B1B78954500E0D9F6"
-            BuildableName = "SylpHID Help.help"
+            BuildableName = "SylpHID.help"
             BlueprintName = "SylpHID Help"
             ReferencedContainer = "container:SylpHID Help.xcodeproj">
          </BuildableReference>

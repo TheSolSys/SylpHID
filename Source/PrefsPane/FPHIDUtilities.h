@@ -12,7 +12,7 @@
 //
 // Forked and Modified by Paige Marie DePol <pmd@fizzypopstudios.com>
 // Copyright (c)2015 FizzyPop Studios. All Rights Reserved.
-// http://xboxhid.fizzypopstudios.com
+// http://sylphid.fizzypopstudios.com
 //
 // =========================================================================================================================
 // This file is part of the SylpHID Driver, Daemon, and Preference Pane software (collectively known as "SylpHID").

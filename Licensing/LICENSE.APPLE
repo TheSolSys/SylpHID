@@ -1,4 +1,4 @@
-"Xbox HID" uses a modified "IOUSBHIDDriver" by Apple, Inc.
+"SylpHID" uses a modified "IOUSBHIDDriver" by Apple, Inc.
 Portions Copyright (c)1999-2003 Apple, Inc. All Rights Reserved.
 
 License for "IOUSBHIDDriver" by Apple, Inc:

@@ -1,4 +1,4 @@
-"Xbox HID" uses "MAAttachedWindow" by Matt Gemmell
+"SylpHID" uses "MAAttachedWindow" by Matt Gemmell
 Copyright (c)2007 Magic Aubergine. All Rights Reserved.
 http://mattgemmell.com/
 

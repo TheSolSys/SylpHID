@@ -1908,7 +1908,7 @@ typedef void(^OPCH)(NSInteger result);	// for OpenPanel completion handler
 - (IBAction) clickedHelp: (id)sender
 {
 	NSString* book = [[[self bundle] infoDictionary] objectForKey: @"CFBundleHelpBookName"];
-	AHGotoPage((__bridge CFStringRef)(book), NULL, NULL);
+	AHGotoPage((__bridge CFStringRef)book, NULL, NULL);
 }
 
 

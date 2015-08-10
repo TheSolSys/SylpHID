@@ -1,23 +1,25 @@
-"Xbox HID" was created by Paige DePol (http://girlintheshell.com/)
+"SylpHID" was created by Paige DePol
 Copyright (c)2015 FizzyPop Studios. All Rights Reserved.
-http://xboxhid.fizzypopstudios.com/
+http://sylphid.fizzypopstudios.com/
 
 
-"Xbox HID" is a fork of "xhd" by Darrell Walisser.
+"SylpHID" is a fork of "xhd" by Darrell Walisser.
 Copyright (c)2007 Darrell Walisser. All Rights Reserved.
 http://sourceforge.net/projects/xhd/
 
 
-"Xbox HID" contains modifications to "xhd" by macman860 (v2.0.0 release)
+"SylpHID" contains modifications to "xhd" by macman860 (v2.0.0 release)
 https://macman860.wordpress.com/2013/05/03/xbox-driver-for-mac-os-x-lion/
 
 
-"Xbox HID" contains code derived from "SDL (Simple DirectMedia Layer)"
+"SylpHID" contains code derived from "SDL (Simple DirectMedia Layer)"
 Copyright (c)1997-2002  Sam Lantinga. All Rights Reserved.
 Modifications to original "SDL" joystick code were made by Max Horn.
 
-License for "Xbox HID" by FizzyPop Studios, "xhd" by Darrel Walisser / macman860,
-	    "SDL" by Sam Lantinga, and modified "SDL" code by Max Horn:
+
+License for "SylpHID" by Paige DePol of FizzyPop Studios
+            "xhd" by Darrel Walisser and modifications by macman860
+            "SDL" by Sam Lantinga and modifications by Max Horn
 
 
                     GNU GENERAL PUBLIC LICENSE
@@ -359,4 +361,3 @@ proprietary programs.  If your program is a subroutine library, you may
 consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
-

@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		824229601B7897D200E0D9F6 /* SylpHID.html in Resources */ = {isa = PBXBuildFile; fileRef = 8242295E1B7897D200E0D9F6 /* SylpHID.html */; };
 		824229621B78984900E0D9F6 /* SylpHID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 824229611B78984900E0D9F6 /* SylpHID.icns */; };
 		8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */ = {isa = PBXBuildFile; fileRef = 8242299D1B78DFB100E0D9F6 /* SylpHID.css */; };
 		827B9AAC1B78EEDF005DC99A /* titlelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 827B9AAB1B78EEDF005DC99A /* titlelogo.png */; };
 		827B9AAF1B78F621005DC99A /* fizzypop.png in Resources */ = {isa = PBXBuildFile; fileRef = 827B9AAE1B78F621005DC99A /* fizzypop.png */; };
+		82E6C8521B7A5F7900EEFD96 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 82E6C8511B7A5F7900EEFD96 /* en.lproj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8242294C1B78954500E0D9F6 /* SylpHID.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SylpHID.help; sourceTree = BUILT_PRODUCTS_DIR; };
 		824229561B78962C00E0D9F6 /* Info-Help.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-Help.plist"; path = "Supporting Files/Info-Help.plist"; sourceTree = SOURCE_ROOT; };
-		8242295F1B7897D200E0D9F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = SylpHID.html; sourceTree = "<group>"; };
 		824229611B78984900E0D9F6 /* SylpHID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SylpHID.icns; path = ../Resources/SylpHID.icns; sourceTree = "<group>"; };
 		8242299D1B78DFB100E0D9F6 /* SylpHID.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = SylpHID.css; sourceTree = "<group>"; };
 		8242299F1B78DFC400E0D9F6 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
@@ -28,6 +27,7 @@
 		827B9AAE1B78F621005DC99A /* fizzypop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fizzypop.png; sourceTree = "<group>"; };
 		827B9AB01B790973005DC99A /* _index.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _index.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 		827B9AB21B790A69005DC99A /* _boxview.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _boxview.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		82E6C8511B7A5F7900EEFD96 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = ../Resources/Help/en.lproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				824229581B78976D00E0D9F6 /* Resources */,
+				82E6C8511B7A5F7900EEFD96 /* en.lproj */,
 				8242294F1B78954500E0D9F6 /* Supporting Files */,
 				8242294D1B78954500E0D9F6 /* Products */,
 			);
@@ -72,20 +73,9 @@
 			children = (
 				8242299B1B78DB8100E0D9F6 /* Sass */,
 				8242299A1B78D92400E0D9F6 /* Common */,
-				8242299C1B78DB9B00E0D9F6 /* Images */,
-				8242295B1B7897D200E0D9F6 /* Pages */,
-				8242295E1B7897D200E0D9F6 /* SylpHID.html */,
 				824229611B78984900E0D9F6 /* SylpHID.icns */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		8242295B1B7897D200E0D9F6 /* Pages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Pages;
-			path = ../Resources/Help/en.lproj/Pages;
 			sourceTree = "<group>";
 		};
 		8242299A1B78D92400E0D9F6 /* Common */ = {
@@ -111,14 +101,6 @@
 			);
 			name = Sass;
 			path = ../Resources/Help/Sass;
-			sourceTree = "<group>";
-		};
-		8242299C1B78DB9B00E0D9F6 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Images;
-			path = ../Resources/Help/en.lproj/Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,11 +161,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				824229621B78984900E0D9F6 /* SylpHID.icns in Resources */,
+				82E6C8521B7A5F7900EEFD96 /* en.lproj in Resources */,
 				8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */,
-				824229601B7897D200E0D9F6 /* SylpHID.html in Resources */,
 				827B9AAC1B78EEDF005DC99A /* titlelogo.png in Resources */,
 				827B9AAF1B78F621005DC99A /* fizzypop.png in Resources */,
+				824229621B78984900E0D9F6 /* SylpHID.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,18 +212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		8242295E1B7897D200E0D9F6 /* SylpHID.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8242295F1B7897D200E0D9F6 /* en */,
-			);
-			name = SylpHID.html;
-			path = ../Resources/Help/en.lproj;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		824229511B78954500E0D9F6 /* Debug */ = {

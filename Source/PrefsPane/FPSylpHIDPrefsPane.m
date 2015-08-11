@@ -201,15 +201,17 @@ typedef void(^OPCH)(NSInteger result);	// for OpenPanel completion handler
 	_appData = [[FPDataSourceApps alloc] init];
 	[(NSTableView*)_appsTable setDataSource: _appData];
 	[_appsTable setDelegate: self];
+	[_appsBlank setTextColor: [NSColor colorWithCalibratedRed:0.850 green:0.500 blue:0.500 alpha:1.000]];
 
 	_lastConfig = nil;
 	_undoBindings = nil;
 
 	_appConfig = [NSMutableDictionary dictionary];
 
-	[(FPInsetText*)_errorText setTextColor: [NSColor colorWithCalibratedRed:0.850 green:0.500 blue:0.500 alpha:1.000]];
+	[_errorText setTextColor: [NSColor colorWithCalibratedRed:0.850 green:0.500 blue:0.500 alpha:1.000]];
 	[_errorImage setAlphaValue: 0.25];
 
+	// create shadow for selected text in app binding table view
 	NSShadow *textShadow = [[NSShadow alloc] init];
 	[textShadow setShadowOffset: NSMakeSize(0.5, -1)];
 	[textShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.0 alpha: 1]];
@@ -219,11 +221,10 @@ typedef void(^OPCH)(NSInteger result);	// for OpenPanel completion handler
 	[paragraph setAlignment: NSLeftTextAlignment];
 	[paragraph setLineBreakMode: NSLineBreakByTruncatingTail];
 
-	_appAttrs = [NSDictionary dictionaryWithObjectsAndKeys: /*textFont,	NSFontAttributeName, */
-															textShadow,	NSShadowAttributeName,
-															/* textColor,	NSForegroundColorAttributeName, */
+	_appAttrs = [NSDictionary dictionaryWithObjectsAndKeys: textShadow,	NSShadowAttributeName,
 															paragraph,	NSParagraphStyleAttributeName,	nil];
 
+	// register our help book so help will actually work, necessary as we are a plugin not the main app
 	[[NSHelpManager sharedHelpManager] registerBooksInBundle: [self bundle]];
 }
 

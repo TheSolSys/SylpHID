@@ -99,9 +99,9 @@
 	[_path setLineJoinStyle: NSBevelLineJoinStyle];
 
 	_shadow = [[NSShadow alloc] init];
-	[_shadow setShadowOffset: NSMakeSize(0.75, -1.25)];
+	[_shadow setShadowOffset: NSMakeSize(1.0, -1.5)];
 	[_shadow setShadowColor: _colorShadow];
-	[_shadow setShadowBlurRadius: 2.5];
+	[_shadow setShadowBlurRadius: 3.0];
 }
 
 

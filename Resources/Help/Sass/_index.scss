@@ -1,18 +1,9 @@
 // CSS rules for index/topic page only
 
-body.root {
-	background-image: url(fizzypop.png);
-}
-
-
-.root h1:before {
-	background: url(titlelogo.png);
-}
-
 div.left {
 	width: 49%;
 	display: inline-block;
-	margin-top: 1.0em;
+	margin-top: 0.75em;
 
 	ul {
 		float: right;
@@ -20,10 +11,11 @@ div.left {
 	}
 }
 
+
 div.right {
 	width: 49%;
 	display: inline-block;
-	margin-top: 1.5em;
+	margin-top: 0.75em;
 
 	& > div {
 		width: 140px;
@@ -38,4 +30,14 @@ div.right {
 			margin-top: 3.1em;
 		}
 	}
+}
+
+
+p.footer {
+	position: fixed;
+	left: 0;
+	bottom: 1.0em;
+	width: 70%;
+	color: #666;
+	text-align: center;
 }

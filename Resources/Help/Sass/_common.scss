@@ -2,7 +2,7 @@
 
 body {
 	background: {
-		image: img("fizzypop.png");
+		image: url(fizzypop.png);
 		position: bottom right;
 		attachment: fixed;
 		repeat: no-repeat;
@@ -27,7 +27,7 @@ h1.title {
 
 	&:before {
 		content: "";
-		background: img("titlelogo.png");
+		background: url(titlelogo.png);
 		position: absolute;
 		margin-left: -80px;
 		width: 70px;
@@ -39,12 +39,6 @@ h1.title {
 			variant: small-caps;
 			weight: 900;
 			size: 105%;
-		}
-
-		&:before {
-			content: "hid";
-			position: absolute;
-			margin-left: 1px;
 		}
 	}
 }
@@ -82,8 +76,20 @@ p.center {
 }
 
 
+p.small {
+	font-size: 90%;
+	color: #666;
+
+	span.sylphid span {
+		font-size: 105%;
+	}
+}
+
+
 a, a:visited, a:active {
 	color: #000;
+
+    @include transition(color 0.33s);
 
 	&:hover {
 		color: #a44;

@@ -70,18 +70,24 @@ span.sylphid span {
 }
 
 
-p.center {
-	margin-top: 0.5em;
-	text-align: center;
-}
+p {
+	&.center {
+		margin-top: 0.5em;
+		text-align: center;
+	}
 
 
-p.small {
-	font-size: 90%;
-	color: #666;
+	&.small {
+		font-size: 90%;
+		color: #666;
 
-	span.sylphid span {
-		font-size: 105%;
+		span.sylphid span {
+			font-size: 105%;
+		}
+	}
+
+	&.spacer {
+		margin-bottom: 50em;
 	}
 }
 

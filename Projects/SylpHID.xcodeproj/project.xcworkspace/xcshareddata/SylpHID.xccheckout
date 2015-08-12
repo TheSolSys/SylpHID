@@ -5,41 +5,49 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CD5A0CD0-E987-4271-A360-8734C68A35FE</string>
+	<string>09EE08A2-FB36-4569-8B25-4AAE5846F3F9</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SylpHID</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++8752</key>
-		<string>http://svn.eidola.its/Xbox%252525252525252525252525252525252520HID/trunk</string>
+		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</key>
+		<string>http://svn.eidola.its/SylpHID/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Projects/SylpHID.xcworkspace</string>
+	<string>Projects/SylpHID.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++8752</key>
-		<string>../..</string>
+		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++8752</key>
+		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</key>
 		<string>http://svn.eidola.its</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://svn.eidola.its/Xbox%252525252525252525252525252525252520HID/trunk/Projects/Xbox%20HID.xcworkspace</string>
+	<string>https://github.com/GirlInTheShell/SylpHID.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++8752</string>
+	<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SylpHID</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++8752</string>
+			<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Xbox%20HID</string>
+			<string>SylpHID</string>
 		</dict>
 	</array>
 </dict>

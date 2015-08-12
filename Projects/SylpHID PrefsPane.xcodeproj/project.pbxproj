@@ -93,6 +93,37 @@
 		82F04F031B77EE2300F4F952 /* FPInsetText.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F04F011B77EE2300F4F952 /* FPInsetText.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		82E6C8BB1B7B199800EEFD96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E6C8B71B7B199800EEFD96 /* SylpHID Help.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8242294C1B78954500E0D9F6;
+			remoteInfo = "SylpHID Help";
+		};
+		82E6C8C11B7B19A800EEFD96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E6C8BD1B7B19A800EEFD96 /* SylpHID Daemon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 82A0B4031B6BD84200653468;
+			remoteInfo = "SylpHID Daemon";
+		};
+		82E6C8C31B7B19B500EEFD96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E6C8BD1B7B19A800EEFD96 /* SylpHID Daemon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 82A0B4021B6BD84200653468;
+			remoteInfo = "SylpHID Daemon";
+		};
+		82E6C8C51B7B19B500EEFD96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E6C8B71B7B199800EEFD96 /* SylpHID Help.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8242294B1B78954500E0D9F6;
+			remoteInfo = "SylpHID Help";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		820F2C751B7666DF00C07710 /* SylpHID.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SylpHID.icns; path = ../Resources/SylpHID.icns; sourceTree = "<group>"; };
 		822239B41B6BFA5B00099615 /* FPAppBindingCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPAppBindingCells.h; path = "../Source/PrefsPane/Custom Cells/FPAppBindingCells.h"; sourceTree = SOURCE_ROOT; };
@@ -177,6 +208,8 @@
 		824229961B78C55D00E0D9F6 /* credits.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; name = credits.rtfd; path = ../Resources/PrefsPane/credits.rtfd; sourceTree = "<group>"; };
 		824229971B78C55D00E0D9F6 /* donate.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = donate.rtf; path = ../Resources/PrefsPane/donate.rtf; sourceTree = "<group>"; };
 		82A0B3E71B6BD80C00653468 /* SylpHID.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SylpHID.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E6C8B71B7B199800EEFD96 /* SylpHID Help.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "SylpHID Help.xcodeproj"; sourceTree = "<group>"; };
+		82E6C8BD1B7B19A800EEFD96 /* SylpHID Daemon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "SylpHID Daemon.xcodeproj"; sourceTree = "<group>"; };
 		82F04EFC1B77E40200F4F952 /* NSBezierPath+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+String.h"; sourceTree = "<group>"; };
 		82F04EFD1B77E40200F4F952 /* NSBezierPath+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+String.m"; sourceTree = "<group>"; };
 		82F04F001B77EE2300F4F952 /* FPInsetText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPInsetText.h; path = "../Source/PrefsPane/Custom Controls/FPInsetText.h"; sourceTree = "<group>"; };
@@ -370,6 +403,8 @@
 		82A0B3DD1B6BD80C00653468 = {
 			isa = PBXGroup;
 			children = (
+				82E6C8BD1B7B19A800EEFD96 /* SylpHID Daemon.xcodeproj */,
+				82E6C8B71B7B199800EEFD96 /* SylpHID Help.xcodeproj */,
 				82A0B3E91B6BD80C00653468 /* Prefs Pane */,
 				82223A6D1B6C08EF00099615 /* Common */,
 				822239F01B6BFA7C00099615 /* Data Source */,
@@ -412,6 +447,22 @@
 			);
 			name = "Supporting Files";
 			path = SylpHID;
+			sourceTree = "<group>";
+		};
+		82E6C8B81B7B199800EEFD96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82E6C8BC1B7B199800EEFD96 /* SylpHID.help */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82E6C8BE1B7B19A800EEFD96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82E6C8C21B7B19A800EEFD96 /* SylpHID Daemon */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		82F04EFB1B77E40200F4F952 /* Extensions */ = {
@@ -473,11 +524,12 @@
 				82A0B3E31B6BD80C00653468 /* Frameworks */,
 				82A0B3E41B6BD80C00653468 /* Headers */,
 				82A0B3E51B6BD80C00653468 /* Resources */,
-				82223A3E1B6BFEB000099615 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				82E6C8C41B7B19B500EEFD96 /* PBXTargetDependency */,
+				82E6C8C61B7B19B500EEFD96 /* PBXTargetDependency */,
 			);
 			name = "SylpHID PrefsPane";
 			productName = SylpHID;
@@ -508,12 +560,39 @@
 			mainGroup = 82A0B3DD1B6BD80C00653468;
 			productRefGroup = 82A0B3E81B6BD80C00653468 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 82E6C8BE1B7B19A800EEFD96 /* Products */;
+					ProjectRef = 82E6C8BD1B7B19A800EEFD96 /* SylpHID Daemon.xcodeproj */;
+				},
+				{
+					ProductGroup = 82E6C8B81B7B199800EEFD96 /* Products */;
+					ProjectRef = 82E6C8B71B7B199800EEFD96 /* SylpHID Help.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				82A0B3E61B6BD80C00653468 /* SylpHID PrefsPane */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		82E6C8BC1B7B199800EEFD96 /* SylpHID.help */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SylpHID.help;
+			remoteRef = 82E6C8BB1B7B199800EEFD96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		82E6C8C21B7B19A800EEFD96 /* SylpHID Daemon */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "SylpHID Daemon";
+			remoteRef = 82E6C8C11B7B19A800EEFD96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		82A0B3E51B6BD80C00653468 /* Resources */ = {
@@ -551,23 +630,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		82223A3E1B6BFEB000099615 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export SUDO_ASKPASS=\"/Users/$USER/Scripts/xcode_askpass.sh\"\nrm -rf \"$USER_LIBRARY_DIR/Caches/com.apple.preferencepanes.*\"\nsudo -A rm -rf \"/Library/PreferencePanes/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/MacOS/\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID.help\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/SylpHID Help\"\nsudo -A cp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"/Library/PreferencePanes/\"\nrm -rf \"$SOURCE_ROOT/../Packaging/Products/$FULL_PRODUCT_NAME\"\ncp -R \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" \"$SOURCE_ROOT/../Packaging/Products/\"\nlaunchctl load /Library/LaunchAgents/com.fizzypopstudios.SylpHIDDaemon.plist\nlaunchctl start com.fizzypopstudios.SylpHIDDaemon\nopen \"/Applications/System Preferences.app\"";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		82A0B3E21B6BD80C00653468 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -603,6 +665,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82E6C8C41B7B19B500EEFD96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SylpHID Daemon";
+			targetProxy = 82E6C8C31B7B19B500EEFD96 /* PBXContainerItemProxy */;
+		};
+		82E6C8C61B7B19B500EEFD96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SylpHID Help";
+			targetProxy = 82E6C8C51B7B19B500EEFD96 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		824229661B78C54200E0D9F6 /* SylpHID.xib */ = {

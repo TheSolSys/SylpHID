@@ -112,7 +112,6 @@
 			buildPhases = (
 				824229481B78954500E0D9F6 /* Sources */,
 				824229491B78954500E0D9F6 /* Frameworks */,
-				827B9AA81B78E119005DC99A /* Run Script */,
 				8242294A1B78954500E0D9F6 /* Resources */,
 				824229631B789F8200E0D9F6 /* ShellScript */,
 			);
@@ -183,22 +182,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "hiutil -C -a -g -vvv -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nkillall \"HelpViewer\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
-			showEnvVarsInLog = 0;
-		};
-		827B9AA81B78E119005DC99A /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "sass --scss --update \"$SOURCE_ROOT/../Resources/Help/Sass\":\"$SOURCE_ROOT/../Resources/Help/Common\" --style compressed --sourcemap=none --no-cache --stop-on-error";
+			shellScript = "cd \"$SOURCE_ROOT/../Resources/Help\"\nsass --scss --update Sass:Common --style compressed --sourcemap=none --no-cache --stop-on-error\n\ncd \"$BUILT_PRODUCTS_DIR\"\nhiutil -C -a -g -vvv -f SylpHID.helpindex \"$FULL_PRODUCT_NAME\"\nmv SylpHID.helpindex \"$FULL_PRODUCT_NAME\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

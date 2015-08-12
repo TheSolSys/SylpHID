@@ -183,7 +183,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "hiutil -C -a -vvv -l en_US -s en -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources/en.lproj/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nkillall \"HelpViewer\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
+			shellScript = "hiutil -C -a -g -vvv -f \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/SylpHID.helpindex\" \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\"\nkillall \"HelpViewer\"\nlaunchctl stop com.apple.helpd\nrm -rf \"/Users/$USER/Library/Preferences/com.apple.help\"*\nrm -rf \"/Users/$USER/Library/Caches/com.apple.help\"*\nlaunchctl start com.apple.helpd";
 			showEnvVarsInLog = 0;
 		};
 		827B9AA81B78E119005DC99A /* Run Script */ = {

@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>SylpHID.help</string>
+	<string>SylpHID Help</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -36,14 +36,12 @@
 	<string>6C131e</string>
 	<key>HPDBookAccessPath</key>
 	<string>SylpHID.html</string>
-	<key>HPDBookIconPath</key>
-	<string>SylpHID.icns</string>
 	<key>HPDBookIndexPath</key>
 	<string>SylpHID.helpindex</string>
 	<key>HPDBookKBProduct</key>
-	<string>SylpHID</string>
+	<string>sylphid1</string>
 	<key>HPDBookTitle</key>
-	<string>Sylpʜıᴅ Help</string>
+	<string>SylpHID Help</string>
 	<key>HPDBookType</key>
 	<string>3</string>
 </dict>

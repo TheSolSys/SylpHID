@@ -5,29 +5,21 @@
 	<key>BuildMachineOSBuild</key>
 	<string>13F1096</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>CFBundleExecutable</key>
-	<string>SylpHID</string>
-	<key>CFBundleGetInfoString</key>
-	<string>v1.0.0 (r420)</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>SylpHID Help</string>
-	<key>CFBundleHelpBookName</key>
-	<string>com.fizzypopstudios.SylpHID.help</string>
+	<string>en_US</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.SylpHIDPrefsPane</string>
+	<string>com.fizzypopstuidos.SylpHID.help</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Sylpʜıᴅ</string>
+	<string>SylpHID Help</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1</string>
 	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>hbwr</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -42,15 +34,15 @@
 	<string>0620</string>
 	<key>DTXcodeBuild</key>
 	<string>6C131e</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2015 FizzyPop Studios. All rights reserved.</string>
-	<key>NSMainNibFile</key>
-	<string>SylpHID</string>
-	<key>NSPrefPaneIconFile</key>
-	<string>SylpHID.icns</string>
-	<key>NSPrefPaneIconLabel</key>
-	<string>Sylpʜıᴅ</string>
-	<key>NSPrincipalClass</key>
-	<string>FPSylpHIDPrefsPane</string>
+	<key>HPDBookAccessPath</key>
+	<string>SylpHID.html</string>
+	<key>HPDBookIndexPath</key>
+	<string>SylpHID.helpindex</string>
+	<key>HPDBookKBProduct</key>
+	<string>sylphid1</string>
+	<key>HPDBookTitle</key>
+	<string>SylpHID Help</string>
+	<key>HPDBookType</key>
+	<string>3</string>
 </dict>
 </plist>

@@ -234,7 +234,7 @@ typedef void(^OPCH)(NSInteger result);	// for OpenPanel completion handler
 	[self getVersion];
 
 	// check if kernel extension is loaded, if not generate more informative error
-	if (system("/usr/sbin/kextstat -l -b com.fizzypopstudios.SylpHID.driver | grep fizzy") != 0) {
+	if (system("/usr/sbin/kextstat -l -b com.fizzypopstudios.driver.SylpHID | grep fizzy") != 0) {
 		[self showLargeError: @"Kernel Extension Not Loaded"];
 		[self disableConfigPopUpButton];
 		[self clearDevicesPopUpButton];

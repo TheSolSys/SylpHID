@@ -40,7 +40,7 @@
 		82223A521B6C01FB00099615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		82223A531B6C01FB00099615 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		82A0B4031B6BD84200653468 /* SylpHID Daemon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SylpHID Daemon"; sourceTree = BUILT_PRODUCTS_DIR; };
-		82A1598C1B6C3391003934D5 /* com.fizzypopstudios.SylpHID.daemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.fizzypopstudios.SylpHID.daemon.plist; path = ../Packaging/Products/com.fizzypopstudios.SylpHID.daemon.plist; sourceTree = "<group>"; };
+		82A1598C1B6C3391003934D5 /* com.fizzypopstudios.daemon.SylpHID.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.fizzypopstudios.daemon.SylpHID.plist; path = ../Packaging/Products/com.fizzypopstudios.daemon.SylpHID.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 		828857141B6C2F29004A3CA6 /* LaunchAgent */ = {
 			isa = PBXGroup;
 			children = (
-				82A1598C1B6C3391003934D5 /* com.fizzypopstudios.SylpHID.daemon.plist */,
+				82A1598C1B6C3391003934D5 /* com.fizzypopstudios.daemon.SylpHID.plist */,
 			);
 			name = LaunchAgent;
 			sourceTree = "<group>";

@@ -38,7 +38,7 @@
 #define kNoticeConfigKey	@"Config"
 #define kNoticeDeviceKey	@"Device"
 
-#define kFPDistributedNotificationsObject	@"com.fizzypopstudios.SylpHID.driver"
+#define kFPDistributedNotificationsObject	@"com.fizzypopstudios.driver.SylpHID"
 #define kFPSylpHIDDeviceConfigurationDidChangeNotification	   @"ConfigDidChange"
 
 

@@ -182,7 +182,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# Compile 'SylpHID.css' from Sass source files\n# Type 'gem install sass' in Terminal to install Sass\ncd \"$SOURCE_ROOT/../Resources/Help\"\nsass --scss --update Sass:Common --style compressed --sourcemap=none --no-cache --stop-on-error\n\n# Rename help book as *.help reserved for Apple use only!\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -rf \"SylpHID Help\"\ncp -R \"$FULL_PRODUCT_NAME\" \"SylpHID Help\"\n\n# Create Help Book index file\nhiutil -C -a -g -s en -l en_US -vvv -f SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"\nmv SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"";
+			shellScript = "# Compile 'SylpHID.css' from Sass source files\n# Type 'sudo gem install sass' in Terminal to install Sass\ncd \"$SOURCE_ROOT/../Resources/Help\"\nsass --scss --update Sass:Common --style compressed --sourcemap=none --no-cache --stop-on-error\n\n# Rename help book as *.help reserved for Apple use only!\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -rf \"SylpHID Help\"\ncp -R \"$FULL_PRODUCT_NAME\" \"SylpHID Help\"\n\n# Create Help Book index file\nhiutil -C -a -g -s en -l en_US -vvv -f SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"\nmv SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

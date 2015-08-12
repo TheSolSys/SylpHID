@@ -5,7 +5,7 @@
 	<key>KeepAlive</key>
 	<true/>
 	<key>Label</key>
-	<string>com.fizzypopstudios.SylpHIDDaemon</string>
+	<string>com.fizzypopstudios.SylpHID.daemon</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/Library/PreferencePanes/SylpHID.prefPane/Contents/MacOS/SylpHID Daemon</string>

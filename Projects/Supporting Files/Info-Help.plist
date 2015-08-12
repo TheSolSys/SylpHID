@@ -25,7 +25,9 @@
 	<key>HPDBookKBProduct</key>
 	<string>sylphid1</string>
 	<key>HPDBookTitle</key>
-	<string>SylpHID Help</string>
+	<string>Sylpʜıᴅ Help</string>
+	<key>HPDBookIconPath</key>
+	<string>SylpHID.icns</string>
 	<key>HPDBookType</key>
 	<string>3</string>
 </dict>

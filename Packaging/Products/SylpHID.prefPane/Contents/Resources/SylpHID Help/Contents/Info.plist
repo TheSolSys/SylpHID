@@ -36,12 +36,14 @@
 	<string>6C131e</string>
 	<key>HPDBookAccessPath</key>
 	<string>SylpHID.html</string>
+	<key>HPDBookIconPath</key>
+	<string>SylpHID.icns</string>
 	<key>HPDBookIndexPath</key>
 	<string>SylpHID.helpindex</string>
 	<key>HPDBookKBProduct</key>
 	<string>sylphid1</string>
 	<key>HPDBookTitle</key>
-	<string>SylpHID Help</string>
+	<string>Sylpʜıᴅ Help</string>
 	<key>HPDBookType</key>
 	<string>3</string>
 </dict>

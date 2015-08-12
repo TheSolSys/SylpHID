@@ -524,6 +524,7 @@
 				82A0B3E31B6BD80C00653468 /* Frameworks */,
 				82A0B3E41B6BD80C00653468 /* Headers */,
 				82A0B3E51B6BD80C00653468 /* Resources */,
+				82E6C8C71B7B22B500EEFD96 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -629,6 +630,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82E6C8C71B7B22B500EEFD96 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# This script copies the 'SylpHID Daemon' and 'SylpHID Help' products into the 'SylpHID.prefPane' product\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/SylpHID.prefPane/Contents/MacOS/\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID.help/\" \"$BUILT_PRODUCTS_DIR/SylpHID.prefPane/Contents/Resources/SylpHID Help\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		82A0B3E21B6BD80C00653468 /* Sources */ = {

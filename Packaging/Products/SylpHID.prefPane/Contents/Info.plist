@@ -13,9 +13,9 @@
 	<key>CFBundleHelpBookFolder</key>
 	<string>SylpHID Help</string>
 	<key>CFBundleHelpBookName</key>
-	<string>com.fizzypopstudios.SylpHID.help</string>
+	<string>com.fizzypopstudios.help.SylpHID</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.SylpHID.prefpane</string>
+	<string>com.fizzypopstudios.prefpane.SylpHID</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

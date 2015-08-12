@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en_US</string>
+	<string>en</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.fizzypopstudios.help.SylpHID</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -9,7 +9,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>v1.0.0 (r420)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.SylpHID.driver</string>
+	<string>com.fizzypopstudios.driver.SylpHID</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

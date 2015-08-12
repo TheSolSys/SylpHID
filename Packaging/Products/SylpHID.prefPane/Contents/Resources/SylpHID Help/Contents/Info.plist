@@ -5,9 +5,9 @@
 	<key>BuildMachineOSBuild</key>
 	<string>13F1096</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en_US</string>
+	<string>en</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.fizzypopstudios.SylpHID.help</string>
+	<string>com.fizzypopstudios.help.SylpHID</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

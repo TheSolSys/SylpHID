@@ -1267,24 +1267,22 @@ typedef void(^OPCH)(NSInteger result);	// for OpenPanel completion handler
 
 - (void) initOptionsInterface
 {
-	NSInteger deviceIndex;
-	id device;
-	BOOL error = YES;
-
-	deviceIndex = [_devicePopUp indexOfSelectedItem];
+	BOOL noconfig = YES;
+	NSInteger deviceIndex = [_devicePopUp indexOfSelectedItem];
 	if (deviceIndex >= 0 && deviceIndex < [_devices count]) {
-		device = [_devices objectAtIndex: deviceIndex];
+		id device = [_devices objectAtIndex: deviceIndex];
 		if (device && [device hasOptions]) {
 			if ([device deviceIsPad]) {
 				[_tabView selectTabViewItemAtIndex: 1];
 				[_textMapping setHidden: NO];
 				[self initPadOptionsWithDevice: device];
 				[device enableRawReports];
-				error = NO;
+				noconfig = NO;
 			}
 		}
 	}
-	if (error) {
+
+	if (noconfig) {
 		[self showLargeError: @"No Configurable Options"];
 		[self disableConfigPopUpButton];
 	}

@@ -643,7 +643,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# This script copies the 'SylpHID Daemon' and 'SylpHID Help' products into the 'SylpHID.prefPane' product\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/SylpHID.prefPane/Contents/MacOS/\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID.help/\" \"$BUILT_PRODUCTS_DIR/SylpHID.prefPane/Contents/Resources/SylpHID Help\"";
+			shellScript = "# This script copies the 'SylpHID Daemon' and 'SylpHID Help' products into the 'SylpHID.prefPane' product\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Daemon\" \"$BUILT_PRODUCTS_DIR/SylpHID.prefPane/Contents/MacOS/\"\ncp -R \"$BUILT_PRODUCTS_DIR/SylpHID Help/\" \"$BUILT_PRODUCTS_DIR/SylpHID.prefPane/Contents/Resources/SylpHID Help\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

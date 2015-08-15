@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		824229621B78984900E0D9F6 /* SylpHID.icns in Resources */ = {isa = PBXBuildFile; fileRef = 824229611B78984900E0D9F6 /* SylpHID.icns */; };
 		8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */ = {isa = PBXBuildFile; fileRef = 8242299D1B78DFB100E0D9F6 /* SylpHID.css */; };
+		826556731B7F6A0D00226FA3 /* tinylogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 826556721B7F6A0D00226FA3 /* tinylogo.png */; };
+		826556781B7F767200226FA3 /* fadeout.png in Resources */ = {isa = PBXBuildFile; fileRef = 826556771B7F767200226FA3 /* fadeout.png */; };
 		827B9AAC1B78EEDF005DC99A /* titlelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 827B9AAB1B78EEDF005DC99A /* titlelogo.png */; };
 		827B9AAF1B78F621005DC99A /* fizzypop.png in Resources */ = {isa = PBXBuildFile; fileRef = 827B9AAE1B78F621005DC99A /* fizzypop.png */; };
 		82E6C8521B7A5F7900EEFD96 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 82E6C8511B7A5F7900EEFD96 /* en.lproj */; };
@@ -21,6 +23,10 @@
 		8242299D1B78DFB100E0D9F6 /* SylpHID.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = SylpHID.css; sourceTree = "<group>"; };
 		8242299F1B78DFC400E0D9F6 /* _reset.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _reset.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 		824229A01B78DFC400E0D9F6 /* SylpHID.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = SylpHID.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		826556701B7F642300226FA3 /* _sections.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _sections.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		826556721B7F6A0D00226FA3 /* tinylogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinylogo.png; sourceTree = "<group>"; };
+		826556741B7F6C9500226FA3 /* _footer.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _footer.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
+		826556771B7F767200226FA3 /* fadeout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fadeout.png; sourceTree = "<group>"; };
 		827B9AA91B78E8F8005DC99A /* _common.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _common.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
 		827B9AAB1B78EEDF005DC99A /* titlelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlelogo.png; sourceTree = "<group>"; };
 		827B9AAD1B78EFF0005DC99A /* _partials.scss */ = {isa = PBXFileReference; lastKnownFileType = text; path = _partials.scss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sass; };
@@ -82,7 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				827B9AAB1B78EEDF005DC99A /* titlelogo.png */,
+				826556721B7F6A0D00226FA3 /* tinylogo.png */,
 				827B9AAE1B78F621005DC99A /* fizzypop.png */,
+				826556771B7F767200226FA3 /* fadeout.png */,
 				8242299D1B78DFB100E0D9F6 /* SylpHID.css */,
 			);
 			name = Common;
@@ -94,8 +102,10 @@
 			children = (
 				827B9AB21B790A69005DC99A /* _boxview.scss */,
 				827B9AA91B78E8F8005DC99A /* _common.scss */,
+				826556741B7F6C9500226FA3 /* _footer.scss */,
 				827B9AB01B790973005DC99A /* _index.scss */,
 				8242299F1B78DFC400E0D9F6 /* _reset.scss */,
+				826556701B7F642300226FA3 /* _sections.scss */,
 				827B9AAD1B78EFF0005DC99A /* _partials.scss */,
 				824229A01B78DFC400E0D9F6 /* SylpHID.scss */,
 			);
@@ -112,6 +122,7 @@
 			buildPhases = (
 				824229481B78954500E0D9F6 /* Sources */,
 				824229491B78954500E0D9F6 /* Frameworks */,
+				826556761B7F758400226FA3 /* ShellScript */,
 				8242294A1B78954500E0D9F6 /* Resources */,
 				824229631B789F8200E0D9F6 /* ShellScript */,
 			);
@@ -161,7 +172,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E6C8521B7A5F7900EEFD96 /* en.lproj in Resources */,
+				826556731B7F6A0D00226FA3 /* tinylogo.png in Resources */,
 				8242299E1B78DFB100E0D9F6 /* SylpHID.css in Resources */,
+				826556781B7F767200226FA3 /* fadeout.png in Resources */,
 				827B9AAC1B78EEDF005DC99A /* titlelogo.png in Resources */,
 				827B9AAF1B78F621005DC99A /* fizzypop.png in Resources */,
 				824229621B78984900E0D9F6 /* SylpHID.icns in Resources */,
@@ -182,7 +195,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "# Compile 'SylpHID.css' from Sass source files\n# Type 'sudo gem install sass' in Terminal to install Sass\ncd \"$SOURCE_ROOT/../Resources/Help\"\nsass --scss --update Sass:Common --style compressed --sourcemap=none --no-cache --stop-on-error\n\n# Copy help book because *.help bundles are reserved for Apple use only!\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -rf \"SylpHID Help\"\ncp -R \"$FULL_PRODUCT_NAME\" \"SylpHID Help\"\n\n# Create Help Book index file\nhiutil -C -a -s en -l en_US -vvv -f SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"\nmv SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"";
+			shellScript = "# Copy help book because *.help bundles are reserved for Apple use only!\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -rf \"SylpHID Help\"\ncp -R \"$FULL_PRODUCT_NAME\" \"SylpHID Help\"\n\n# Create Help Book index file\nhiutil -C -a -s en -l en_US -vvv -f SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"\nmv SylpHID.helpindex \"SylpHID Help/Contents/Resources/en.lproj/\"";
+			showEnvVarsInLog = 0;
+		};
+		826556761B7F758400226FA3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# Compile 'SylpHID.css' from Sass source files\n# Type 'sudo gem install sass' in Terminal to install Sass\ncd \"$SOURCE_ROOT/../Resources/Help\"\nsass --scss --update Sass:Common --style compressed --sourcemap=none --no-cache --stop-on-error";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

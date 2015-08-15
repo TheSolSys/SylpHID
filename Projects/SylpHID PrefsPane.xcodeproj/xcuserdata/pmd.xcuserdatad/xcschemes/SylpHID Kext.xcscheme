@@ -3,7 +3,7 @@
    LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -48,6 +48,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "82A0B3CE1B6BD7BA00653468"
+            BuildableName = "SylpHID.kext"
+            BlueprintName = "SylpHID Kext"
+            ReferencedContainer = "container:SylpHID Driver.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

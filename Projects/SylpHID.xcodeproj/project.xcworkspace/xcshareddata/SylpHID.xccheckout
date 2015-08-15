@@ -20,6 +20,8 @@
 		<key>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</key>
 		<string>../../..</string>
 	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://svn.eidola.its</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -28,7 +30,7 @@
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</string>
 			<key>IDESourceControlWCCName</key>
@@ -36,7 +38,7 @@
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
+			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>0ec53bb3-c707-400d-93fa-e5b3b21647ec++1581</string>
 			<key>IDESourceControlWCCName</key>
